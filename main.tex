@@ -72,10 +72,6 @@
 \usepackage{subfiles}
 
 
-% for using gray text
-\usepackage{xcolor}
-
-
 % fixing roman numerals in the table of contents
 \usepackage[titles]{tocloft}
 \renewcommand*\cftchapnumwidth{3em}
@@ -91,6 +87,16 @@
 \usetikzlibrary{calc}
 \usepackage{standalone}
 
+% gilles castel figures
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+\pdfsuppresswarningpagegroup=1
 
 \begin{document}
 % numbering settings (roman chapters, arabic sections)
