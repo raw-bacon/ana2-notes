@@ -298,8 +298,97 @@ auf $\mathbb{R}$.
   \]
   erfüllt, und dass die Normen $\Vert \cdot \Vert_1$ 
   und $\Vert \cdot \Vert_{\infty}$ diese nicht erfüllen.
-   
 \end{remark}
+
+\section{Stetigkeit}
+\begin{definition}
+  Seien $V$ und $W$ reelle Vektorräume mit Normen $\Vert \cdot \Vert_V$ 
+  und
+  $ \Vert \cdot \Vert_W$.
+  Eine Abbildung $f \colon V \to W$ heisst \emph{stetig
+  im Punkt} $p \in V$, falls für alle $\varepsilon > 0$ 
+  ein $\delta > 0$ existiert, so dass für alle
+  $q \in V$ mit $\Vert q - p \Vert_V \leq \delta$ 
+  folgt, dass
+  $\Vert f(q) - f(p) \Vert_W \leq \varepsilon$.
+  Wir sagen, dass $f$ \emph{stetig} ist, falls
+  $f$ in allen Punkten von $V$ stetig ist.
+\end{definition}
+
+\begin{example}
+  Im Fall $V = W = \mathbb{R}$ und $\Vert \cdot \Vert = \vert \cdot \vert$ 
+  erhalten wir den üblichen Stetigkeitsbegriff.
+\end{example}
+
+Wir untersuchen nun,
+wie der Stetigkeitsbegriff von den Normen
+auf  $V$ und $W$ abhängt.
+Betrachte zunächst folgenden günstigen Fall.
+Sei $V = W = \mathbb{R}$. Sei $\Vert \cdot \Vert$ 
+eine Norm auf $\mathbb{R}$.
+Für alle $x \in \mathbb{R}$ gilt dann
+\[
+  \Vert x \Vert = \Vert x \cdot 1 \Vert = |x| \cdot \Vert 1 \Vert.
+\]
+Sei nun $f \colon \mathbb{R} \to \mathbb{R}$
+bezüglich der Norm $| \cdot |$ im Punkt $p \in \mathbb{R}$ stetig.
+Wir zeigen nun, dass $f$ auch bezüglich der Norm $\Vert \cdot \Vert$ 
+im Punkt $p$ stetig ist.
+Wähle $\delta > 0$ so, dass für alle $q \in \mathbb{R}$ 
+mit $|q - p| \leq \delta/\Vert 1 \Vert$ gilt,
+dass $|f(q)  f(p) \leq \varepsilon/\Vert 1 \Vert$.
+Das geht, da $\Vert 1 \Vert > 0$ aus $1 \neq 0$ folgt.
+Sei nun $q \in \mathbb{R}$ mit $\Vert q - p \Vert \leq \delta$.
+Dann gilt $|q - p| \leq \delta / \Vert 1 \Vert$.
+Wir schliessen, dass $|f(q) - f(p)| \leq \varepsilon/\Vert 1 \Vert$,
+also 
+$\Vert f(q) - f(p) \Vert = |f(q) - f(p)| \cdot \Vert 1 \Vert \leq \varepsilon$.
+Insgesamt hängt also der Stetigkeitsbegriff auf $\mathbb{R}$ nicht von
+der Norm auf $\mathbb{R}$ ab.
+
+Es gibt aber auch einen ungünstigen Fall.
+Sei $\mathbb{R}^{\infty}$ der Raum aller Folgen
+$(x_{1}, x_{2}, \dots) \in \mathbb{R}^{\mathbb{N}}$ 
+für welche $N > 0$ existiert, so dass für alle $n \geq N$ 
+gilt, dass $x_n = 0$.
+Betrachte auf $\mathbb{R}^{\infty}$ die beiden Normen
+\begin{align*}
+  \Vert v \Vert_2 & = \sqrt{v_1^2 + v_2^2 + \cdots} \\
+  \Vert v \Vert_{\infty} &= \max \{|v_1|, |v_2|, \dots\}.
+\end{align*}
+Es gilt für alle $v \in \mathbb{R}^{\infty}$,
+dass $\Vert v \Vert_{\infty} \leq \Vert v \Vert_2$.
+Sei $V = (\mathbb{R}^{\infty}, \Vert \cdot \Vert_2)$ 
+und $W = (\mathbb{R}^{\infty}, \Vert \cdot \Vert_{\infty})$.
+Die Identitätsabbildung
+\begin{align*}
+  \text{Id} \colon \mathbb{R}^{\infty} & \to \mathbb{R}^{\infty} \\
+  v & \mapsto v
+\end{align*}
+kann auf vier Arten als Abbildung zwischen normierten Räumen
+betrachtet werden, nämlich
+\begin{itemize}
+  \item $f_1 \colon V \to V$,
+  \item $f_2 \colon W \to W$,
+  \item $f_3 \colon V \to W$,
+  \item $f_4 \colon W \to V$.
+\end{itemize}
+Wir bemerken, dass $f_1$, $f_2$ und $f_3$ stetig
+sind, indem wir $\delta = \varepsilon$ wählen.
+Aber $f_4$ ist nicht stetig!.
+Betrachte dazu die Folge von Punkten
+$p_n = (1/n, 1/n, \dots, 1/n, 0, \dots) \in \mathbb{R}^{\infty}$,
+wobei das Glied $1/n$ gerade $n^2$ mal vorkommt.
+Es gilt $\Vert p_n \Vert_{\infty} = 1/n$ 
+und $\Vert p_n \Vert_{2} = 1$.
+Insbesondere gilt
+\[
+  \Vert f_4(p_n) - f_4(0) \Vert_2 = \Vert p_n \Vert_2 = 1
+\]
+und $\Vert p_n \Vert_{\infty} = 1/n$,
+also ist $f_4$ im Punkt $p = 0$ nicht stetig.
+
+
 
 
 
