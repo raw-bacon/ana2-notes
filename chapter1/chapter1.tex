@@ -388,6 +388,310 @@ Insbesondere gilt
 und $\Vert p_n \Vert_{\infty} = 1/n$,
 also ist $f_4$ im Punkt $p = 0$ nicht stetig.
 
+Zusammengefasst erkennen wir, dass auf $\mathbb{R}^{\infty}$ 
+das Verhältnis der Normen $\Vert \cdot \Vert_2$ 
+und $\Vert \cdot \Vert_{\infty}$ beliebig hohe Werte annimmt.
+Im Sinne folgender Definition bedeutet das, dass in
+$\mathbb{R}^{\infty}$ diese beiden normen nicht äquivalent sind.
+
+\begin{definition}
+  Zwei Normen $\Vert \cdot \Vert$ $\widetilde{\Vert \cdot \Vert}$
+  heissen \emph{äquivalent},
+  falls es Konstanten $0 < c \leq C$ gibt,
+  so dass für alle $v \in V \setminus \{0\}$ gilt, dass
+  \[
+    c \leq \frac{\widetilde{\Vert v \Vert}}{\Vert v \Vert} \leq C.
+  \]
+\end{definition}
+
+Bildlich können wir uns die Äquivalenz von Normen so vorstellen,
+dass der $\widetilde{\Vert \cdot \Vert}$-Normball
+sowohl eine skalierte Version vom $\Vert \cdot \Vert$-Normball
+enthält, wie auch in einer skalierten Version
+vom $\Vert \cdot \Vert$-Normball enthalten ist.
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Sei $\Vert \cdot \Vert$ eine Norm auf $\mathbb{R}$.
+      Dann gilt für alle $x \in \mathbb{R}$, dass
+      \(
+        \Vert x \Vert = \Vert 1 \Vert \cdot |x|,
+      \)
+      also sind $\Vert \cdot \Vert$ und $| \cdot |$ äquivalent.
+    \item
+      Für alle $v \in \mathbb{R}^n$ gilt, dass
+      \[
+        \Vert v \Vert_{\infty} \leq \Vert v \Vert_2
+        \leq \sqrt{n} \cdot \Vert v \Vert_{\infty}.
+      \]
+      also sind die beiden Normen
+      $\Vert \cdot \Vert_{\infty}$ und $\Vert \cdot \Vert_2$ 
+      äquivalent auf $\mathbb{R}^{n}$.
+    \item Auf $\mathbb{R}^{\infty}$ sind die Normen
+      $\Vert \cdot \Vert_{\infty}$ und $\Vert \cdot \Vert_{2}$ 
+      nicht äquivalent.
+  \end{enumerate}
+\end{examples}
+
+\begin{remark}
+  Die Äquivalenz von Normen ist eine Äquivalenzrelation.
+  Die Symmetrie und die Reflexivität sind leicht zu überprüfen.
+  Für die Transitivität bemerke, dass
+  aus $a \leq x/y \leq A$ und $b \leq y/z \leq B$ folgt,
+  dass $ab \leq x/z \leq AB$.
+\end{remark}
+
+\begin{theorem*}
+  Auf $\mathbb{R}^n$ sind alle Normen äquivalent.
+\end{theorem*}
+
+\begin{proof}
+  Es reicht zu zeigen, dass jede Norm
+  $\Vert \cdot \Vert$ auf $\mathbb{R}^{n}$ 
+  zur euklidischen Norm $\Vert \cdot \Vert_2$ 
+  äquivalent ist.
+  In einem ersten Schritt zeigen wir, dass
+  eine Konstante $C > 0$ existiert, so dass
+  $\Vert \cdot \Vert / \Vert \cdot \Vert_2 \leq C$
+  gilt.
+  Sei $v = v_1 e_1 +\cdots + v_n e_n$ mit $v_i \in \mathbb{R}$.
+  Schätze ab, dass
+  \begin{align*}
+    \Vert v \Vert 
+    &= \Vert v_1 e_1 \Vert + \cdots + \Vert v_n e_n \Vert \\
+    &= |v_1| \cdot \Vert e_1 \Vert + \cdots + |v_n| \cdot \Vert e_n \Vert \\
+    &\leq \Vert v \Vert_2 \cdot (\Vert e_1 \Vert + \cdots + \Vert e_n \Vert).
+  \end{align*}
+  Wir erhalten das gewünschte Resultat, indem wir
+  $C = \Vert e_1 \Vert + \cdots + \Vert e_n \Vert$ setzen,
+  dann gilt nämlich $\Vert v \Vert \leq C \cdot \Vert v \Vert_2$.
+
+  Wir suchen nun im zweiten Schritt
+  eine Konstante $c > 0$, für die $\Vert \cdot \Vert / \Vert \cdot \Vert_2
+  \geq c$ gilt.
+  Nimm widerspruchsweise an, dass das Verhältnis $\Vert \cdot \Vert /
+  \Vert \cdot \Vert_2$ beliebig kleine Werte annimmt.
+  Dann gibt es eine Folge von Vektoren
+  $v_k \in \mathbb{R}^n \setminus \{0\}$ mit
+  $\Vert v_k \Vert / \Vert v_k \Vert_2 \leq 1/k$.
+  Für die normierten Vektoren $w_k = v_k / \Vert v_k \Vert_2
+  \in \mathbb{R}^n \setminus \{0\}$ 
+  gilt dann, dass $\Vert w_k \Vert_2 = 1$ 
+  und $\Vert w_k \Vert \leq 1/k$.
+  Somit liegen alle Koordinaten von $w_k$ 
+  im Intervall $[-1, 1]$.
+  Also existiert eine Teilfolge
+  der $w_k$, so dass die erste Koordinatenfolge
+  mit Grenzwert in $[-1, 1]$ konvergiert.
+  Wir iterieren dieses Verfahren $n$-mal,
+  und erhalten eine Teilfolge $w_{k_i}$ der $w_k$,
+  Welche in allen Koordinaten konvergiert.
+  Wir behaupten nun, dass $\Vert w \Vert_2 = 1$ 
+  und $\Vert w \Vert = 0$ gilt, was
+  natürlich den Widerspruch $w = 0$ impliziert.
+  Bemerke dazu, dass für alle $i \in \mathbb{N}$ 
+  gilt, dass
+  \begin{align*}
+     1 - \Vert w - w_{k_i} \Vert
+     &= \Vert w_{k_i} \Vert_2 - \Vert w - w_{k_i} \Vert_2  \\
+     &\leq \Vert w \Vert_2 \\
+     &\leq \Vert w - w_{k_i} \Vert_2 + \Vert w_{k_i} \Vert_2 \\
+    &= 1 + \Vert w - w_{k_i} \Vert_2.
+  \end{align*}
+  Da die $w_{k_i}$ koordinatenweise gegen $w$ konvergieren folgt, dass
+  \[
+    \lim_{i \to \infty} \Vert w - w_{k_i}\Vert_2 = 0
+  \]
+  gilt. Schätze weiterhin ab, dass
+  \[
+     \Vert w \Vert
+     \leq \Vert w_{k_i} \Vert + \Vert w - w_{k_i} \Vert ,
+  \]
+  also existiert nach Schritt 1 eine Konstante
+  $C > 0$ so, dass $\Vert w \Vert \leq 1/k_i + C \cdot
+  \Vert w - w_{k_i} \Vert_2$
+  gilt, woraus im Grenzwert $i \to \infty$ folgt,
+  dass $\Vert w \Vert = 0$ gilt.
+\end{proof}
+
+\begin{corollary}\label{cor:continuity-independent}
+  Der Stetigkeitsbegriff für Abbildungen
+  $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+  hängt nicht von den Normen auf $\mathbb{R}^n$ 
+  und $\mathbb{R}^m$ ab.
+\end{corollary}
+
+Der Beweis hier lässt sich durch einfache Ajustierung
+der $\delta$ und $\varepsilon$ führen.
+Siehe dazu unseren Beweis für den Fakt,
+dass alle Normen auf $\mathbb{R}$ zum
+selben Stetigkeitsbegriff führen.
+
+\subsection*{Lineare Abbildungen}
+\begin{question}
+Seien $V, W$ normierte Vektorräume und
+$A \colon V \to W$ linear.
+Ist $A$ dann stetig?
+\end{question}
+
+Die Antwort ist im allgemeinen nein, was unsere
+Abbildung $f_4$ oben zeigt. Wir untersuchen
+nun noch ein weiteres Beispiel.
+
+\begin{example}
+  Sei $V = \mathbb{R}^{\infty}$ mit der
+  Maximumsnorm $\Vert \cdot \Vert_{\infty}$.
+  Definiere $A \colon \mathbb{R}^{\infty} \to \mathbb{R}^{\infty}$ 
+  als die Lineare Erweiterung der Abbildung $e_k \mapsto ke_k$.
+  Setze  $q_k = e_k/k \in \mathbb{R}^{\infty}$.
+  Es gilt, dass
+  \(
+    \Vert q_k - 0 \Vert_{\infty} = \Vert q_k \Vert_{\infty} = 1/k
+  \)
+  und $\Vert A(q_k) - A(0) \Vert_{\infty} = \Vert e_k - 0 \Vert_{\infty}
+  = 1$. Somit ist $A$ im Nullpunkt (und auch in allen anderen Punkten)
+  nicht stetig.
+\end{example}
+
+\begin{definition}
+  Seien $\Vert \cdot \Vert_V$, $\Vert \cdot \Vert_W$ 
+  Normen auf normierten Vektorräumen $V, W$.
+  Sei $A \colon V \to W$ linear.
+  Die \emph{Operatornorm} von $A$ ist
+  \[
+    \Vert A \Vert_{\text{op}} = \sup
+    \left\{\frac{\Vert Av \Vert_W}{\Vert v \Vert_V} \mid v \in
+    V \setminus \{0\}\right\} \in \mathbb{R} \cup \{\infty\}.
+  \]
+\end{definition}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Betrachte die Abbildung
+      \begin{align*}
+        A \colon \mathbb{R}^{\infty} & \to \mathbb{R}^{\infty} \\
+        e_k & \mapsto ke_k
+      \end{align*}
+      auf $\mathbb{R}^{\infty}$ mit der Norm $\Vert \cdot \Vert_{\infty}$.
+      Dann gilt $\Vert A \Vert_{\text{op}} = \infty$.
+    \item Sei $A \colon \mathbb{R}^2 \to \mathbb{R}^2$ 
+      auf $\mathbb{R}^{2}$ mit der euklidischen Norm
+      $\Vert \cdot \Vert_2$ die Abbildung, die durch
+      die Matrix
+      \[
+        A =
+        \begin{pmatrix}
+          a & b \\ c & d
+        \end{pmatrix}
+      \]
+      gegeben ist.
+      Bemerke folgende Eigenschaften.
+      \begin{enumerate}[(i)]
+        \item $A = 0$ genau dann, wenn $\Vert A \Vert_\text{op} = 0$.
+        \item Betrachte
+          \[
+            A =
+            \begin{pmatrix}
+              0 & 1 \\ 0 & 0
+            \end{pmatrix}.
+          \]
+          Sei $v = (x, y)$.
+          Es gilt dann $Av = (y, 0)$, also gilt
+          \[
+            \frac{\Vert Av \Vert_2}{\Vert v \Vert_2} = \frac{y}{\sqrt{x^2 + y^2} } \leq 1.
+          \]
+          Für $x = 0$ erhalten wir $1$ für diesen Quotienten,
+          also gilt $\Vert A \Vert_{\text{op}} = 1$.
+        \item Betrachte die Matrix
+          \[
+            A =
+            \begin{pmatrix}
+              1 & 0 \\ 0 & d
+            \end{pmatrix}
+          \]
+          für $d \geq 1$.
+          Um $\Vert A \Vert_{\text{op}}$ zu bestimmen
+          reicht es, Vektoren der Form $v = (1, 0)$ 
+          und $v = (x, 1)$ zu betrachten.
+          Es gilt $A(1, 0) = (1, 0)$,
+          also ist $\Vert A \Vert_{\text{op}} \geq 1$. 
+          Weiter ist
+          $A(x, 1) = (x, d)$.
+          Wir schliessen, dass für $v = (x, 1)$ gilt, dass
+          \[
+            \frac{\Vert Av \Vert_2}{\Vert v \Vert_2}
+            = \frac{\sqrt{x^2 + d^2}}{\sqrt{x^2 + 1^2}} \leq d.
+          \]
+          Aber $d$ wird im Fall $x = 0$ angenommen,
+          also folgt $\Vert A \Vert_{\text{op}} = d$.
+      \end{enumerate}
+  \end{enumerate}
+\end{examples}
+
+\begin{proposition}
+  Sei $A \colon V \to W$ eine lineare Abbildung zwischen
+  normierten Vektorräumen.
+  Dann ist $A$ stetig, genau dann, wenn
+  $\Vert A \Vert_\text{op} < \infty$ gilt.
+\end{proposition}
+
+\begin{proof}
+Seien $p \in V$ und $\varepsilon > 0$ 
+vorgegeben.
+Setze
+\[
+  \delta = \frac{\varepsilon}{\Vert A \Vert_{\text{op} + 1}}.
+\]
+Sei nun $q \in V$ mit $\Vert q - p \Vert_V \leq \delta$.
+Dann gilt
+\begin{align*}
+  \Vert A(q) - A(p) \Vert_W
+  & = \Vert A(q- p)\Vert_W\\
+  &\leq \Vert A \Vert_\text{op} \cdot \Vert q - p \Vert_V \\
+  & \leq \Vert A \Vert_{\text{op}} \cdot
+  \frac{\varepsilon}{\Vert A \Vert_{\text{op}} + 1} \\
+  &\leq \varepsilon.
+\end{align*}
+Somit ist $A$ stetig im Punkt $p \in V$.
+Für die Umkehrung, siehe Serie 2.
+\end{proof}
+  
+\begin{specialcase}
+  Sei $A \colon \mathbb{R}^n \to \mathbb{R}^m$ linear.
+  Schätze $\Vert A \Vert_{\text{op}}$ bezüglich
+  der Maximumsnorm $\Vert \cdot \Vert_{\infty}$ auf
+  $\mathbb{R}^n$ und $\mathbb{R}^m$ wie folgt ab.
+  Schreibe
+  \[
+    A = 
+    \begin{pmatrix}
+      a_{11} & \cdots & a_{1n} \\
+      \vdots & \ddots & \vdots \\
+      a_{m1} & \cdots & a_{mn}
+    \end{pmatrix}
+  \]
+  als Matrix, das heisst $A(e_i) = \sum_{j=1}^{m} a_{ji}e_j$.
+  Setze $a = \max \left\{|a_{ij}| \mid 
+  1 \leq i \leq m, 1 \leq j \leq n\right\}$.
+  Für $v \in \mathbb{R}^{n}$ gilt dann
+  \(
+    \Vert Av \Vert_\infty \leq n \cdot a \cdot \Vert v \Vert_{\infty}.
+  \)
+  Insbesondere ist $\Vert a \Vert_{\text{op}} \leq n \cdot a$ endlich.
+  Wir schliessen, dass $A \colon \mathbb{R}^n \to \mathbb{R}^m$ stetig ist.
+\end{specialcase}
+
+\begin{corollary}
+  Lineare Abbildungen $A \colon \mathbb{R}^n \to \mathbb{R}^m$ sind stetig.
+\end{corollary}
+
+\begin{proof}
+  Wir haben soeben gezeigt, dass $A$ bezüglich der Maximumsnorm stetig ist.
+  Aus Korollar~\ref{cor:continuity-independent} folgt, dass
+  $A$ bezüglich jeder Norm stetig ist.
+\end{proof}
 
 
 
