@@ -693,6 +693,193 @@ Für die Umkehrung, siehe Serie 2.
   $A$ bezüglich jeder Norm stetig ist.
 \end{proof}
 
+\section{Banachs Fixpunktsatz}
+\begin{motivation}
+  Sei $V$ ein normierter reeller Vektorraum,
+  und sei $A \colon V \to V$ linear und \emph{kontrahierend},
+  das heisst für lineare Abbildungen $A$, dass
+  $\Vert A \Vert_{\text{op}} < 1$ gilt.
+  Wir wollen die Abbildung $\text{Id} - A \colon V \to V$ wie folgt
+  invertieren:
+  \[
+    {(\text{Id} - A)}^{-1} = \textup{Id} + A + A^2 + A^3 + \cdots
+  \]
+  Als Analogie dazu erinnern wir uns an den Fakt, dass
+  für $q \in \mathbb{R}$ mit $|q| < 1$ gilt, dass
+  \[
+    \frac{1}{1-q} = 1 + q + q^2 + \cdots.
+  \]
+
+  Für alle $Y \in V$ suchen wir ein eindeutiges $X \in V$ 
+  mit $(\text{Id} - A)(X) = Y$, also
+  $X - A(X) = Y$.
+  Definiere
+  \begin{align*}
+    f \colon V & \to V \\
+    X & \mapsto A(X) + Y.
+  \end{align*}
+  Gesucht ist also eine (offenbar eindeutige) Lösung
+  der Fixpunkgleichung $f(X) = X$.
+\end{motivation}
+
+\begin{remark}
+  Die Bedingung $\Vert A \Vert_{\text{op}}$ ist stärker als die
+  Bedingung $\Vert A v \Vert_V < \Vert v \Vert_V$ für alle $v
+  \in V \setminus \{0\}$.
+  Betrachte dazu $V = \mathbb{R}^{\infty}$ mit der Maximumnorm
+  $\Vert \cdot \Vert_{\infty}$.
+  Definiere $A \colon \mathbb{R}^{\infty} \to \mathbb{R}^{\infty}$ 
+  als die Lineare Erweiterung der Abbildung
+  \[
+    e_k \mapsto \frac{k}{k+1}e_k.
+  \]
+  Wir stellen fest, dass $\Vert A v \Vert_{\infty} < \Vert v \Vert_{\infty}$ 
+  für alle $v \in \mathbb{R}^{\infty} \setminus \{0\}$ gilt,
+  aber $\Vert A \Vert_{\text{op}} = 1$, da
+  \[
+    \sup \left\{\frac{k}{k+1} \mid k \in \mathbb{N}\right\} = 1
+  \]
+  gilt. Somit ist $A$ nicht kontrahierend.
+  
+  Wir stossen auch auf ein Problem beim invertieren von
+  \begin{align*}
+    \text{Id} - A \colon \mathbb{R}^{\infty} & \to \mathbb{R}^{\infty} \\
+    e_k & \mapsto \left( 1 - \frac{k}{k+1} \right)e_k
+    = \frac{1}{k+1}e_k.
+  \end{align*}
+  Die inverse Abbildung
+  \begin{align*}
+    {(\text{Id} - A)}^{-1} \colon \mathbb{R}^{\infty} & \to \mathbb{R}^{\infty} \\
+    e_k & \mapsto (k+1) e_k
+  \end{align*}
+  ist also nicht stetig, da $\Vert {(\text{Id} - A)}^{-1} \Vert_{\text{op}}
+  = +\infty$.
+\end{remark}
+
+\subsection*{Metrische Räume}
+\begin{definition}
+  Sei $X$ eine Menge. Eine \emph{Metrik} auf $X$ ist eine
+  Abbildung $d \colon X \times X \to \mathbb{R}$
+  mit folgenden Eigenschaften.
+  \begin{enumerate}[(i)]
+    \item \emph{Positivität}: Für alle $p, q \in X$ gilt $d(p, q) \geq 0$, und
+      $d(p, q) = 0$ genau dann, wenn $p = q$.
+    \item \emph{Symmetrie}. Für alle $p, q \in X$ gilt $d(q, p) = d(p, q)$.
+    \item \emph{Dreiecksungleichung}. 
+      Für alle  $a, b, c \in X$ gilt $d(a, c) \leq d(a, b) + 
+      d(b, c)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Sei $V$ ein reeller Vektorraum mit Norm $\Vert \cdot \Vert$.
+      Definiere
+      \begin{align*}
+        d \colon V \times V & \to \mathbb{R} \\
+        (p, q) & \mapsto \Vert q - p \Vert.
+      \end{align*}
+      Das erste Axiom für Metrische Räume folgt direkt aus dem
+      ersten Axiom für normierte Räume.
+      Zur Symmetrie bemerke, dass
+      \[
+        d(p, q) = \Vert q - p  \Vert = \Vert (-1)(p - q) \Vert
+        = |-1| \cdot \Vert p - q \Vert = \Vert p - q \Vert
+        = d(q, p).
+      \]
+      Die Dreiecksungleichung erfordert keinen Trick.
+    \item Sei $X$ beliebig. Definiere auf $X$ 
+      die \emph{diskrete Metrik} wie folgt:
+      \[
+        d (p, q)
+        =
+        \begin{cases}
+          0 & q = p \\
+          1 & q \neq p
+        \end{cases}.
+      \]
+      Das einzige interessante Axiom ist die Dreiecksungleichung.
+      Falls $d(a, c) = 0$ gilt, dann gilt sowieso
+      $d(a, c) \leq d(a, b) + d(b, c)$.
+      Der einzige Fall, den wir ausschliessen müssen, ist also
+      $d(a, c) = 1$ und $d(a, b) = d(b, c) = 0$.
+      Aber aus $d(a, b) = 0$ folgt $a = b$, und
+      aus $d(b, c) = 0$ folgt $b = c$ und somit
+      auch $a = c$, was $d(a, c) = 0$ impliziert. Dies ist ein
+      Widerspruch.
+    \item Folgende Metrik ist enorm wichtig in der Zahlentheorie.
+      Wir werden sie aber bloss in den Übungen antreffen.
+      Sei $p \in \mathbb{N}$ eine Primzahl.
+      Definiere die \emph{$p$-adische Metrik} auf $\mathbb{Z}$ 
+      wie folgt:
+      \[
+        d_p(n, m) =
+        \begin{cases}
+          0 & n = m \\
+          p^{-x} & n \neq m,
+        \end{cases}
+      \]
+      wobei $x \in \mathbb{N}$ maximal mit der Eigenschaft
+      ist, dass
+      $p^x$ die Zahl $n -m $ teilt.
+      Insbesondere gilt $d_p(n, n + 1) = 1 = p^{-0}$,
+      da in diesem Fall $x = 0$ gilt.
+      Weiter ist $d_p(0, p^n) = p^{-n}$, ist also klein für
+      grosse $n$.
+  \end{enumerate}
+\end{examples}
+
+%TODO remove this
+\newpage
+
+\begin{definitions}
+  Sei $X$ ein metrischer Raum mit Metrik $d$.
+  \begin{itemize}
+    \item Eine Folge ${(a_{n})}_{n \in \mathbb{N}}$ in
+      $X$ heisst \emph{konvergent} mit Grenzwert
+      $a \in X$, falls für alle $\varepsilon$ 
+      ein $N \in \mathbb{N}$ existiert,
+      so dass für alle $n \in \mathbb{N}$ mit $n \geq N$ 
+      gilt, dass $d(a_n, a) \leq \varepsilon$.
+    \item Eine Folge ${(a_{n})}_{n \in \mathbb{N}}$ in $X$ 
+      heisst \emph{Cauchyfolge}, falls für alle $\varepsilon > 0$ 
+      ein $N \in \mathbb{N}$ existiert, so dass für
+      alle $n, m \geq N$ gilt, dass
+      $d(a_n, a_m) \leq \varepsilon$.
+    \item Der metrische Raum $X$ heisst \emph{vollständig},
+      falls alle Cauchyfolgen in $X$ konvergieren.
+  \end{itemize}
+  Ein vollständiger normierter Vektorraum heisst \emph{Banachraum}.
+\end{definitions}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Der metrische Raum $\mathbb{R}$ mit $d(p, q) = |p - q|$ 
+      ist vollständig.
+    \item
+      \begin{enumerate}[(a)]
+        \item Der metrische Raum $X = (0, 1) \subset \mathbb{R}$ 
+          mit der von $\mathbb{R}$ induzierten
+          Metrik $d(p, q) = |q - p|$ ist unvollständig.
+        \item Ebenso ist $X = \mathbb{Q} \subset \mathbb{R}$ mit
+           der von $\mathbb{R}$ induzierten Metrik unvollständig.
+      \end{enumerate}
+    \item Sei $X = \mathbb{Z}$ mit der $p$-adischen Metrik $d_p$.
+      Betrachte die Folge $a_n = p^n$.
+      Dies ist eine Cauchyfolge mit Grenzwert $0 \in \mathbb{Z}$.
+      Man könnte nun vermuten, dass $\mathbb{Z}$ mit dieser
+      Metrik vollständig ist. Das ist jedoch nicht der Fall.
+      Betrachte dazu die Folge $b_n = 1 + p + p^2 + \cdots + p^n$.
+      Dies ist eine Cauchyfolge, leider aber ohne Grenzwert
+      in $\mathbb{Z}$.
+      Das heisst, dass $\mathbb{Z}$ mit der $p$-adischen Metrik
+      unvollständig ist. Siehe dazu auch die Übungen.
+  \end{enumerate}
+  
+\end{examples}
+
 
 
 
