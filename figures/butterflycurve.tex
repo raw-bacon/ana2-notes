@@ -1,0 +1,11 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]  
+  \clip (-1.5, -1.5) rectangle (1.5, 1.5);
+  \draw (-1.5, 0) -- (1.5, 0);
+  \draw (0, -1.5) -- (0, 1.5);
+  \draw[domain=-2:2, smooth] plot
+  (\x * \x, \x * \x * \x - \x);
+\end{tikzpicture}
+\end{document}

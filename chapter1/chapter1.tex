@@ -693,7 +693,7 @@ Für die Umkehrung, siehe Serie 2.
   $A$ bezüglich jeder Norm stetig ist.
 \end{proof}
 
-\section{Banachs Fixpunktsatz}
+\section{Der Fixpunktsatz von Banach}
 \begin{motivation}
   Sei $V$ ein normierter reeller Vektorraum,
   und sei $A \colon V \to V$ linear und \emph{kontrahierend},
@@ -877,8 +877,284 @@ Für die Umkehrung, siehe Serie 2.
       Das heisst, dass $\mathbb{Z}$ mit der $p$-adischen Metrik
       unvollständig ist. Siehe dazu auch die Übungen.
   \end{enumerate}
-  
 \end{examples}
+
+\begin{definition}
+  Sei $(X, d)$ ein metrischer Raum.
+  Eine Abbildung $f \colon X \to X$ heisst \emph{kontrahierend},
+  falls es eine positive Konstante $k < 1$ gibt,
+  so dass für alle $p, q \in X$ gilt,
+  dass $d(f(p), f(q)) \leq k \cdot d(p, q)$.
+\end{definition}
+
+Unser Ziel in diesem Abschnitt ist es,
+folgenden wichtigen Satz vom polnischen
+Mathematiker Stefan Banach (1892--1945)
+zu beweisen.
+
+\begin{theorem*}[Banach 1922, Heuser 111.11]
+  Sei $(X, d)$ ein vollständiger nicht-leerer metrischer Raum.
+  Dann hat jede kontrahierende Abbildung
+  $f \colon X \to X$ einen eindeutigen Fixpunkt,
+  das heisst es existiert genau ein Punkt $p \in X$ 
+  mit $f(p) = p$.
+\end{theorem*}
+
+\begin{remarks}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Es ist wichtig, dass $k < 1$ gilt.
+      Betrachte zum Beispiel folgende Funktionen.
+      \begin{enumerate}[(a)]
+        \item Betrachte die Abbildung
+          \begin{align*}
+            f \colon \mathbb{R} & \to \mathbb{R} \\
+            x & \mapsto x + 1.
+          \end{align*}
+          Dann gilt $|f(y) - f(x)| = 1 \cdot |y - x|$,
+          aber $f$ hat keinen Fixpunkt.
+        \item Die Identität
+          \begin{align*}
+            f \colon \mathbb{R} & \to \mathbb{R} \\
+            x & \mapsto x
+          \end{align*}
+          hat unendlich viele Fixpunkte.
+      \end{enumerate}
+    \item Auch die Vollständigkeit ist wichtig.
+      Betrachte hier zum Beispiel die Funktion
+      \begin{align*}
+        f \colon \mathbb{R} \setminus \{0\} & \to \mathbb{R} \setminus \{0\} \\
+        x & \mapsto x/2
+      \end{align*}
+      Die Abbildung $f$ ist kontrahierend mit $k = 1/2$,
+      hat aber keinen Fixpunkt in $\mathbb{R} \setminus \{0\}$.
+      In den Übungen werden wir ein weniger künstliches Beispiel
+      untersuchen.
+    \item 
+      Kontrahierende Abbildungen $f \colon X \to X$ 
+      sind wie alle Lipschitz-stetigen Abbildungen
+      $g \colon X \to X$ gleichmässig stetig:
+      Sei $L \geq 0$ so, dass für alle
+      $p, q \in X$ 
+      gilt, dass
+      $d(g(p), g(q)) \leq L \cdot d(p, q)$.
+      Sei $\varepsilon > 0$ vorgegeben.
+      Setze $\delta = \varepsilon/(L+1)$.
+      Dann gilt für alle $p, q \in X$ mit $d(p, q) \leq \delta$,
+      dass $d(f(p), f(q)) \leq \varepsilon$.
+  \end{enumerate}
+\end{remarks}
+
+\begin{lemma*}
+  Seien $(X_1, d_1)$ und $(X_2, d_2)$ metrische Räume.
+  Sei $f \colon X_1 \to X_2$ eine beliebige Abbildung.
+  Dann ist $f$ stetig im Punkt $p$, genau dann, wenn $f$ 
+  folgenstetig in $p$ ist.
+  Folgenstetig heisst, dass für alle konvergenten Folgen
+  ${(a_{n})}_{n \in \mathbb{N}}$ in $X_1$ mit
+  $\lim_{n \to \infty} a_n = p$ gilt,
+  dass $\lim_{n \to \infty} f(a_n) = f(p)$.
+\end{lemma*}
+ 
+\begin{proof}
+  Für die Richtung ``$\Rightarrow$'',
+  sei $f$ stetig in $p$ und ${(a_{n})}_{n \in \mathbb{N}}$
+  konvergent mit Grenzwert 
+  $\lim_{n \to \infty} a_n = p$.
+  Sei $\varepsilon > 0$ vorgegeben.
+  Wähle $\delta > 0$ so, dass wenn
+  $d_1(q, p) \leq \delta$ gilt,
+  dann auch $d_2(f(q), f(p)) \leq \delta$.
+  Dann existiert $N \in \mathbb{N}$ so,
+  dass für $n \geq N$ gilt, dass
+  $d(a_n, p) \leq \delta$.
+  Somit gilt auch für alle $n \geq N$,
+  dass $d_2(f(a_n), f(p)) \leq \varepsilon$.
+  Somit ist $f$ stetig.
+
+  Umgekehrt, für ``$\Leftarrow$'',
+  sei $f$ nicht stetig in $p$.
+  Dann existiert $\varepsilon > 0$ so,
+  dass für alle $n \in \mathbb{N}$ ein
+  $a_n \in X_1$ existiert mit
+  $d_1(a_n, p) \leq 1/n$, aber
+  $d_2(f(a_n), f(p)) > \varepsilon$.
+  Nach Konstruktoin gilt
+  $\lim_{n \to \infty}a_n = p$,
+  aber $\lim_{n \to \infty}f(a_n) \neq f(p)$.
+  Folglich ist $f$ nicht folgenstetig in $p$.
+\end{proof}
+
+\begin{proof}[Beweis vom Fixpunktsatz]
+  Wir zeigen erst die Eindeutigkeit,
+  was ganz schnell geht.
+  Seien $p, q \in X$ Fixpunkte von $f$.
+  Dann gilt $d(f(p), f(q)) \leq k \cdot d(p, q)$.
+  Aus $k < 1$ folgt dann $d(p, q) = 0$,
+  also $q = p$.
+
+  Für die Existenz, wähle $a_0 \in X$. Dieser
+  Schritt ist der Grund für die Annahme,
+  dass $X$ nicht leer ist.
+  Definiere eine Folge in $X$ durch die
+  Vorschrift $a_{n+1}= f(a_n)$.
+  Es gilt dann $a_1 = f(a_0), a_2 = f^2(a_0) = f(f(a_0))$,
+  und allgemein $a_n = f^n(a_0)$.
+  Die so konstruierte Folge ${(a_{n})}_{n \in \mathbb{N}}$ 
+  ist eine Cauchyfolge in $X$. Wir zeigen das später
+  und nehmen vorerst an, dass das stimmt.
+  Da $X$ vollständig ist, existiert $p = \lim_{n \to \infty} a_n$.
+  Es gilt dann $f(p) = p$.
+  Tatsächlich, berechne
+  \[
+  f(p) = \lim_{n \to \infty} f(a_n) = \lim_{n \to \infty}a_{n+1} = p.
+  \]
+  Es bleibt also bloss zu zeigen,
+  dass $ {(a_n)}_{n \in \mathbb{N}}$
+  eine Cauchyfolge ist.
+  Sei dazu $\varepsilon > 0$ vorgegeben.
+  Für $n, m \in \mathbb{N}$ mit $n \geq m$ 
+  schätzen wir ab, dass
+  \begin{align*}
+    d(a_n, a_m)
+    & = d(f(a_{n-1}), f(a_{m-1}))\\
+    & \leq k \cdot d(a_{n-1}, a_{m-1}) \\
+    &\leq k^2 \cdot d(a_{n-2}, a_{m-2})\\
+    &\leq \cdots \\
+    &\leq k^m \cdot d(a_{n-m}, a_0).
+  \end{align*}
+  Setze $\ell = n -m $.
+  Schätze weiterhin ab, dass
+  \begin{align*}
+    d(a_{\ell}, a_0) 
+    &\leq d(a_\ell, a_{\ell - 1})
+    + d(a_{\ell - 1}, a_{\ell-2}) + \cdots + d(a_1, a_0)\\
+    &\leq k^{\ell-1} \cdot d(a_{1}, a_{0})
+    + k^{\ell - 2} \cdot d(a_1, a_0)
+    + \cdots
+    + d(a_1, a_0) \\
+    &\leq (1 + k + k^2 + \cdots + k^{\ell-1})
+    \cdot d(a_1, a_0) \\
+    &\leq \frac{1}{1-k} \cdot d(a_1, a_0).
+  \end{align*}
+  Insgesamt erhalten wir
+  \[
+    d(a_n, a_m) \leq k^m \cdot \frac{1}{1-k} \cdot d(a_1, a_0).
+  \]
+  Wähle $N \in \mathbb{N}$ so,
+  dass $k^N \cdot 1/(1-k) \cdot d(a_1, a_0) \leq \varepsilon$.
+  Solch ein $N$ existiert, da 
+  nach unseren Annahmen an $k$ gilt,
+  dass $\lim_{n \to \infty} k^n = 0$.
+  Es gilt dann für alle $n, m \geq N$, dass
+  $d(a_n, a_m) \leq \varepsilon$.
+\end{proof}
+
+Wir werden den Fixpunktsatz auf Banachräume
+anwenden um Sätze zur Existenz und Eindeutigkeit
+gewisser Differentialgleichungen zu zeigen.
+
+\begin{example}
+  Sei $K \subset \mathbb{R}$ kompakt,
+  das heisst $K$ ist beschränkt und abgeschlossen.
+  Definiere $C(K)$ als die Menge aller stetigen
+  Abbildungen  $f \colon K \to \mathbb{R}$.
+  Man kann sich leicht überlegen,
+  dass $C(K)$ ein reeller Vektorraum ist.
+  Wir statten $C(K)$ mit der Norm
+  \[
+    \Vert f \Vert_{\infty} =
+    \max \left\{|f(x)| \mid x \in K\right\} < +\infty
+  \]
+  aus. Der Satz von Weierstrass besagt,
+  dass für eine Folge $f_n \colon K \to \mathbb{R}$ 
+  stetiger Funktionen, welche auf $K$ 
+  gleichmässig gegen eine Funktion $f \colon K \to \mathbb{R}$
+  konvergiert, dann ist $f$ stetig.
+  Gleichmässige Konvergenz heisst,
+  dass für alle $\varepsilon > 0$ 
+  ein $N \in \mathbb{N}$ existiert, so dass
+  für alle $n \geq N$ und alle $p \in K$ gilt,
+  dass $|f_n(p) - f(p)| \leq \varepsilon$.
+  In unseren Worten heisst das
+  $\Vert f_n - f \Vert_{\infty} \leq \varepsilon$.
+  Der Satz von Weierstrass besagt also,
+  dass der Raum $C(K)$ mit der Maximumnorm vollständig ist.
+\end{example}
+
+\section{Kurven und Vektorfelder}
+\begin{definition}
+  Eine \emph{Kurve} in $\mathbb{R}^n$ 
+  ist das Bild einer stetigen Abbildung
+  $\gamma \colon \mathbb{R} \to \mathbb{R}^n$.
+  Die Abbildung $\gamma$ heisst
+  \emph{Parametrisierung} der Kurve $\gamma$.
+\end{definition}
+
+Wir untersuchen nun kurz den Stetigkeitsbegriff auf Kurven.
+Stetigkeit heisst, dass in jedem $t \in \mathbb{R}$ die
+$(\varepsilon, \delta)$-Bedingung für $\gamma$ 
+bezüglich beliebiger Norman auf $\mathbb{R}$ und $\mathbb{R}^n$ 
+erfüllt ist, insbesondere
+bezüglich der Normen $| \cdot |$ und $\Vert \cdot \Vert_{\infty}$.
+Schreibe nun 
+\[
+  \gamma(t) = \sum_{i=1}^{n} \gamma_i(t) \cdot e_i,
+\]
+wobei $e_i$ der $i$-te Basisvektor in $\mathbb{R}^n$ ist.
+In diesem Fall ist $\gamma_i(t) = \langle \gamma(t), e_i \rangle$ 
+die $i$-te Koordinatenfunktion von $\gamma$.
+Für alle $s, t \in \mathbb{R}$ gilt
+$\Vert \gamma(s) - \gamma(t) \Vert_\infty \leq \varepsilon$ 
+genau dann, wenn $|\gamma_i(s) - \gamma_i(t)| \leq \varepsilon$
+für alle  $i$.
+Wir folgern, dass $\gamma$ stetig in $t \in \mathbb{R}$ 
+ist, genau dann wenn alle Komponentenfunktionen
+$\gamma_i$ stetig in $t$ sind.
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item 
+      Betrachte die Funktion
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+        t & \mapsto (\cos(t), \sin(t)).
+      \end{align*}
+      Dann hat $\gamma$ stetige
+      Komponentenfunktionen und ist
+      daher die Parametrisierung einer Kurve.
+      In diesem Fall ist die beschriebene Kurve
+      der Einheitskreis, siehe Abbildung~\ref{fig:parametrisations}.
+    \item Die Funktion
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+        t & \mapsto (t^2, t^3 - t)
+      \end{align*}
+      ist stetig und somit die Parametrisierung einer Kurve,
+      dargestellt in Abbildung~\ref{fig:parametrisations}.
+      Diese Kurve einen ``singulären Punkt'',
+      herbeigeführt durch die Eigenschaft,
+      dass $\gamma(1) = \gamma(-1) = 1$ gilt.
+  \end{enumerate}
+  
+  
+\end{example}
+
+\begin{figure}[htb] 
+  \centering
+  \begin{minipage}{0.50\textwidth}
+    \centering
+    \includegraphics{figures/circlecurve}
+  \end{minipage}%
+  \begin{minipage}{0.50\textwidth}
+    \centering
+    \includegraphics{figures/butterflycurve}
+  \end{minipage}%
+  \caption{Die Bilder der Kurven $\gamma$ 
+  aus den Beispielen}%
+  \label{fig:parametrisations}
+\end{figure}
 
 
 
