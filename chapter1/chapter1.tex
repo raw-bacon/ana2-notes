@@ -1089,6 +1089,9 @@ gewisser Differentialgleichungen zu zeigen.
   $\gamma \colon \mathbb{R} \to \mathbb{R}^n$.
   Die Abbildung $\gamma$ heisst
   \emph{Parametrisierung} der Kurve $\gamma$.
+  Wir werden die Unterscheidung zwischen Kurven
+  und Parametrisierungen nicht immer explizit
+  machen.
 \end{definition}
 
 Wir untersuchen nun kurz den Stetigkeitsbegriff auf Kurven.
@@ -1126,6 +1129,7 @@ $\gamma_i$ stetig in $t$ sind.
       daher die Parametrisierung einer Kurve.
       In diesem Fall ist die beschriebene Kurve
       der Einheitskreis, siehe Abbildung~\ref{fig:parametrisations}.
+      Die Pfeile erklären wir später.
     \item Die Funktion
       \begin{align*}
         \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
@@ -1137,8 +1141,6 @@ $\gamma_i$ stetig in $t$ sind.
       herbeigeführt durch die Eigenschaft,
       dass $\gamma(1) = \gamma(-1) = 1$ gilt.
   \end{enumerate}
-  
-  
 \end{example}
 
 \begin{figure}[htb] 
@@ -1154,6 +1156,178 @@ $\gamma_i$ stetig in $t$ sind.
   \caption{Die Bilder der Kurven $\gamma$ 
   aus den Beispielen}%
   \label{fig:parametrisations}
+\end{figure}
+
+\begin{definition}
+  Eine parametrisierte Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+  heisst \emph{differenzierbar}, falls für alle $t \in \mathbb{R}$ 
+  die Ableitung
+  \[
+    \dot{\gamma}(t) = \lim_{n \to 0} \frac{ \gamma(t + h) - \gamma(t)}{h}
+  \]
+  existiert.
+  Der Vektor $\dot{\gamma}(t)$ heisst \emph{Geschwindigkeitsvektor}.
+\end{definition}
+
+\begin{remark}
+  Für alle $t, h \in \mathbb{R}$ mit $h \neq 0$ 
+  gilt
+  \[
+    \frac{\gamma(t + h) - \gamma(t)}{h}
+    = \sum_{k=1}^{n} \frac{\gamma_k(t + h)- \gamma_k(t)}{h} \cdot e_k
+  \]
+  Wir folgern, dass $\dot{\gamma}(t) \in \mathbb{R}^n$ existiert,
+  genau dann, wenn alle Ableitungen $\dot{\gamma}_k(t) \in \mathbb{R}$ 
+  existieren.
+  In anderen Worten: Eine Kurve $\gamma \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  ist differenzierbar, genau dann, wenn alle $\gamma_k \colon \mathbb{R}
+  \to \mathbb{R}$ differenzierbar sind.
+\end{remark}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Die Kurve
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+        t & \mapsto (\cos(t), \sin(t))
+      \end{align*}
+      ist differenzierbar mit $\dot{\gamma}(t) = (-\sin(t), \cos(t))$.
+      Die grauen Pfeile in Abbildung~\ref{fig:parametrisations}
+      stellen die Ableitung von $\gamma$ dar.
+    \item Die Kurve
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+        t & \mapsto (t^2, t^3 - t)
+      \end{align*}
+      ist differenzierbar mit $\dot{\gamma}(t) = (2t, 3t^2 - 1)$.
+      Wir berechnen
+      \begin{itemize}
+        \item $\gamma(0) = (0, 0)$ und $\dot{\gamma}(0) = (0, -1)$,
+        \item $\gamma(1) = (1, 0)$ und $\dot{\gamma}(1) = (2, 2)$,
+        \item $\gamma(-1) = (1, 0)$ und $\dot{\gamma}(-1) = (-2, 2)$,
+        \item $\gamma(1/\sqrt{3}) = (1/2, -2/3 \cdot 1/\sqrt{3})$
+          und $\dot \gamma (1/\sqrt{3}) = (2 / \sqrt 3, 0)$,
+        \item $\gamma(-1 / \sqrt 3) = (1 / 3, 2/ 3 \cdot 1 / \sqrt 3)$
+          und $\dot \gamma ( - 1 / \sqrt 3 ) = (- 2 / \sqrt 3, 0)$.
+      \end{itemize}
+     Für grosse $t$ ist $y$ ungefähr $x^{3/2}$. Diese Information reicht,
+     um das Bild von $\gamma$ wie in Abbildung~\ref{fig:parametrisations}
+     zu erraten.
+     Die Ableitungen sind in grau (mit $1/4$ gestreckt) eingezeichnet.
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}
+  Sei $U \subset \mathbb{R}^n$ offen.
+  Ein \emph{Vektorfeld} auf $U$ ist eine stetige Abbildung
+  \begin{align*}
+    X \colon U & \to \mathbb{R}^n \\
+    q & \mapsto X(q).
+  \end{align*}
+  Jedes Vektorfeld $X$ auf $U$ liefert eine
+  \emph{gewöhnliche Differentialgleichung}
+  $\dot \gamma(t) = X(\gamma(t))$.
+  Dies ist wie folgt zu interpretieren.
+  Sei $p \in U$ fest. Gesucht ist $T > 0$ 
+  und eine differenzierbare  \emph{Lösungskurve}
+  $\gamma  \colon (-T, T) \to U$ 
+  zur Anfangsbedingung $\gamma(0) = p$.
+  Falls $X = A \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  linear ist, dann heisst die Differentialgleichung
+  $\dot \gamma(t) = A(\gamma(t))$
+  \emph{linear}.
+\end{definition}
+
+\begin{geometric}
+  Ein Vektorfeld $X \colon U \to \mathbb{R}^2$ 
+  liefert in jedem Punkt $q \in U$ einen Vektor
+  $X(q) \in \mathbb{R}^n$.
+  Siehe Abbildung~\ref{fig:vectorfield}.
+  In jedem Punkt der Kurve
+  $\gamma(t) \in U$ stimmt der Geschwindigkeitsvektor
+  $\dot \gamma(t) \in \mathbb{R}^n$ 
+  mit dem Vektor $X(\gamma(t))$ überein.
+\end{geometric}
+
+\begin{figure}[ht]
+    \centering
+    \incfig{vectorfield}
+    \caption{Ein Vektorfeld $X$ auf $U \subset \mathbb{R}^2$
+    mit einer Lösungskurve $\gamma$ in schwarz}%
+    \label{fig:vectorfield}
+\end{figure}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Betrachte das lineare Vektorfeld
+      \begin{align*}
+        A \colon \mathbb{R}^2 & \to \mathbb{R}^2 \\
+        \begin{pmatrix}
+          x \\ y
+        \end{pmatrix}
+         & \mapsto 
+         \begin{pmatrix}
+           0 & -1 \\ 1 & 0
+         \end{pmatrix}
+         \begin{pmatrix}
+           x \\ y
+         \end{pmatrix}
+         =
+         \begin{pmatrix}
+           -y \\ x
+         \end{pmatrix},
+      \end{align*}
+      siehe Abbildung~\ref{fig:vectorfields-examples}.
+      Betrachte nochmals die Kurve
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+        t & \mapsto 
+        \begin{pmatrix}
+          \cos(t) \\ \sin(t)
+        \end{pmatrix}.
+      \end{align*}
+      Es gilt
+      \[
+        \dot \gamma(t) =
+        \begin{pmatrix}
+          - \sin(t) \\ \cos(t)
+        \end{pmatrix}
+        \begin{pmatrix}
+          0 & -1 \\ 1 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+          \cos(t) \\ \sin(t)
+        \end{pmatrix}
+        = A(\gamma(t)).
+      \]
+      Also ist die Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+      eine Lösung der linearen Differentialgleichung
+      $\dot \gamma(t) = A(\gamma(t))$ 
+      zur Anfangsbedingung $\gamma(0) = e_1 \in \mathbb{R}^2$.
+    \item Die Kurve $\gamma(t) = (t^2, t^3 - t)$ ist
+      nicht die Lösung einer gewöhnlichen Differentialgleichung.
+      Der Grund dafür ist, dass $\gamma$ den Punkt
+      $(1, 0)$ zweimal mit unterschiedlichen Geschwindigkeitsvektoren
+      durchläuft: Es gilt $\gamma(1) = \gamma(-1)$.
+      aber $\dot \gamma(1) \neq \dot \gamma(-1)$.
+      Falls nämlich $X \colon \mathbb{R}^2 \to \mathbb{R}^2$ 
+      existiert mit $\dot \gamma (t) = X ( \gamma(t))$,
+      dann gälte
+      \begin{align*}
+        X(e_1) &= X(\gamma(1)) = \dot \gamma(1) = (2, 2),\\
+        X(e_1) &= X(\gamma(-1)) = \dot \gamma(-1) = (-2, 2).
+      \end{align*}
+      Das ist aber nicht möglich, da $2 \neq -2$.
+  \end{enumerate}
+\end{examples}
+
+\begin{figure}[htb] 
+  \centering
+  \includegraphics{figures/rotationfield}
+  \caption{Das Vektorfeld $A(x, y) = (-y, x)$}
+  \label{fig:vectorfields-examples}
 \end{figure}
 
 

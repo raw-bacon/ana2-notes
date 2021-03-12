@@ -1,0 +1,14 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.5]
+  \draw (-4, 0) -- (4, 0);
+  \draw (0, -4) -- (0, 4);
+  \clip (-4.2, -4.2) rectangle (4.2, 4.2);
+  \foreach \r in {1, ..., 4} {
+    \foreach \alpha in {0, 30, ..., 330} {
+      \draw[gray, ->] (\alpha:\r) -- +({\alpha+90}:{\r/6});
+    }
+  }
+\end{tikzpicture}
+\end{document}
