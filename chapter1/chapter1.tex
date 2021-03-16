@@ -1258,9 +1258,20 @@ $\gamma_i$ stetig in $t$ sind.
     \label{fig:vectorfield}
 \end{figure}
 
+\newpage
+
 \begin{examples}
   \leavevmode
   \begin{enumerate}[(1)]
+    \item Betrachte das lineare Vektorfeld
+      \begin{align*}
+        X \colon \mathbb{R} & \to \mathbb{R}^n \\
+        q & \mapsto 0.
+      \end{align*}
+      Sei $p \in \mathbb{R}^n$. Dann ist $\gamma(t) = p$ 
+      die eindeutige
+      Lösung der Differentialgleichung $\gamma(0) = p$ 
+      und $\dot \gamma(t) = X(\gamma(t))$.
     \item Betrachte das lineare Vektorfeld
       \begin{align*}
         A \colon \mathbb{R}^2 & \to \mathbb{R}^2 \\
@@ -1307,6 +1318,32 @@ $\gamma_i$ stetig in $t$ sind.
       eine Lösung der linearen Differentialgleichung
       $\dot \gamma(t) = A(\gamma(t))$ 
       zur Anfangsbedingung $\gamma(0) = e_1 \in \mathbb{R}^2$.
+      Allgemeiner ist die Funktion
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+        t & \mapsto 
+        \begin{pmatrix}
+          r \cos(t + \varphi) \\
+          r \sin(t + \varphi)
+        \end{pmatrix}
+      \end{align*}
+      eine Lösung dieser Differentialgleichung.
+      Durch geschickte Wahl von $\varphi$ und $r$
+      deckt das jede Anfangsbedingung ab.
+      \begin{figure}[htb] 
+        \centering
+        \begin{minipage}{0.50\textwidth}
+          \centering
+          \includegraphics{figures/rotationfield}
+        \end{minipage}%
+        \begin{minipage}{0.50\textwidth}
+          \centering
+          \includegraphics{figures/yzero}
+        \end{minipage}%
+        \caption{Das Vektorfeld $A(x, y) = (-y, x)$ und das
+        Vektorfeld $A(x, y) = (y, 0)$}%
+        \label{fig:vectorfields-examples}
+      \end{figure}
     \item Die Kurve $\gamma(t) = (t^2, t^3 - t)$ ist
       nicht die Lösung einer gewöhnlichen Differentialgleichung.
       Der Grund dafür ist, dass $\gamma$ den Punkt
@@ -1321,15 +1358,291 @@ $\gamma_i$ stetig in $t$ sind.
         X(e_1) &= X(\gamma(-1)) = \dot \gamma(-1) = (-2, 2).
       \end{align*}
       Das ist aber nicht möglich, da $2 \neq -2$.
+    \item Betrachte das lineare Vektorfeld
+      \begin{align*}
+        A \colon \mathbb{R}^2 & \to \mathbb{R}^2 \\
+        \begin{pmatrix}
+          x \\ y
+        \end{pmatrix}
+         & \mapsto 
+         \begin{pmatrix}
+           0 & 1 \\ 0 & 0
+         \end{pmatrix}
+         \begin{pmatrix}
+           x \\ y
+         \end{pmatrix}
+         =
+         \begin{pmatrix}
+           y \\ 0
+         \end{pmatrix}.
+      \end{align*}
+      Sei $p = (x_0, y_0)$ vorgegeben.
+      Als Ansatz für $\gamma$
+      schreiben wir $\gamma(t) = (x(t),
+      y(t))$.
+      Aus $\dot \gamma(t) = (y(t), 0)$ erhalten wir
+      $\dot y (t) = 0$, also ist $y(t) = y_0$ konstant.
+      Weiterhin ist
+      $\dot x(t) = y(t) = y_0$, also ist
+      $x(t) = y_0 t + x_0$. Zusammengefasst erhalten
+      wir die Lösungskurve
+      \[
+        \gamma(t) =
+        \begin{pmatrix}
+          x_0 + y_0 t \\
+          y_0
+        \end{pmatrix}.
+      \]
+    \item Sei $A \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+      beliebig und linear.
+      Sei $v \in \mathbb{R}^n$ ein Eigenvektor zum Eigenwert
+      $\lambda \in \mathbb{R}$, das heisst
+      $A(v) = \lambda v$.
+      Definiere
+       \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^n \\
+        t & \mapsto e^{\lambda t} \cdot v.
+      \end{align*}
+      Es gilt $\gamma(0) = v$ und
+      \[
+        \dot \gamma(t) = e^{\lambda t} \cdot \lambda \cdot v
+        = e^{\lambda t}  \cdot A(v)
+        = A(e^{\lambda t} \cdot v).
+      \]
+      Also ist $\gamma$ eine Lösungskurve.
+      Wir haben aber verwendet, dass $v$ ein Eigenvektor
+      von $A$ ist. Die anderen Lösungskurven von $A$ 
+      könnten komplizierter sein.
+    \item Sei $A \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+      linear und \emph{diagonalisierbar} über $\mathbb{R}$,
+      das heisst es existieren
+      \emph{Eigenwerte} $\lambda_1, \dots, \lambda_n \in \mathbb{R}$ 
+      und eine Basis aus \emph{Eigenvektoren}
+      $\{v_1, \dots, v_n\}$ von $\mathbb{R}^n$ 
+      mit $A(v_i) = \lambda_i v_i$.
+      Sei $p \in \mathbb{R}^n$ vorgegeben. Schreibe
+      \[
+        p = \sum_{i=1}^{n} x_i v_i
+      \]
+      mit $x_i \in \mathbb{R}$.
+      Definiere
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^n \\
+        t & \mapsto e^{\lambda_1 t} \cdot x_1 \cdot v_1 +
+        \cdots
+        +
+        e^{\lambda_n t} \cdot x_n \cdot v_n.
+      \end{align*}
+      Es gilt $\gamma(0) = p$ und
+      \[
+        \dot \gamma(t) = \sum_{i=1}^{n} \lambda_i e^{\lambda_i t}x_i v_i
+        = A(\gamma(t)).
+      \]
+      Es existiert also eine Lösungskurve $\gamma(t)$ 
+      für beliebige Anfangsbedingungen.
+    \item Sei
+      \begin{align*}
+        f \colon \mathbb{R} & \to \mathbb{R} \\
+        x & \mapsto 2 \sqrt{|x|}
+      \end{align*}
+      ein Vektorfeld auf $\mathbb{R}$.
+      Betrachte die Anfangsbedingung $p = 0$.
+      Die konstante Nullkurve ist
+      eine Lösungskurve.
+      Betrachte nun die Kurve
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R} \\
+        t & \mapsto 
+        \begin{cases}
+          0 & t \leq 0 \\
+          t^2 & t \geq 0.
+        \end{cases}
+      \end{align*}
+      Es gilt $\gamma(0) = 0$ und
+      \[
+        \dot \gamma(t) =
+        \begin{cases}
+          0 & t \leq 0 \\
+          2t & t \geq 0.
+        \end{cases}
+      \]
+      Es gilt aber auch
+      \[
+        f(\gamma(t)) =
+        \begin{cases}
+          2 \sqrt{|0|} = 0 & t \leq 0 \\
+          2 \sqrt{|t^2|} = 2t & t \geq 0.
+        \end{cases}
+      \]
+      Das heisst $\gamma(t)$ ist auch eine Lösung
+      zur selben Anfangsbedingung.
+      Das ``Problem'' hier ist,
+      dass $f \colon \mathbb{R} \to \mathbb{R}$ 
+      nicht Lipschitz-stetig ist.
   \end{enumerate}
 \end{examples}
 
-\begin{figure}[htb] 
-  \centering
-  \includegraphics{figures/rotationfield}
-  \caption{Das Vektorfeld $A(x, y) = (-y, x)$}%
-  \label{fig:vectorfields-examples}
-\end{figure}
+\section{Der Satz von Cauchy-Lipschitz-Picard-Lindelöf}
+\begin{definition}
+  Sei $U \subset \mathbb{R}^n$ offen.
+  Eine Abbildung $X \colon U \to \mathbb{R}^n$ 
+  heisst \emph{Lipschitz-stetig} mit Konstante
+  $k \geq 0$, falls für alle $p, q \in U$ 
+  die Ungleichung
+  \[
+    \Vert X(q) - X(p) \Vert_2 \leq k \cdot \Vert q - p \Vert_2
+  \]
+  gilt.
+\end{definition}
+
+\begin{remark}
+  Die Wahl der Norm $\Vert \cdot \Vert_2$ ist für diese
+  Definition irrelevant,
+  da alle Normen auf $\mathbb{R}^n$ äquivalent sind.
+  Die Konstante $k \geq 0$ hängt aber von der gewählten
+  Norm ab.
+\end{remark}
+
+\begin{theorem}[Cauchy-Lipschitz-Picard-Lindelöf]
+  Sei $U \subset \mathbb{R}^n$ offen
+  und $X \colon U \to \mathbb{R}^n$ Lipschitz-stetig
+  mit Konstante $k \geq 0$.
+  Sei $p \in U$ vorgegeben.
+  Dann existiert $T > 0$ und eine \emph{eindeutige}
+  differenzierbare Kurve
+  $\gamma \colon (-T, T) \to U$ mit $\gamma(0) = p$,
+  so dass für alle $t \in (-T, T)$ gilt, dass
+  $\dot \gamma(t) = X(\gamma(t))$.
+\end{theorem}
+
+Vergleiche~\cite{heuser}, Abschnitt 119.
+
+\subsection*{Vorbereitungen zum Beweis}
+\begin{definition}
+  Sei $\alpha \colon [a, b] \to \mathbb{R}^n$ stetig.
+  Schreibe 
+  \[\alpha(t) = \sum_{i=1}^{n} \alpha_i(t) e_i,
+  \]
+  wobei $\alpha_i \colon [a, b] \to \mathbb{R}$ stetige Funktionen sind.
+  Wir schreiben dann
+  \[
+    \int_{a}^{b} \alpha(s) \, ds
+    = \sum_{i=1}^{n} \left( 
+      \alpha_i(s) ds
+    \right) \cdot e_i.
+  \]
+\end{definition}
+
+\begin{proposition}
+  Seien $\alpha \colon [a, b] \to \mathbb{R}$ stetig
+  und $\gamma \colon (a, b) \to \mathbb{R}$ 
+  stetig differenzierbar.
+  Dann gilt:
+  \begin{enumerate}[\normalfont(i)]
+    \item für alle $t \in (a, b)$ gilt
+      \[
+        \frac{d}{dt} \int_{a}^{t} \alpha(s) \, ds = \alpha(t),
+      \]
+    \item unter der Annahme, dass $[0, t] \subset (a, b)$, gilt
+      \[
+        \gamma(t) - \gamma(0) = \int_{0}^{t} \dot \gamma(s) \, ds.
+      \]
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Sowohl die Differentiation als auch die Integration von Kurven
+  lässt sich komponentenweise ausführen.
+  Deshalb folgen die beiden Eigenschaften aus den entsprechenden
+  Sätzen der Differential- und Integralrechnung für Funktionen
+  auf $\mathbb{R}$.
+\end{proof}
+
+Sei $C([a, b], \mathbb{R}^n)$ der Raum aller stetiger
+Funktionen $\alpha \colon [a, b] \to \mathbb{R}^n$.
+Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
+\[
+  \Vert \alpha \Vert_{\infty}
+  = \max \left\{\Vert \alpha(t) \Vert_2 \mid 
+  t \in [a, b]\right\} \geq 0.
+\]
+
+\begin{lemma}
+  Der Raum $C([a, b], \mathbb{R}^n)$ ist bezüglich der Norm
+  $\Vert \cdot \Vert_{\infty}$ vollständig.
+\end{lemma}
+
+\begin{proof}
+  Sei ${(\alpha_{n})}_{n \in \mathbb{N}}$ 
+  eine Cauchyfolge in $V$ bezüglich der Norm
+  $\Vert \cdot \Vert_{\infty}$.
+  Dann erhalten wir in jeder Komponente $i \leq n$ 
+  eine Cauchyfolge $\langle \alpha_n, e_i \rangle$ 
+  in $C([a, b], \mathbb{R})$ (bezüglich der Norm
+  $\Vert \cdot \Vert_{\infty}$).
+  Nach Weierstrass existiert für alle $i \leq n$ 
+  der Grenzwert
+  $\lim_{n \to \infty} \langle \alpha, e_i \rangle$ 
+  in $C([a, b], \mathbb{R})$.
+  Es folgt
+  wie im Beweis von Banachs Fixpunktsatz, dass der Grenzwert
+  \[
+    \lim_{n \to \infty} \alpha_n
+    = \sum_{i=1}^{n} \lim_{n \to \infty}
+    \langle \alpha_n, e_i \rangle
+  \]
+  in $C([a, b], \mathbb{R}^n)$ existiert.
+  Also ist $V$ mit der Norm $\Vert \cdot \Vert_\infty$ vollständig.
+\end{proof}
+
+Die Beweisidee vom Theorem ist nun folgendermassen.
+Sei $\gamma \colon (-T, T) \to U$ 
+differenzierbar mit $\gamma(0) = p$ 
+und $\dot \gamma(t) = X(\gamma(t))$.
+Dann ist $\dot \gamma \colon (-T, T) \to \mathbb{R}^n$ 
+stetig, da $X$ stetig ist, und somit auch $X \circ \gamma$.
+Aus Punkt (ii) der Proposition folgt für alle
+$t \in (-T, T)$, dass
+\[
+  \gamma(t) - \gamma(0) = \int_{0}^{t} \dot \gamma(s) \, ds,
+\]
+beziehungsweise
+\[
+  \gamma(t) = p + \int_{0}^{t} X(\gamma(s)) \, ds.
+\]
+Wir definieren nun einen Operator
+\begin{align*}
+  P \colon C([-T, T], \mathbb{R}^n) & \to 
+  C([-T, T], \mathbb{R}^n) \\
+  \alpha & \mapsto P(\alpha),
+\end{align*}
+wobei $P(\alpha)$ die Kurve
+\begin{align*}
+  P(\alpha) \colon [-T, T] & \to \mathbb{R}^n \\
+  t& \mapsto p + \int_{0}^{t} X(\alpha(s)) \, ds
+\end{align*}
+ist.
+Der Einfachheit halber nehmen wir zusätzlich an,
+dass $U = \mathbb{R}^n$.
+Es gilt:
+\begin{enumerate}[(i)]
+  \item Die Kurve $\gamma$ ist ein Fixpunkt von $P$, das heisst
+    $P(\gamma)(t) = \gamma(t)$ für alle $t$.
+  \item Sei umgekehrt $\gamma \in C([-T, T], \mathbb{R}^n)$
+    ein Fixpunkt von $P$.
+    Für alle $t \in (-T, T)$ gilt dann, dass
+    \[
+      \gamma(t) = p + \int_{0}^{t} X(\gamma(s)) \, ds,
+    \]
+    also ist $\gamma(0) = p$, und
+    $\dot \gamma(t) = X(\gamma(t))$.
+\end{enumerate}
+Das Theorem reduziert sich also auf ein Fixpunktproblem,
+welches wir hoffentlich mit Banachs Fixpunktsatz lösen können.
+
+
+
+
 
 
 
