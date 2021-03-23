@@ -1601,23 +1601,23 @@ Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
 \end{lemma}
 
 \begin{proof}
-  Sei ${(\alpha_{n})}_{n \in \mathbb{N}}$ 
+  Sei ${(\alpha_{m})}_{m \in \mathbb{N}}$ 
   eine Cauchyfolge in $V$ bezüglich der Norm
   $\Vert \cdot \Vert_{\infty}$.
   Dann erhalten wir in jeder Komponente $i \leq n$ 
-  eine Cauchyfolge $\langle \alpha_n, e_i \rangle$ 
+  eine Cauchyfolge $\langle \alpha_m, e_i \rangle$ 
   in $C([a, b], \mathbb{R})$ (bezüglich der Norm
   $\Vert \cdot \Vert_{\infty}$).
   Nach Weierstrass existiert für alle $i \leq n$ 
   der Grenzwert
-  $\lim_{n \to \infty} \langle \alpha, e_i \rangle$ 
+  $\lim_{m \to \infty} \langle \alpha_m, e_i \rangle$ 
   in $C([a, b], \mathbb{R})$.
   Es folgt
   wie im Beweis von Banachs Fixpunktsatz, dass der Grenzwert
   \[
-    \lim_{n \to \infty} \alpha_n
-    = \sum_{i=1}^{n} \lim_{n \to \infty}
-    \langle \alpha_n, e_i \rangle
+    \lim_{m \to \infty} \alpha_m
+    = \sum_{i=1}^{n} \lim_{m \to \infty}
+    \langle \alpha_m, e_i \rangle \cdot e_i 
   \]
   in $C([a, b], \mathbb{R}^n)$ existiert.
   Also ist $V$ mit der Norm $\Vert \cdot \Vert_\infty$ vollständig.
