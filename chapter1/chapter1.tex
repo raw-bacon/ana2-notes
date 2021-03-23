@@ -300,7 +300,7 @@ auf $\mathbb{R}$.
   und $\Vert \cdot \Vert_{\infty}$ diese nicht erfüllen.
 \end{remark}
 
-\section{Stetigkeit}
+\section{Stetigkeit}\label{sec:continuity}
 \begin{definition}
   Seien $V$ und $W$ reelle Vektorräume mit Normen $\Vert \cdot \Vert_V$ 
   und
@@ -1785,6 +1785,315 @@ Dazu verwenden wir folgende Abschätzung.
   zur Differentialgleichung $\dot \gamma(t) = X(\gamma(t))$ 
   mit $\gamma(0) = p$.
 \end{proof}
+
+\section{Lineare Differentialgleichungen}
+Sei $A \colon \mathbb{R}^n \to \mathbb{R}^n$ linear.
+Aus Abschnitt~\ref{sec:continuity}
+wissen wir, dass die Operatornorm
+$\Vert A \Vert_{\text{op}}$ endlich ist.
+Insbesondere ist $A$ Lipschitz-stetig mit Konstante
+$k = \Vert A \Vert_{\text{op}}$.
+Tatsächlich gilt für alle $v, w \in \mathbb{R}^n$, dass
+\[
+  \Vert A(w) - A(v) \Vert_2 \leq \Vert A \Vert_{\text{op}} \cdot
+  \Vert v - w \Vert_2.
+\]
+Wir folgern, dass die Differentialgleichung
+$\dot \gamma(t) = A(\gamma(t))$ zu jeder
+Anfangsbedingung $p \in \mathbb{R}^n$ 
+und jeder Zeit $T < 1/k$ 
+eine eindeutige Lösungskurve
+$\gamma \colon (-T, T) \to \mathbb{R}^n$ hat.
+Sei $V = C([-T, T], \mathbb{R}^n)$.
+Wir hatten $\gamma$ als Fixpunkt eines kontrahierenden
+Operators
+\begin{align*}
+  P \colon V & \to V \\
+\end{align*}
+konstruiert, wobei
+\[
+  P(\alpha)(t) = p + \int_{0}^{t} A(\alpha(s)) \, ds.
+\]
+Sei $\gamma_0 \in V$ beliebig. Definiere rekursiv
+$\gamma_{n+1} = P(\gamma_n) \in V$.
+Dann gilt $\gamma = \lim_{n \to \infty} \gamma_n$.
+Wähle nun $\gamma_0(t) = p$ konstant.
+Wir berechnen nun einige Glieder der Folge
+${(\gamma_{n})}_{n \in \mathbb{N}}$.
+Das erste Glied ist
+\begin{align*}
+  \gamma_1(t)  
+  & = P(\gamma_0)(t) \\
+  &= p + \int_{0}^{t} A(\gamma_0(s)) \, ds \\
+  &= p + t \cdot A(p).
+\end{align*}
+Mit der Linearität von $A$ berechnen wir
+\begin{align*}
+  \gamma_2(t) 
+  &= p + \int_{0}^{t} A(\gamma_1(s)) \, ds  \\
+  &= p + \int_{0}^{t} A(p + s \cdot A(p)) \, ds \\
+  &= p + \int_{0}^{t} A(p) + s \cdot A^2(p) \, ds \\
+  &= p + t \cdot A(p) + \frac{t^2}{2}A^2(p).
+\end{align*}
+Um unsere Vermutung, wie diese Folge weitergeht,
+zu bestätigen, berechnen wir noch einen letzten
+Term explizit:
+\begin{align*}
+  \gamma_3(t)
+  & = P(\gamma_2)(t)\\
+  &= p + \int_{0}^{t} A(p + s \cdot A(p) + s^2 /2 \cdot A^2(p)) \, ds \\
+  &= p + t \cdot A(p) + \frac{t^2}{2} A^2(p) + \frac{t^3}{3!} A^3(p).
+\end{align*}
+Induktiv erhalten wir für alle $n \in \mathbb{N}$, dass
+\[
+  \gamma_n(t)
+  = \sum_{k=0}^{n} \frac{t^k}{k!} A^k(p)
+\]
+(mit der Konvention, dass $A^0$ die Identitätsabbildung ist).
+
+\begin{definition}
+  Sei $A \colon \mathbb{R}^n \to \mathbb{R}^n$ linear.
+  Die \emph{Endomorphismenexponentialabbildung} ist
+  \[
+    \exp(tA) = \sum_{k=0}^{\infty} \frac{t^k}{k!} A^k.
+  \]
+\end{definition}
+
+\begin{remark}
+  Aus den Beweisen der Theoreme von Banach
+  und Cauchy-Lipschitz-Picard-Lindelöf wissen wir bloss,
+  dass dieser Grenzwert für alle $|t| < 1/\Vert A \Vert_{\text{op}}$ 
+  existiert. Tatsächlich existiert der Grenzwert für alle
+  $t \in \mathbb{R}$, unabhängig von $A$.
+  Benutze dazu, dass die Operatornorm die Ungleichung
+  $\Vert A^k \Vert_{\text{op}} \leq \Vert A \Vert_{\text{op}}^k$ 
+  gilt. Dann folgt nämlich
+  $\Vert e^{tA} \Vert_{\text{op}} \leq e^{|t| \cdot \Vert A \Vert_{\text{op}}}$.
+  Also ist die Abbildung $\exp(tA)$ ein Endomorphismus von $\mathbb{R}^n$ 
+  für alle $t \in \mathbb{R}$.
+\end{remark}
+
+Wir schliessen, dass die Lösung zur Differentialgleichung
+$\dot \gamma(t) = A(\gamma(t))$ mit $\gamma(0) = p$ 
+durch
+\[
+  \gamma(t) = e^{tA} \cdot p
+\]
+gegeben ist.
+
+\begin{examples}
+  Sei $A \colon \mathbb{R}^2 \to \mathbb{R}^2$ linear,
+  repräsentiert durch bezüglich der Standardbasis
+  durch eine Matrix
+  \[
+    A =
+    \begin{pmatrix}
+      a & b \\ c & d
+    \end{pmatrix}.
+  \]
+  \begin{enumerate}[(1)]
+    \item Betrachte
+      \[
+        A =
+        \begin{pmatrix}
+          a & 0 \\ 0 & d
+        \end{pmatrix} = \text{diag}(a, d).
+      \]
+      Berechne für $k \in \mathbb{N}$, dass
+      \(
+        A^k =
+        \text{diag}(a^k, d^k)
+      \),
+      Also ist
+      \(
+        e^{tA} =
+        \text{diag}(
+        e^{ta}, e^{td})
+      \).
+      Wir betrachten den Spezialfall $a = 1, d = -1$.
+      Dann ist
+      \(
+        e^{tA} = 
+        \text{diag}(
+          e^t, e^{-t}
+          )
+      \).
+      In Tabelle~\ref{tab:1-1} sind einige
+      Lösungskurven aufgelistet und in Abbildung~\ref{fig:1-1}
+      gezeichnet.
+      
+      \begin{table}[htb]
+        \center
+        \begin{tabular}{c|c}
+          Anfangsbedingung $p \in \mathbb{R}^2$ & Lösungskurve $\gamma(t)$\\
+          \hline
+          $(\pm 1, 0)$ & $( \pm e^t, 0)$ \\
+          $(0, \pm 1)$ & $(0, \pm e^{-t})$ \\
+          $\pm(1, 1)$ & $\pm(e^t, e^{-t})$ \\
+          $\pm (1, -1)$ & $\pm (e^t, -e^{-t})$
+        \end{tabular}
+        \caption{Einige Lösungen der Differentialgleichung
+        zur Matrix $A = \text{diag}(1, -1)$.}%
+        \label{tab:1-1}
+      \end{table}
+
+      \begin{figure}[htb]
+        \centering
+        \includegraphics{figures/1-1}
+        \caption{Einige Lösungen der Differentialgleichung
+        zur Matrix $A = \text{diag}(1, -1)$.}%
+        \label{fig:1-1}
+      \end{figure}
+    \item Betrachte die Matrix
+      \[
+          A =
+          \begin{pmatrix}
+            0 & -1 \\ 0 & 0
+          \end{pmatrix}
+      \]
+      und bemerke, dass $A^2 = 0$ gilt.
+      Folglich ist
+      \[
+        e^{tA} =
+        \begin{pmatrix}
+          1 & -t \\ 0 & 1
+        \end{pmatrix}.
+      \]
+      Die Lösungskurven von $A$ 
+      sind konstant auf der $x$-Achse,
+      und ausserhalb sind sie parallel dazu,
+      wobei ihre Geschwindigkeit mit zunehmender
+      $y$-Komponente linear wächst.
+    \item Die Matrix
+      \[
+        A = 
+        \begin{pmatrix}
+          0 & 0 \\ 1 & 0
+        \end{pmatrix}
+      \]
+      liefert ein rotiertes Bild des obigen Beispiels.
+    \item Die Matrix
+      \[
+        A =
+        \begin{pmatrix}
+          0 & -1 \\ 1 & 0
+        \end{pmatrix}
+      \]
+      ist eine Drehung um den Winkel $\pi/2$.
+      Die Potenzen von $A$ sind
+      $A^2 = -1$, $A^3 = -A$, und $A^4 = 1$.
+      Dann geht es periodisch weiter.
+      Berechne
+      \[
+        e^{tA} =
+        \begin{pmatrix}
+          1 - t^2/2! + t^4/4! -  \cdots
+          & -t + t^3/3! - t^5/5! + \cdots \\
+          t - t^3/3! + t^5/5! - \cdots
+          &
+          1 - t^2/2! + t^4/4! -  \cdots
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          \cos(t) & -\sin(t) \\
+          \sin(t) & \cos(t)
+        \end{pmatrix}.
+      \]
+      Wir haben also nun hergeleitet, dass
+      die Lösungskurven dieses Vektorfelds konzentrische
+      Kreise sind.
+      Wir sehen auch, dass im allgemeinen
+      $e^{t(A + B)} = e^{tA} \cdot e^{tB}$ nicht gilt
+      (das gilt nur, wenn $AB = BA$).
+  \end{enumerate}
+\end{examples}
+
+\begin{remark}
+Die Matrix $e^{tA}$ lässt sich für diagonalisierbare
+Matrizen $A \in \mathbb{R}^{n \times n}$ relativ einfach
+berechnen. Sei $A$ eine solche Matrix, das heisst,
+es existiert $P \in \mathbb{R}^{n \times n}$
+mit
+$\det(P) \neq 0$ und $PAP^{-1} = D = \text{diag}(\lambda_1, \dots, \lambda_n)$ 
+ist diagonal.
+Es gilt dann
+\[
+A^k = {(P^{-1}DP)}^k = P^{-1}D^k P,
+\]
+also folgt $e^{tA} = P^{-1}e^{tD}P$, wobei
+$e^{tD} = \text{diag}(e^{t\lambda_1}, \dots, e^{t \lambda_n})$.
+Dies funktioniert genau so, falls $A$ über $\mathbb{C}$ 
+diagonalisierbar ist.
+Für nicht diagonalisierbare $A$ wird die Jordan-Normalform
+zur Berechnung von $e^{tA}$ verwendet.
+Schreibe dazu $A = D + N$ für eine diagonalisierbare
+Matrix $D$ und eine nilpotente Matrix $N$ mit
+$DN = ND$.
+\end{remark}
+
+\section{Differentialgleichungen in einer Variable}
+Sei $f \colon \mathbb{R} \to \mathbb{R}$ stetig
+(aber nicht unbedingt linear).
+Wir erhalten eine Differentialgleichung
+für $y \colon (-T, T) \to \mathbb{R}$ 
+mit $y(0) = y_0 \in \mathbb{R}$,
+nämlich $\dot y = f(y(t))$.
+Falls $f(y_0) = 0$, dann ist
+$y(t) = y_0$ eine konstante Lösung.
+Falls $f(y_0) \neq 0$, schreibe (lokal) um, dass
+\[
+  \dot y(t) \frac{1}{f(y(t))} = 1.
+\]
+
+\begin{lemma*}
+  Mit den Voraussetzungen oben,
+  sei $g \colon \mathbb{R} \to \mathbb{R}$ eine Stammfunktion
+  von $1/f$, das heisst $g'(x) = 1/f(x)$.
+  Dann gilt $g(y(t)) = t + c$.
+\end{lemma*}
+
+\begin{proof}
+  Berechne
+  \begin{align*}
+    \frac{d}{dt} \, g(y(t))
+    & g'(y(t)) \cdot \frac{d}{dt} \, y(t)\\
+    &= \frac{1}{f(y(t))} \dot y(t) \\
+    &= 1. && \qedhere
+  \end{align*}
+\end{proof}
+
+Mit etwas Glück lässt sich diese Formel nach $y(t)$ auflösen.
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Betrachte $f(x) = x$, das heisst, wir untersuchen
+      die Differentialgleichung $\dot y(t) = y(t)$.
+      Sei $y_0 > 0$ und $g(x) = \log(x)$.
+      Dann sind die Voraussetzungen vom Lemma erfüllt.
+      Es gilt also $\log(y(t)) = t + c$, also
+      $y(t) = e^{t + c} = e^{t \cdot e^c}$.
+      Mit $y(0) = e^c = y_0$ folgt $y(t) = y_0 e^t$.
+    \item Sei $f(x) = x^2$, das heisst
+      wir untersuchen $\dot y(t) = {(y(t))}^2$.
+      Sei $y_0 \geq 0$ und
+      $g(x) = -1/x$.
+      Aus $-1/y(t) = t + c$ erhalten wir
+      $y(t) = -1/(t + c)$.
+      Mit  $y(0) = -1/c = y_0$ erhalten wir
+      \[
+        y(t) = \frac{1}{1/y_0 - t}.
+      \]
+      Im Spezialfall $y_0 = 1$ sehen wir,
+      dass die Lösung $y(t) = \frac{1}{1-t}$ 
+      in endlicher Zeit divergiert: es gilt
+      \[
+        \lim_{t \to 1} \frac{1}{1-t} = +\infty.
+      \]
+  \end{enumerate}
+\end{examples}
+
+
 
 
 
