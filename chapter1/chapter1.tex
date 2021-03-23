@@ -1503,7 +1503,7 @@ $\gamma_i$ stetig in $t$ sind.
   Norm ab.
 \end{remark}
 
-\begin{theorem}[Cauchy-Lipschitz-Picard-Lindelöf]
+\begin{theorem*}[Cauchy-Lipschitz-Picard-Lindelöf]
   Sei $U \subset \mathbb{R}^n$ offen
   und $X \colon U \to \mathbb{R}^n$ Lipschitz-stetig
   mit Konstante $k \geq 0$.
@@ -1513,11 +1513,38 @@ $\gamma_i$ stetig in $t$ sind.
   $\gamma \colon (-T, T) \to U$ mit $\gamma(0) = p$,
   so dass für alle $t \in (-T, T)$ gilt, dass
   $\dot \gamma(t) = X(\gamma(t))$.
-\end{theorem}
+\end{theorem*}
 
-Vergleiche~\cite{heuser}, Abschnitt 119.
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}[\normalfont1.]
+    \item Falls $U = \mathbb{R}^n$ ist, kann $T > 0$ 
+      beliebig gewählt werden.
+      Siehe dazu Übungsserie 4.
+    \item Falls $U = \mathbb{R}^n$ und $k = 0$, 
+      dann gilt für alle $p,q \in \mathbb{R}^n$,
+      dass 
+      $\Vert X(p)  - X(q) \Vert_2 
+      \leq 0 \cdot \Vert p - q \Vert_2 = 0$.
+      Das Vektorfeld $X$ ist also konstant.
+      Dann ist die Lösungskurve
+      \begin{align*}
+        \gamma \colon \mathbb{R} & \to \mathbb{R}^n \\
+        t & \mapsto p + t \cdot X(p).
+      \end{align*}
+  \end{enumerate}
+\end{remark}
 
-\subsection*{Vorbereitungen zum Beweis}
+
+Vergleiche~\cite{heuser}, Satz 117.1.
+Ein wichtiger Unterschied in der Version,
+die Heuser formuliert, ist es,
+dass das Vektorfeld $f$ dort auch von der Zeit $x$
+abhängen darf.
+Wir werden nun einige Vorbereitungen zum Beweis
+treffen.
+Dazu werden wir zunächst Kurven genauer betrachten.
+
 \begin{definition}
   Sei $\alpha \colon [a, b] \to \mathbb{R}^n$ stetig.
   Schreibe 
@@ -1596,57 +1623,170 @@ Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
   Also ist $V$ mit der Norm $\Vert \cdot \Vert_\infty$ vollständig.
 \end{proof}
 
-Die Beweisidee vom Theorem ist nun folgendermassen.
-Sei $\gamma \colon (-T, T) \to U$ 
-differenzierbar mit $\gamma(0) = p$ 
-und $\dot \gamma(t) = X(\gamma(t))$.
-Dann ist $\dot \gamma \colon (-T, T) \to \mathbb{R}^n$ 
-stetig, da $X$ stetig ist, und somit auch $X \circ \gamma$.
-Aus Punkt (ii) der Proposition folgt für alle
-$t \in (-T, T)$, dass
-\[
-  \gamma(t) - \gamma(0) = \int_{0}^{t} \dot \gamma(s) \, ds,
-\]
-beziehungsweise
-\[
-  \gamma(t) = p + \int_{0}^{t} X(\gamma(s)) \, ds.
-\]
-Wir definieren nun einen Operator
-\begin{align*}
-  P \colon C([-T, T], \mathbb{R}^n) & \to 
-  C([-T, T], \mathbb{R}^n) \\
-  \alpha & \mapsto P(\alpha),
-\end{align*}
-wobei $P(\alpha)$ die Kurve
-\begin{align*}
-  P(\alpha) \colon [-T, T] & \to \mathbb{R}^n \\
-  t& \mapsto p + \int_{0}^{t} X(\alpha(s)) \, ds
-\end{align*}
-ist.
-Der Einfachheit halber nehmen wir zusätzlich an,
-dass $U = \mathbb{R}^n$.
-Es gilt:
-\begin{enumerate}[(i)]
-  \item Die Kurve $\gamma$ ist ein Fixpunkt von $P$, das heisst
-    $P(\gamma)(t) = \gamma(t)$ für alle $t$.
-  \item Sei umgekehrt $\gamma \in C([-T, T], \mathbb{R}^n)$
-    ein Fixpunkt von $P$.
-    Für alle $t \in (-T, T)$ gilt dann, dass
-    \[
-      \gamma(t) = p + \int_{0}^{t} X(\gamma(s)) \, ds,
-    \]
-    also ist $\gamma(0) = p$, und
-    $\dot \gamma(t) = X(\gamma(t))$.
-\end{enumerate}
-Das Theorem reduziert sich also auf ein Fixpunktproblem,
-welches wir hoffentlich mit Banachs Fixpunktsatz lösen können.
+% Die Beweisidee vom Theorem ist nun folgendermassen.
+% Sei $\gamma \colon (-T, T) \to U$ 
+% differenzierbar mit $\gamma(0) = p$ 
+% und $\dot \gamma(t) = X(\gamma(t))$.
+% Dann ist $\dot \gamma \colon (-T, T) \to \mathbb{R}^n$ 
+% stetig, da $X$ stetig ist, und somit auch $X \circ \gamma$.
+% Aus Punkt (ii) der Proposition folgt für alle
+% $t \in (-T, T)$, dass
+% \[
+%   \gamma(t) - \gamma(0) = \int_{0}^{t} \dot \gamma(s) \, ds,
+% \]
+% beziehungsweise
+% \[
+%   \gamma(t) = p + \int_{0}^{t} X(\gamma(s)) \, ds.
+% \]
+% Wir definieren nun einen Operator
+% \begin{align*}
+%   P \colon C([-T, T], \mathbb{R}^n) & \to 
+%   C([-T, T], \mathbb{R}^n) \\
+%   \alpha & \mapsto P(\alpha),
+% \end{align*}
+% wobei $P(\alpha)$ die Kurve
+% \begin{align*}
+%   P(\alpha) \colon [-T, T] & \to \mathbb{R}^n \\
+%   t& \mapsto p + \int_{0}^{t} X(\alpha(s)) \, ds
+% \end{align*}
+% ist.
+% Der Einfachheit halber nehmen wir zusätzlich an,
+% dass $U = \mathbb{R}^n$.
+% Es gilt:
+% \begin{enumerate}[(i)]
+%   \item Die Kurve $\gamma$ ist ein Fixpunkt von $P$, das heisst
+%     $P(\gamma)(t) = \gamma(t)$ für alle $t$.
+%   \item Sei umgekehrt $\gamma \in C([-T, T], \mathbb{R}^n)$
+%     ein Fixpunkt von $P$.
+%     Für alle $t \in (-T, T)$ gilt dann, dass
+%     \[
+%       \gamma(t) = p + \int_{0}^{t} X(\gamma(s)) \, ds,
+%     \]
+%     also ist $\gamma(0) = p$, und
+%     $\dot \gamma(t) = X(\gamma(t))$.
+% \end{enumerate}
 
+Der Beweis des
+Theorems reduziert sich auf ein Fixpunktproblem,
+welches wir mit Banachs Fixpunktsatz lösen können.
+Dazu verwenden wir folgende Abschätzung.
 
+\begin{lemma}
+  Sei $\alpha \colon [a, b] \to \mathbb{R}^n$ stetig
+  und $t \in \mathbb{R}$ mit $[0, t] \subset [a, b]$.
+  Dann gilt
+  \[
+    \left\Vert \int_{0}^{t} \alpha(s) \, ds \right\Vert_2
+    \leq \int_{0}^{t} \Vert \alpha(s) \Vert_2 \, ds.
+  \]
+\end{lemma}
 
+\begin{proof}
+  Setze $v = \int_{0}^{t} \alpha(s) \, ds$
+  Berechne
+  \begin{align*}
+    \Vert v \Vert_2^2 
+    &= \langle v, v \rangle\\
+    &= \left\langle v, \int_{0}^{t} \alpha(s) \, ds \right\rangle \\
+    &= \int_{0}^{t} \langle v, \alpha(s) \rangle \, ds\\
+    &\leq \int_{0}^{t} \Vert v \Vert_2 \cdot \Vert \alpha(s) \Vert_2 \, ds
+  \end{align*}
+  nach komponentenweiser Integration und einer Anwendung
+  der Cauchy-Schwarz Ungleichung. Teilung durch $\Vert v \Vert_2$ liefert
+  \[
+    \Vert v \Vert_2 \leq \int_{0}^{t} \Vert \alpha(s)\Vert_2 \, ds.
+    \qedhere
+  \]
+\end{proof}
 
+\begin{proof}[Beweis von Cauchy-Lipschitz-Picard-Lindelöf]
+  Wir betrachten nur den Fall, dass $U = \mathbb{R}^n$ gilt.
+  Allgemeine $U$ zu betrachten benötigt nicht viele zusätzliche
+  Überlegungen.
+  Sei $T > 0$.
+  Betrachte $V = C([-T, T], \mathbb{R}^n)$
+  mit der Norm
+  \[
+    \Vert \alpha \Vert_{\infty} \max \left\{\Vert \alpha(t) \Vert_2
+    \mid t \in [-T, T]\right\}.
+  \]
+  Definiere nun
+  \begin{align*}
+    P \colon V & \to V \\
+    \alpha & \mapsto P(\alpha)
+  \end{align*}
+  durch
+  \[
+    P(\alpha)(t) = p + \int_{0}^{t} X(\alpha(s)) \, ds
+  \]
+  für alle $t \in [-T, T]$.
+  Wir wissen bereits, dass $V$ vollständig ist.
+  Wir bemerken, dass $X \circ \alpha$ stetig ist,
+  da $\alpha$ und $X$ beide stetig sind. Deshalb
+  ist $P(\alpha)$ auf $(-T, T)$ differenzierbar.
+  Weiterhin haben wir bereits gesehen,
+  dass für $t \in (-T, T)$ gilt, dass
+  \[
+    \frac{d}{dt} P(\alpha)(t) = X(\alpha(t)).
+  \]
+  Sei nun $\gamma \in V$ ein Fixpunkt von $P$
+  (wir schreiben $\gamma$ für diesen Punkt,
+  da die Punkte in $V$ Kurven sind).
+  Dann gilt für alle $t \in (-T, T)$, dass
+  \[
+    \dot \gamma(t) = \frac{d}{dt}\gamma(t) =
+    \frac{d}{dt} P(\gamma)(t)
+    = X(\gamma(t)).
+  \]
+  Ausserdem ist
+  \[
+    \gamma(0) = P(\gamma)(0) = p + \int_{0}^{0} X(\gamma(s)) \, ds
+    = p,
+  \]
+  also ist $\gamma$ eine Lösungskurve unserer
+  Differentialgleichung mit $\gamma(0) = p$.
+  Umgekehrt, sei $\gamma \in V$ so, dass
+  $\gamma|_{(-T, T)}$ eine Lösungskurve der Differentialgleichung
+  $\dot \gamma(t) = X(\gamma(t))$ mit $\gamma(0) = p$.
+  Dann gilt für alle $t \in (-T, T)$,
+  dass
+  \[
+    P(\gamma(t)) = p + \int_{0}^{t} X(\gamma(s)) \, ds
+    = p + \int_{0}^{t} \dot \gamma(s) \, ds
+    = p + \gamma(t) - \gamma(0)
+    = \gamma(t).
+  \]
+  Aus der Stetigkeit von $\gamma$ und $P(\gamma)$ 
+  folgt auch $P(\gamma)(\pm T) = \gamma(\pm T)$.
+  Also ist $\gamma$ ein Fixpunkt von $P$.
+  Zusammengefasst erhalten wir, dass
+  die Fixpunkte von $P$ genau die Lösungskurven
+  der Differentialgleichung sind.
+
+  Um Banachs Fixpunktsatz anzuwenden zeigen wir nun,
+  dass für alle $T < 1/k$ die Abbildung $P$ kontrahierend ist.
+  Dazu sei $t \in [-T, T]$ beliebig,
+  und $\alpha, \beta \in V$. Schätze ab, dass
+  \begin{align*}
+    \Vert P(\alpha(t)) - P(\beta)(t) \Vert_2
+    & = \left\Vert \int_{0}^{t} X(\alpha(s)) - X(\beta(s)) \, ds 
+    \right\Vert_2\\
+    &\leq \int_{0}^{t} \Vert X(\alpha(s)) - X(\beta(s)) \Vert_2 \, ds\\
+    &\leq k \int_{0}^{t} \Vert \alpha(s) - \beta(s) \Vert_2 \, d \\
+    &\leq k \cdot T \cdot \Vert \alpha - \beta \Vert_{\infty}.
+  \end{align*}
+  Wir schliessen, dass $\Vert P(\alpha) - P(\beta) \Vert_{\infty}
+  \leq k \cdot T \cdot \Vert \alpha - \beta \Vert_{\infty}$,
+  also $P$ kontrahierend ist.
+  Wir schliessen aus der Vollständigkeit von $V$ 
+  mit Hilfe des Fixpunktsatzes von Banach, dass $P$ 
+  einen eindeutigen Fixpunkt $\gamma \in V$ hat.
+  Also ist $\gamma \in V$ die eindeutige Lösung
+  zur Differentialgleichung $\dot \gamma(t) = X(\gamma(t))$ 
+  mit $\gamma(0) = p$.
+\end{proof}
 
 
 
 
 \end{document}
-
