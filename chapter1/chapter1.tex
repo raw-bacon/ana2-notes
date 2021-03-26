@@ -17,8 +17,8 @@ vom Absolutbetrag Gebrauch.
       \[
         \lim_{n \to \infty} a(n) = \alpha \in \mathbb{R}
       \]
-      heisst folgendes. Für alle $\varepsilon > 0$ existiert
-      $N \in \mathbb{N}$ so, dass für alle $n \geq N$ 
+      heisst Folgendes. Für alle $\varepsilon > 0$ existiert
+      $N \in \mathbb{N}$, sodass für alle $n \geq N$ 
       gilt, dass $|a(n) - \alpha| \leq \varepsilon$.
     \item Stetigkeit einer Funktion $f \colon \mathbb{R} \to \mathbb{R}$ 
       im Punkt $p\in \mathbb{R}$ heisst, dass für alle $\varepsilon > 0$ 
@@ -57,12 +57,12 @@ Konzepte wie Konvergenz und Stetigkeit formalisieren können.
 \end{definition}
 
 Eigenschaft (ii) hätten wir auch folgendermassen formulieren können:
-Die Norm $\Vert \cdot \Vert$ auf einen eindimensionalen Unterraum
+Die Norm $\Vert \cdot \Vert$ auf einem eindimensionalen Unterraum
 von $V$ verhält sich (bis auf Streckung) genau so wie der Absolutbetrag
 auf $\mathbb{R}$.
 
 \begin{definition}
-  Sei $\Vert \cdot \Vert$ eine Norm auf einem rellen Vektorraum $V$.
+  Sei $\Vert \cdot \Vert$ eine Norm auf einem reellen Vektorraum $V$.
   Die Menge
   \[
     B_1 = \left\{v \in V \mid \Vert v \Vert \leq 1\right\} \subset V
@@ -108,7 +108,7 @@ auf $\mathbb{R}$.
           und auch $\Vert v \Vert_{\infty}$ genau dann,
           wenn alle $v_i$ null sind.
         \item Es gilt $\Vert \lambda v \Vert_{\infty}
-          = \max \left\{v_1, \dots, v_n\right\} = |\lambda|
+          = \max \left\{\lambda v_1, \dots, \lambda v_n\right\} = |\lambda|
           \cdot \Vert v \Vert_\infty$.
         \item Berechne
           \begin{align*}
@@ -132,7 +132,7 @@ auf $\mathbb{R}$.
           was äquivalent dazu ist, dass alle $v_i$ null sind.
         \item Berechne $\Vert \lambda v \Vert_2 = |\lambda | \cdot
           \Vert v \Vert_2$, da $\sqrt{\lambda^2} = |\lambda|$ gilt.
-        \item Hier stossen wir zum ersten mal auf Schwierigkeiten.
+        \item Hier stossen wir zum ersten Mal auf Schwierigkeiten.
           Wir werden das im Lemma unten zeigen.
       \end{enumerate}
     \item 
@@ -190,7 +190,7 @@ auf $\mathbb{R}$.
   $\langle \cdot, \cdot \rangle \colon V \times V \to \mathbb{R}$.
   Das heisst,
   \begin{enumerate}[(i)]
-    \item für alle $v \in V$ gilt $\langle v, v \geq 0 \rangle$ 
+    \item für alle $v \in V$ gilt $\langle v, v \rangle \geq 0$ 
       und $\langle v, v \rangle = 0$ genau dann,
       wenn $v = 0$,
     \item für alle $v, w \in V$ gilt 
@@ -216,7 +216,7 @@ auf $\mathbb{R}$.
   \begin{enumerate}[(i)]
     \item Es gilt $\Vert v \Vert = \sqrt{\langle v, v \rangle} \geq 0$
       und $\Vert v \Vert = 0$ genau dann, wenn
-      $\langle v, v \rangle = 0$, das heisst $v = 0$ gilt.
+      $\langle v, v \rangle = 0$, das heisst, $v = 0$ gilt.
     \item Berechne $\Vert \lambda v \Vert = \sqrt{\langle \lambda v,
       \lambda v\rangle}
       = \sqrt{\lambda^2 \cdot \langle v, v \rangle} = |\lambda| \cdot
@@ -277,8 +277,8 @@ auf $\mathbb{R}$.
       die euklidische Norm.
     \item Sei $V = C[0, 1]$ der Raum von stetigen Funktionen
       $f \colon[0, 1] \to \mathbb{R}$.
-      Das ist ein unendlichdimensionaler Vektorraum.
-      Die Funktionen $1, x, x^2, \dots$ sind linear unabhängig.
+      Das ist ein unendlichdimensionaler Vektorraum,
+      da die Funktionen $1, x, x^2, \dots$ linear unabhängig sind.
       Für $f, g \in V$ definieren wir
       \[
         \langle f, g \rangle = \int_{0}^{1} f(x) \cdot g(x) \, dx.
@@ -395,7 +395,7 @@ Im Sinne folgender Definition bedeutet das, dass in
 $\mathbb{R}^{\infty}$ diese beiden normen nicht äquivalent sind.
 
 \begin{definition}
-  Zwei Normen $\Vert \cdot \Vert$ $\widetilde{\Vert \cdot \Vert}$
+  Zwei Normen $\Vert \cdot \Vert$, $\widetilde{\Vert \cdot \Vert}$
   heissen \emph{äquivalent},
   falls es Konstanten $0 < c \leq C$ gibt,
   so dass für alle $v \in V \setminus \{0\}$ gilt, dass
@@ -459,7 +459,7 @@ vom $\Vert \cdot \Vert$-Normball enthalten ist.
   Schätze ab, dass
   \begin{align*}
     \Vert v \Vert 
-    &= \Vert v_1 e_1 \Vert + \cdots + \Vert v_n e_n \Vert \\
+    &\leq \Vert v_1 e_1 \Vert + \cdots + \Vert v_n e_n \Vert \\
     &= |v_1| \cdot \Vert e_1 \Vert + \cdots + |v_n| \cdot \Vert e_n \Vert \\
     &\leq \Vert v \Vert_2 \cdot (\Vert e_1 \Vert + \cdots + \Vert e_n \Vert).
   \end{align*}
@@ -486,20 +486,20 @@ vom $\Vert \cdot \Vert$-Normball enthalten ist.
   mit Grenzwert in $[-1, 1]$ konvergiert.
   Wir iterieren dieses Verfahren $n$-mal,
   und erhalten eine Teilfolge $w_{k_i}$ der $w_k$,
-  Welche in allen Koordinaten konvergiert.
+  welche in allen Koordinaten konvergiert. % 'w' muss noch definiert werden.
   Wir behaupten nun, dass $\Vert w \Vert_2 = 1$ 
   und $\Vert w \Vert = 0$ gilt, was
   natürlich den Widerspruch $w = 0$ impliziert.
   Bemerke dazu, dass für alle $i \in \mathbb{N}$ 
   gilt, dass
   \begin{align*}
-     1 - \Vert w - w_{k_i} \Vert
+     1 - \Vert w - w_{k_i} \Vert_2
      &= \Vert w_{k_i} \Vert_2 - \Vert w - w_{k_i} \Vert_2  \\
-     &\leq \Vert w \Vert_2 \\
+     &\leq \Vert w \Vert_2 \\ % diesen Schritt verstehe ich nicht, aber ich frag's dich dann Mittwoch
      &\leq \Vert w - w_{k_i} \Vert_2 + \Vert w_{k_i} \Vert_2 \\
     &= 1 + \Vert w - w_{k_i} \Vert_2.
   \end{align*}
-  Da die $w_{k_i}$ koordinatenweise gegen $w$ konvergieren folgt, dass
+  Da die $w_{k_i}$ koordinatenweise gegen $w$ konvergieren, folgt, dass
   \[
     \lim_{i \to \infty} \Vert w - w_{k_i}\Vert_2 = 0
   \]
@@ -509,7 +509,7 @@ vom $\Vert \cdot \Vert$-Normball enthalten ist.
      \leq \Vert w_{k_i} \Vert + \Vert w - w_{k_i} \Vert ,
   \]
   also existiert nach Schritt 1 eine Konstante
-  $C > 0$ so, dass $\Vert w \Vert \leq 1/k_i + C \cdot
+  $C > 0$, sodass $\Vert w \Vert \leq 1/k_i + C \cdot
   \Vert w - w_{k_i} \Vert_2$
   gilt, woraus im Grenzwert $i \to \infty$ folgt,
   dass $\Vert w \Vert = 0$ gilt.
@@ -543,7 +543,7 @@ nun noch ein weiteres Beispiel.
   Sei $V = \mathbb{R}^{\infty}$ mit der
   Maximumsnorm $\Vert \cdot \Vert_{\infty}$.
   Definiere $A \colon \mathbb{R}^{\infty} \to \mathbb{R}^{\infty}$ 
-  als die Lineare Erweiterung der Abbildung $e_k \mapsto ke_k$.
+  als die lineare Erweiterung der Abbildung $e_k \mapsto ke_k$.
   Setze  $q_k = e_k/k \in \mathbb{R}^{\infty}$.
   Es gilt, dass
   \(
@@ -642,7 +642,7 @@ Seien $p \in V$ und $\varepsilon > 0$
 vorgegeben.
 Setze
 \[
-  \delta = \frac{\varepsilon}{\Vert A \Vert_{\text{op} + 1}}.
+  \delta = \frac{\varepsilon}{\Vert A \Vert_{\text{op}} + 1}.
 \]
 Sei nun $q \in V$ mit $\Vert q - p \Vert_V \leq \delta$.
 Dann gilt
@@ -672,14 +672,14 @@ Für die Umkehrung, siehe Serie 2.
       a_{m1} & \cdots & a_{mn}
     \end{pmatrix}
   \]
-  als Matrix, das heisst $A(e_i) = \sum_{j=1}^{m} a_{ji}e_j$.
+  als Matrix, das heisst $A(e_i) = \sum_{j=1}^{m} a_{ij}e_j$. % oder? Du muss die Einträge der j. Spalte addieren.
   Setze $a = \max \left\{|a_{ij}| \mid 
   1 \leq i \leq m, 1 \leq j \leq n\right\}$.
   Für $v \in \mathbb{R}^{n}$ gilt dann
   \(
     \Vert Av \Vert_\infty \leq n \cdot a \cdot \Vert v \Vert_{\infty}.
   \)
-  Insbesondere ist $\Vert a \Vert_{\text{op}} \leq n \cdot a$ endlich.
+  Insbesondere ist $\Vert A \Vert_{\text{op}} \leq n \cdot a$ endlich.
   Wir schliessen, dass $A \colon \mathbb{R}^n \to \mathbb{R}^m$ stetig ist.
 \end{specialcase}
 
