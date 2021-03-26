@@ -486,7 +486,8 @@ vom $\Vert \cdot \Vert$-Normball enthalten ist.
   mit Grenzwert in $[-1, 1]$ konvergiert.
   Wir iterieren dieses Verfahren $n$-mal,
   und erhalten eine Teilfolge $w_{k_i}$ der $w_k$,
-  welche in allen Koordinaten konvergiert. % 'w' muss noch definiert werden.
+  welche in allen Koordinaten konvergiert.
+  Setze $w = \lim_{i \to \infty} w_{k_i}$.
   Wir behaupten nun, dass $\Vert w \Vert_2 = 1$ 
   und $\Vert w \Vert = 0$ gilt, was
   natürlich den Widerspruch $w = 0$ impliziert.
@@ -495,7 +496,7 @@ vom $\Vert \cdot \Vert$-Normball enthalten ist.
   \begin{align*}
      1 - \Vert w - w_{k_i} \Vert_2
      &= \Vert w_{k_i} \Vert_2 - \Vert w - w_{k_i} \Vert_2  \\
-     &\leq \Vert w \Vert_2 \\ % diesen Schritt verstehe ich nicht, aber ich frag's dich dann Mittwoch
+     &\leq \Vert w \Vert_2 \\ 
      &\leq \Vert w - w_{k_i} \Vert_2 + \Vert w_{k_i} \Vert_2 \\
     &= 1 + \Vert w - w_{k_i} \Vert_2.
   \end{align*}
@@ -672,7 +673,7 @@ Für die Umkehrung, siehe Serie 2.
       a_{m1} & \cdots & a_{mn}
     \end{pmatrix}
   \]
-  als Matrix, das heisst $A(e_i) = \sum_{j=1}^{m} a_{ij}e_j$. % oder? Du muss die Einträge der j. Spalte addieren.
+  als Matrix, das heisst $A(e_i) = \sum_{j=1}^{m} a_{ij}e_j$. 
   Setze $a = \max \left\{|a_{ij}| \mid 
   1 \leq i \leq m, 1 \leq j \leq n\right\}$.
   Für $v \in \mathbb{R}^{n}$ gilt dann
