@@ -1,0 +1,9 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}[scale=3]
+  \draw[color=gray] (-0.1, 0) -- (1.1, 0);
+  \draw[color=gray] (0, -0.1) -- (0, 1.1);
+  \draw[smooth, domain=0:1] plot (\x*\x, \x);
+\end{tikzpicture}
+\end{document}

@@ -2258,6 +2258,351 @@ der ersten Komponente von $\gamma$.
   \end{enumerate}
 \end{examples}
 
+\section{Rektifizierbare Kurven}
+Das Material in diesem Abschnitt ist im
+Abschnitt~177 in~\cite{heuser} nachzuschlagen.
+\begin{definition}
+  Eine Kurve $\gamma \colon [0, T] \to \mathbb{R}^n$ heisst
+  \emph{stetig differenzierbar}, falls ein offenes Intervall
+  $(a, b)$ existiert, welches $[0, T]$ enthält,
+  und eine stetig differenzierbare
+  Kurve $\overline \gamma \colon (a, b)
+  \to \mathbb{R}^n$
+  mit $\overline \gamma |_{[0, T]} = \gamma$
+  existiert.
+  Wir setzen
+  \[
+    L(\gamma) = \int_{0}^{T} \Vert \dot \gamma
+    (s) \Vert_2 \, ds.
+  \]
+\end{definition}
+
+\begin{example}
+  Betrachte die Kurve
+  \begin{align*}
+    \gamma \colon [0, 2\pi] & \to \mathbb{R}^2 \\
+    t & \mapsto (\cos(t), \sin(t)).
+  \end{align*}
+  Berechne
+  \(
+  \dot \gamma(s) = (- \sin(s), \cos(s))
+  \)
+  und $\Vert \dot \gamma(s) \Vert_2 = 1$
+  für alle $s \in \mathbb{R}$.
+  Wir folgern, dass
+  \[
+    L(\gamma) = \int_{0}^{2\pi} 1 \, ds
+    = 2\pi.
+  \]
+\end{example}
+
+Eine Kurve braucht nicht stetig differenzierbar
+zu sein, um eine endliche ``Länge'' zu haben.
+
+\begin{examples}
+  Folgende Beispiele sollen Zeigen, dass
+  unser $L(\gamma)$ als Längenbegriff nicht
+  allgemein genug ist.
+  \begin{enumerate}[(1)]
+    \item Betrachte die Kurve
+      \begin{align*}
+        \gamma \colon [0, 1] & \to \mathbb{R}^2 \\
+        t & \mapsto (t, \sqrt{t}).
+      \end{align*}
+      Dann ist $\gamma$ 
+      im Nullpunkt nicht stetig
+      differenzierbar: es gilt
+      \[
+        \lim_{s \to 0}
+        \Vert \dot \gamma(s) \Vert_2
+        = \lim_{s \to 0}
+        \sqrt{1 + 1/4s} = +\infty.
+      \]
+      Somit ist $\dot \gamma$ 
+      nicht Riemann-integrierbar.
+      Dennoch hat $\gamma$ eine
+      endliche ``Länge'' (siehe auch
+      Abbildung~\ref{fig:rectifiability}).
+      Der Grund dazu ist folgender.
+      Sei $\varepsilon > 0$.
+      Dann gilt
+      \[
+        \int_{\varepsilon}^{1} 
+        \Vert \dot \gamma(s) \Vert_2\, ds
+        =
+        \int_{\varepsilon}^{1} 
+        \sqrt{1 + 1/4s} \, ds
+        \leq \int_{\varepsilon}^{1} 
+        \sqrt{5/4s} \, ds
+        \leq \sqrt 5 (1 - \sqrt{\varepsilon})
+        \leq \sqrt 5.
+      \]
+    \item Betrachte die Kurve $\gamma \colon [0, 1] \to \mathbb{R}^2$ 
+      aus Abbildung~\ref{fig:rectifiability}
+      welche durch stückweise gerade Abschnitte
+      deren Länge durch Terme einer geometrischen
+      Reihe $\sum {(1/2)}^n$ gegeben sind.
+      Wir geben keine expliziten Formeln dafür an.
+      Die Kurve $\gamma$ ist in abzählbar vielen
+      Punkten nicht differenzierbar,
+      hat aber ``Länge'' $1$.
+    \item Es gibt sogar Kurven endlicher ``Länge'',
+      welche in überabzählbar vielen Punkten nicht
+      differenzierbar sind.
+      Eine Konstruktion inspiriert durch
+      die ``Kochsche Schneeflocke'' liefert
+      solch eine Kurve.
+  \end{enumerate}
+\end{examples}
+
+\begin{figure}[htb] 
+  \centering
+  \begin{minipage}{0.50\textwidth}
+    \centering
+    \includegraphics{figures/sqrt}
+  \end{minipage}%
+  \begin{minipage}{0.50\textwidth}
+    \centering
+    \includegraphics{figures/spiral}
+  \end{minipage}%
+  \caption{Die Kurven aus den Beispielen (1) und (2)}%
+  \label{fig:rectifiability}
+\end{figure}
+
+\begin{definition}
+  Sei $\gamma \colon [0, 1] \to \mathbb{R}^n$ stetig.
+  Eine \emph{Partition} des Intervalls
+  $[0, 1]$ ist eine endliche Folge
+  von Zeitparametern $0 = t_0 < t_1 < \cdots < t_N = 1$.
+  Wir notieren diese Partition als
+  $P = \{t_0, t_1, \dots, t_N\}$.
+  Setze
+  \[
+    L(\gamma ; P) =
+    \sum_{k=1}^{N}  \Vert \gamma(t_k) - \gamma(t_{k-1}) \Vert_2.
+  \]
+  Dies ist in Abbildung~\ref{fig:def-rectifiability} veranschaulicht.
+\end{definition}
+
+\begin{figure}[htb]
+    \centering
+    \incfig[0.5]{def-rectifiability}
+    \caption{Eine Partition der Länge $N = 3$}%
+    \label{fig:def-rectifiability}
+\end{figure}
+
+\begin{remark}
+  Falls eine Partition $P_2$ feiner ist als $P_1$,
+  das heisst $P_1 \subset P_2$,
+  dann gilt $L(\gamma ; P_1) \leq L(\gamma ; P_2)$.
+  Der Grund dafür ist die Dreiecksungleichung.
+\end{remark}
+
+\begin{definition}
+  Sei $\gamma \colon [0, 1] \to \mathbb{R}^n$ stetig.
+  Dann ist die \emph{Länge} von $\gamma$
+  das Supremum von $L(\gamma ; P)$, wobei
+  $P$ über alle Partitionen von $[0, 1]$ läuft.
+  Falls die Länge von $\gamma$ endlich ist,
+  dann heisst $\gamma$ \emph{rektifizierbar}.
+\end{definition}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Sei $\gamma \colon [0, 1] \to \mathbb{R}^n$ 
+      Lipschitz-stetig
+      mit Konstante $k \geq 0$.
+      Dann gilt für alle Zeiten $t_{k-1}, t_k \in [0, 1]$, dass
+      \(
+        \Vert \gamma(t_k) - \gamma(t_{k-1})\Vert_{2}
+        \leq k \cdot | t_k - t_{k-1} |
+      \).
+      Für jede Partition $P$ von $[0, 1]$ gilt also
+      \[
+        L(\gamma ; P) = \sum_{k=1}^{N} \Vert \gamma(t_k) - \gamma(t_{k-1})
+        \Vert_2 \leq k.
+      \]
+      Also ist $\gamma$ rektifizierbar mit Länge höchstens $k$.
+    \item Betrachte die Kurve
+      \begin{align*}
+        \gamma \colon [0, 1] & \to \mathbb{R}^2 \\
+        t & \mapsto 
+        \begin{cases}
+          (0, 0) & t = 0, \\
+          (t, t \cos(\pi/t)) & t > 0.
+        \end{cases}
+      \end{align*}
+      Betrachte die Partition
+      $P = \{0, 1/N, 1/(N-1), \dots, 1/2, 1\}$ für festes
+      $N \in \mathbb{N}$.
+      Dann ist $L(\gamma ; P) \geq 1 + 1/2 + \cdots + 1/N$.
+      Vergleiche dazu Serie 5.
+      Es folgt, dass die Länge von $\gamma$ nicht endlich ist,
+      da die harmonische Reihe divergiert.
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem*}
+  Sei $\gamma \colon [0, 1] \to \mathbb{R}^n$ stetig differenzierbar.
+  Dann ist $\gamma$ rektifizierbar, und die Länge von $\gamma$ ist
+  \[
+    L(\gamma) = \int_{0}^{1} \Vert \dot \gamma(s) \Vert_2 \, ds.
+  \]
+\end{theorem*}
+
+\begin{proof}
+  Wir zeigen zunächst, dass die Länge von $\gamma$ 
+  höchstens $L(\gamma)$ ist.
+  Sei dazu $P = \{t_0, t_1, \dots, t_N\}$ eine Partition
+  von $[0,1]$.
+  Für alle $a,b \in [0, 1]$ mit $a \leq b$ gilt
+  \[
+    \gamma(b) - \gamma(a) = \int_{a}^{b} \dot \gamma(s) \, ds.
+  \]
+  Es folgt, dass
+  \[
+    \Vert \gamma(b) - \gamma(a) \Vert_2 =
+    \left\Vert \int_{a}^{b} \dot \gamma(s) \, ds \right\Vert_2
+    \leq \int_{a}^{b} \Vert \dot \gamma(s) \Vert_2 \, ds.
+  \]
+  Siehe dazu die Integralabschätzung in der Vorbereitung
+  zum Beweis von Theorem von Cauchy-Lipschitz-Picard-Lindelöf.
+  Wir folgern, dass
+  \[
+    L(\gamma ; P) = \sum_{k=1}^{N} 
+    \Vert \gamma(t_k) - \gamma(t_{k-1}) \Vert_2
+    \leq
+    \sum_{k=1}^{N} \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(s) \Vert_2 \, ds
+    = \int_{0}^{1} \Vert \dot \gamma(s) \Vert_2 \, ds = L(\gamma).
+  \]
+  Die Länge von $\gamma$ ist also höchstens $L(\gamma) < \infty$,
+  und $\gamma$ ist rektifizierbar.
+
+  Als nächstes ist die Gleichheit zu zeigen.
+  Sei dazu $\varepsilon > 0$.
+  Wir konstruieren eine Partition
+  $P$ mit $L(\gamma ; P) \geq L(\gamma) - 2\varepsilon$.
+  Daraus wird folgen, dass das Supremum über alle Partitionen
+  genau $L(\gamma)$ ist.
+  Da $\dot \gamma \colon [0, 1] \to \mathbb{R}^n$ stetig ist,
+  und $[0, 1]$ kompakt ist folgt, dass $\dot \gamma$ 
+  gleichmässig stetig ist.
+  Es existiert also $\delta > 0$ so, dass
+  für alle $a, b \in [0, 1]$ mit $|b - a| \leq \delta$ 
+  gilt, dass 
+  $\Vert \dot \gamma(b) - \dot \gamma(a) \Vert_2 \leq \varepsilon$.
+  Wähle nun $N \in \mathbb{N}$ mit $1/N \leq \delta$.
+  Betrachte die Partition $P = \{0, 1/N, 2/N, \dots, (N-1)/N, 1\}$.
+  Sei $k \in \{1, \dots, N\}$ beliebig.
+  Dann gilt für $s \in [t_{k-1}, t_k]$, dass
+  \[
+  \Vert \dot \gamma(s) \Vert_2 \leq \Vert \dot \gamma
+  (t_{k-1}) \Vert_2
+  + \Vert \dot \gamma (s) - \dot \gamma(t_{k-1}) \Vert_2
+  \leq \Vert \dot \gamma(t_{k-1}) \Vert_2 + \varepsilon,
+  \]
+  da $|s - t_{k-1}| \leq 1/N$.
+  Es gilt also, dass
+  \begin{align*}
+       \int_{t_{k-1}}^{t_k} \Vert \dot \gamma (s) \Vert_2 \, ds 
+       &\leq
+    \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(t_{k-1}) \Vert_2 \, ds
+    + \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(s) - \dot \gamma
+    (t_{k-1}) \Vert_2 \, ds \\
+       &\leq 1/N \cdot \Vert \dot \gamma(t_{k-1}) \Vert_2 + \varepsilon/N.
+  \end{align*}
+  Berechne weiterhin, dass
+  \begin{align*}
+    \left\Vert
+    \int_{t_{k-1}}^{t_k} \dot \gamma(s) \, ds
+    \right\Vert_2
+    &=
+    \left\Vert
+    \int_{t_{k-1}}^{t_k} \dot \gamma(t_{k-1}) \, ds
+    + \int_{t_{k-1}}^{t_k} \dot \gamma(s) - \dot \gamma(t_{k-1}) \, ds
+    \right\Vert \\
+    &\geq
+    \left\Vert
+    \int_{t_{k-1}}^{t_k} \dot \gamma(t_{k-1}) \, ds
+    \right\Vert_2
+    -
+    \left\Vert
+    \int_{t_{k-1}}^{t_k} \dot \gamma(s) - \dot \gamma(t_{k-1}) \, ds
+    \right\Vert_2 \\
+    &\geq
+    \frac{1}{N} \cdot \Vert \dot \gamma(t_{k-1}) \Vert_2 
+    - \frac{\varepsilon}{N}.
+  \end{align*}
+  Es folgt, dass
+  \begin{align*}
+    \Vert \gamma(t_k) - \gamma(t_{k-1}) \Vert_2
+    & \geq \frac{\Vert \dot \gamma(t_{k-1}) \Vert_2}{N}
+    - \frac{\varepsilon}{N}\\
+    &\geq \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(s) \Vert_2 \, ds
+    - \frac{2\varepsilon}{N}.
+  \end{align*}
+  Aufsummieren liefert, dass
+  \[
+    L(\gamma ; P) \geq \int_{0}^{1} \Vert \dot \gamma(s) \Vert_2 \, ds
+    - 2 \varepsilon. \qedhere
+  \]
+\end{proof}
+
+\begin{example}[Schwarzscher Stiefel]
+  Wir versuchen, den Inhalt einer Fläche durch eine
+  ``feine'' Triangulierung zu approximieren.
+  Leider geht der naiv Ansatz schief!
+  Dazu untersuchen wir 
+  Fl einen Zylinder der Höhe $h$ mit Radius $1$.
+  Wähle $N \in \mathbb{N}$ gross,
+  und Punkte $P_1, \dots, P_N$ auf der Höhe $0$,
+  welche ein regelmässiges $N$-Eck bilden.
+  Wähle versetzte Punkte $Q_1, \dots, Q_N$ auf der Höhe $h$,
+  welche auch ein regelmässiges $N$-Eck bilden.
+  Siehe Abbildung~\ref{fig:n-gons}.
+  Wir erhalten eine Triangulierung
+  mit $2N$ Dreiecken.
+
+\begin{figure}[htb] 
+  \centering
+  \begin{minipage}{0.50\textwidth}
+    \centering
+    \includegraphics{figures/n-gons}
+  \end{minipage}%
+  \begin{minipage}{0.50\textwidth}
+    \centering
+    \includegraphics{figures/triangulation}
+  \end{minipage}%
+   \caption{Die Punkte $P_i$ und $Q_i$ von oben betrachtet
+   und die daraus resultierende Triangulierung}%
+   \label{fig:n-gons}
+\end{figure}
+
+  Sei $\Delta$ eines der Dreiecke.
+  Die Fläche von $\Delta$ ist ungefähr
+  $\pi / N \cdot 1$.
+  Die Gesamtfläche ist also ungefähr $2 \pi$,
+  was genau die Fläche des Zylinders ist.
+  Sei aber nun $h$ sehr klein,
+  zum Beispiel $1/N^3$.
+  Dann ist die Höhe von $\Delta$ ungefähr
+  proportional $1/N^2$ (und nicht
+  wie erwartet $1/N^3)$.
+  Das liegt daran, dass
+  $\cos (1/N)$ etwa  $1 - 1/(2N^2)$ ist.
+  Die Gesamtfläche ist dann etwa
+  proportional zu
+  $1/N^2$.
+  Teilen wir nun die ursprüngliche Fläche
+  in $N^3$ Unterzylinder,
+  so ist der Gesamtflächeninhalt
+  der Dreiecke
+  proportional zu $N^3/N^2 = N$.
+  Unsere Definition der Rektifizierbarkeit ist
+  somit für Flächen unangebracht. Ein besserer
+  Flächenbegriff wird in der Differentialgeometrie studiert.
+\end{example}
 
 
 
