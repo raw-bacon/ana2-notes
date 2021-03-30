@@ -698,7 +698,7 @@ Für die Umkehrung, siehe Serie 2.
 \begin{motivation}
   Sei $V$ ein normierter reeller Vektorraum,
   und sei $A \colon V \to V$ linear und \emph{kontrahierend},
-  das heisst für lineare Abbildungen $A$, dass
+  das heisst, % A linear schon vorgegeben
   $\Vert A \Vert_{\text{op}} < 1$ gilt.
   Wir wollen die Abbildung $\text{Id} - A \colon V \to V$ wie folgt
   invertieren:
@@ -742,7 +742,7 @@ Für die Umkehrung, siehe Serie 2.
   \]
   gilt. Somit ist $A$ nicht kontrahierend.
   
-  Wir stossen auch auf ein Problem beim invertieren von
+  Wir stossen auch auf ein Problem beim Invertieren von
   \begin{align*}
     \text{Id} - A \colon \mathbb{R}^{\infty} & \to \mathbb{R}^{\infty} \\
     e_k & \mapsto \left( 1 - \frac{k}{k+1} \right)e_k
@@ -965,7 +965,7 @@ zu beweisen.
   Sei $\varepsilon > 0$ vorgegeben.
   Wähle $\delta > 0$ so, dass wenn
   $d_1(q, p) \leq \delta$ gilt,
-  dann auch $d_2(f(q), f(p)) \leq \delta$.
+  dann auch $d_2(f(q), f(p)) \leq \varepsilon$.
   Dann existiert $N \in \mathbb{N}$ so,
   dass für $n \geq N$ gilt, dass
   $d(a_n, p) \leq \delta$.
@@ -1004,7 +1004,7 @@ zu beweisen.
   Die so konstruierte Folge ${(a_{n})}_{n \in \mathbb{N}}$ 
   ist eine Cauchyfolge in $X$. Wir zeigen das später
   und nehmen vorerst an, dass das stimmt.
-  Da $X$ vollständig ist, existiert $p = \lim_{n \to \infty} a_n$.
+  Da $X$ vollständig ist, existiert $X \ni p = \lim_{n \to \infty} a_n$.
   Es gilt dann $f(p) = p$.
   Tatsächlich, berechne
   \[
@@ -1034,7 +1034,7 @@ zu beweisen.
     + k^{\ell - 2} \cdot d(a_1, a_0)
     + \cdots
     + d(a_1, a_0) \\
-    &\leq (1 + k + k^2 + \cdots + k^{\ell-1})
+    = (1 + k + k^2 + \cdots + k^{\ell-1})
     \cdot d(a_1, a_0) \\
     &\leq \frac{1}{1-k} \cdot d(a_1, a_0).
   \end{align*}
@@ -1071,7 +1071,7 @@ gewisser Differentialgleichungen zu zeigen.
   dass für eine Folge $f_n \colon K \to \mathbb{R}$ 
   stetiger Funktionen, welche auf $K$ 
   gleichmässig gegen eine Funktion $f \colon K \to \mathbb{R}$
-  konvergiert, dann ist $f$ stetig.
+  konvergiert, $f$ stetig ist.
   Gleichmässige Konvergenz heisst,
   dass für alle $\varepsilon > 0$ 
   ein $N \in \mathbb{N}$ existiert, so dass
@@ -1098,7 +1098,7 @@ gewisser Differentialgleichungen zu zeigen.
 Wir untersuchen nun kurz den Stetigkeitsbegriff auf Kurven.
 Stetigkeit heisst, dass in jedem $t \in \mathbb{R}$ die
 $(\varepsilon, \delta)$-Bedingung für $\gamma$ 
-bezüglich beliebiger Norman auf $\mathbb{R}$ und $\mathbb{R}^n$ 
+bezüglich beliebiger Normen auf $\mathbb{R}$ und $\mathbb{R}^n$ 
 erfüllt ist, insbesondere
 bezüglich der Normen $| \cdot |$ und $\Vert \cdot \Vert_{\infty}$.
 Schreibe nun 
@@ -1106,8 +1106,8 @@ Schreibe nun
   \gamma(t) = \sum_{i=1}^{n} \gamma_i(t) \cdot e_i,
 \]
 wobei $e_i$ der $i$-te Basisvektor in $\mathbb{R}^n$ ist.
-In diesem Fall ist $\gamma_i(t) = \langle \gamma(t), e_i \rangle$ 
-die $i$-te Komponentenfunkction von $\gamma$.
+In diesem Fall ist $\gamma_i(t) = \langle \gamma(t), e_i \rangle$  % für Standardskalarprodukt; nicht für SkP allgemein, oder?
+die $i$-te Komponentenfunktion von $\gamma$.
 Für alle $s, t \in \mathbb{R}$ gilt
 $\Vert \gamma(s) - \gamma(t) \Vert_\infty \leq \varepsilon$ 
 genau dann, wenn $|\gamma_i(s) - \gamma_i(t)| \leq \varepsilon$
@@ -1126,7 +1126,7 @@ $\gamma_i$ stetig in $t$ sind.
         t & \mapsto (\cos(t), \sin(t)).
       \end{align*}
       Dann hat $\gamma$ stetige
-      Komponentenfunktionen und ist
+      Komponentenfunktionen und ist sie
       daher die Parametrisierung einer Kurve.
       In diesem Fall ist die beschriebene Kurve
       der Einheitskreis, siehe Abbildung~\ref{fig:parametrisations}.
@@ -1164,7 +1164,7 @@ $\gamma_i$ stetig in $t$ sind.
   heisst \emph{differenzierbar}, falls für alle $t \in \mathbb{R}$ 
   die Ableitung
   \[
-    \dot{\gamma}(t) = \lim_{n \to 0} \frac{ \gamma(t + h) - \gamma(t)}{h}
+    \dot{\gamma}(t) = \lim_{h \to 0} \frac{ \gamma(t + h) - \gamma(t)}{h}
   \]
   existiert.
   Der Vektor $\dot{\gamma}(t)$ heisst \emph{Geschwindigkeitsvektor}.
@@ -1315,7 +1315,7 @@ $\gamma_i$ stetig in $t$ sind.
         \end{pmatrix}
         = A(\gamma(t)).
       \]
-      Also ist die Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+      Also ist die Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^2$ 
       eine Lösung der linearen Differentialgleichung
       $\dot \gamma(t) = A(\gamma(t))$ 
       zur Anfangsbedingung $\gamma(0) = e_1 \in \mathbb{R}^2$.
@@ -1342,7 +1342,7 @@ $\gamma_i$ stetig in $t$ sind.
           \includegraphics{figures/yzero}
         \end{minipage}%
         \caption{Das Vektorfeld $A(x, y) = (-y, x)$ und das
-        Vektorfeld $A(x, y) = (y, 0)$}%
+        Vektorfeld $A(x, y) = (y, 0)$}% ev. noch auf die Bspl. (2 bzw. 4) verweisen :)
         \label{fig:vectorfields-examples}
       \end{figure}
     \item Die Kurve $\gamma(t) = (t^2, t^3 - t)$ ist
@@ -1603,7 +1603,7 @@ Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
 
 \begin{proof}
   Sei ${(\alpha_{m})}_{m \in \mathbb{N}}$ 
-  eine Cauchyfolge in $V$ bezüglich der Norm
+  eine Cauchyfolge in $V$ bezüglich der Norm % V noch nicht definiert
   $\Vert \cdot \Vert_{\infty}$.
   Dann erhalten wir in jeder Komponente $i \leq n$ 
   eine Cauchyfolge $\langle \alpha_m, e_i \rangle$ 
@@ -1708,7 +1708,7 @@ Dazu verwenden wir folgende Abschätzung.
   Betrachte $V = C([-T, T], \mathbb{R}^n)$
   mit der Norm
   \[
-    \Vert \alpha \Vert_{\infty} \max \left\{\Vert \alpha(t) \Vert_2
+    \Vert \alpha \Vert_{\infty} = \max \left\{\Vert \alpha(t) \Vert_2
     \mid t \in [-T, T]\right\}.
   \]
   Definiere nun
@@ -1721,7 +1721,7 @@ Dazu verwenden wir folgende Abschätzung.
     P(\alpha)(t) = p + \int_{0}^{t} X(\alpha(s)) \, ds
   \]
   für alle $t \in [-T, T]$.
-  Wir wissen bereits, dass $V$ vollständig ist.
+  Wir wissen bereits, dass $V$ vollständig ist. % Die Vollständigkeit ist *hier* noch nicht wichtig, wenn ich den Beweis richtig verstehe. In dem Fall würde ich diese Tatsache erst später erwähnen, nämlich wo man zeigt, dass Banachs FPS [guter Name für ein Game] hier greift.
   Wir bemerken, dass $X \circ \alpha$ stetig ist,
   da $\alpha$ und $X$ beide stetig sind. Deshalb
   ist $P(\alpha)$ auf $(-T, T)$ differenzierbar.
@@ -1732,7 +1732,7 @@ Dazu verwenden wir folgende Abschätzung.
   \]
   Sei nun $\gamma \in V$ ein Fixpunkt von $P$
   (wir schreiben $\gamma$ für diesen Punkt,
-  da die Punkte in $V$ Kurven sind).
+  da die Punkte in $V$ Kurven sind). % Hier ist noch nicht klar, dass $P$ einen Fixpunkt haben MUSS (wird es später bewiesen). Daher vllt. eher "Angenommen, $P$ hätte einen Fixpunkt $\gamma \in V$."
   Dann gilt für alle $t \in (-T, T)$, dass
   \[
     \dot \gamma(t) = \frac{d}{dt}\gamma(t) =
@@ -1748,7 +1748,7 @@ Dazu verwenden wir folgende Abschätzung.
   Differentialgleichung mit $\gamma(0) = p$.
   Umgekehrt, sei $\gamma \in V$ so, dass
   $\gamma|_{(-T, T)}$ eine Lösungskurve der Differentialgleichung
-  $\dot \gamma(t) = X(\gamma(t))$ mit $\gamma(0) = p$.
+  $\dot \gamma(t) = X(\gamma(t))$ mit $\gamma(0) = p$ ist.
   Dann gilt für alle $t \in (-T, T)$,
   dass
   \[
@@ -1773,7 +1773,7 @@ Dazu verwenden wir folgende Abschätzung.
     & = \left\Vert \int_{0}^{t} X(\alpha(s)) - X(\beta(s)) \, ds 
     \right\Vert_2\\
     &\leq \int_{0}^{t} \Vert X(\alpha(s)) - X(\beta(s)) \Vert_2 \, ds\\
-    &\leq k \int_{0}^{t} \Vert \alpha(s) - \beta(s) \Vert_2 \, d \\
+    &\leq k \int_{0}^{t} \Vert \alpha(s) - \beta(s) \Vert_2 \, ds \\
     &\leq k \cdot T \cdot \Vert \alpha - \beta \Vert_{\infty}.
   \end{align*}
   Wir schliessen, dass $\Vert P(\alpha) - P(\beta) \Vert_{\infty}
@@ -1866,7 +1866,7 @@ Induktiv erhalten wir für alle $n \in \mathbb{N}$, dass
   dass dieser Grenzwert für alle $|t| < 1/\Vert A \Vert_{\text{op}}$ 
   existiert. Tatsächlich existiert der Grenzwert für alle
   $t \in \mathbb{R}$, unabhängig von $A$.
-  Benutze dazu, dass die Operatornorm die Ungleichung
+  Benutze dazu, dass für die Operatornorm die Ungleichung
   $\Vert A^k \Vert_{\text{op}} \leq \Vert A \Vert_{\text{op}}^k$ 
   gilt. Dann folgt nämlich
   $\Vert e^{tA} \Vert_{\text{op}} \leq e^{|t| \cdot \Vert A \Vert_{\text{op}}}$.
@@ -1884,7 +1884,7 @@ gegeben ist.
 
 \begin{examples}
   Sei $A \colon \mathbb{R}^2 \to \mathbb{R}^2$ linear,
-  repräsentiert durch bezüglich der Standardbasis
+  repräsentiert bezüglich der Standardbasis
   durch eine Matrix
   \[
     A =
@@ -1921,7 +1921,7 @@ gegeben ist.
       \).
       In Tabelle~\ref{tab:1-1} sind einige
       Lösungskurven aufgelistet und in Abbildung~\ref{fig:1-1}
-      gezeichnet.
+      gezeichnet. % Vllt. eher "Einige LK sind in Tab 1-1 aufgelistet und in Fig 1-1 gezeichnet. (Vllt. nur Geschmackssache.)
       
       \begin{table}[htb]
         \center
@@ -2057,7 +2057,7 @@ Falls $f(y_0) \neq 0$, schreibe (lokal) um, dass
   Berechne
   \begin{align*}
     \frac{d}{dt} \, g(y(t))
-    & g'(y(t)) \cdot \frac{d}{dt} \, y(t)\\
+    &= g'(y(t)) \cdot \frac{d}{dt} \, y(t)\\
     &= \frac{1}{f(y(t))} \dot y(t) \\
     &= 1. && \qedhere
   \end{align*}
