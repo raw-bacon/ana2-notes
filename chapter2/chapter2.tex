@@ -2,6 +2,320 @@
 
 \begin{document}
 \chapter{Differentialrechnung}\label{chp:differential}
+Dieses Kapitel stellt den Hauptteil dieser Vorlesung dar.
+Auch in~\cite{heuser} ist das korrespondierende
+Kapitel XX bei weitem das grösste. Der Inhalt ist das
+Studium differenzierbarer Abbildungen 
+$f \colon \mathbb{R}^m \to \mathbb{R}^n$.
+Die erste Schwierigkeit daran ist, dass der Ausdruck
+\[
+  \lim_{h \to 0} \frac{f(p + h) - f(p)}{h}
+\]
+für $m \geq 2$ keinen Sinn macht: Vektoren kann man nicht
+definieren.
+
+\section{Differenzierbarkeit}
+\begin{definition}
+  Sei $U \subset \mathbb{R}^m$ offen. Eine Abbildung
+  $f \colon U \to \mathbb{R}^n$ heisst
+  \emph{differenzierbar} im Punkt $p \in U$, falls
+  folgendes existiert:
+  \begin{enumerate}[(i)]
+    \item eine lineare Abbildung 
+      ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$,
+      genannt \emph{Differential} von $f$ an
+      der Stelle $p$,
+    \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
+      ein \emph{Restterm} ${(Rf)}_p(h) \in \mathbb{R}^n$,
+      der relativ klein in $\Vert h \Vert_2$ ist,
+      so dass für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
+      gilt, dass
+      \[
+        f(p+h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h).
+      \]
+  \end{enumerate}
+  Der Unterteilung von $f$ in diese drei Summanden sagt man
+  \emph{Dreigliedentwicklung}. Die Forderung,
+  dass ${(Rf)}_p(h)$ \emph{relativ klein} in $\Vert h \Vert_2$ 
+  ist, bedeutet, dass
+  \[
+    \lim_{h \to 0} \frac{\Vert {(Rf)}_p(h)\Vert_2}{\Vert h \Vert_2}
+    = 0.
+  \]
+  In anderen Worten existiert für alle $\varepsilon > 0$ ein $\delta > 0 $,
+  so dass für alle $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2
+  \leq \delta$ gilt, dass $\Vert h \Vert_2
+  \leq \varepsilon \cdot \Vert h \Vert_2$.
+\end{definition}
+
+\begin{example}
+  Sei $L \colon \mathbb{R}^m \to \mathbb{R}^n$ linear.
+  Dann gilt für alle $p, h \in \mathbb{R}^m$,
+  dass
+  \[
+    L(p + h) = L(p) + L(h).
+  \]
+  Dies ist eine Dreigliedentwicklung für $L$ 
+  an der Stelle $p$ mit Restterm ${(RL)}_p(h) = 0$.
+  Tatsächlich ist die Abbildung ${(DL)}_p = L$ linear.
+  Die informale Erklärung dafür ist,
+  dass~$L$ die ``beste lineare Approximation'' von $L$ 
+  ist, und das an jeder Stelle.
+\end{example}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^m & \to \mathbb{R} \\
+        p & \mapsto \langle p, p \rangle.
+      \end{align*}
+      Für alle $p, h \in \mathbb{R}^m$ gilt, dass
+      \[
+        f(p+ h) = \langle p + h, p + h \rangle
+        = \langle p, p \rangle + 2 \langle p, h \rangle + \langle h, h \rangle.
+      \]
+      Dies ist eine Dreigliedentwicklung für $f$ mit
+      Differential
+      ${(Df)}_p(h) = 2 \langle p, h \rangle$ und
+      Restterm
+      ${(Rf)}_p(h) = \langle h, h \rangle$.
+      Tatsächlich ist ${(Df)}_p$ linear in $h$,
+      da Skalarprodukte bilinear sind, und
+      \[
+        {(Rf)}_p(h) = \langle h, h \rangle = \Vert h \Vert_2^2
+      \]
+      ist relativ klein in $\Vert h \Vert_2$.
+      Zum Beweis dafür sei $\varepsilon > 0$ und setze
+      $\delta = \varepsilon$.
+      Für alle $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$ 
+      gilt dann, dass
+      \(
+        |{(Rf)}_p(h)| = \Vert h \Vert_2^2 \leq \varepsilon \cdot \Vert h \Vert_2
+      \).
+    \item Betrachte die Abbildung
+      \begin{align*}
+        m \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto xy.
+      \end{align*}
+      Seien $p = (p_1, p_2)$ und $h = (h_1, h_2)$ in $\mathbb{R}^2$.
+      Dann gilt
+      \[
+        m(p + h) = (p_1 + h_1) \cdot (p_2 + h_2)
+        = p_1 p_2 + (p_1 h_2 + p_2 h_1) + h_1 h_2.
+      \]
+      Dies ist eine Dreigliedentwicklung für $m$ bei $p$
+      mit ${(Dm)}_p(h) = p_1 h_2 + p_2 h_1$ und
+      ${(Rm)}_p(h) = h_1 h_2$.
+      Da
+      \[
+        {(Dm)}_p(h) =
+        \begin{pmatrix}
+          p_2 & p_1
+        \end{pmatrix}
+        \begin{pmatrix}
+          h_1 \\ h_2
+        \end{pmatrix}
+      \]
+      gilt, ist ${(Dm)}_p$ linear.
+      Weiter ist der Restterm 
+      relativ klein in $\Vert h \Vert_2$, da
+      \[
+        |{(Rm)}_p(h)| = |h_1| \cdot |h_2| \leq \Vert h \Vert_2 \cdot
+        \Vert h \Vert_2 = \Vert h \Vert_2^2,
+      \]
+      und $\Vert h \Vert_2^2$ ist nach Beispiel (1)
+      relativ klein in $\Vert h \Vert_2$.
+  \end{enumerate}
+\end{examples}
+
+Wir treffen nun die Kettenregel als Quelle
+für viele Beispiele an.
+Wir werden sie später in diesem Kapitel beweisen.
+
+\begin{theorem*}[Kettenregel]
+  Seien $U \subset \mathbb{R}^m$ und $V \subset \mathbb{R}^k$ 
+  offen, und sei $f \colon U \to \mathbb{R}^k$ differenzierbar
+  bei $p \in U$ mit $f(U) \subset V$,
+  sowie $g \colon V \to \mathbb{R}^n$ bei $f(p) \in V$ 
+  differenzierbar.
+  Dann ist die Komposition $g \circ f \colon U \to \mathbb{R}^n$ 
+  differenzierbar bei $p$, und es gilt
+  \[
+    {(D(g \circ f))}_p = {(Dg)}_{f(p)} \circ {(Df)}_p.
+  \]
+\end{theorem*}
+
+\begin{example}
+  Betrachte die Abbildung
+  \begin{align*}
+    \ell \colon \mathbb{R}^m & \to \mathbb{R} \\
+    p & \mapsto \sqrt{\langle p, p \rangle}.
+  \end{align*}
+  In Koordinaten $x_1, \dots, x_m$ ist
+   \[
+     \ell(x_1, \dots, x_m) = \sqrt{x_1^2 + \cdots + x_m^2}.
+  \]
+  Sei $U = \mathbb{R}^m \setminus \{0\} \subset \mathbb{R}^m$ 
+  und $V = \mathbb{R}_{>0}$.
+  Beide dieser Mengen sind offen. Setze weiterhin
+  \begin{align*}
+    f \colon U & \to \mathbb{R} \\
+    p & \mapsto \langle p, p \rangle
+  \end{align*}
+  und
+  \begin{align*}
+    g \colon \mathbb{R}_{>0} & \to \mathbb{R} \\
+    t & \mapsto \sqrt t.
+  \end{align*}
+  Für alle $p \in U$ gilt $\ell(p) = g(f(p))$.
+  Die Funktion $f$ ist differenzierbar in allen
+  Punkten $p \in U$ 
+  (eigentlich sogar in allen $p \in \mathbb{R}^n$).
+  Ausserdem ist $g$ differenzierbar an allen Stellen
+  $t > 0$.
+  Aus der Analysis I wissen wir, dass
+  \[
+    {(Dg)}_t(h) = g'(t) \cdot h = \frac{1}{2 \sqrt t} \cdot h.
+  \]
+  Die Kettenregel liefert, dass
+  $\ell = g \circ f$ an jeder Stelle $p \in U$ differenzierbar ist,
+  und es gilt
+  \[
+    {(D \ell)}_p(h) = {(Dg)}_{f(p)}({(Df)}_p(h))
+    = \frac{1}{2 \sqrt{\langle p, p \rangle}} \cdot 2 \langle p, h \rangle
+    = \langle p / \Vert p \Vert_2, h \rangle.
+  \]
+  Der Vektor $p / \Vert p \Vert_2$ ist der Vektor mit Länge $1$,
+  der in die selbe Richtung zeigt wie $p$.
+  Er beschreibt den ``Zuwachs'' der Funktion $\ell$.
+\end{example}
+
+\begin{definition}
+  Sei $f \colon \mathbb{R}^m \to \mathbb{R}^n$ eine Abbildung.
+  Dann existieren eindeutige \emph{Komponentenfunktionen}
+  $f_k \colon R^m \to \mathbb{R}$ 
+  für $1 \leq k \leq n$ mit folgender Eigenschaft:
+  für alle $p \in \mathbb{R}^m$ gilt, dass
+  \[
+    f(p) = \sum_{k=1}^{n} f_k(p) \cdot e_k.
+  \]
+\end{definition}
+
+\begin{lemma}
+  Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar,
+  genau dann wenn alle Komponentenfunktionen 
+  $f_k \colon \mathbb{R}^m \to \mathbb{R}$ bei $p$ differenzierbar sind.
+\end{lemma}
+
+\begin{proof}
+  Um zu zeigen, dass die Komponentenfunktionen einer
+  differenzierbaren Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$
+  selbst differenzierbar sind, sei
+  \[
+    f(p + h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h)
+  \]
+  eine Dreigliedentwicklung von $f$.
+  Für $1 \leq k \leq n$ 
+  setze ${(Df_k)}_p(h) = \langle {(Df)}_p(h), e_k \rangle$ 
+  und ${(Rf_k)}_p(h) = \langle {(Rf)}_p(h), e_k \rangle$.
+  Dann gilt für alle $k \leq n$, dass
+  \[
+    f_k(p + h) = f_k(p) + {(Df_k)}_p(h) + {(Rf_k)}_p(h).
+  \]
+  Weiterhin ist
+  \begin{enumerate}[(i)]
+    \item die Funktion
+      \begin{align*}
+        {(Df_k)}_p \colon \mathbb{R}^m & \to \mathbb{R} \\
+        h & \mapsto \langle {(Df)}_p(h), e_k \rangle
+      \end{align*}
+      als Verknüpfung einer linearen Funktion mit einer Projektion
+      linear,
+    \item der Restterm ${(Rf_k)}_p(h)$ relativ klein
+      in $\Vert h \Vert_2$, da 
+      \(
+        |{(Rf_k)}_p(h)| \leq \Vert {(Rf)}_p(h) \Vert_2
+      \)
+      gilt.
+  \end{enumerate}
+
+  Umgekehrt nehmen wir an, dass die Komponentenfunktionen
+  $f_k \colon \mathbb{R}^m \to \mathbb{R}$
+  einer Funktion $f \colon \mathbb{R}^m \to \mathbb{R}^n$ 
+  differenzierbar sind.
+  Für alle $k$ gibt es dann eine Dreigliedentwicklung
+  \(
+    f_k(p + h) = f_k(p) + {(Df_k)}_p(h) + {(Rf_k)}_p(h).
+  \)
+  Setze
+  \[
+    {(Df)}_p(h) = \sum_{k=1}^{n} {(Df_k)}_p(h) \cdot e_k
+  \]
+  und
+  \[
+    {(Rf)}_p(h) = \sum_{k=1}^{n} {(Rf_k)}_p(h) \cdot e_k.
+  \]
+  Dann gilt
+  \(
+    f(p + h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h).
+  \)
+  Weiterhin ist
+  \begin{enumerate}[(i)]
+    \item die Abbildung
+      \begin{align*}
+        {(Df)}_p \colon \mathbb{R}^m & \to \mathbb{R}^n \\
+        h & \mapsto \sum_{k=1}^{n} {(Df_k)}_p(h) \cdot e_k
+      \end{align*}
+      linear da Summen linearer Abbildungen linear sind, und
+    \item ${(Rf)}_p(h)$ ist relativ klein in $\Vert h \Vert_2$,
+      da
+      \[
+        \Vert {(Rf)}_p(h) \Vert_2 \leq \sum_{k=1}^{n} |{(Rf_k)}_p(h)|.
+      \]
+      Dies folgt aus der allgemeinen Ungleichung, dass
+      die euklidische Norm immer kleiner ist als die Summennorm.
+      Weiterhin verwenden wir, dass endliche Summen
+      relativ kleiner Funktionen selbst relativ klein ist.
+      Dazu teile $\varepsilon$ durch $n$ um ein geeignetes
+      $\delta$ als Minimum $n$ verschiedener $\delta$ zu bekommen.
+      \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{question}
+  Können wir die Differenzierbarkeit von Abbildungen
+  $f \colon \mathbb{R}^m \to \mathbb{R}$ weiter 
+  auf die Differenzierbarkeit von Funktionen
+  $g \colon \mathbb{R} \to \mathbb{R}$ zurückführen?
+  Konkreter: Ist $f \colon \mathbb{R}^m \to \mathbb{R}$ 
+  bei $p = 0$ differenzierbar, falls die Einschränkung
+  von $f$ auf allen Koordinatenachsen differenzierbar ist?
+\end{question}
+
+Die Antwort hier ist leider ``nein'', wie in folgendem
+Beispiel zu erkennen ist.
+
+\begin{example}
+  Betrachte die Funktion
+  \begin{align*}
+    f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+    (x, y) & \mapsto 
+    \begin{cases}
+      \frac{xy}{x^2 + y^2} & (x, y) \neq (0, 0) \\
+      0 & (x, y) = (0, 0).
+    \end{cases}
+  \end{align*}
+  Die Einschränkung von $f$ auf beide Achsen ist identisch null,
+  also differenzierbar. Aber $f$ ist nicht einmal stetig im Nullpunkt:
+  \[
+    \lim_{n \to \infty} f(1/n, 1/n) = \frac{1}{2} \neq f(0, 0).
+  \]
+  Vergleiche auch Serie 6 für ein Beispiel einer Funktion, die
+  trotz Stetigkeit im Nullpunkt dort nicht differenzierbar ist.
+\end{example}
+
 
 
 \end{document}
