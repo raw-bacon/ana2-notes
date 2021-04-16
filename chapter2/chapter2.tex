@@ -48,6 +48,18 @@ definieren.
   \leq \varepsilon \cdot \Vert h \Vert_2$.
 \end{definition}
 
+\begin{remark}
+  Das Differential ist a priori nur für diejenigen
+  $h$ definiert, für die $p + h$ noch in $U$ 
+  liegt. Da $U$ aber offen ist, existiert aber
+  eine Basis von $\mathbb{R}^m$ aus Vektoren
+  $h_i$ für die $p + h_i$ noch in $U$ liegt.
+  Da lineare Abbildungen durch die Bilder der
+  Basisvektoren eindeutig bestimmt sind, lässt
+  sich das Differential auf ganz $\mathbb{R}^m$
+  erweitern.
+\end{remark}
+
 \begin{example}
   Sei $L \colon \mathbb{R}^m \to \mathbb{R}^n$ linear.
   Dann gilt für alle $p, h \in \mathbb{R}^m$,
@@ -316,7 +328,239 @@ Beispiel zu erkennen ist.
   trotz Stetigkeit im Nullpunkt dort nicht differenzierbar ist.
 \end{example}
 
+\begin{remark}
+  Falls $f$ an der Stelle $p \in U$ eine
+  Dreigliedentwicklung besitzt,
+  dann ist diese eindeutig.
+  Insbesondere ist das Differential 
+  ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$ 
+  wohldefiniert.
+  Der Grund für die Eindeutigkeit des Differentials
+  liegt darin, dass nur die Nullfunktion
+  gleichzeitig linear und relativ klein ist.
+  Man kann zeigen, dass die Differenz
+  zweier potentiellen Differentialen derselben Funktion
+  diese Eigenschaften erfüllt.
+  Die Details dazu werden in Serie 7 behandelt.
+\end{remark}
+
+\begin{definition}
+  Das Differential ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$ 
+  einer differenzierbaren Funktion $f$
+  ist linear,
+  hat also bezüglich der Standardbasen auf
+  $\mathbb{R}^m$ und $\mathbb{R}^n$ eine
+  Abbildungsmatrix ${(Jf)}_p \in \mathbb{R}^{n \times m}$,
+  genannt \emph{Jakobimatrix} von $f$ an der
+  Stelle $p \in U$.
+\end{definition}
+
+Wir bestimmen nun die Einträge der Jakobimatrix
+${(Jf)}_p$.
+Schreibe wie üblich
+\[
+  f(p) = \sum_{k=1}^{n} f_k(p) e_k.
+\]
+Die Koeffizienten von ${(Jf)}_p$ sind dann
+\begin{align*}
+  {({(Jf)}_p)}_{ij} 
+  &= \langle {(Df)}_p(e_j), e_i \rangle  \\
+  &= \left\langle 
+    \sum_{k=1}^{n} {(Df_k)}_p(e_j) e_k,
+    e_i
+  \right\rangle \\
+  &= {(Df_i)}_p(e_j).
+\end{align*}
+
+\begin{definition}
+  Sei $U \subset \mathbb{R}^m$ offen und
+  $f \colon U \to \mathbb{R}^n$ differenzierbar.
+  Die $j$-te \emph{partielle Ableitung}
+  von $f_i \colon \mathbb{R}^m \to \mathbb{R}$ ist
+  gegeben durch
+  \[
+    \frac{\partial f_i}{\partial x_j}(p) = {(Df_i)}_p(e_j) \in \mathbb{R}.
+  \]
+\end{definition}
+
+Gemäss dieser Definition ist dann
+\[
+  {(Jf)}_p =
+  \begin{pmatrix}
+    {\partial f_1}/{\partial x_1}(p)
+    & {\partial f_1}/{\partial x_2}(p)
+    & \cdots
+    &{\partial f_1}/{\partial x_m}(p)
+    \\
+    {\partial f_2}/{\partial x_1}(p)
+    & {\partial f_2}/{\partial x_2}(p)
+    & \cdots
+    & {\partial f_2}/{\partial x_m}(p)\\
+    \vdots & \vdots & \ddots & \vdots \\
+    \partial f_n / \partial x_1 (p)
+    & \partial f_n / \partial x_2 (p)
+    & \cdots
+    & \partial f_n / \partial x_m(p)
+  \end{pmatrix}.
+\]
+Im Spezialfall $n = 1$, das heisst,
+dass $f \colon \mathbb{R}^m \to \mathbb{R}$ 
+skalare Werte annimmt, erhalten wir
+einen Zeilenvektor ${(Jf)}_p$.
+Der transponierte Vektor
+ \[
+   {(\nabla f)}_p =
+   \begin{pmatrix}
+     \partial f / \partial x_1 (p) \\
+     \vdots \\
+     \partial f/ \partial x_m (p)
+   \end{pmatrix}
+   \in \mathbb{R}^m
+\]
+heisst \emph{Gradient} von $f$ bei $p$.
+Es gilt
+\[
+  {(Df)}_p(v) = \langle {(\nabla f)}_p, v \rangle.
+\]
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^m & \to \mathbb{R} \\
+        p & \mapsto \langle p, p \rangle.
+      \end{align*}
+      In Koordinaten ist
+      \[
+        f(x_1, x_2, \dots, x_m) = x_1^2 + x_2^2 + \cdots + x_m^2
+      \]
+      und es gilt
+      \[
+        {(\nabla f)}_p =
+        \begin{pmatrix}
+          2x_1 \\
+          2x_2 \\
+          \vdots \\
+          2x_m
+        \end{pmatrix}
+        = 2p.
+      \]
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^m & \to \mathbb{R} \\
+        p & \mapsto \sqrt{\langle p, p \rangle} = \Vert p \Vert_2.
+      \end{align*}
+      Dann gilt
+      \[
+        {(Df)}_p(v) = \left\langle \frac{p}{\Vert p \Vert_2}, v \right\rangle,
+      \]
+      also ist
+      \[
+        {(\nabla f)}_p = \frac{p}{\Vert p \Vert_2}.
+      \]
+      In Koordinaten liest sich das als
+      \[
+        {(\nabla f)}_{(x_1, \dots, x_m)} 
+        = \frac{1}{\sqrt{x_1^2 + \cdots + x_m^2}}
+        \begin{pmatrix}
+          x_1 \\
+          \vdots\\
+          x_m
+        \end{pmatrix},
+      \]
+      wobei $f(x_1, \dots, x_m) = \sqrt{x_1^2 + \cdots + x_m^2}$.
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto xy.
+      \end{align*}
+      Es gilt dann
+      \[
+        {(Df)}_p(v) = y v_1 + x v_2.
+      \]
+      Also ist
+      \[
+        {(\nabla f)}_{(x, y)} =
+        \begin{pmatrix}
+          y \\ x
+        \end{pmatrix}.
+      \]
+  \end{enumerate}
+\end{examples}
+
+Mithilfe folgender Proposition können wir ${(Df)}_p(v)$ 
+für beliebige $v \in \mathbb{R}^n$ ausrechnen.
+Insbesondere liefert sie Möglichkeiten für die
+Berechnung der Partiellen Ableitungen
+$\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
+
+\begin{proposition*}
+  Sei $f \colon \mathbb{R}^m \to \mathbb{R}$ differenzierbar
+  an der Stelle $p \in \mathbb{R}^m$.
+  Dann gilt für alle $v \in \mathbb{R}^m$, dass
+  \[
+    {(Df)}_p(v) = \lim_{t \to 0}
+    \frac{f(p + tv) - f(p)}{t}.
+  \]
+\end{proposition*}
+
+\begin{proof}
+  Falls $v = 0$ gilt, dann gilt
+  \[
+    {(Df)}_p(0) = 0 = \lim_{t \to 0} \frac{f(p) - f(p)}{t}.
+  \]
+  Für $v \neq 0$ folgt aus der Dreigliedentwicklung
+  bei $p$, dass
+  \[
+    f(p + tv)  f(p)
+    = {(Df)}_p(tv) + {(Rf)}_p(tv).
+  \]
+  Mithilfe der Linearität folgern wir, dass
+  \[
+    {(Df)}_p(v) = \frac{f(p + tv) - f(p)}{t} - \frac{{(Rf)}_p(tv)}{t}.
+  \]
+  Sei $\varepsilon > 0$ vorgegeben. Wähle $\delta > 0$ 
+  so, dass für alle $h$ mit $\Vert h \Vert_2 \leq \delta$ 
+  gilt, dass $\Vert {(Rf)}_p(h) \Vert_2 \leq \varepsilon \cdot
+  \Vert h \Vert_2 / \Vert v \Vert_2$.
+  Für $t \leq \delta / \Vert v \Vert_2$ gilt dann,
+  dass $\Vert tv \Vert_2 \leq \delta$,
+  also gilt auch, dass
+  $\Vert {(Rf)}_p (tv) \leq \varepsilon 
+  \cdot \Vert t v \Vert_2 /\Vert v \Vert_2$.
+  Wir schliessen, dass
+  \[
+    \left\Vert \frac{{(Rf)}_p(tv)}{t} \right\Vert
+    \leq \frac{\varepsilon \cdot \Vert v \Vert_2}{\Vert v \Vert_2} 
+    = \varepsilon.
+  \]
+  In anderen Worten ist
+  \[
+    \lim_{t \to 0} \frac{{(Rf)}_p(tv)}{t} = 0. \qedhere
+  \]
+\end{proof}
+
+\begin{remark}
+  Die Existenz des Grenzwerts
+  \[
+    \lim_{t \to 0} \frac{f(p + tv) - f(p)}{t}
+  \]
+  für alle $v \in \mathbb{R}^m$ impliziert nicht
+  die Differenzierbarkeit von $f$ an der Stelle $p$.
+\end{remark}
+
+\begin{example}
+  Die Funktion
+  \begin{align*}
+    f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+    (x, y) & \mapsto \frac{xy(x-y)}{x^2 + y^2}
+  \end{align*}
+  ist nicht differenzierbar bei $p = 0$,
+  obwohl die Funktion auf allen eindimensionalen Untervektorräumen
+  von $\mathbb{R}^2$ linear ist.
+  Siehe Serie 6 für die Details.
+\end{example}
 
 
 \end{document}
-
