@@ -215,11 +215,11 @@ Wir werden sie später in diesem Kapitel beweisen.
   \]
 \end{definition}
 
-\begin{lemma}
+\begin{lemma*}
   Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar,
   genau dann wenn alle Komponentenfunktionen 
   $f_k \colon \mathbb{R}^m \to \mathbb{R}$ bei $p$ differenzierbar sind.
-\end{lemma}
+\end{lemma*}
 
 \begin{proof}
   Um zu zeigen, dass die Komponentenfunktionen einer
@@ -561,6 +561,292 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
   von $\mathbb{R}^2$ linear ist.
   Siehe Serie 6 für die Details.
 \end{example}
+
+\section{Die Kettenregel}
+\begin{theorem*}[Kettenregel]
+  Seien $U \subset \mathbb{R}^m$ und $V \subset \mathbb{R}^k$ 
+  offen, und sei $f \colon U \to \mathbb{R}^k$ differenzierbar
+  bei $p \in U$ mit $f(U) \subset V$,
+  sowie $g \colon V \to \mathbb{R}^n$ bei $f(p) \in V$ 
+  differenzierbar.
+  Dann ist die Komposition $g \circ f \colon U \to \mathbb{R}^n$ 
+  differenzierbar bei $p$, und es gilt
+  \[
+    {(D(g \circ f))}_p = {(Dg)}_{f(p)} \circ {(Df)}_p.
+  \]
+\end{theorem*}
+
+\begin{proof}
+  Wir leiten eine Dreigliedentwicklung
+  für $g \circ f$ bei $p \in U$ her.
+  Sei $h \in \mathbb{R}^m$ mit $p + h \in U$.
+  Berechne mit der Dreigliedentwicklung von $f$, dass
+  \begin{align*}
+    g \circ f ( p + h)
+    & = g ( f ( p + h ))\\
+    &= g(f(p) + {(Df)}_p(h) + {(Rf)}_p(h)).
+  \end{align*}
+  Für $\overline h = {(Df)}_p(h) + {(Rf)}_p(h)$ gilt dann
+  $f(p) + \overline h = f(p+h) \in V$, da $p + h \in U$.
+  Es gilt also mit Hilfe der Dreigliedentwicklung von $g$, dass
+  \begin{align*}
+    g \circ f(p+h)
+    & = g(f(p) + \overline h) \\
+    &= g(f(p)) + {(Dg)}_{f(p)}(\overline h) + {(Rg)}_{f(p)}(\overline h) \\
+    &= g(f(p)) + {(Dg)}_{f(p)}({(Df)}_p(h)) + S_1 + S_2,
+  \end{align*}
+  wobei $S_1 = {(Dg)}_{f(p)}({(Rf)}_p(h))$ und
+  $S_2 = {(Rg)}_{f(p)}({(Df)}_p(h) + {(Rf)}_p(h))$.
+  Wir zeigen nun, dass $S_1$ und $S_2$ relativ klein
+  in $\Vert h \Vert_2$ sind.
+  Es folgt dann nämlich, dass
+  \[
+    g(f(p + h)) = g(f(p)) + {(Dg)}_{f(p)}({(Df)}_p(h)) + S_1 + S_2
+  \]
+  eine Dreigliedentwicklung für die Komposition
+  $g \circ f$ an der Stelle $p$ ist,
+  was das Theorem impliziert.
+  Die Behauptung folgt aus untenstehendem Lemma.
+\end{proof}
+
+\begin{lemma*}
+  Seien $A_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
+  und $A_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ linear,
+  so wie $R_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
+  und $\mathbb{R}_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ 
+  relativ klein in $\Vert h \Vert_2$.
+  Dann sind die Ausdrücke
+  \begin{enumerate}[\normalfont(i)]
+    \item $A_2(R_1(h))$ 
+    \item $R_2(A_1(h)) + R_1(h)$
+  \end{enumerate}
+  relativ klein in $\Vert h \Vert_2$.
+\end{lemma*}
+
+\begin{proof}
+  Wir erinnern uns zunächst an die Operatornorm
+  \[
+    \Vert A \Vert_{\text{op}} =
+    \sup \left\{\frac{\Vert A(v) \Vert_2}{\Vert v \Vert_2}
+    \mid v \in \mathbb{R}^m \setminus \{0\} \right\}
+  \]
+  einer linearen Abbildung $A \colon \mathbb{R}^m \to \mathbb{R}^n$.
+  Setze $a_1 = \Vert A_1 \Vert_{\text{op}}$ und 
+  $a_2 = \Vert A_2 \Vert_{\text{op}}$.
+  Falls $A_2 = 0$, dann ist $A_2(R_1(h)) = 0$, was
+  relativ klein in $\Vert h \Vert_2$ ist.
+  \begin{enumerate}[(i)]
+    \item 
+      Falls $A_2 \neq 0$ gilt, dann gilt $a_2 > 0$.
+      Sei $\varepsilon > 0$ vorgegeben. Wähle ein
+      $\delta > 0$ so, dass
+      für $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$ gilt,
+      dass $\varepsilon / a_2 \Vert h \Vert_2$ folgt.
+      Dann gilt
+      \[
+        \Vert A_2(R_1(h)) \Vert_2 \leq a_2 \cdot \Vert R_1(h) \Vert_2
+        \leq \varepsilon \cdot \Vert h \Vert_2.
+      \]
+    \item 
+      Sei $\varepsilon > 0$ vorgegeben.
+      Wähle $\delta_1 > 0$ so, dass für alle
+      $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta_1$ 
+      gilt, dass $\Vert R_1(h) \Vert_2 \leq \Vert h \Vert_2$.
+      Dann folgt, dass
+      \begin{align*}
+        \Vert A_1(h) + R_1(h) \Vert_2 \leq 
+        &= \Vert A_1(h) \Vert_2 + \Vert R_1(h) \Vert_2  \\
+        &\leq a_1 \Vert h \Vert_2 + \Vert h \Vert_2 \\
+        &= (a_1 + 1) \Vert h \Vert_2.
+      \end{align*}
+      Wähle $\delta_2 > 0$ so dass für
+      $v \in \mathbb{R}^k$ 
+      und $\Vert v \Vert_2 \leq \delta_2$ gilt,
+      dass
+      $\Vert R_2(v) \Vert_2 \leq \varepsilon/(a_1 + 1) \cdot \Vert v \Vert_2$.
+      Wähle nun $\delta = \min \left\{\delta_1,
+      \delta_2 / (a_1 + 1) \right\}$.
+      Für alle $h \in \mathbb{R}^m$ mit
+      $\Vert h \Vert_2 \leq \delta$ gilt dann, dass
+      \[
+        \Vert A_1(h) + R_1(h) \Vert_2
+         \leq (a_1 + 1) \Vert h \Vert_2 \leq \delta_2
+      \]
+      Setze nun $v = A_1(h) + R_1(h)$.
+      Wir folgern wegen $\Vert v \Vert_2 \leq \delta_2$, dass
+      \begin{align*}
+        \Vert R_2(A_1(h) + R_1(h)) \Vert 
+        & = \Vert R_2(v) \Vert_2  \\
+        &\leq \varepsilon / (a_1 + 1) \cdot \Vert v \Vert_2 \\
+        &\leq \varepsilon \cdot \Vert h \Vert_2.
+      \end{align*}
+      Also ist $R_2(A_1(h) + R_1(h))$ relativ klein
+      in $\Vert h \Vert_2$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\subsection*{Anwendungen der Kettenregel}
+\subsubsection*{Dimension eins}
+Sei $f \colon \mathbb{R} \to \mathbb{R}$ 
+an der Stelle $x \in \mathbb{R}$ differenzierbar.
+Dann gilt für alle $h \in \mathbb{R}$,
+dass
+\[
+  {(Df)}_x(h) = h \cdot {(Df)}_x(1) = h \cdot
+  \lim_{t \to 0} \frac{f(x + t \cdot 1) - f(x)}{t}.
+\]
+Daraus folgt, dass ${(Df)}_x(h) = h \cdot f'(x)$.
+Insbesondere ist $f'(x) = {(Df)}_x(1)$.
+Seien nun $f \colon \mathbb{R} \to \mathbb{R}$ und
+$g \colon \mathbb{R} \to \mathbb{R}$ an den Stellen
+$x \in \mathbb{R}$ beziehungsweise
+$f(x) \in \mathbb{R}$ differenzierbar.
+Dann ist $g \circ f \colon \mathbb{R} \to \mathbb{R}$ 
+an der Stelle $x$ differenzierbar und es gilt
+\begin{align*}
+   {(g \circ f)}'(x)  
+   & = {(D(g \circ f ))}_x(1) \\
+   &={(Dg)}_{f(x)} ({(Df)}_x(1)) \\
+   &  = {(Dg)}_{f(x)}(f'(x)) \\
+   &= f'(x) \cdot g'(f(x)).
+\end{align*}
+Wir haben somit die eindimensionale Kettenregel
+\[
+  {(g \circ f)}'(x) = g'(f(x)) \cdot f'(x)
+\]
+erfolgreich aus der höherdimensionalen
+Version hergeleitet.
+
+\subsubsection*{Die Produktregel}
+Seien $f, g \colon \mathbb{R}^n \to \mathbb{R}$ an der
+Stelle $p \in \mathbb{R}^n$ differenzierbar.
+Das Produkt $f g \colon \mathbb{R}^n \to \mathbb{R}$ 
+lässt sich als Komposition
+$m \circ h$ darstellen, wobei
+\begin{align*}
+  h \colon \mathbb{R}^n & \to \mathbb{R}^2 \\
+  q & \mapsto (f(q), g(q))
+\end{align*}
+und
+\begin{align*}
+  m \colon \mathbb{R}^2 & \to \mathbb{R} \\
+  (x, y) & \mapsto xy.
+\end{align*}
+Wir erinnern uns, dass
+\[
+  {(Dh)}_p(v) = ({(Df)}_p(v), {(Dg)}_p(v))
+\]
+und
+\[
+  {(Dm)}_{(x, y)} (h_1, h_2) = y \cdot h_1 + x \cdot h_2.
+\]
+Daraus folgt, dass
+\begin{align*}
+  {(D(fg))}_p(v) 
+  &= {(D(m+h))}_p(v) \\
+  &= {(Dm)}_{h(p)}({(Dh)}_p(v))\\
+  &= {(Dm)}_{(f(p), g(p))} ({(Df)}_p(v), {(Dg)}_p(v)) \\
+  &= g(p) \cdot {(Df)}_p(v) + f(p) \cdot {(Dg)}_p(v).
+\end{align*}
+Kurz erhalten wir die \emph{Produktregel}
+\[
+  {(D(fg))}_p = g(p) \cdot {(Df)}_p + f(p) \cdot {(Dg)}_p.
+\]
+
+\begin{remark}
+  Die Summe $f + g \colon \mathbb{R}^n \to \mathbb{R}$ 
+  ist ebenso differenzierbar bei $p \in \mathbb{R}^n$ 
+  und es gilt
+  \[
+    {(D(f+g))}_p = {(Df)}_p + {(Dg)}_p.
+  \]
+  Es folgt, dass alle polynomialen Abbildungen
+  $\mathbb{R}^n \to \mathbb{R}$ auf ganz
+  $\mathbb{R}^n$ differenzierbar sind.
+  Dies kann durch Induktion über den Grad unter
+  Benutzung der Produkt- und Additionsregeln
+  gezeigt werden.
+  Die Verankerung ist lediglich, dass
+  konstante und lineare Abbildungen 
+  $\mathbb{R}^n \to \mathbb{R}$ auf $\mathbb{R}^n$ 
+  differenzierbar sind.
+  Insbesondere sind dies alle Koordinatenfunktionen
+  $x_i \colon \mathbb{R}^n \to \mathbb{R}$.
+\end{remark}
+
+\subsubsection*{Extrema von Abbildungen}
+\begin{definition}
+Sei $U \subset \mathbb{R}^n$ offen und
+$f \colon U \to \mathbb{R}$ eine Abbildung.
+Dann hat $f$ an der Stelle $p \in U$ 
+ein \emph{lokales Minimum} (beziehungsweise
+ein \emph{lokales Maximum})
+falls ein $r > 0$ existiert mit
+\begin{enumerate}[(i)]
+  \item $B_p(r) = \left\{q \in \mathbb{R}^n \mid 
+    \Vert q - p \Vert_2 < r\right\} \subset U$,
+  \item für alle $q \in B_p(r)$ gilt
+    $f(q) \geq f(p)$ (beziehungsweise $f(q) \leq f(p)$).
+\end{enumerate}
+\end{definition}
+
+\begin{proposition*}
+  Sei $f \colon U \to \mathbb{R}$ differenzierbar
+  an der Stelle $p \in U$, welche ein lokales
+  Minimum (beziehungsweise Maximum) von $f$ ist.
+  Dann gilt ${(Df)}_p = 0$.
+\end{proposition*}
+
+% \begin{remark}
+%   Wir wissen, dass ${(Df)}_p(v) = \langle {(\nabla f)}_p, v \rangle$.
+%   Also ist ${(Df)}_p = 0$ genau dann, wenn
+%   ${(\nabla f)}_p = 0$.
+% \end{remark}
+
+\begin{proof}
+  Sei $v \in \mathbb{R}^n$ beliebig.
+  Wähle $\delta > 0$ so, dass $B_p(\delta \cdot \Vert v \Vert_2) \subset U$ 
+  gilt.
+  Definiere eine Kurve  
+  \begin{align*}
+    \gamma \colon (-\delta, \delta) & \to \mathbb{R}^n \\
+    t & \mapsto p + tv.
+  \end{align*}
+  Es gilt $\gamma(0) = p$, $\gamma'(0) = v$, und das Bild von
+  $\gamma$ liegt im Ball $B_p(\delta \cdot \Vert v \Vert_2)$.
+  Betrachte die Komposition
+  \begin{align*}
+    h \colon (-\delta, \delta) & \to \mathbb{R} \\
+    t & \mapsto f(\gamma(t)).
+  \end{align*}
+  Nach Annahme hat die Funktion $h$ an der Stelle $t = 0$ 
+  ein lokales Minimum (beziehungsweise Maximum).
+  Wir bemerken mit der Kettenregel,
+  dass $h$ an der Stelle $t = 0$
+  differenzierbar ist.
+  Es folgt aus Diskussion in der Analysis I, dass $h'(0) = 0$.
+  Andererseits gilt
+  \[
+    h'(0) = {(Dh)}_0(1) = {(Df)}_{\gamma(0)}({(D\gamma)}_0(1))
+    = {(Df)}_{\gamma(0)}(\gamma'(0)) = {(Df)}_p(v).
+    \qedhere
+  \]
+\end{proof}
+
+\begin{example}
+  Die Funktion
+  \begin{align*}
+    \ell \colon \mathbb{R}^n & \to \mathbb{R} \\
+    p & \mapsto \langle p, p \rangle
+  \end{align*}
+  hat ein (globales) Minimum bei $p = 0$.
+  Die Beobachtung, dass ${(\nabla \ell)}_0 = 0$ gilt,
+  ist kompatibel mit obiger Proposition.
+\end{example}
+
+
+
+
 
 
 \end{document}
