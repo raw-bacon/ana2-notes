@@ -844,6 +844,185 @@ falls ein $r > 0$ existiert mit
   ist kompatibel mit obiger Proposition.
 \end{example}
 
+\subsubsection*{Gradient und Niveaulinien}
+Seien $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+und $f \colon \mathbb{R}^n \to \mathbb{R}$ differenzierbar.
+Dann ist die Komposition $h = f \circ \gamma \colon \mathbb{R} \to \mathbb{R}$ 
+differenzierbar. Es gilt für alle $t \in \mathbb{R}$, dass
+\begin{align*}
+   h'(t)   
+   &= {(Dh)}_t(1) = {(Df)}_{\gamma(t)}({(D\gamma)}_t(1))  \\
+   &= {(Df)}_{\gamma(t)}(\dot \gamma(t)) \\
+   &= \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle.
+\end{align*}
+
+\begin{proposition}
+  Sei $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+  eine differenzierbare Kurve und 
+  $f \colon \mathbb{R}^n \to \mathbb{R}$ eine
+  differenzierbare Funktion.
+  Dann ist $h = f \circ \gamma$ konstant, genau dann,
+  wenn für all $t \in \mathbb{R}$ 
+  der Gradient ${(\nabla f)}_{\gamma(t)}$ senkrecht auf
+  $\dot \gamma(t)$ steht.
+\end{proposition}
+
+\begin{proof}
+  Die Funktion $h$ ist konstant, genau dann,
+  wenn $h'(t) = 0$ für alle $t \in \mathbb{R}$ gilt.
+  Dies wieerum ist äquivalent dazu zu fordern, dass
+  \[
+    \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle = 0.
+    \qedhere
+  \]
+\end{proof}
+
+\begin{definition}
+  Das Bild einer Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+  heisst \emph{Niveaulinie} von $f$,
+  falls $f \circ \gamma(t)$ konstant ist.
+\end{definition}
+
+Der Gradient von $f$ steht somit senkrecht auf den Niveaulinien, siehe Abbildung~~\ref{fig:niveau}
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics{figures/niveau}
+  \caption{Eine Niveaulinie}%
+  \label{fig:niveau}
+\end{figure}
+
+\begin{example}
+  Betrachte die Funktion
+  \begin{align*}
+    f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+    p & \mapsto \langle p, p \rangle
+  \end{align*}
+  und die Kurve
+  \begin{align*}
+    \gamma \colon \mathbb{R} & \to \mathbb{R}^2 \\
+    t & \mapsto (\cos(t), \sin(t)).
+  \end{align*}
+  Es gilt für alle $t \in \mathbb{R}$,
+  dass
+  \[
+  \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle
+  = \langle 2 \gamma(t), \dot \gamma(t) \rangle = 0.
+  \]
+  Tatsächlich sind die Kurven
+  \begin{align*}
+    \gamma_r \colon \mathbb{R} & \to \mathbb{R}^2 \\
+    t & \mapsto (r\cos(t), r\sin(t))
+  \end{align*}
+  für alle $r > 0$ Niveaulinien von $f$.
+\end{example}
+
+\subsubsection*{Der Mittelwertsatz}
+Sei $a, b \in \mathbb{R}^n$ mit $a \neq b$.
+Definiere $I_{a, b} = \left\{a + t(b-a) \mid t \in [0, 1]\right\}$.
+Die Menge $I_{a, b}$ besteht aus allen Punkten die auf dem Geradenabschnitt
+zwischen $a$ und $b$ liegen.
+
+\begin{theorem}[Mittelwertsatz]
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ differenzierbar
+  und $a, b \in \mathbb{R}^n$ mit $a \neq b$.
+  Dann existiert $p \in I_{a, b} \setminus \{a, b\}$ mit
+  \[
+    {(Df)}_p(b-a) = f(b) - f(a).
+  \]
+\end{theorem}
+
+\begin{specialcases}
+  \leavevmode
+  \begin{enumerate}[(i)]
+    \item Sei $f \colon \mathbb{R} \to \mathbb{R}$ (das heisst $n = 1$).
+      Seien $a, b \in \mathbb{R}$ mit $a < b$.
+      Dann existiert $x \in I_{a, b} \setminus \{a, b\} = (a, b)$ 
+      mit ${(Df)}_{x(b-a) = f(b) - f(a)}$.
+      Es gilt also
+      \[
+        f'(x) = \frac{f(b) - f(a)}{b-a}.
+      \]
+      Wir haben also die eindimensionale Version des Mittelwertsatzes
+      erfolgreich aus der momentanen Version extrahiert.
+    \item Nehme an, dass  $f(b) = f(a)$ gilt.
+      Dann existiert $p \in I_{a, b} \setminus \{a, b\}$ 
+      mit
+      \[
+        \langle {(\nabla f)}_{p}, b-a \rangle
+        = {(Df)}_p(b-a) = 0,
+      \]
+      das heisst ${(\nabla f)}_p$ steht senkrecht auf $b-a$.
+      Betrachte zum Beispiel
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        p & \mapsto \langle p, p \rangle
+      \end{align*}
+      und seien $a, b \in \mathbb{R}^2$ mit $\Vert a \Vert_2 = \Vert b \Vert_2$.
+      Für $p = (a + b)/2$ gilt dann
+      ${(\nabla f)}_p = 2p$, was senkrecht auf $b - a$ steht.
+  \end{enumerate}
+\end{specialcases}
+
+\begin{proof}[Beweis des Mittelwertsatzes]
+  Wir leiten das Resultat aus dem Satz von Rolle aus der
+  Analysis I her.
+  Betrachte die Hilfsfunktion
+  \begin{align*}
+    h \colon [0, 1] & \to \mathbb{R} \\
+    t & \mapsto f(a + t(b-a)) - f(a) - t(f(b) - f(a)).
+  \end{align*}
+  Berechne
+  \[
+    h (0) = h(1) = 0.
+  \]
+  Für alle $t \in (0, 1)$ gilt dank der Kettenregel, dass
+  \[
+    h'(t) = {(Df)}_{a + t(b-a)}(b-a) - (f(b) - f(a)),
+  \]
+  da ${(Df)}_{\gamma(t)}(\dot \gamma(t)) = {(Df)}_{a + t(b-a)}(b-a)$.
+  Nach dem Satz von Rolle existiert $t_0 \in (0, 1)$ 
+  mit $h'(t_0) = 0$.
+  Setze $p = a + t_0(b-a) \in I_{a, b} \setminus \{a, b\}$.
+  Dann gilt
+  \[
+    0 = h'(t_0) = {(Df)}_{a + t_0(b-a)}(b-a) - (f(b) - f(a)).
+  \]
+  Es folgt, dass ${(Df)}_p(b-a) = f(b) - f(a)$.
+\end{proof}
+
+\subsubsection*{Diffeomorphismen}
+\begin{definition}
+  Eine differenzierbare bijektive Abbildung
+  $f \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  heisst \emph{Diffeomorphismus}, falls $f$ 
+  eine differenzierbare Umkehrabbildung $g \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  hat.
+  Das heisst, dass $g \circ f = f \circ g = \text{Id}_{\mathbb{R}^n}$.
+\end{definition}
+
+Für einen Diffeomorphismus $f \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+mit Umkehrabbildung $g$ erhalten wir dann
+\[
+  {(Dg)}_{f(p)} \circ {(Df)}_p 
+  = {(D \text{Id}_{\mathbb{R}^n})}_p = \text{Id}_{\mathbb{R}^n}.
+\]
+Ähnlich gilt auch ${(Df)}_p \circ {(Dg)}_{f(p)} = \text{Id}_{\mathbb{R}^n}$ 
+Folglich sind die linearen Abbildungen
+${(Df)}_p$ und ${(Dg)}_{f(p)}$ zueinander
+inverse Vektorraumisomorphismen von $\mathbb{R}^n$.
+Insbesondere gilt
+$\det {(Df)}_p \neq 0$.
+
+
+
+
+
+
+
+
+
+
 
 
 
