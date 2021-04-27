@@ -856,7 +856,7 @@ differenzierbar. Es gilt für alle $t \in \mathbb{R}$, dass
    &= \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle.
 \end{align*}
 
-\begin{proposition}
+\begin{proposition*}
   Sei $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
   eine differenzierbare Kurve und 
   $f \colon \mathbb{R}^n \to \mathbb{R}$ eine
@@ -865,7 +865,7 @@ differenzierbar. Es gilt für alle $t \in \mathbb{R}$, dass
   wenn für all $t \in \mathbb{R}$ 
   der Gradient ${(\nabla f)}_{\gamma(t)}$ senkrecht auf
   $\dot \gamma(t)$ steht.
-\end{proposition}
+\end{proposition*}
 
 \begin{proof}
   Die Funktion $h$ ist konstant, genau dann,
@@ -1014,18 +1014,291 @@ inverse Vektorraumisomorphismen von $\mathbb{R}^n$.
 Insbesondere gilt
 $\det {(Df)}_p \neq 0$.
 
+\section{Der Umkehrsatz}
+In~\cite{heuser} ist der Umkehrsatz im Abschnitt 171 diskutiert.
+Wir haben oben gesehen, dass Differentiale differenzierbare Abbildungen
+mit differenzierbarer Umkehrfunktion Vektorraumisomorphismen sind.
+In diesem Abschnitt werden wir die Umkehrung dieser Aussage
+untersuchen.
 
+\begin{example}
+  Sei $A \colon \mathbb{R}^n \to \mathbb{R}^n$ linear
+  mit $\det(A) = \det({(DA)}_p) \ne 0$.
+  Dann ist $A$ eine differenzierbare Funktion
+  mit differenzierbarer Umkehrabbildung $A^{-1}$.
+\end{example}
 
+Wir erinnern uns nun an ein eindimensionales Phänomen,
+welches wir bereits in der Analysis I untersucht haben.
+Sei $f \colon \mathbb{R} \to \mathbb{R}$ 
+differenzierbar mit $f'(x) > 0$ für alle $x \in \mathbb{R}$.
+Dann ist $f$ injektiv.
+Tatsächlich gilt für alle $a, b \in \mathbb{R}$ mit $a < b$,
+dass
+\[
+  f(b) - f(a) = \int_{a}^{b} f'(x) \, dx > 0.
+\]
+Insbesondere gilt $f(b) \neq f(a)$.
 
+\begin{question}
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}^n$ stetig
+  differenzierbar, so dass für alle
+  $p \in \mathbb{R}^n$ gilt, dass
+  das Differential ${(Df)}_p$ in allen Punkten
+  $p \in \mathbb{R}^n$ ein Isomorphismus ist, das heisst
+  $\det({(Df)}_p) \neq 0$.
+  Ist dann $f$ injektiv?
+\end{question}
 
+Die Antwort dazu ist nein, wie folgendes Beispiel zeigt.
 
+\begin{example}
+  Betrachte die \emph{komplexe Exponentialfunktion}
+  \begin{align*}
+    f \colon \mathbb{R}^2 & \to \mathbb{R}^2 \\
+    (x, y) & \mapsto (e^{x} \cos y, e^x \sin y).
+  \end{align*}
+  Dann ist $f$ stetig differenzierbar, da die Komponentenfunktionen
+  $f_1(x, y) = e^{x} \cos y$ und $f_2(x, y) = e^x \sin y$ 
+  differenzierbar sind. Das folgt aus Betrachtungen in
+  der Analysis I und der Produktregel.
+  Berechne für $p = (x, y)$ die Jakobimatrix
+  \[
+    {(Jf)}_p =
+    \begin{pmatrix}
+      \frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y} \\
+      \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      e^y \cos y & - e^x \sin y \\
+      e^x \sin y & e^x \cos y
+    \end{pmatrix}.
+  \]
+  Aus $\cos^2 + \sin^2 = 1$ folgt, dass $\det({(Jf)}_p) = e^x > 0$ 
+  für alle $p = (x, y)$.
+  Aber $f$ ist nicht injektiv, da $f(x, y) = f(x, y + 2 \pi)$ gilt.
+\end{example}
 
+\subsection*{Stetige Differenzierbarkeit}
+Sei $U \subset \mathbb{R}^n$ offen und
+$f \colon U \to \mathbb{R}^m$ differenzierbar.
+Dann erhalten wir für alle $p \in U$ eine lineare
+Abbildung ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$,
+das heisst, dass ${(Df)}_p \in \text{Hom}(\mathbb{R}^n, \mathbb{R}^m)$,
+wobei $\text{Hom}(\mathbb{R}^n, \mathbb{R}^m)$ aus
+allen linearen Abbildungen $L \colon \mathbb{R}^n \to \mathbb{R}^m$ besteht.
+Auf $\text{Hom}(\mathbb{R}^n, \mathbb{R}^m)$ haben wir
+eine Norm, nämlich die Operatornorm $\Vert \cdot \Vert_{\text{op}}$.
 
+\begin{definition}
+  Sei $U \subset \mathbb{R}^n$ offen.
+  Eine Abbildung $f \colon U \to \mathbb{R}^m$ heisst
+  \emph{stetig differenzierbar} oder $C^1$,
+  falls $f$ differenzierbar ist, und die Abbildung
+  \begin{align*}
+    df \colon U & \to \text{Hom}(\mathbb{R}^n, \mathbb{R}^m) \\
+    p & \mapsto {(Df)}_p
+  \end{align*}
+  bezüglich der Operatornorm auf $\text{Hom}(\mathbb{R}^n, \mathbb{R}^m)$ 
+  stetig ist.
+  Ausgepackt heisst das, dass für alle $p \in U$ 
+  und alle $\varepsilon > 0$ ein $\delta > 0$ 
+  existiert, so dass
+  \begin{enumerate}[(i)]
+    \item $B_p(\delta) \subset U$, 
+    \item für alle $q \in B_p(\delta)$ gilt, dass
+      $\Vert {(Df)}_q - {(Df)}_p \Vert_{\text{op}} \leq \varepsilon$.
+  \end{enumerate}
+\end{definition}
 
+In Koordinaten heisst das, dass die Einträge der
+Jakobimatrix ${(Jf)}_p \in \mathbb{R}^{m \times n}$ stetig
+von $p$ abhangen.
+In anderen Worten ist für alle $i \leq m$ und $j \leq n$ 
+die partielle Ableitungsfunktion
+\begin{align*}
+  \frac{\partial f_i}{\partial x_j} \colon U & \to \mathbb{R} \\
+  p & \mapsto \frac{\partial f_1}{\partial x_j}(p)
+  = \lim_{t \to 0} \frac{f_i(p + te_j) - f_i(p)}{t}
+\end{align*}
+stetig.
 
+\begin{remarks}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Die Existenz der partiellen Ableitungsfunktionen
+      reicht nicht, um die Differenzierbarkeit von $f$ zu garantieren.
+      Das Beispiel dazu war die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto 
+        \begin{cases}
+          0 & (x, y) = (0, 0),\\
+          \frac{xy}{x^2 + y^2} & (x, y) \neq (0, 0).
+        \end{cases}
+      \end{align*}
+      Diese Funktion $f$ hat in allen Punkten $p = (x, y)$ partielle
+      Ableitungen, ist aber nicht einmal stetig bei $p = (0, 0)$.
+    \item Es existiert dennoch ein Differenzierbarkeitskriterium,
+      welches auf der Stetigkeit der partiellen Ableitungen beruht.
+  \end{enumerate}
+\end{remarks}
 
+\begin{proposition}\label{prop:continuous-partial-derivatives}
+  Sei $U \subset \mathbb{R}^n$ offen und
+  $f \colon U \to \mathbb{R}$ eine Abbildung,
+  so dass für alle $j \leq n$ und alle $p \in U$ 
+  die partielle Ableitung $\partial f/ \partial x_j (p) \in \mathbb{R}$ 
+  existiert, und die Funktion
+  \begin{align*}
+    \frac{\partial f}{\partial x_j} \colon U & \to \mathbb{R} \\
+    p & \mapsto \frac{\partial f}{\partial x_j}(p)
+  \end{align*}
+  stetig ist.
+  Dann ist $f$ stetig differenzierbar und insbesondere differenzierbar.
+\end{proposition}
 
+Wir werden Proposition~\ref{prop:continuous-partial-derivatives}
+nicht beweisen. Der Beweis kann
+in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Alle polynomialen Abbildungen $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+      haben stetige partielle Ableitungen, sind also
+      stetig differenzierbar.
+    \item Die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R}^2 \\
+        (x, y) & \mapsto (e^x \cos y, e^x \sin y)
+      \end{align*}
+      hat stetige partielle Ableitungen und ist somit stetig
+      differenzierbar.
+  \end{enumerate}
+\end{examples}
+
+\subsection*{Lokale Injektivität}
+\begin{proposition}\label{prop:local-injectivity}
+  Sei $U \subset \mathbb{R}^n$ offen,
+  $f \colon U \to \mathbb{R}$ stetig differenzierbar,
+  und $p \in U$ so dass
+  ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  ein Isomorphismus ist.
+  Dann existiert $\varepsilon > 0$ mit
+  \begin{enumerate}[\normalfont(i)]
+    \item $B_p(\varepsilon) \subset U$,
+    \item die Einschränkung von $f$ auf $B_p(\varepsilon)$ ist
+      injektiv.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Nach Annahme ist $A = {(Df)}_p$ ein Isomorphismus.
+  Betrachte $f$ die Komposition
+  $\overline f = A^{-1} \circ f \colon U \to \mathbb{R}^n$.
+  Für alle $q \in U$ 
+  gilt nach der Kettenregel, dass
+  \[
+    {(D \overline f)}_q = {(DA^{-1})}_{f(q)} \circ {(Df)}_q
+    = A^{-1} \circ {(Df)}_q.
+  \]
+  In anderen Worten ist $\overline f$ auch stetig differenzierbar
+  und es gilt
+  \(
+    {(D \overline f)}_p = \text{Id}_{\mathbb{R}^n}.
+  \)
+
+  Wähle nun $\varepsilon > 0$ so, dass
+  \begin{enumerate}[(i)]
+    \item $B_p(\varepsilon) \subset U$,
+    \item für alle $q \in B_p(\varepsilon)$ gilt, dass
+      \(
+        \Vert {(D \overline f)}_q - {(D \overline f)}_p \Vert_{\text{op}}
+          \leq 1/2
+      \).
+  \end{enumerate}
+  Wir behaupten nun, dass die Einschränkung
+  $ \overline f |_{B_p(\varepsilon)} \colon B_p(\varepsilon) \to \mathbb{R}^n$ 
+  injektiv ist.
+  Daraus wird folgen, dass $f |_{B_p(\varepsilon)} = A \circ
+  \overline f |_{B_p(\varepsilon)}$ auch injektiv ist, da $A$ selbst
+  bijektiv ist.
+  Es bleibt also lediglich die Behauptung zu zeigen.
+
+  Dazu seien $q, \widetilde q \in B_{p}(\varepsilon)$ 
+  mit $q \neq \widetilde q$.
+  Wir wollen zeigen, dass $ \overline f(\widetilde q) \neq  \overline f(q)$.
+  Dazu betrachte die Kurve
+  \begin{align*}
+    \gamma \colon [0, 1] & \to B_p(\varepsilon) \\
+    t & \mapsto q + t(\widetilde q - q).
+  \end{align*}
+  Definiere eine Hilfsabbildung
+  \begin{align*}
+    h \colon [0, 1] & \to \mathbb{R}^n \\
+    t & \mapsto \overline f (\gamma(t)) = \overline f(q + t(\widetilde q - q)).
+  \end{align*}
+  Dann ist $h$ eine differenzierbare Kurve mit
+  \[
+    h'(t) = {(D\overline f)}_{\gamma(t)}(\dot \gamma(t))
+    = {(D \overline f)}_{q + t(\widetilde q - q)}( \widetilde q - q) \in \mathbb{R}^n.
+  \]
+  Berechne nun mithilfe dem Integralsatz
+  für Kurven, dass
+  \[
+      \overline f(\widetilde q) -  \overline f(q) 
+     = h(1) - h(0) 
+     =\int_{0}^{1} h'(t) \, dt
+    = \int_{0}^{1} {(D \overline f)}_{q + t(\widetilde q - q)}(\widetilde q - q) \, dt.
+  \]
+  Berechne nun
+  \begin{align*}
+    \overline f(\widetilde q) - \overline f(q)
+    & = \int_{0}^{1} {(D \overline f)}_p (\widetilde q - q) \, dt
+    + \int_{0}^{1} {(D \overline f)}_{q + t(\widetilde q - q)}
+    (\widetilde q - q) - {(D \overline f)}_p (\widetilde q - q)\, dt\\
+    &= \widetilde q - q + R,
+  \end{align*}
+  wobei
+  \[
+    R = \int_{0}^{1} {(D \overline f)}_{q + t(\widetilde q - q)}
+     (\widetilde q - q) - {(D \overline f)}_p (\widetilde q - q)\, dt.
+  \]
+  Schätze ab, dass
+  \[
+    \Vert R \Vert_2
+    \leq \int_{0}^{1} \Vert {(D \overline f)}_{q + t(\widetilde q - q)}
+    (\widetilde q - q) - {(D \overline f)}_p (\widetilde q - q)\Vert_2 \, dt.
+  \]
+  Für alle $t \in [0, 1]$ gilt nach Wahl von $\varepsilon$,
+  dass
+  \[
+    \Vert {(D \overline f)}_{\gamma (t)} - {(D \overline f)}_p \Vert_{\text{op}} \leq 1/2
+  \]
+  gilt, da $\gamma(t) \in B_p(\varepsilon)$.
+  Es folgt, dass
+  \[
+    \Vert {(D \overline f)}_{\gamma(t)}
+    (\widetilde q - q) - {(D \overline f)}_p (\widetilde q - q)\Vert_2 
+    \leq 1/2 \cdot \Vert \widetilde q - q \Vert_2,
+  \]
+  also auch
+  \[
+    \Vert R \Vert_2 \leq \int_{0}^{1} \frac{1}{2} \cdot
+    \Vert \widetilde q - q \Vert_2 \, dt
+    \leq \frac{1}{2} \cdot \Vert \widetilde q - q \Vert_2.
+  \]
+  Aus $\overline f (\widetilde q ) - f(q) = \widetilde q - q + R$ 
+  mit $\Vert R \Vert_2 \leq 1/2 \cdot \Vert \widetilde q \Vert_2$
+  folgt, dass
+   \[
+     \Vert \overline f (\widetilde q ) - \overline f(q) \Vert_2 \geq
+     1/2 \cdot \Vert \widetilde q - q \Vert_2,
+  \]
+  und insbesondere ist $\overline f (\widetilde q ) \neq \overline f ( q)$.
+\end{proof}
 
 
 \end{document}
