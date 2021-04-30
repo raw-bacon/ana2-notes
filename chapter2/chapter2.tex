@@ -1274,9 +1274,9 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   \]
   Für alle $t \in [0, 1]$ gilt nach Wahl von $\varepsilon$,
   dass
-  \[
+  \(
     \Vert {(D \overline f)}_{\gamma (t)} - {(D \overline f)}_p \Vert_{\text{op}} \leq 1/2
-  \]
+  \)
   gilt, da $\gamma(t) \in B_p(\varepsilon)$.
   Es folgt, dass
   \[
@@ -1293,12 +1293,140 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   Aus $\overline f (\widetilde q ) - f(q) = \widetilde q - q + R$ 
   mit $\Vert R \Vert_2 \leq 1/2 \cdot \Vert \widetilde q \Vert_2$
   folgt, dass
-   \[
+   \(
      \Vert \overline f (\widetilde q ) - \overline f(q) \Vert_2 \geq
      1/2 \cdot \Vert \widetilde q - q \Vert_2,
-  \]
+  \)
   und insbesondere ist $\overline f (\widetilde q ) \neq \overline f ( q)$.
 \end{proof}
+
+\begin{theorem}[Umkehrsatz]
+  Sei $U \subset \mathbb{R}^n$ offen, $f \colon U \to \mathbb{R}^n$ 
+  stetig differenzierbar, und $p \in U$ ein Punkt mit
+  $\det( {(Df)}_p ) \neq 0$.
+  Dann existieren offene Mengen $V, W \subset \mathbb{R}^n$
+  mit 
+  $p \in V \subset U$ und
+  $f(p) \in W$,
+  sowie eine differenzierbare Abbildung $g \colon W \to V$ mit
+  $f \circ g = \text{Id}_W$ und $g \circ f|_V = \text{Id}_V$.
+  Für alle $y \in W$ gilt ${(Dg)}_y = {(Df)}_{g(y)}^{-1}$.
+\end{theorem}
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics{figures/inversefunction}
+  \caption{Der Umkehrsatz}%
+  \label{fig:inversefunction}
+\end{figure}
+
+Die einzelnen Schritte des Beweises sind folgende.
+\begin{enumerate}[(1)]
+  \item Lokale Injektivität (siehe 
+    Proposition~\ref{prop:local-injectivity} oben),
+  \item Lokale Surjektivität,
+  \item Differenzierbarkeit der lokalen Umkehrfunktion $g \colon W \to V$.
+\end{enumerate}
+
+Um die beiden letzten Schritte des Beweises auszuführen,
+treffen wir folgende Vorbereitungen.
+\begin{enumerate}[(i)]
+  \item Definiere
+    \begin{align*}
+      \overline f \colon U & \to \mathbb{R}^n \\
+      q & \mapsto ({(Df)}_p^{-1} \circ f)(q).
+    \end{align*}
+    Dann gilt ${(D \overline f)}_p = {(Df)}_p^{-1} \circ {(Df)}_p 
+    = \text{Id}_{\mathbb{R}^n}$.
+    Wähle $\varepsilon > 0$ so, dass $B_p(\varepsilon) \subset U$,
+    und so dass für alle $q \in B_p(\varepsilon)$ gilt, dass
+    \(
+      \Vert {(D \overline f)}_q - {(D \overline f)}_p \Vert_{\text{op}}
+        \leq 1/2
+    \).
+    Für alle $q, \widetilde q \in B_p(\varepsilon)$ gilt dann, dass
+    \[
+      \overline f ( \widetilde q ) - f(q) = \widetilde q - q + R
+    \]
+    mit $\Vert R \Vert_2 \leq 1/2 \cdot \Vert \widetilde q - q \Vert_2$,
+    wie im Beweis von Proposition~\ref{prop:local-injectivity}.
+    Insbesondere gilt
+    \[
+      1/2 \cdot \Vert \widetilde q - q \Vert_2 \leq
+      \Vert \overline f ( \widetilde q ) - \overline f (q) \Vert_2
+      \leq 3/2 \cdot \Vert \widetilde q - q \Vert_2.
+    \]
+  \item Definiere $\widetilde U = U - p
+    = \left\{q \in \mathbb{R}^n \mid q + p \in U\right\}$
+    und 
+    \begin{align*}
+      \widetilde f \colon \widetilde U & \to \mathbb{R}^n \\
+      q & \mapsto f(p + q) - f(p).
+    \end{align*}
+    Dann gilt $\widetilde f ( 0 ) = \overline f(p) - \overline f (p) = 0$.
+    Weiterhin gilt ${(D\widetilde f )}_0 = \text{Id}_{\mathbb{R}^n}$.
+    Dies fällt aus der Dreigliedentwicklung
+    \[
+      \widetilde f ( 0 + h ) = \widetilde f (h)
+      = \overline f ( p + h ) - \overline f ( p )
+      = {(D \overline f )}_p(h) + {(R \overline f)}_p (h)
+    \]
+    Wir werden nun mithilfe dieser Vereinfachungen annehmen,
+    dass
+    \begin{itemize}
+      \item $p = 0$,
+      \item $f(0) = 0$,
+      \item ${(Df)}_0 = \text{Id}_{\mathbb{R}^n}$.
+    \end{itemize}
+\end{enumerate}
+
+Mit dem $\varepsilon > 0$ aus dem Beweis von
+Proposition~\ref{prop:local-injectivity} gilt,
+dass
+$f |_{B_0(\varepsilon)}$ injektiv ist.
+In einem nächsten Schritt werden wir zeigen,
+dass für das selbe $\varepsilon > 0$ auch gilt,
+dass $B_0(\varepsilon/2) \subset f(B_0(\varepsilon))$,
+das heisst, für alle $y \in \mathbb{R}^n$ 
+mit $\Vert y \Vert_2 < \varepsilon/2$ existiert
+ein $q \in \mathbb{R}^n$ mit $\Vert q \Vert_2 < \varepsilon$ 
+und $f(q) = y$.
+Nach dem ersten Schritt ist dieses $q \in B_0(\varepsilon)$ 
+dann eindeutig. Wir werden es mit $g(y)$ bezeichnen.
+
+Es stellt sich heraus, dass wir $g$ rekursiv definieren können.
+Als nullten Ansatz wählen wir \[g_0(y) = y.\]
+Da $f$ in erster Ordnung die Identität ist, sollte das
+nicht allzu schlecht sein.
+Der erste Ansatz ist dann $g_1(y) = g_0(y) + y - f(g_0(y))$.
+Rekursiv setzen wir
+\[
+  g_{n+1}(y) = g_n(y) + y - f(g_n(y)).
+\]
+
+\begin{remark}
+  Falls per Zufall $f(g_n(y)) = y$ für ein $n \in \mathbb{N}$ 
+  gilt, dann folgt auch, dass
+  \(
+    g_{n+1}(y) = g_n(y)
+  \).
+  Insbesondere ist auch $f(g_{n+1}(y)) = y$.
+\end{remark}
+
+\begin{claim}
+  Der Grenzwert $g(y) = \lim_{n \to \infty} g_n(y) \in B_{0}(\varepsilon)$ 
+  existiert, und $f(g(y)) = y$.
+\end{claim}
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
