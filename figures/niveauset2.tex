@@ -1,0 +1,12 @@
+
+\documentclass[tikz]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+  \draw[gray] (0, -2) -- (0, 2);
+  \draw[gray] (-2, 0) -- (2, 0);
+  \foreach \r in {0.1, 0.3, ..., 1.9} {
+    \draw (0, 0) circle (\r);
+  }
+\end{tikzpicture}
+\end{document}

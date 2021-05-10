@@ -1179,8 +1179,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   \end{enumerate}
 \end{examples}
 
-\subsection*{Lokale Injektivität}
-\begin{proposition}\label{prop:local-injectivity}
+\begin{proposition}[Lokale Injektivität]\label{prop:local-injectivity}
   Sei $U \subset \mathbb{R}^n$ offen,
   $f \colon U \to \mathbb{R}$ stetig differenzierbar,
   und $p \in U$ so dass
@@ -1413,16 +1412,390 @@ Rekursiv setzen wir
   Insbesondere ist auch $f(g_{n+1}(y)) = y$.
 \end{remark}
 
-\begin{claim}
+\begin{claim}[Lokale Surjektivität]
   Der Grenzwert $g(y) = \lim_{n \to \infty} g_n(y) \in B_{0}(\varepsilon)$ 
   existiert, und $f(g(y)) = y$.
 \end{claim}
 
+\begin{proof}
+  Durch vollständige Induktion zeigen wir
+  \begin{enumerate}[(i)]
+    \item $\Vert g_n(y) \Vert_2 < (1 - 1/2^{n+1}) \cdot \varepsilon$ 
+    \item $\Vert g_{n+1}(y) - g_n(y) \Vert_2 < \varepsilon / 2^{n+2}$.
+  \end{enumerate}
+  Für $n = 0$ stimmt diese Behauptung, da
+  \[
+    \Vert g_0(y) \Vert_2 = \Vert y \Vert_2 < \varepsilon / 2 = (1 - 1/2)
+    \cdot \varepsilon
+  \]
+  und
+  \[
+    \Vert g_1(y) - g_0(y) = \Vert y - f ( g_0(y)) \Vert_2
+    = \Vert y - f(y) \Vert_2 \leq \Vert R \Vert_2
+    \leq \Vert y \Vert_2 / 2 < \varepsilon / 4,
+  \]
+  wobei $R$ in der Vorbereitung (i) untersucht wurde.
+  Für den Induktionsschritt, berechne
+  \begin{align*}
+    \Vert g_{n+1}(y) \Vert_2 
+    &\leq  \Vert g_n(y) \Vert_2 + \Vert g_{n+1}(y) - g_n(y) \Vert_2 \\
+    &\leq (1 - 1/2^{n+1}) \cdot \varepsilon
+    + \varepsilon / 2^{n+2} = (1 - 1/2^{n+2}) \varepsilon.
+  \end{align*}
+  Ähnlich berechne
+  \begin{align*}
+    \Vert g_{n+2}(y) - g_{n+1}(y) \Vert_2 
+    &= \Vert g_{n+1}(y) - f(g_{n+1}(y)) - g_n(y) + f(g_n(y)) \Vert_2  \\
+    &= \Vert g_{n+1}(y) - g_n(y) - (f(g_{n+1}(y)) - f(g_n(y))) \Vert_2 \\
+    &\leq 1/2 \Vert g_{n+1}(y) - g_n(y) \Vert_2 \\
+    &< 1/2 \cdot \varepsilon \cdot 1/2^{n+2} = 1/2^{n+3}.
+  \end{align*}
+  Hier haben wir die Abschätzung aus der Vorbereitung (i)
+  sowie die Induktionsannahme verwendet.
 
+  Wir folgern, dass $(g_n(y))_{n \in \mathbb{N}}$ eine Cauchyfolge in
+  $B_0(\varepsilon)$ ist.
+  Wir schätzen ab, dass
+  \begin{align*}
+    \Vert g(y) \Vert_2
+    & \leq \Vert g_0(y) \Vert_2 +
+    \Vert g_1(y) - g_0(y) \Vert_2
+    + \Vert g_2(y) - g_1(y) \Vert_2 + \cdots \\
+    &< \varepsilon/2 + \varepsilon/4 + \varepsilon/8 + \cdots \\
+    &= \varepsilon,
+  \end{align*}
+  also liegt $g(y)$ in $B_0(\varepsilon)$.
+  Berechne nun mithilfe der Stetigkeit von $f$, dass
+  \begin{align*}
+    f(g(y))
+    & = f \left( \lim_{n \to \infty}g_n(y) \right)\\
+    &= \lim_{n \to \infty} f(g_n(y)).
+  \end{align*}
+  Aus $g_{n+1}(y) = g_n(y) + y - f(g_n(y))$ folgt, dass
+  \begin{align*}
+    f(g(y)) 
+    &= \lim_{n \to \infty} y + g_n(y) - g_{n+1}(y)  \\
+    &= y + g(y) - g(y) = y. \qedhere
+  \end{align*}
+\end{proof}
 
+Im letzten Schritt des Beweis vom Umkehrsatz zeigen wir,
+dass die oben konstruierte Umkehrfunktion $g$ differenzierbar ist.
+Betrachte dazu die beiden Mengen $W = B_0(\varepsilon / 2)$ und 
+$V = f^{-1}(W) \cap B_0(\varepsilon) \subset U$.
+Aus der lokalen Bijektivität folgt, dass die Einschränkung
+$f|_{V} \colon V \to W$ bijektiv ist, mit Umkehrabbildung
+$g \colon W \to V$.
 
+\begin{claim}
+  Die Abbildung $g \colon W \to V$ ist Lipschitz-stetig
+  mit Konstante $2$.
+\end{claim}
 
+\begin{proof}
+  Für alle $q, \widetilde q \in B_0(\varepsilon)$ gilt
+  \(
+    1/2 \cdot 
+    \Vert \widetilde q - q \Vert_2 \leq f(\widetilde q) - f(q) \Vert_2.
+  \)
+  Seien nun $\widetilde y, y \in W$. Setze
+  $\widetilde q = g(\widetilde y)$ 
+  und $q = g(y) \in V$.
+  Es folgt, dass
+  \[
+    1/2 \cdot \Vert g(\widetilde y) - g(y) \Vert_2 \leq
+    \Vert f(g(\widetilde y )) - f(g(y)) \Vert_2 = \Vert \widetilde y
+    - y \Vert_2,
+  \]
+  was $\Vert g( \widetilde y ) - g(y) \Vert_2 \leq 2 \cdot \Vert \widetilde
+  y - y \Vert_2$
+  impliziert.
+\end{proof}
 
+Sei $y \in W$ und $k \in \mathbb{R}^n$ mit $y + k \in W$.
+Betrachte den Ansatz
+\[
+  g(y + k ) = g(y) + {(Df)}_{g(y)}^{-1}(k) + {(Rg)}_{y}(k).
+\]
+für eine Dreigliedentwicklung für $g$ an der Stelle $y$.
+Zu zeigen ist, dass ${(Rg)}_{y}(k)$ relativ klein in $\Vert k \Vert_2$ ist,
+dass heisst, dass
+\[
+  \lim_{\Vert k \Vert_2 \to 0}
+  \frac{\Vert {(Rg)}_y(k) \Vert_2}{\Vert k \Vert_2} = 0.
+\]
+Nach Konstruktion von $\varepsilon > 0$ gilt für
+$g(y) \in V$, dass
+\[
+  \Vert {(Df)}_g(y) - {(Df)}_0 \Vert_{\text{op}} \leq 1/2,
+\]
+wobei ${(Df)}_0 = \text{Id}_{\mathbb{R}^n}$.
+Es gilt also für alle $v \in \mathbb{R}^n$, dass
+\(
+  \Vert {(Df)}_{g(y)}(v) - v \Vert_2 \leq 1/2 \cdot \Vert v \Vert_2.
+\)
+Wir schliessen, dass $1/2 \cdot \Vert v \Vert_2 \leq \Vert
+{(Df)}_{g(y)}(v) \Vert_2$.
+Insbesondere ist ${(Df)}_{g(y)}$ invertierbar.
+
+Sei nun $w \in \mathbb{R}^n$. Für  $v = {(Df)}_{g(y)}^{-1}(w)$ erhalten
+wir, dass
+\[
+  1/2 \cdot \Vert {(Df)}^{-1}_{g(y)}(w) \Vert_2
+  \leq \Vert {(Df)}_{g(y)}({(Df)}_{g(y)}^{-1}(w)) \Vert_2 = \Vert w \Vert_2,
+\]
+beziehungsweise 
+$\Vert {(Df)}_{g(y)}^{-1}(w) \Vert_2 \leq 2 \cdot \Vert w \Vert_2$.
+Folglich gilt $\Vert {(Df)}^{-1}_{g(y)} \Vert_{\text{op}} \leq 2$.
+Wende nun auf unseren Ansatz die Abbildung $f$ auf beide Seiten an.
+Die Linke seite wird dann zu $f(g(y + k)) = y + k$,
+und die rechte Seite zu $f(g(y) + h)$,
+wobei $h = {(Df)}^{-1}_{g(y)}(k) + {(Rg)}_y(k)$.
+Es gilt
+\[
+  \Vert h \Vert \leq \Vert g(y + k ) - g(y) \Vert_2
+  \leq 2 \cdot \Vert k \Vert_2.
+\]
+Die Dreigliedentwicklung von $f$ bei $g(y)$ liefert, dass
+\begin{align*}
+   f(g(y) + h) 
+   & = f(g(y)) + {(Df)}_{g(y)}(h) + {(Rf)}_{g(y)}(h) \\
+   &= y + {(Df)}_{g(y)}({(Df)}_{g(y)}^{-1}(k) + {(Rg)}_y(k))  
+   + {(Rf)}_{g(y)}(h)\\
+   &= y + k + {(Df)}_{g(y)}({(Rg)}_y(k)) + {(Rf)}_{g(y)}(h).
+\end{align*}
+Hier haben wir verwendet, dass ${(Df)}^{-1}_{g(y)}$ linear ist.
+Gleichsetzen der beiden Seiten liefert, dass
+\(
+  y+ k
+  = y + k + {(Df)}_{g(y)}({(Rg)}_{y}(k)) + {(Rf)}_{g(y)}(h),
+\)
+also gilt
+\[
+  {(Rg)}_y(k) = - {(Df)}_{g(y)}^{-1}({(Rf)}_{g(y)}(h)).
+\]
+Aus $\Vert {(Df)}^{-1}_{g(y)} \Vert_{\text{op}} \leq 2$ 
+folgt, dass $\Vert {(Rg)}_y(k) \Vert_2
+\leq 2 \cdot \Vert {(Rf)}_{g(y)}(h) \Vert_2$ gilt.
+Wir schliessen, dass
+\begin{align*}
+  \lim_{\Vert k \Vert_2 \to 0}
+  \frac{\Vert {(Rg)}_y(k) \Vert_2}{\Vert k \Vert_2}
+  &\leq \lim_{\Vert k \Vert_2 \to 0} 2 \cdot
+  \frac{\Vert {(Rf)}_{g(y)}(h) \Vert_2}{\Vert k \Vert_2}\\
+  &\leq \lim_{\Vert h \Vert_2 \to 0}
+  4 \cdot \frac{\Vert {(Rf)}_{g(y)}(h) \Vert_2}{\Vert h \Vert_2}  = 0,
+\end{align*}
+da ${(Rf)}_{g(y)}(h)$ relativ klein in $\Vert h \Vert_2$ ist.
+Wir haben hier verwendet, dass $\Vert h \Vert_2 \leq 2 \cdot \Vert k \Vert_2$ 
+gilt, um $\Vert k \Vert_2 \to 0$ durch $\Vert h \Vert_2 \to 0$ zu ersetzen.
+Wir folgern, dass obiger Ansatz tatsächlich
+eine Dreigliedentwicklung von $g$ an der Stelle $y \in W$ ist.
+Somit ist $g$ differenzierbar, und für alle
+$y \in W$ gilt, dass
+${(Dg)}_y = {(Df)}_{g(y)}^{-1}$.
+
+Wir werden darauf verzichten, 
+die Transformationen, welche wir zu Beginn auf $f$ angewendet haben,
+wieder rückgängig zu machen (obwohl das nicht allzu schwierig wäre).
+Somit ist der Umkehrsatz vollständig bewiesen.
+
+\begin{remark}
+  Die stetige Differenzierbarkeit von $f$ 
+  ist eine essentielle Hypothese im Umkehrsatz,
+  bereits in einer Variable.
+\end{remark}
+
+\begin{example}
+  Betrachte die Funktion
+  \begin{align*}
+    f \colon \mathbb{R} & \to \mathbb{R} \\
+    x & \mapsto 
+    \begin{cases}
+      0 & x = 0, \\
+      x + 2x^2 \cdot \sin(1/x) & x \neq 0.
+    \end{cases}
+  \end{align*}
+  Die Funktion $f$ ist differenzierbar, und es gilt
+  \[
+    f'(x) =
+    \begin{cases}
+      1 & x = 0, \\
+      1 + 4x \cdot \sin(1/x) - 2 \cos(1/x) & x \neq 0.
+    \end{cases}
+  \]
+  Für alle $x_n = 1/2\pi n$ gilt, dass $f'(x_n) = 1 + 0 - 2 = -1$ gilt.
+  Also gilt
+  \[
+    \lim_{n \to \infty} f'(x_n) = -1 \neq 1 = f'(0)
+    = f' \left( \lim_{n \to \infty} x_n \right).
+  \]
+  Also ist $f'$ an der Stelle $x = 0$ nicht stetig, und
+  ausserdem in keiner noch so kleinen offenen Umgebung
+  von $x = 0$ monoton wachsend.
+  Insbesondere hat $f$ keine lokale Umkehrfunktion.
+\end{example}
+
+\section{Der Satz über implizite Funktionen}
+In~\cite{heuser} wird der Satz über implizite Funktionen 
+in den Abschnitten~169 und 170 diskutiert.
+Der Beweis des Satzes empfiehlt sich nicht, dort nachzulesen.
+Der Grund dazu ist, dass dort (und auch in den meisten
+anderen Lehrbüchern) der 
+Umkehrsatz aus dem Satz über implizite Funktionen
+hergeleitet wird. Wir machen das in dieser Vorlesung umgekehrt. 
+
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+stetig differenzierbar mit $m < n$.
+Für alle $p \in \mathbb{R}^n$ erhalten wir eine
+lineare Abbildung ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$.
+Die Dimensionsformel aus der linearen Algebra liefert
+\[
+  n = \dim \ker {(Df)}_p + \dim \im {(Df)}_p,
+\]
+wobei $\ker {(Df)}_p$ den Kern und
+$\im {(Df)}_p$ das Bild von ${(Df)}_p$ bezeichnet.
+Aus der Beobachtung, dass
+$\dim \im {(Df)}_p \leq m < n$ folgt, dass
+$\dim \ker {(Df)}_p \geq 1$.
+Insbesondere kann ${(Df)}_p$ kein Vektorraumisomorphismus sein.
+Wohlaber kann ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+surjektiv sein.
+
+Im Spezialfall $m = 1$, das heisst $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+ist die Bedingung, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$
+nicht die Nullabbildung ist, oder äquivalent, dass
+${(\nabla f)}_p$ nicht der Nullvektor ist.
+Noch konkreter ist $({Df})_p \colon \mathbb{R}^n \to \mathbb{R}$
+surjektiv, genau dann wenn eine partielle Ableitung $\partial f \partial x_k$
+in $p$ nicht null ist.
+
+\begin{question}
+  Wie verhält sich $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+  in der Nähe eines Punkts $p \in \mathbb{R}^n$ mit
+  ${(\nabla f)}_p \neq 0$? Genauer: Wie sehen die 
+  \emph{Niveaumengen}
+  \[
+    f^{-1}(w) = \left\{q \in \mathbb{R}^n \mid f(q) = w\right\}
+    \subset \mathbb{R}^n
+  \]
+  in der Nähe eines Punkts $p \in \mathbb{R}^n$ 
+  mit ${(\nabla f)}_p \neq 0$ aus?
+\end{question}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto y.
+      \end{align*}
+      Für alle $p = (x, y) \in \mathbb{R}^2$ gilt, dass
+      ${\nabla f}(p) = (0, 1) \neq 0$.
+      Für $w \in \mathbb{R}$ ist
+      \[
+        f^{-1}(w) = \left\{(x, y) \in \mathbb{R}^2 \mid y = w\right\}.
+      \]
+      In anderen Worten sind alle horizontalen Geraden
+      Niveaumengen.
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto x^2 + y^2.
+      \end{align*}
+      Für $p = (x, y) \in \mathbb{R}^2$ gilt
+      ${(\nabla f)}_p = 2p$.
+      Also ist ${(\nabla f)}_p \neq 0$ für alle $p \neq 0$.
+      Die Niveaumengen $f^{-1}(w)$ sind leer für negative $w$,
+      der Nullpunkt für $w = 0$, und Kreise mit Radius $\sqrt w$ 
+      für $w > 0$.
+      Es fällt auf, dass die Niveaulinie Nullpunkt $w = 0$ 
+      einer anderen Qualität ist, als die restlichen Niveaulinien.
+      Es ist kein Zufall, dass genau in diesem Punkt der
+      Gradient verschwindet.
+
+    \item Betrachte die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto y^2 - x^2 = (y - x)(y + x).
+      \end{align*}
+      Für alle $p = (x, y) \in \mathbb{R}^2$ ist
+      ${(\nabla f)}_p = (-2x, 2y)$ null, genau dann wenn $p$ 
+      auch null ist.
+      Für alle Werte $w \neq 0$ sind die
+      Niveaulinien $f^{-1}(w)$ Hyperbeln.
+      Insbesondere sehen sie wie
+      differenzierbare Kurven aus.
+      Aber bei $w = 0$ geschieht wieder
+      etwas besonderes, nämlich ist
+      die Niveaumenge $f^{-1}(0)$ 
+      ein Kreuz, und nicht das
+      Bild einer differenzierbaren Kurve.
+  \end{enumerate}
+\end{examples}
+
+\begin{figure}[htb] 
+  \centering
+  \begin{minipage}{0.33\textwidth}
+    \centering
+    \includegraphics{figures/niveauset1}
+  \end{minipage}%
+  \begin{minipage}{0.33\textwidth}
+    \centering
+    \includegraphics{figures/niveauset2}
+  \end{minipage}%
+  \begin{minipage}{0.33\textwidth}
+    \centering
+    \includegraphics{figures/niveauset3}
+  \end{minipage}%
+  \caption{Die Niveaulinien aus den drei Beispielen}%
+  \label{fig:niveausets}
+\end{figure}
+
+\begin{theorem}[Satz über implizite Funktionen, erste Version]
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+  stetig differenzierbar und $p \in \mathbb{R}^n$ 
+  so, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$ surjektiv ist,
+  das heisst, dass ${(\nabla f)}_p \neq 0$ ist.
+  Nehme zusätzlich an, dass $p = 0$, $f(0) = 0$,
+  und $\partial f/ \partial x_n (0) \neq 0$.
+  Dann existieren $\varepsilon > 0$, $\delta > 0$,
+  und eine differenzierbare Abbildung
+  \[
+  g \colon B_0^{\mathbb{R}^{n-1}}(\varepsilon) \times (-\delta, \delta)
+  \to \mathbb{R},
+  \]
+  so dass für alle 
+  $q = (x_1, \dots, x_{n-1}) \in B_0^{\mathbb{R}^{n-1}}(\varepsilon)$ 
+  und alle $w \in (-\delta, \delta)$ gilt, dass
+  \[
+  f(x_1, \dots, x_{n-1}, g(x_1, \dots, x_{n-1}, w)) = w.
+  \]
+  Hier ist $B_0^{\mathbb{R}^{n-1}}(\varepsilon)
+  = \left\{q \in\mathbb{R}^{n-1} \mid \Vert q \Vert_2 < \varepsilon \right\}$.
+\end{theorem}
+
+\begin{geometric}
+  Bei festem $q = (x_1, \dots, x_{n-1}) \in B_0^{\mathbb{R}^{n-1}}$ 
+  und festem $w \in (-\delta, \delta)$ hat die Gleichung
+  $f(x_1, \dots, x_{n-1}, z) = w$ eine Lösung
+  \[
+  z = g(x_1, \dots, x_{n-1}, w) \in \mathbb{R}.
+  \]
+  Die Niveaumengen $f^{-1}(w)$ lassen sich in einer
+  Umgebung des Punkts $p \in \mathbb{R}^n$ 
+  als Graphen von Funktionen betrachten.
+  Die Einschränkung von $g$ auf $B_0^{\mathbb{R}^{n-1}} \times \{w\}$
+  liefert eine Abbildung
+  \begin{align*}
+    \overline g \colon B_0^{\mathbb{R}^{n-1}}(\varepsilon) & \to \mathbb{R} \\
+    q & \mapsto g(q, w).
+  \end{align*}
+  Die Niveaulinie $f^{-1}(w)$ ist über
+  $B_0^{\mathbb{R}^{n-1}}(\varepsilon)$ realisiert als Graph der
+  Funktion $\overline g$.
+\end{geometric}
 
 
 
