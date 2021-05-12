@@ -1797,7 +1797,201 @@ in $p$ nicht null ist.
   Funktion $\overline g$.
 \end{geometric}
 
+\begin{remark}
+  Sei $g \colon \mathbb{R}^{n-1} \to \mathbb{R}$ eine Funktion.
+  Die Teilmenge
+  \[
+    \Gamma(g) = \left\{(x_1, \dots, x_{n-1}, g(x_1, \dots, x_{n-1})) \mid 
+    x_i \in \mathbb{R} \right\} \subset \mathbb{R}^n
+  \]
+  heisst \emph{Funktionsgraph} von $g$.
+  Obige Situation lässt sich also wie folgt formulieren.
+  Für alle festen $w \in (-\delta, \delta)$ lässt sich die
+  Menge $f^{-1}(w)$ lokal als Graph der Funktion
+  \begin{align*}
+    \overline g \colon B_0^{\mathbb{R}^{n-1}}(\varepsilon) & \to \mathbb{R} \\
+    (x_1, \dots, x_{n-1}) & \mapsto g(x_1, \dots, x_{n-1}, w)
+  \end{align*}
+  betrachten.
+\end{remark}
 
+\begin{examples}
+  Wir greifen die Beispiele oben wieder auf.
+  \begin{enumerate}[(1)]
+    \item Betrachte die Funktion $f(x, y) = y$.
+      Gesucht ist eine Lösung der impliziten Gleichung
+      $f(x, z) = w$.
+      Wir bemerken, dass $z = g(x, w) = w$
+      für alle $x \in \mathbb{R}$ und alle $w \in \mathbb{R}$ 
+      eine Lösung ist.
+    \item Betrachte die Funktion $f(x, y) = x^2 + y^2$.
+      Gesucht ist eine Lösung der impliziten Gleichung
+      $f(x, z) = w$, das heisst $x^2 + z^2 = w$.
+      Wir bemerken, dass \[z = g(x, w) = \sqrt{w - x^2}\] eine Lösung ist,
+      sofern $w > 0$ und $x^2 < w$ gilt.
+      Insbesondere ist $g(x, w)$ für alle $w \in (1, 2)$ 
+      und alle $x \in (-1, 1)$ definiert.
+      Über dem Intervall $(-1, 1)$ ist also
+      $f^{-1}(1)$ als Graph der Funktion
+      $g(x, 1) = \sqrt{1 - x^2}$ darstellbar.
+  \end{enumerate}
+\end{examples}
+
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+stetig differenzierbar, so dass das Differential
+${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$
+im Punkt $p \in \mathbb{R}^n$ surjektiv ist.
+Sei $K = \ker {(Df)}_p$.
+Dann lautet die Dimensionsformel
+\[
+  n = \dim \ker {(Df)}_p + \dim \im {(Df)}_p
+  = \dim K + m.
+\]
+Also gilt $\dim K = n-m$.
+
+\begin{theorem}[Satz über implizite Funktionen, allgemeine Version]%
+  \label{thm:implicit}
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ stetig differenzierbar
+  und $p \in \mathbb{R}^n$ so, dass ${(Df)}_p \colon \mathbb{R}^n
+  \to \mathbb{R}^m$ surjektiv ist.
+  Zusätzlich nehmen wir an, dass $p = 0$ und $f(p) = 0$ ist.
+  Setze $K = \ker {(Df)}_p \subset \mathbb{R}^n$.
+  Wähle in $\mathbb{R}^n$ einen zu $K$ komplementären
+  Untervektorraum $S \subset \mathbb{R}^n$.
+  Da heisst, dass $\mathbb{R}^n = K + S$ und
+  $K \cap S = \{0\}$ gilt.
+  In anderen Worten kann jeder Vektor $v \in \mathbb{R}^n$ 
+  eindeutig als Summe $v = k + s$ mit $k \in K$ 
+  und $s \in S$ geschrieben werden.
+  Betrachte die Projektion
+  \begin{align*}
+    \pi_K^S \colon \mathbb{R}^n & \to K \\
+     v = k + s & \mapsto k.
+  \end{align*}
+  Dann existieren $\varepsilon > 0$,
+  $\delta > 0$,
+  und eine differenzierbare Abbildung
+  \[
+    g \colon B_0^K (\varepsilon) \times B_0^{\mathbb{R}^m}
+    \to~\mathbb{R}^n,
+  \]
+  so dass für alle $k \in B_0^K(\varepsilon)$ 
+  und alle $w \in B_0^{\mathbb{R}^m}(\delta)$
+  gilt, dass $f(g(k, w)) = w$ 
+  und $\pi_K^S(g(k, w)) = k$.
+\end{theorem}
+
+\begin{geometric}
+  Bei fest vorgegebenem Wert $w \in \mathbb{R}^m$ 
+  mit $\Vert w \Vert_2 < \delta$ 
+  existiert über jedem Punkt $k \in K$ 
+  mit $\Vert k \Vert_2 < \varepsilon$ 
+  in Richtung $S$ gesehen ein
+  Punkt $g(k, w) \in \mathbb{R}^n$,
+  welcher zur Menge $f^{-1}(w)$ gehört.
+\end{geometric}
+
+\begin{proof}[Beweis von Theorem~\ref{thm:implicit}]
+  Wir beweisen das Theorem via Umkehrsatz.
+  Dazu widmen wir uns erst einer Promotion
+  von $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+  zu einer Abbildung
+  $F \colon \mathbb{R}^n \to \mathbb{R}^m \times K$.
+  Definiere dazu $F(q) = (f(q), \pi_K^S(q))$.
+  Wir zeigen nun, dass ${(DF)}_p \colon \mathbb{R}^n \to
+  \mathbb{R}^m \times K$ 
+  ein Isomorphismus ist.
+  \begin{itemize}
+    \item Die Abbildung ${(DF)}_p$
+      ist injektiv.
+      Leite dazu eine Dreigliedentwicklung für $F$ an
+      der Stelle $p \in \mathbb{R}^n$ her.
+      Sei $h \in \mathbb{R}^n$.
+      Berechne
+      \begin{align*}
+        F(p+h)
+        & = (f(p + h), \pi_K^S(p + h)) \\
+        &= (f(p) + {(Df)}_p(h) + {(Rf)}_p(h), \pi_K^S(p) + \pi_K^S(h)).
+      \end{align*}
+      Wir schliessen, dass $F$
+      an der Stelle  $p$ differenzierbar ist.
+      Es gilt \[{(DF)}_p(h) = ({(Df)}_p(h), \pi_K^S(h)).\]
+      Sei nun $h \in \ker {(DF)}_p$, das heisst
+      ${(Df)}_p(h) = 0$ und $\pi_K^S(h) = 0$.
+      Es gilt ${(Df)}_p(h) = 0$ genau dann,
+      wenn $h \in K$ gilt, und $\pi_K^S(h) = 0$ genau dann,
+      wenn $h \in S$ gilt. Da $K \cap S = \{0\}$ ist, folgt $h = 0$.
+    \item ${(DF)}_p$ ist surjektiv.
+      Aus der Dimensionsformel fogt, dass $\dim K = n - m$ gilt.
+      Also ist $\dim (\mathbb{R}^n \times K) = n$.
+      Die Dimensionsformel für 
+      ${(DF)}_p \colon \mathbb{R}^n \to \mathbb{R}^m \times K$ 
+      liefert, dass $n = \dim \im {(DF)}_p$ gilt, also muss
+      $\im {(DF)}_p = \mathbb{R}^m \times K$ gelten.
+  \end{itemize}
+  Da $F$ zudem stetig differenzierbar ist,
+  können wir im Punkt $p = 0 \in \mathbb{R}^n$ den Umkehrsatz anwenden.
+  Dieser liefert offene Teilmengen
+  $V \subset \mathbb{R}^n$ und $W \subset \mathbb{R}^m \times K$ 
+  mit $0 \in V, 0 \in W$,
+  sowie eine differenzierbare Abbildung $g \colon W \to V$,
+  so dass gilt, dass $F \circ g = \text{Id}_W$.
+  Dies heisst für alle $(w, k) \in W \subset \mathbb{R}^n \times K$,
+  dass $F(g(w, k)) = (w, k)$, also
+  $f(g(w, k)) = w$ 
+  und $\pi_K^S(g(w, k)) = k$.
+
+  Der einzige Unterschied zur Formulierung von Theorem~\ref{thm:implicit}
+  ist, dass $g$ auf $W$ statt auf 
+  $B_0^K(\varepsilon) \times B_0^{\mathbb{R}^m}(\delta)$ 
+  definiert ist.
+  Um diesen Unterschied zu beheben, benötigen wir eine Norm
+  auf $\mathbb{R}^m \times K$ (auch schon nur um über Offenheit von $W$
+  zu sprechen, was wir aufgrund der Normäquivalenz auf $\mathbb{R}^n$ 
+  häufig unter den Teppich kehren). 
+  Wir arbeiten mit der Norm $\Vert (w, k) \Vert =
+  \sqrt{\Vert w \Vert_2^2 + \Vert k \Vert_2^2}$.
+  Diese Wahl liefert auf dem Produkt
+  $\mathbb{R}^m \times \mathbb{R}^n$ die euklidische Norm.
+  Da $0 \in W$ und $W \subset \mathbb{R}^m \times K$ 
+  offen ist, existiert $\widetilde \varepsilon > 0$ 
+  mit $B_0^{\mathbb{R}^m \times K}(\widetilde \varepsilon) \subset W$.
+  Setze nun $\varepsilon = \delta = \widetilde \varepsilon / \sqrt 2 > 0$.
+  Aus $\varepsilon^2 + \delta^2 = \widetilde \varepsilon^2$ 
+  folgt, dass
+  \[
+    B_0^{\mathbb{R}^m}(\delta) \times B_0^{K}(\varepsilon) \subset W
+  \]
+  gilt.
+  Die Einschränkung der obigen Funktion $g \colon W \to V$ 
+  auf dieses Produkt von Bällen liefert die gewünschte implizite
+  Funktion aus Theorem~\ref{thm:implicit}.
+\end{proof}
+
+\begin{definition}[Ausblick Differentialgeometrie]
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ stetig differenzierbar
+  und $w \in \mathbb{R}^m$ 
+  so, dass für alle $q \in f^{-1}(w)$ 
+  gilt, dass ${(Df)}_q \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+  surjektiv.
+  Falls $f^{-1}(w)$ nicht leer ist, 
+  dann heisst $f^{-1}(w) \subset \mathbb{R}^n$ 
+  \emph{Untermannigfaltigkeit} der Dimension $n - m$.
+  Im Spezialfall $f \colon \mathbb{R}^3 \to \mathbb{R}$ 
+  heisst eine solche Untermannigfaltigkeit \emph{Fläche}.
+\end{definition}
+
+\begin{example}
+  Betrachte die Funktion
+  \begin{align*}
+    f \colon \mathbb{R}^3 & \to \mathbb{R} \\
+    (x, y, z) & \mapsto x^2 + y^2 + z^2.
+  \end{align*}
+  Dann ist ${(\nabla f)}_{(x, y, z)} = 0$
+  genau dann, wenn $(x, y, z) = 0$.
+  Für alle $w > 0$ ist $f^{-1}(w)$ eine Sphäre mit Radius $w$.
+  Sphären sind dementsprechend nach obiger Definition Flächen.
+\end{example}
 
 
 
