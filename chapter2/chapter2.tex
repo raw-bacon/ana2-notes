@@ -1753,7 +1753,8 @@ in $p$ nicht null ist.
   \label{fig:niveausets}
 \end{figure}
 
-\begin{theorem}[Satz über implizite Funktionen, erste Version]
+\begin{theorem}[Satz über implizite Funktionen, Spezialfall]%
+  \label{thm:implicit-special}
   Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ 
   stetig differenzierbar und $p \in \mathbb{R}^n$ 
   so, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$ surjektiv ist,
@@ -1992,6 +1993,89 @@ Also gilt $\dim K = n-m$.
   Für alle $w > 0$ ist $f^{-1}(w)$ eine Sphäre mit Radius $w$.
   Sphären sind dementsprechend nach obiger Definition Flächen.
 \end{example}
+
+\begin{proof}[Beweis von Theorem~\ref{thm:implicit-special}]
+  Wir schreiben $\widetilde g$ für die Funktion aus 
+  Theorem~\ref{thm:implicit-special}
+  und zeigen deren Existenz indem wir sie mit Hilfe der Funktion
+  $g$ aus Theorem~\ref{thm:implicit} konstruieren.
+  Aus ${(Df)}_0(e_n) = \partial f / \partial x_n ( 0 ) \neq 0$
+  folgt, dass  $e_n$ nicht in $K = \ker {(Df)}_p$ liegt.
+  Wähle $S = \spann \{ e_n \} \subset \mathbb{R}^n$.
+  Es gilt $\mathbb{R}^n = K \oplus S$, da
+  $\dim K = n-1$ und $K \cap S = \{0\}$.
+
+  Sei $g \colon B_0^K(\varepsilon) \times (-\delta, \delta) \to
+  \mathbb{R}^n$ die Abbildung aus  Theorem~\ref{thm:implicit}.
+  Sei 
+  weiterhin $\widetilde \varepsilon > 0$ so gewählt, dass
+  $B_0^{\mathbb{R}^{n-1}}(\widetilde \varepsilon)
+  \subset \pi_{\mathbb{R}^{n-1}}^S(B_0^K(\varepsilon))$.
+  Sei $A = (x_1, \dots, x_{n-1}, 0) \in B_0^{\mathbb{R}^{n-1}}(\widetilde
+  \varepsilon) \times \mathbb{R}$.
+  Dann existiert ein eindeutiges $s \in \mathbb{R}$, so dass
+  $B = (x_1, \dots, x_{n-1}, s) \in K$,
+  da $\mathbb{R}^{n} = K \oplus S$.
+  Setze $C = g(B, w) \in \mathbb{R}^n$.
+  Dann gilt $g(B, w) \in f^{-1}(w)$.
+  Definiere schliesslich 
+  \[\widetilde g (A, w) = \langle g(B, w), e_n \rangle,\]
+  die letzte Koordinate von $C = g(B, w)$.
+  Der Punkt $C$ liegt in $e_n$-Richtung über dem Punkt $A
+  = (x_1, \dots, x_{n-1}, 0) \in \mathbb{R}^n$.
+  Per Definition gilt also
+  \[
+  C = (x_1, \dots, x_{n-1}, \widetilde g(x_1, \dots, x_{n-1}, w))
+  \in f^{-1}(w),
+  \] 
+  das heisst 
+  $f(x_1, \dots, x_{n-1}, \widetilde g(x_1, \dots, x_{n-1}, w)) = w$.
+\end{proof}
+
+\section{Die Hessische Form}
+In~\cite{heuser} ist der Inhalt dieses Abschnitts im Abschnitt 173
+zu finden.
+Wir studieren das Verhalten differenzierbarer Funktionen
+$f \colon\mathbb{R}^n \to \mathbb{R}$
+in der Nähe von \emph{kritischen Punkten},
+das heisst Punkten $p \in \mathbb{R}^n$ 
+mit ${(Df)}_p = 0$, das heisst  ${(\nabla f)}_p = 0$.
+
+Im Spezialfall
+$n = 1$ 
+gilt folgendes. Sei $f \colon \mathbb{R} \to \mathbb{R}$ 
+zweimal differenzierbar und $x \in \mathbb{R}$ 
+mit $f'(x) = 0$ und $f''(x) > 0$ (respektive $f''(x) < 0$).
+Dann hat $f$ an der Stelle $x$ ein lokales Maximum
+(respektive ein lokales Minimum).
+
+Im Fall $n \geq 2$ brauchen wir einen
+Ersatz für die Bedingung $f''(x) > 0$, beziehungsweise
+benötigen wir ein Analogon zu $f''$.
+
+\begin{definition}
+  Eine \emph{quadratische Form} auf $\mathbb{R}^n$ 
+  ist eine Abbildung $g \colon \mathbb{R}^n \to \mathbb{R}$ 
+  mit folgenden Eigenschaften:
+  \begin{enumerate}[(i)]
+    \item für alle $v \in \mathbb{R}^n$ 
+      und alle $\lambda \in \mathbb{R}$ gilt $q(tv) = t^2 \cdot q(v)$,
+    \item die Abbildung 
+      $B \colon \mathbb{R}^n \to \mathbb{R}^n \to \mathbb{R}$ 
+      definiert durch $B(v, w) = q(v + w) - q(v) - q(w)$ 
+      ist bilinear.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  Sei $M \in \mathbb{R}^{n \times n}$ eine beliebige 
+  symmetrische Matrix.
+  Dann ist $q(v) = v^T A v$ eine quadratische Form.
+\end{example}
+
+
+
+
 
 
 
