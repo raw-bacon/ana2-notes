@@ -2073,7 +2073,375 @@ benötigen wir ein Analogon zu $f''$.
   Dann ist $q(v) = v^T A v$ eine quadratische Form.
 \end{example}
 
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}$, das heisst
+$f$ ist differenzierbar, und die Abbildung
+\begin{align*}
+  \nabla f \colon \mathbb{R}^n & \to \mathbb{R}^n \\
+  q & \mapsto {(\nabla f)}_q
+\end{align*}
+ist differenzierbar.
+Die Komponentenfunktionen von $\nabla f$ sind die
+partiellen Ableitungen $\partial f / \partial x_1, \dots,
+\partial f / \partial x_n$.
+Wir erinnern uns, dass differenzierbare Abbildungen
+$g \colon \mathbb{R}^n \to \mathbb{R}^n$ mit
+Komponentenfunktionen $g_1, \dots, g_n \colon \mathbb{R}^n \to \mathbb{R}$ 
+gilt, dass das Differential ${(Dg)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+in einem Punkte $p \in \mathbb{R}^n$ durch die
+Jacobimatrix 
+\[
+{(Jg)}_p =
+\begin{pmatrix}
+  \partial g_1 / \partial x_1 (p) & \cdots & \partial g_1/\partial x_n (p) \\
+  \vdots & \ddots & \vdots \\
+  \partial g_n / \partial x_1 (p) & \cdots & \partial g_n / \partial x_n (p)
+\end{pmatrix}
+\]
+gegeben ist.
+Für $g = \nabla f$ erhalten wir
+\[
+  {(J \nabla f )}_p =
+  \begin{pmatrix}
+    \partial^2 f / \partial x_1^2 (p) 
+    & \cdots 
+    & \partial^2 f / \partial x_n \partial x_1 (p) \\
+    \vdots & \ddots & \vdots \\
+    \partial^2 f / \partial x_1 \partial x_n (p)
+    & \cdots
+    & \partial^2 f / \partial x_n^2 (p)
+  \end{pmatrix}.
+\]
+Die Matrix $H = {(J \nabla f)}_p$ heisst \emph{Hessische Matrix}
+von $f$ an der Stelle $p$.
 
+\begin{definition}
+  Die \emph{Hessische Form} von $f$ an der Stelle $p$
+  ist die quadratische Form
+  \begin{align*}
+    {(Hf)}_p \colon \mathbb{R}^n & \to \mathbb{R} \\
+    v & \mapsto v^T \cdot {(J \nabla f)}_p \cdot v.
+  \end{align*}
+\end{definition}
+
+\begin{remark}
+  Sei $A \in \mathbb{R}^{n \times n}$ eine quadratische Matrix.
+  Dann ist die Abbildung
+  \begin{align*}
+    Q \colon \mathbb{R}^n & \to \mathbb{R} \\
+    v & \mapsto v^T A v
+  \end{align*}
+  eine quadratische Form.
+  Tatsächlich gilt $Q(tv) = t^2 Q(v)$ und
+  \[
+    (v + w)^T A (v + w) - v^T A v - w^T A w
+    = v^T A w + w^T A v.
+  \]
+\end{remark}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Sei $L \colon \mathbb{R}^n \to \mathbb{R}$ linear.
+      Dann gilt für alle $p \in \mathbb{R}^n$, dass
+      ${(DL)}_p = L$ ist.
+      Insbesondere ist die Abbildung 
+      $\nabla L \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+      konstant.
+      Somit ist ${(D \nabla L )}_p = 0$ und somit auch
+      ${(J \nabla L )}_p = 0$ und ${(HL)}_p = 0$.
+    \item Sei $A = (a_{ij}) \in\mathbb{R}^{n \times n}$ symmetrisch,
+      das heisst $A^T = A$, oder $a_{ij} = a_{ji}$.
+      Definiere
+      \begin{align*}
+        Q \colon \mathbb{R}^n & \to \mathbb{R} \\
+        v & \mapsto v^T A v.
+      \end{align*}
+      In Koordinaten gilt dann für $v = x_1 e_1 + \cdots x_n e_n$, dass
+      \[
+        Q(x_1, \dots, x_n) = \sum_{i=1}^{n} \sum_{j=1}^{n} a_{ij} x_i x_j.
+      \]
+      Berechne für feste Indizes $i, j \in \{1, \dots, n\}$, dass
+      \(
+        {\partial^2 Q}/{\partial x_j \partial x_i} = 2a_{ij}
+      \).
+      Wir folgern, dass ${(J \nabla Q)}_p = 2A$ für alle $p \in \mathbb{R}^n$.
+      Somit gilt $Q(v) = 1/2 \cdot {(HQ)}_p(v)$.
+      Alle quadratischen Polynome (ohne konstante und lineare Terme)
+      auf $\mathbb{R}^n$ lassen sich als
+      $v^T A v$ mit $A^T = A$ beschreiben.
+
+      Im Fall $n = 2$ schreibe
+      \[
+        A =
+        \begin{pmatrix}
+          a & b \\ b & c
+        \end{pmatrix}
+      \]
+      und erhalte
+      \(
+        Q(x, y) = ax^2 + 2bxy + cy^2
+      \).
+  \end{enumerate}
+\end{examples}
+
+\begin{proposition}[Viergliedentwicklung]
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal differenzierbar
+  und $p \in \mathbb{R}^n$ ein beliebiger Punkt.
+  Dann hat $f$ an der Stelle $p$ eine Viergliedentwicklung
+  der Form
+  \[
+    f(p + h) = f(p) + {(Df)}_p(h) + 1/2 \cdot {(Hf)}_p (v) + {(Rf)}_p(h),
+  \]
+  wobei ${(Rf)}_p(h)$ relativ klein in $\Vert h \Vert_2^2$ ist,
+  das heisst
+  \[
+    \lim_{h \to 0} \frac{\Vert {(Rf)}_p(h) \Vert_2}{\Vert h \Vert_2^2} = 0.
+  \]
+\end{proposition}
+
+\begin{proof}
+  Seien $p, h \in \mathbb{R}^n$.
+  Zur Auswertung der Differenz
+  $f(p + h) - f(p)$ betrachten wir den
+  Weg 
+  \begin{align*}
+    \gamma \colon [0, 1] & \to \mathbb{R}^n \\
+    t & \mapsto p + th.
+  \end{align*}
+  Es gilt $\gamma(0) = p$ und $\gamma(1) = p + h$.
+  Für alle $t \in [0, 1]$ gilt weiterhin $\dot \gamma(t) = h$.
+  Berechne
+  \begin{align*}
+   f(p + h) - f(p)    
+   &= f( \gamma(1))  -f(\gamma(0))  \\
+   &= \int_{0}^{1} \frac{d}{dt} f(\gamma(t)) \, dt \\
+   &= \int_{0}^{1} {(Df)}_{\gamma(t)}( \dot \gamma(t)) \, dt \\
+   &= \int_{0}^{1} {(Df)}_{p + th}(h) \, dt \\
+   &= \int_{0}^{1} \langle \nabla f(p + th), h \rangle \, dt.
+  \end{align*}
+  Nach der Dreigliedentwicklung von $\nabla f$ an der Stelle $p$ gilt
+  \[
+    \nabla f (p + k ) = \nabla f(p) + {(J \nabla f)}_p \cdot k +
+    {(R \nabla f)}_p (k).
+  \]
+  Sei nun $\varepsilon > 0$ vorgegeben.
+  Dann existiert $\delta > 0$,
+  so dass für alle $k \in \mathbb{R}^n$ mit $\Vert k \Vert_2 \leq \delta$ 
+  gilt, dass $\Vert {(R \nabla f)}_p(k) \Vert_2 \leq \varepsilon \cdot
+  \Vert k \Vert_2$.
+  Für alle $h \in \mathbb{R}^n$ mit $\Vert h \Vert_2 \leq \delta$ 
+  und alle $t \in [0, 1]$ gilt also, dass
+  $\Vert {(R \nabla f)}_p (th) \Vert \leq \varepsilon \cdot \Vert h \Vert_2$.
+  Wir folgern für $k = th$, dass
+  \begin{align*}
+    f(p + h) - f(p)
+    & = \int_{0}^{1} \langle {(\nabla f)}_{p + th}, h \rangle \, dt\\
+    &= \int_{0}^{1} \langle {(\nabla f)}_p , h \rangle \, dt
+    + \int_{0}^{1} \langle {(D \nabla f)}_p (th), h \rangle \, dt
+    + \int_{0}^{1} \langle {(R \nabla )}_p (th), h \rangle \, dt.
+  \end{align*}
+  Berechne, dass
+  \[
+    \int_{0}^{1} \langle {(\nabla f)}_p , h \rangle \, dt
+    = \int_{0}^{1} {(Df)}_p(h) \, dt = {(Df)}_p (h),
+  \]
+  und auch
+  \[
+     \int_{0}^{1} \langle {(D \nabla f)}_p (th), h \rangle \, dt
+     = \int_{0}^{1} t \cdot h^T {(J \nabla f)}_p h \, dt
+     = 1/2 \cdot {(Hf)}_p(h).
+  \]
+  Zuletzt schätzen wir ab, dass
+  \begin{align*}
+    \left\Vert \int_{0}^{1} \langle {(R \nabla )}_p (th), h \rangle \, dt \right\Vert_2
+    &\leq \int_{0}^{1} | \langle {(R \nabla f)}_p (th), h \rangle | \, dt  \\
+    &\leq \int_{0}^{1} \Vert {(R \nabla f)}_p (th) \Vert_2
+    \cdot \Vert h \Vert_2 \, dt \\
+    &\leq \int_{0}^{1} \varepsilon \cdot \Vert h \Vert_2^2 \, dt \\
+    &\leq \varepsilon \cdot \Vert h \Vert_2.
+  \end{align*}
+  Somit erfüllt
+  \[
+    {(Rf)}_p(h) = \int_{0}^{1} \langle {(R \nabla )}_p (th), h \rangle \, dt
+  \]
+  die gewünschte Bedingung.
+\end{proof}
+
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal differenzierbar.
+Dann hat $f$ an der Stelle $p \in \mathbb{R}^n$ 
+ein \emph{lokales Minimum} (beziehungsweise ein lokales Maximum),
+falls $\varepsilon > 0$ existiert, so dass für
+alle $q \in B_p( \varepsilon)$ gilt, dass
+$f(q) \geq f(p)$ (beziehungsweise $f(q) \leq f(p)$).
+
+\begin{definition}
+  Ein Punkt $p \in \mathbb{R}^n$ heisst \emph{kritischer Punkt}
+  einer differenzierbaren Funktion $f \colon \mathbb{R}^n \to \mathbb{R}$, 
+  falls
+  ${(Df)}_p$ nicht surjektiv ist, das heisst
+  $\nabla f(p) = 0$ gilt.
+\end{definition}
+
+\begin{remark}
+  Wir erinnern uns, dass lokale Minima (beziehungsweise Maxima)
+  kritische Punkte von $f$ sind. Die Umkehrung gilt im 
+  allgemeinen nicht, wie das Beispiel
+  $f(x) = x^3$ in $\mathbb{R}$ zeigt.
+\end{remark}
+
+In der Nähe von kritischen Punkten wird
+das Verhalten von $f$ durch die Hessische
+Form beschrieben, denn dort gilt
+\[
+  f(p + h) = f(p) + 1/2 \cdot {(Hf)}_p(h) + {(Rf)}_p(h).
+\]
+
+\begin{proposition}[Satz von Schwarz]\label{prop:schwarz-theorem}
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal stetig differenzierbar.
+  Dann gilt für alle $p \in \mathbb{R}^n$ 
+  und alle $i, j \in \left\{1, \dots, n \right\}$, dass
+  \[
+    \frac{\partial^2 f}{\partial x_i \partial x_j}
+    =
+    \frac{\partial^2 f}{\partial x_j \partial x_i}.
+  \]
+\end{proposition}
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Für Polynome $f(x, y)$ ist diese Gleichheit offensichtlich,
+      da 
+      \[
+      \partial^2 / \partial x \partial y (x^a y^b) = ab x^{a-1} y^{b-1}
+      = \partial^2 / \partial y \partial x
+      \]
+      gilt.
+    \item
+      Die Bediungung, dass $f \colon \mathbb{R}^n \to \mathbb{R}$
+      zweimal (nicht unbedingt stetig) differenzierbar ist,
+      reicht, um diese Gleichheit zu zeigen, jedoch nicht
+      die Existenz der zweiten partiellen Ableitungen.
+      Betrachte zum Beispiel die Funktion
+      \begin{align*}
+        f \colon \mathbb{R}^2 & \to \mathbb{R} \\
+        (x, y) & \mapsto xy \frac{x^2 - y^2}{x^2 + y^2}.
+      \end{align*}
+      Dann gilt $\partial^2 f/ \partial x \partial y (0, 0) = 1
+      \neq -1 = \partial^2 f / \partial y \partial x (0, 0)$.
+    \item In der Sprache der Differentialformen
+      lautet die obige Proposition $ddf = 0$.
+      Siehe dazu das Buch \emph{Mathematical Methods in Classical
+      Mechanics} von Arnold,
+      sowie das Buch \emph{Formes Différentielles} von Cartan.
+  \end{enumerate}
+  
+\end{remark}
+
+Wir werden Proposition~\ref{prop:schwarz-theorem} später zeigen.
+Aus der Linearen Algebra folgt, dass
+die symmetrische Matrix ${(J \nabla f)}_p$ über $\mathbb{R}$ 
+diagonalisierbar ist.
+Konkreter existieren sogar
+$\lambda_1, \dots \lambda_n \in \mathbb{R}$ und
+eine orthogonale Matrix $P \in \mathbb{R}^{n \times n}$ 
+(das heisst $P = P^{-1}$), so dass
+$P^{-1} {(J \nabla f)}_p P = \text{diag}(\lambda_1, \dots, \lambda_n)$ 
+gilt. Siehe dazu den Satz von Sylvester.
+Bezüglich einer geeigneten orthogonalen Basis
+$\{f_1, \dots, f_n \}$ von $\mathbb{R}^n$ 
+gilt also folgendes. Für alle
+Vektoren
+$v = y_1 f_1 + \cdots + y_n f_n$ gilt
+${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + y_n y_n^2$.
+
+Wir machen nun die Zusatzannahme, dass ${(Hf)}_p$ nicht-singulär ist,
+das heisst alle $\lambda_k$ sind ungleich null.
+Dann hat $f$ an der Stelle $p$ ein lokales Minimum (beziehungsweise
+ein lokales Maximum)
+genau dann, wenn alle $\lambda_k$ positiv (beziehungsweise negativ) sind.
+
+Dies kann man im Falle $n = 2$ leicht testen. Schreibe
+\[
+  {(J \nabla f)}_p =
+  \begin{pmatrix}
+    a & b \\ b & c
+  \end{pmatrix}.
+\]
+Dann hat $f$ bei $p$ ein
+\begin{itemize}
+  \item lokales Minimum, falls $a > 0$ und $ac - b^2 > 0$,
+  \item lokales Maximum falls $a < 0$ und $ac - b^2 > 0$,
+  \item Sattelpunkt, falls $ac - b^2 < 0$.
+\end{itemize}
+Dies erhält man durch die Forderung, dass bei Minima die
+beiden Eigenwerte positiv sind, bei Maxima die Eigenwerte
+negativ sind, und bei Sattelpunkten die Eigenwerte unterschiedliches
+Vorzeichen haben.
+
+\begin{proof}[Beweis von Proposition~\ref{prop:schwarz-theorem}]
+  Wir zeigen den Satz von Schwarz für zweimal stetig differenzierbare
+  Funktionen $f \colon \mathbb{R}^2 \to \mathbb{R}$.
+  Dieselbe Idee zeigt, dass die Aussage auch für
+  zweimal differenzierbare $f$ gilt. Diese Version des Beweises
+  ist jedoch schwieriger auszuführen.
+  Konkreter werden wir zeigen, dass
+  \[
+    \frac{\partial^2 f}{\partial y \partial x}(0, 0)
+    =
+    \lim_{x \to 0} \lim_{y \to 0} \frac{1}{xy}
+    f(x, y) - f(x, 0) - f(0, y) + f(0, 0)
+  \]
+  gilt. Aus Symmetriegründen (vertausche die Rollen von $x$ und $y$)
+  folgt dann, dass $\partial^2 f/ \partial y \partial x (0, 0)
+  = \partial^2 f / \partial x \partial y (0, 0)$ gilt.
+
+  Wir zeigen zuerst, dass wir uns auf den Fall $n = 2$
+  und $p = 0$
+  beschränken können. Sei $\overline f \colon \mathbb{R}^n \to \mathbb{R}$ 
+  zweimal stetig differenzierbar und sei $p \in \mathbb{R}^n$ fest.
+  Betrachte statt $f$ die Abbildung
+  $\overline f \colon \mathbb{R}^n \to \mathbb{R}$,
+  definiert durch $\overline f(q) = f(p + q)$.
+  Dann gilt $\overline f ( 0) = f(p)$.
+  Weiterhin ist $\partial^2 \overline f / \partial x_j \partial x_i (0)
+  = \partial^2 f / \partial x_j \partial x_i (p)$.
+  Deshalb reicht es, den Punkte $p = 0$ zu betrachten.
+  Um die Notation weiter zu vereinfachen, nenn wir die Koordinaten
+  $x_i, x_j$ neu $x, y$ und beschränken uns auf Abbildungen
+  $f \colon \mathbb{R}^2 \to \mathbb{R}$.
+
+  Seien $x, y \in \mathbb{R}$ fix.
+  Definiere $h_y \colon \mathbb{R} \to \mathbb{R}$ durch
+  $h_y(x) = f(x, y) - f(x, 0)$.
+  Bemerke, dass
+  $f(x, y) - f(x, 0) - f(0, y) + f(0, 0) = h_y(x) - h_y(0)$.
+  Nach dem Mittelwertsatz existiert
+  ein $a \in (0, x)$ mit $x \cdot \partial h_y / \partial x (a)
+  = h_y(x) - h_y(0)$.
+  Es folgt, dass
+  \[
+    f(x, y) - f(x, 0) - f(0, y) + f(0, 0) = x \cdot
+    (\partial f/ \partial x ( a, y) - \partial f/ \partial x (a, 0))
+    = x \cdot \partial h_y / \partial x (a).
+  \]
+  Nach dem Mittelwertsatz angwendet auf die Funktion
+  $y \mapsto \partial f / \partial x (a, y)$
+  existiert ein $b \in (0, y)$ mit 
+  $\partial f / \partial x (a, y) - \partial f/ \partial x (a, 0) =
+  y \cdot
+  \partial^2 f/ \partial y \partial x (a, b)$.
+  Folglich gilt
+   \[
+     f(x, y) - f(x, 0) - f(0, y) + f(0, 0) = xy \cdot \partial^2 f /
+     \partial y \partial x (a, b).
+  \]
+  Im Grenzübergang  $x \to 0$ und $y \to 0$ gilt
+  $a \to 0$ und $b \to 0$, also erhalten wir
+  das gewünschte Resultat
+  unter der Verwendung der Stetigkeit von
+  $\partial^2 f / \partial y \partial x$.
+\end{proof}
 
 
 
