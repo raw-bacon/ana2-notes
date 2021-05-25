@@ -2,6 +2,325 @@
 
 \begin{document}
 \chapter{Gradientenfelder und Differentialformen}\label{chp:gradients}
+\section{Gradientenfelder}
+Der Stoff dieses Abschnitts ist in den
+Abschnitten 181 und 182 in~\cite{heuser} zu finden.
+
+Das motivierende Problem ist folgendermassen zu formulieren.
+Sei $U \subset \mathbb{R}^n$ offen und
+$X \colon U \to \mathbb{R}^n$ ein stetiges Vektorfeld.
+Ist $X$ ein \emph{Gradientenfeld}, das heisst,
+existiert
+eine differenzierbare Funktion
+$f \colon U \to \mathbb{R}^n$,
+so dass für alle $p \in U$ gilt, dass ${(\nabla f)}_p = X(p)$?
+Dasselbe Problem lässt sich auch in Koordinaten stellen.
+Schreibe
+\[
+  X(p) = \sum_{k=1}^{n} a_k(p) e_k
+\]
+mit stetigen Komponentenfunktionen $a_k \colon U \to \mathbb{R}$.
+Gesucht ist $f \colon U \to \mathbb{R}$ mit
+\[
+  \frac{\partial f}{\partial x_k} (p) = a_k(p)
+\]
+für alle
+$k \leq n$ und alle $p \in U$.
+
+\begin{specialcase}
+  Wir betrachten den Spezialfall $n = 1$.
+  Sei $X \colon \mathbb{R} \to \mathbb{R}$ stetig.
+  Definiere die Funktion
+  $f \colon \mathbb{R} \to \mathbb{R}$ 
+  durch 
+  \[
+    f(p) = \int_{0}^{p} X(t) \, dt.
+  \]
+  Dann gilt für alle $p \in \mathbb{R}$,
+  dass $f'(p) = X(p)$.
+  Auf $\mathbb{R}$ sind also alle stetigen Vektorfelder Gradientenfelder.
+\end{specialcase}
+
+In Dimension $n \geq 2$ sind nicht alle stetigen
+Vektorfelder Gradientenfelder.
+Wir werden dazu ein Beispiel konstruieren, indem wir
+den Fall $n = 2$ genauer betrachten.
+Betrachte ein Vektorfeld $X \colon \mathbb{R}^2 \to \mathbb{R}^2$
+mit Komponentenfunktionen $a(x, y)$ und $b(x, y)$.
+Sei $f \colon \mathbb{R}^2 \to \mathbb{R}$ differenzierbar
+mit $\nabla f = X$.
+Falls $b(x, y)$ konstant null ist (insbesondere auch
+$\partial f / \partial y = 0)$, dann hängt
+$f(x, y)$ nicht von $y$ ab.
+Es existiert also eine
+differenzierbare Funktion
+$g \colon \mathbb{R} \to \mathbb{R}$,
+so dass für alle $(x, y) \in \mathbb{R}^2$ gilt,
+dass $f(x, y) = g(x)$.
+Dann folgt $\partial f / \partial x (x, y) = g'(x)$.
+Also hängt $a(x, y) = \partial f / \partial x(x y) = g'(x)$
+nicht von $y$ ab.
+
+\begin{example}
+  Das Vektorfeld $X \colon \mathbb{R}^2 \to \mathbb{R}^2$ 
+  mit $X(x, y) = (y, 0)$ ist kein Gradientenfeld,
+  da $a(x, y) = y$ von $y$ abhängt.
+\end{example}
+
+Sei nun $U \subset \mathbb{R}^n$ offen und
+\emph{wegzusammenhängend}, das heisst, für
+alle $p , q \in U$ existiert eine stetig
+differenzierbare
+Kurve $\gamma \colon [0, 1] \to U$ mit $\gamma(0) = p$
+und $\gamma(1) = q$.
+Die Forderung, dass eine stetige Kurve $\gamma$
+existiert, impliziert bereits, dass auch eine stetig
+differenzierbare Kurve existiert. Wir werden darauf
+aber nicht weiter eingehen.
+
+\begin{proposition}\label{prop:gradient-fields-curves}
+  Sei $U \subset \mathbb{R}^n$ offen
+  und wegzusammenhängend und
+  sei $X \colon U \to \mathbb{R}^n$ stetig.
+  Dann existiert eine differenzierbare Funktion
+  $f \colon U \to \mathbb{R}$ mit $\nabla f = X$,
+  genau dann, wenn für alle stetig differenzierbaren
+  Wege $\gamma, \overline \gamma \colon [0, 1] \to U$ 
+  mit $\gamma(0) = \overline \gamma ( 0) $ und
+  $\gamma(1) = \overline\gamma(1)$ gilt, dass
+  \[
+    \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+    =
+    \int_{0}^{1} \langle X(\overline\gamma(t)), 
+    \dot{\overline\gamma}(t) \rangle \, dt.
+  \]
+\end{proposition}
+
+In Worten hängt das Wegintegral von $X$ nur von den Endpunkten
+der betrachteten Kurve ab. Äquivalenterweise ist das Integral
+von $X$ über alle geschlossenen Wege null.
+Geschlossen heisst hier $\gamma(0) = \gamma(1)$.
+In diesem Fall gilt für $\overline \gamma(t) = \gamma(0)$ 
+dann, dass
+\[
+  \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+  =
+  \int_{0}^{1} \langle X(\overline\gamma(t)), 
+  \dot{\overline\gamma}(t) \rangle \, dt = 0.
+\]
+Umgekehrt seien $\gamma, \overline \gamma \colon [0, 1] \to U$ 
+mit $\gamma(0) = \overline \gamma(0)$.
+Dann bastle aus $\gamma$ und $\overline \gamma$ 
+einen geschlossenen Weg, der zuerst
+$\gamma$ durchläuft, und darauf $\overline \gamma$ in umgekehrter
+Richtung durchläuft.
+Präziser betrachten wir den Weg
+\begin{align*}
+  \gamma \cup - \overline \gamma \colon [0, 1] & \to U \\
+  t & \mapsto 
+  \begin{cases}
+    \gamma(2t) & t \leq 1/2,\\
+    \overline \gamma (2 - 2t) & t \geq 1/2.
+  \end{cases}
+\end{align*}
+
+
+\begin{proof}[Beweis von Proposition~\ref{prop:gradient-fields-curves}]
+  Sei $f \colon U \to \mathbb{R}$ differenzierbar
+  mit $\nabla f = X$.
+  Sei weiterhin $\gamma \colon [0, 1] \to U$ stetig differenzierbar.
+  Für die Komposition $f \circ \gamma \colon [0, 1] \to \mathbb{R}$ 
+  gilt dann für alle $t \in (0, 1)$, dass
+  \[
+    \frac{d}{dt}(f \circ \gamma) (t)
+    = {(Df)}_{\gamma(t)}({(D\gamma)}_t(1))
+    = \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle.
+  \]
+  Wir folgern mit Hilfe der stetigen Differenzierbarkeit
+  von $\gamma$, dass
+  \begin{align*}
+    \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+    &= \int_{0}^{1} \langle {(\nabla f)}_{\gamma(t)}, 
+    \dot \gamma(t) \rangle \, dt \\
+    &= \int_{0}^{1} \frac{d}{dt} (f \circ \gamma)(t) \, dt  \\
+    &= f(\gamma(1)) - f(\gamma(0)).
+  \end{align*}
+  Insbesondere ist, falls $\gamma(1) = \gamma(0)$ gilt, das Wegintegral
+  von $X$ null.
+
+  Sei nun umgekehrt $X \colon U \to \mathbb{R}^n$
+  ein stetig differenzierbares Vektorfeld, dessen geschlossenen
+  Wegintegrale alle verschwinden.
+  Wir konstruieren eine \emph{Potentialfunktion}
+  $f \colon U \to \mathbb{R}$ mit $\nabla f = X$.
+  Sei $p \in U $ fest gewählt.
+  Sei $q \in U$.
+  Wähle $\gamma \colon [0, 1] \to U$ stetig differenzierbar
+  mit $\gamma(0) = p$ und $\gamma(1) = q$.
+  Setze
+   \[
+     f(q) = \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt.
+  \]
+  Wir bemerken, dass $f(q)$ nicht von der Wahl von $\gamma$ abhängt.
+  Wir zeigen nun, dass für alle $q \in U$ gilt,
+  dass ${(\nabla f)}_q = X(q)$.
+  Sei dazu $h \in \mathbb{R}^n$ beliebig.
+  Für kleine $t \in \mathbb{R}$ gilt dann, dass $q + th$
+  auch noch in $U$ liegt (denn $U$ ist offen).
+  Wir haben
+  \[
+    \langle {(\nabla f)}_q, h \rangle
+    = {(Df)}_q(h) = \lim_{t \to 0} \frac{f(q + th) - f(q)}{t}.
+  \]
+  Betrachte den Weg  
+  \begin{align*}
+    \delta \colon [0, t] & \to U \\
+    s & \mapsto q + sh.
+  \end{align*}
+  Es existiert $t > 0$ so, dass $\delta([0, t]) \subset U$.
+  Nach Konstruktion gilt
+  \begin{align*}
+     f(q + th) - f(q) 
+     &=\int_{0}^{t} \langle X(\delta(s)), \dot \delta(s) \rangle \, ds  \\
+     &= \int_{0}^{t} \langle X(q + sh), h \rangle \, ds \\
+     &= \int_{0}^{t} \langle X(q), h \rangle \, ds
+     + \int_{0}^{t} \langle X(q + sh) - X(q), h \rangle \, ds \\
+     &= t \langle X(q), h \rangle + R
+  \end{align*}
+  für
+  \[
+    R = \int_{0}^{t} \langle X(q + sh) - X(q), h \rangle \, ds.
+  \]
+  Schätze ab, dass
+  \[
+    |R| \leq t \cdot \Vert X (q + sh) - X(q) \Vert_2 \cdot \Vert h \Vert_2.
+  \]
+  Es gilt also
+  \[
+    \lim_{t \to 0} \frac{|R|}{t} = 0,
+  \]
+  da $X$ stetig an der Stelle $q$ ist.
+  Daraus folgt, dass
+  \[
+    {(Df)}_q (h) = \lim_{t \to 0} \frac{f(q + th) - f(q)}{t}
+    = \langle X(q), h \rangle,
+  \]
+  was ${(\nabla f)}_q = X(q)$ impliziert.
+\end{proof}
+
+\begin{example}
+  Sei
+  \begin{align*}
+    X \colon \mathbb{R}^2 & \to \mathbb{R}^2 \\
+    (x, y) & \mapsto (-y, x)
+  \end{align*}
+  eine Rotation um den Winkel $\pi/2$.
+  Betrachte den Weg
+  \begin{align*}
+    \gamma \colon [0, 1] & \to \mathbb{R}^2 \\
+    t & \mapsto (\cos(2 \pi t), \sin(2 \pi t)).
+  \end{align*}
+  Es gilt $\gamma(0) = \gamma(1) = (1, 0)$.
+  Berechne aber
+  \[
+    \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+    = 2\pi \cdot \int_{0}^{1} \cos^2(2 \pi t) + \sin^2(2 \pi t) \, dt
+    = 2 \pi \neq 0.
+  \]
+  Somit ist $X$ kein Gradientenfeld.
+\end{example}
+
+\subsection*{Lemma von Poincaré}
+
+Leider ist die Bedingung, dass alle geschlossenen Wegintegrale
+null sind, impraktikabel.
+Die Bedingung kann nämlich nur schwer dazu verwendet werden,
+zu verifizieren, dass eine gegebenes Vektorfeld $X$ 
+ein Gradientenfeld ist.
+Das Lemma von Poincaré unten liefert ein leichter überprüfbares
+Kriterium
+
+Sei $U \subset \mathbb{R}^n$ offen
+und $X \colon U \to \mathbb{R}^n$ differenzierbar.
+Falls eine differenzierbare Funktion
+$f \colon U \to \mathbb{R}$ mit $\nabla f = X$ existiert,
+dann ist $f$ automatisch zweimal differenzierbar
+(da $\nabla f = X \colon U \to \mathbb{R}^n$ differenzierbar ist).
+Nach dem Satz von Schwarz gilt für alle
+$i, j \in \{1, \dots, n\}$ und alle $p \in U$, dass
+\[
+  \frac{\partial^2 f}{\partial x_j \partial x_i}(p) =
+  \frac{\partial^2 f}{\partial x_i \partial x_j}(p).
+\]
+Schreibe nun
+\[
+  X(p) = \sum_{k=1}^{n} a_k(p) e_k
+\]
+mit differenzierbaren Komponentenfunktionen $a_k \colon U \to \mathbb{R}$.
+Aus $\nabla f = X$ folgen nun die ``Poincaré-Bedingungen''
+\[
+  \frac{\partial a_i}{\partial x_j}(p) = \frac{\partial a_j}{\partial x_i}(p).
+\]
+
+Wir betrachten nun den Spezialfall $n = 3$.
+Sei $X \colon \mathbb{R}^3 \to \mathbb{R}^3$ 
+differenzierbar mit Komponenten $a, b, c \colon \mathbb{R}^3 \to \mathbb{R}$.
+Dann sind die Poincaré-Bedingungen äquivalent zu den Gleichungen
+\begin{align*}
+  \frac{\partial a}{\partial y} &= \frac{\partial b}{\partial x}, \\
+  \frac{\partial a}{\partial z} &= \frac{\partial c}{\partial x}, \\
+  \frac{\partial b}{\partial z} &= \frac{\partial c}{\partial y}.
+\end{align*}
+
+\begin{definition}
+  Sei $X \colon \mathbb{R}^3 \to \mathbb{R}^3$ differenzierbar
+  mit Komponenten $a, b, c$.
+  Dann ist die \emph{Rotation} von $X$ gegeben durch
+  \[
+    \text{rot}(X) =
+    \begin{pmatrix}
+      {\partial b}/{\partial z} - {\partial c}/{\partial y} \\
+      {\partial c}/{\partial x} - {\partial a}/{\partial z} \\
+      {\partial a}/{\partial y} - {\partial b}/{\partial x}.
+    \end{pmatrix}
+  \]
+\end{definition}
+
+Es folgt direkt, dass die Poincaré-Bedingungen für
+ein differenzierbares Vektorfeld $X$ äquivalent
+zur Forderung $\text{rot}(X) = 0$ sind.
+Leider reichen die Poincaré-Bedingungen im allgemeinen
+nicht aus, um ein Vektorfeld $X$ als Gradientenfeld
+zu charakterisieren.
+
+\begin{example}
+  Sei $U = \mathbb{R}^2 \setminus \{0\}$.
+  Sei  
+  \begin{align*}
+    X \colon \mathbb{R}^2 \setminus \{0\} & \to \mathbb{R}^2 \\
+    (x, y) & \mapsto (-y/(x^2 + y^2), x/(x^2 + y^2)).
+  \end{align*}
+  Es gilt für alle $x, y \neq (0, 0)$, dass
+  $\partial a / \partial y (x, y) = \partial b/ \partial x(x, y)$,
+  vergleiche Serie 10.
+  Wir bemerken aber, dass die Einschränkung von $X$ 
+  auf $S^1 = \left\{(x, y) \in \mathbb{R}^2 \mid x^2 + y^2 = 1\right\}$ 
+  mit dem Vektorfeld $\overline X(x, y) = (-y, x)$ übereinstimmt.
+  Vom Vektorfeld $\overline X$ wissen wir aus einem Beispiel
+  oben aber bereits, dass es ein geschlossenes nicht-verschwindendes
+  Wegintegral zulässt.
+  Konkreter gilt für den Weg
+  $\gamma(t) = (\cos(2 \pi t), \sin (2 \pi t))$, dass
+  \[
+    \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+    = 2\pi,
+  \]
+  also ist $X$ kein Gradientenfeld.
+  
+\end{example}
+
+
+
 
 
 \end{document}
