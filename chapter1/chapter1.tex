@@ -375,7 +375,7 @@ betrachtet werden, nämlich
 \end{itemize}
 Wir bemerken, dass $f_1$, $f_2$ und $f_3$ stetig
 sind, indem wir $\delta = \varepsilon$ wählen.
-Aber $f_4$ ist nicht stetig!.
+Aber $f_4$ ist nicht stetig!
 Betrachte dazu die Folge von Punkten
 $p_n = (1/n, 1/n, \dots, 1/n, 0, \dots) \in \mathbb{R}^{\infty}$,
 wobei das Glied $1/n$ gerade $n^2$ mal vorkommt.
@@ -889,8 +889,8 @@ Für die Umkehrung, siehe Serie 2.
 \end{definition}
 
 Unser Ziel in diesem Abschnitt ist es,
-folgenden wichtigen Satz vom polnischen
-Mathematiker Stefan Banach (1892--1945)
+folgenden wichtigen Satz des polnischen
+Mathematikers Stefan Banach (1892--1945)
 zu beweisen.
 
 \begin{theorem*}[Fixpunktsatz von Banach 1922, Heuser 111.11]
@@ -968,7 +968,7 @@ zu beweisen.
   dann auch $d_2(f(q), f(p)) \leq \varepsilon$.
   Dann existiert $N \in \mathbb{N}$ so,
   dass für $n \geq N$ gilt, dass
-  $d(a_n, p) \leq \delta$.
+  $d_1(a_n, p) \leq \delta$.
   Somit gilt auch für alle $n \geq N$,
   dass $d_2(f(a_n), f(p)) \leq \varepsilon$.
   Somit ist $f$ folgenstetig.
@@ -990,7 +990,7 @@ zu beweisen.
   Wir zeigen erst die Eindeutigkeit,
   was ganz schnell geht.
   Seien $p, q \in X$ Fixpunkte von $f$.
-  Dann gilt $d(f(p), f(q)) \leq k \cdot d(p, q)$.
+  Dann gilt $d(f(p), f(q)) = d(p,q) \leq k \cdot d(p, q)$.
   Aus $k < 1$ folgt dann $d(p, q) = 0$,
   also $q = p$.
 
@@ -1053,12 +1053,12 @@ zu beweisen.
 \end{proof}
 
 Wir werden den Fixpunktsatz auf Banachräume
-anwenden um Sätze zur Existenz und Eindeutigkeit
+anwenden, um Sätze zur Existenz und Eindeutigkeit
 gewisser Differentialgleichungen zu zeigen.
 
 \begin{example}
   Sei $K \subset \mathbb{R}$ kompakt,
-  das heisst $K$ ist beschränkt und abgeschlossen.
+  das heisst, $K$ ist beschränkt und abgeschlossen.
   Definiere $C(K)$ als die Menge aller stetigen
   Abbildungen  $f \colon K \to \mathbb{R}$.
   Man kann sich leicht überlegen,
@@ -1417,7 +1417,7 @@ $\gamma_i$ stetig in $t$ sind.
       könnten komplizierter sein.
     \item Sei $A \colon \mathbb{R}^n \to \mathbb{R}^n$ 
       linear und \emph{diagonalisierbar} über $\mathbb{R}$,
-      das heisst es existieren
+      das heisst, es existieren
       \emph{Eigenwerte} $\lambda_1, \dots, \lambda_n \in \mathbb{R}$ 
       und eine Basis aus \emph{Eigenvektoren}
       $\{v_1, \dots, v_n\}$ von $\mathbb{R}^n$ 
@@ -1588,7 +1588,7 @@ Dazu werden wir zunächst Kurven genauer betrachten.
   auf $\mathbb{R}$.
 \end{proof}
 
-Sei $C([a, b], \mathbb{R}^n)$ der Raum aller stetiger
+Sei $C([a, b], \mathbb{R}^n)$ der Raum aller stetigen
 Funktionen $\alpha \colon [a, b] \to \mathbb{R}^n$.
 Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
 \[
@@ -1604,12 +1604,12 @@ Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
 
 \begin{proof}
   Sei ${(\alpha_{m})}_{m \in \mathbb{N}}$ 
-  eine Cauchyfolge in $C([a, b], \mathbb{R})$ bezüglich der Norm 
+  eine Cauchyfolge in $C([a, b], \mathbb{R}^n)$ bezüglich der Norm 
   $\Vert \cdot \Vert_{\infty}$.
   Dann erhalten wir in jeder Komponente $i \leq n$ 
   eine Cauchyfolge $\langle \alpha_m, e_i \rangle$ 
-  in $C([a, b], \mathbb{R})$ (bezüglich der Norm
-  $\Vert \cdot \Vert_{\infty}$).
+  in $C([a, b], \mathbb{R}^1)$ (bezüglich der Norm
+  $\Vert \cdot \Vert_{\infty}$ auf $C([a, b], \mathbb{R}^1)$).
   Nach Weierstrass existiert für alle $i \leq n$ 
   der Grenzwert
   $\lim_{m \to \infty} \langle \alpha_m, e_i \rangle$ 
@@ -1765,12 +1765,12 @@ Dazu verwenden wir folgende Abschätzung.
   die Fixpunkte von $P$ genau die Lösungskurven
   der Differentialgleichung sind.
 
-  Um Banachs Fixpunktsatz anzuwenden zeigen wir nun,
+  Um Banachs Fixpunktsatz anzuwenden, zeigen wir nun,
   dass für alle $T < 1/k$ die Abbildung $P$ kontrahierend ist.
   Dazu sei $t \in [-T, T]$ beliebig,
   und $\alpha, \beta \in V$. Schätze ab, dass
   \begin{align*}
-    \Vert P(\alpha(t)) - P(\beta)(t) \Vert_2
+    \Vert P(\alpha(t)) - P(\beta(t)) \Vert_2
     & = \left\Vert \int_{0}^{t} X(\alpha(s)) - X(\beta(s)) \, ds 
     \right\Vert_2\\
     &\leq \int_{0}^{t} \Vert X(\alpha(s)) - X(\beta(s)) \Vert_2 \, ds\\
@@ -2075,7 +2075,7 @@ Mit etwas Glück lässt sich diese Formel nach $y(t)$ auflösen.
       Sei $y_0 > 0$ und $g(x) = \log(x)$.
       Dann sind die Voraussetzungen vom Lemma erfüllt.
       Es gilt also $\log(y(t)) = t + c$, also
-      $y(t) = e^{t + c} = e^{t \cdot e^c}$.
+      $y(t) = e^{t + c} = e^t \cdot e^c$.
       Mit $y(0) = e^c = y_0$ folgt $y(t) = y_0 e^t$.
     \item Sei $f(x) = x^2$, das heisst
       wir untersuchen $\dot y(t) = {(y(t))}^2$.
@@ -2143,10 +2143,10 @@ Wir möchten die
   + a_0 y(t) 
   = 0
 \]
-mit Anfangsbedingungen $(0) = a_0, y'(0) = y_1, \dots
+mit Anfangsbedingungen $y(0) = a_0, y'(0) = y_1, \dots
 y^{(n-1)}(0) = y_{n-1}$.
 Konkret gesucht ist eine $n$-mal differenzierbare
-Lösungsfunktion $y \colon \mathbb{R} \to \mathbb{R}$ 
+Lösungsfunktion $y \colon \mathbb{R} \to \mathbb{R}$, 
 die diese Bedingungen erfüllt.
 Unsere Methode ist es, die Differentialgleichung auf eine
 lineare Differentialgleichung erster Ordnung auf $\mathbb{R}^n$ 
@@ -2192,7 +2192,7 @@ der ersten Komponente von $\gamma$.
       \[
         \dot \gamma(t) =
         \begin{pmatrix}
-          \dot y(t)
+          \dot y(t) \\
           \ddot y(t)
         \end{pmatrix}
         =
@@ -2200,7 +2200,7 @@ der ersten Komponente von $\gamma$.
           0 & 1 \\ -1 & 0
         \end{pmatrix}
         \begin{pmatrix}
-          y(t)
+          y(t) \\
           \dot y(t)
         \end{pmatrix}.
       \]
@@ -2300,7 +2300,7 @@ Eine Kurve braucht nicht stetig differenzierbar
 zu sein, um eine endliche ``Länge'' zu haben.
 
 \begin{examples}
-  Folgende Beispiele sollen Zeigen, dass
+  Folgende Beispiele sollen zeigen, dass
   unser $L(\gamma)$ als Längenbegriff nicht
   allgemein genug ist.
   \begin{enumerate}[(1)]
@@ -2316,7 +2316,7 @@ zu sein, um eine endliche ``Länge'' zu haben.
         \lim_{s \to 0}
         \Vert \dot \gamma(s) \Vert_2
         = \lim_{s \to 0}
-        \sqrt{1 + 1/4s} = +\infty.
+        \sqrt{1 + 1/(4s)} = +\infty.
       \]
       Somit ist $\dot \gamma$ 
       nicht Riemann-integrierbar.
@@ -2331,17 +2331,17 @@ zu sein, um eine endliche ``Länge'' zu haben.
         \Vert \dot \gamma(s) \Vert_2\, ds
         =
         \int_{\varepsilon}^{1} 
-        \sqrt{1 + 1/4s} \, ds
+        \sqrt{1 + 1/(4s)} \, ds
         \leq \int_{\varepsilon}^{1} 
-        \sqrt{5/4s} \, ds
+        \sqrt{5/(4s)} \, ds
         \leq \sqrt 5 (1 - \sqrt{\varepsilon})
         \leq \sqrt 5.
       \]
     \item Betrachte die Kurve $\gamma \colon [0, 1] \to \mathbb{R}^2$ 
-      aus Abbildung~\ref{fig:rectifiability}
-      welche durch stückweise gerade Abschnitte
+      aus Abbildung~\ref{fig:rectifiability},
+      welche durch stückweise gerade Abschnitte,
       deren Länge durch Terme einer geometrischen
-      Reihe $\sum {(1/2)}^n$ gegeben sind.
+      Reihe $\sum {(1/2)}^n$ gegeben sind, definiert ist.
       Wir geben keine expliziten Formeln dafür an.
       Die Kurve $\gamma$ ist in abzählbar vielen
       Punkten nicht differenzierbar,
@@ -2485,8 +2485,8 @@ zu sein, um eine endliche ``Länge'' zu haben.
   $P$ mit $L(\gamma ; P) \geq L(\gamma) - 2\varepsilon$.
   Daraus wird folgen, dass das Supremum über alle Partitionen
   genau $L(\gamma)$ ist.
-  Da $\dot \gamma \colon [0, 1] \to \mathbb{R}^n$ stetig ist,
-  und $[0, 1]$ kompakt ist folgt, dass $\dot \gamma$ 
+  Da $\dot \gamma \colon [0, 1] \to \mathbb{R}^n$ stetig ist
+  und $[0, 1]$ kompakt ist, folgt, dass $\dot \gamma$ 
   gleichmässig stetig ist.
   Es existiert also $\delta > 0$ so, dass
   für alle $a, b \in [0, 1]$ mit $|b - a| \leq \delta$ 
@@ -2521,7 +2521,7 @@ zu sein, um eine endliche ``Länge'' zu haben.
     \left\Vert
     \int_{t_{k-1}}^{t_k} \dot \gamma(t_{k-1}) \, ds
     + \int_{t_{k-1}}^{t_k} \dot \gamma(s) - \dot \gamma(t_{k-1}) \, ds
-    \right\Vert \\
+    \right\Vert_2 \\
     &\geq
     \left\Vert
     \int_{t_{k-1}}^{t_k} \dot \gamma(t_{k-1}) \, ds
@@ -2554,7 +2554,7 @@ zu sein, um eine endliche ``Länge'' zu haben.
   ``feine'' Triangulierung zu approximieren.
   Leider geht der naiv Ansatz schief!
   Dazu untersuchen wir 
-  Fl einen Zylinder der Höhe $h$ mit Radius $1$.
+  einen Zylinder der Höhe $h$ mit Radius $1$.
   Wähle $N \in \mathbb{N}$ gross,
   und Punkte $P_1, \dots, P_N$ auf der Höhe $0$,
   welche ein regelmässiges $N$-Eck bilden.
