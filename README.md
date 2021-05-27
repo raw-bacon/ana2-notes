@@ -1,4 +1,4 @@
-# Ana1 Notizen
+# Ana2 Notizen
 Das ist das Repository
 zu den Vorlesungsnotizen
 des Kurses Analysis 2 bei 

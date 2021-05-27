@@ -1,0 +1,15 @@
+# Fragen und Bemerkungen JV
+
+l. 1611-1612: Ich würde der Deutlichkeit halber noch R^1 (statt R) schreiben, damit der Kontrast hervorgehoben wird.
+
+l. 1616: Der Satz von Weierstrass setzt gleichmässige Konvergenz voraus; habe ich da etwas verpasst?
+
+l. 1749: Eventuell neuen Absatz starten.
+
+l. 2082: "Sei $y_0 \geq 0$". Nicht einfach "y_0 > 0"? Denn für y_0 = 0 geht y_0 = -1/c nicht.
+
+l. 2319: Nur um die Zweideutigkeit vorzubeugen.
+
+l. 2500: Wenn man das schon Jahre macht, ist das wohl komplett transparent, aber ich würde diese blackboard magic halt expliziter machen :)
+
+l. 2511: Da würde ich dann eher gerade den zweiten Term direkt durch epsilon ersetzen, da man das jetzt eh gerade so berechnet hat.
