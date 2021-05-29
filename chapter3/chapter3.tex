@@ -316,8 +316,153 @@ zu charakterisieren.
     = 2\pi,
   \]
   also ist $X$ kein Gradientenfeld.
-  
 \end{example}
+
+\begin{definition}
+  Eine Teilmenge $U \subset \mathbb{R}^n$ 
+  heisst \emph{sternförmig} bezüglich einem Punkt $p \in U$,
+  falls für alle $q \in U$ und alle $t \in [0, 1]$ 
+  gilt, dass $p + t(q - p) \in U$.
+  In anderen Worten liegt der Geradenabschnitt zwischen $p$ und $q$ 
+  noch vollständig in $U$.
+\end{definition}
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}[(1)]
+    \item Die Menge $U = \mathbb{R}^2 \setminus \{0 \}$ ist bezüglich
+      keinem Punkt sternförmig.
+      Tatsächlich geht die Strecke zwischen 
+      $p \in \mathbb{R}^2 \setminus \{0\}$
+      und $-p$ durch den Nullpunkt, welcher nicht in $U$ liegt.
+    \item Die Menge $\mathbb{R}^2 \setminus (\mathbb{R}_{\leq 0}
+      \times \{0\})$ (die Ebene ohne die negative $x$-Achse) 
+      ist sternförmig bezüglich dem Punkt 
+      $p = (1, 0)$.
+    \item Alle konvexen Teilmengen von $\mathbb{R}^n$ sind sternförmig.
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}[Poincaré Lemma, ca. 1900]
+  Sei $U \subset \mathbb{R}^n$ offen und sternförmig bezüglich
+  $p \in U$. Sei weiterhin $X \colon U \to \mathbb{R}^n$ 
+  differenzierbar, so dass die Poincaré-Bedingungen
+  auf $U$ erfüllt sind.
+  Dann existiert eine differenzierbare Funktion
+  $f \colon U \to \mathbb{R}$ mit $\nabla f = X$.
+\end{theorem}
+
+\begin{proof}
+  Um die Notation zu vereinfachen werden wir $p = 0$ annehmen.
+  Sei $q \in U$.
+  Schreibe $X = a_1 e_1 + \cdots + a_n e_n$ und
+  $q = x_1 e_1 + \cdots x_n e_n$.
+  Definiere
+  \begin{align*}
+    \gamma \colon [0, 1] & \to U \\
+    t & \mapsto tq
+  \end{align*}
+  und
+  \[
+    f(q) = \int_{0}^{1} \langle X(\gamma(t)),
+    \dot \gamma (t) \rangle \, dt.
+  \]
+  Berechne
+  \begin{align*}
+    f(q)
+    & = \int_{0}^{1} \langle X(tq), q \rangle \, dt\\
+    &= \int_{0}^{1} \sum_{i=1}^{n} a_i(tx_1, \dots, tx_n) \cdot x_i \, dt.
+  \end{align*}
+  Sei $k \leq n$ und berechne mit Hilfe vom Lemma unten, dass
+  \begin{align*}
+    \frac{\partial f}{\partial x_k}(q)
+    & = \frac{\partial f}{\partial x_k } (x_1, \dots, x_n)\\
+    &= \frac{\partial}{\partial x_k} \int_{0}^{1} 
+    \sum_{i=1}^{n} a_i (tq) \cdot x_i \, dt \\
+    &= \int_{0}^{1} \frac{\partial}{\partial x_k}
+    \sum_{i=1}^{n} a_i(tq) \cdot x_i \, dt.
+  \end{align*}
+  Es gilt
+  \begin{align*}
+    \frac{\partial}{\partial x_k}
+    \sum_{i=1}^{n} a_i(tq) \cdot x_i
+    &= \sum_{i=1}^{n} \frac{\partial x_i}{\partial x_k}
+    (tx_1, \dots, tx_n) \cdot t \cdot x_i
+    + \sum_{i=1}^{n} a_i(tq) \cdot \frac{\partial x_i}{\partial x_k}\\
+    &= \sum_{i=1}^{n} \left( \frac{\partial a_i}{\partial x_k}
+    (tx_1, \dots, tx_n) \cdot t \cdot x_i \right)
+    + a_k(tq) \\
+    &= \frac{d}{dt} (t \cdot a_k(tx_1, \dots, tx_n)).
+  \end{align*}
+  Tatsächlich ist nämlich
+  \begin{align*}
+    \frac{d}{dt}(t \cdot a_k(tx_1, \dots, tx_n)
+    & = a_k(tq) + \sum_{i=1}^{n} t \cdot \frac{\partial a_k}{\partial x_i}
+    (tx_1, \dots, tx_n) \cdot x_i,
+  \end{align*}
+  also erhalten wir mit Hilfe der Poincaré-Bedingungen
+  die gewünschte Gleichheit.
+  Es folgt, dass
+  \begin{align*}
+    \frac{\partial f}{\partial x_k}(q)
+    & = \int_{0}^{1} \frac{d}{dt}(t a_k (tq)) \, dt\\
+    &= a_k(q),
+  \end{align*}
+  also gilt $\nabla f = X$.
+\end{proof}
+
+\begin{lemma*}
+  Sei $g \colon [0, 1]^2 \to \mathbb{R}$ stetig differenzierbar.
+  Dann gilt für alle $x \in (0, 1)$, dass
+  \[
+    \frac{\partial}{\partial x} \int_{0}^{1} g(x, y) \, dy
+    = \int_{0}^{1} \frac{\partial}{\partial x} g(x, y) \, dy.
+  \]
+\end{lemma*}
+
+\begin{proof}
+  Berechne
+  \begin{align*}
+    \frac{\partial}{\partial x}
+    \int_{0}^{1} g(x, y) \, dy
+    &= \lim_{h \to 0} \frac{1}{h}
+    \int_{0}^{1} g(x + h, y) - g(x, y) \, dy.
+  \end{align*}
+  Nach dem Mittelwertsatz existiert
+  $\overline x \in [x, x + h]$ mit
+  \[
+    \frac{g(x + h, y) - g(x, y)}{h}= \frac{\partial}{\partial x}
+    g(\overline x, y).
+  \]
+  Sei nun $\varepsilon > 0$.
+  Da $\partial g / \partial x \colon [0, 1]^2 \to \mathbb{R}$ 
+  stetig ist, und weiterhin $[0, 1]^2$ kompakt,
+  ist $\partial g/\partial x$ sogar gleichmässig stetig
+  auf  $[0, 1]^2$.
+  Also existiert $\delta > 0$ so, dass für alle
+  $x, \overline x, y \in [0,1]$ mit $|x - \overline x| \leq \delta$ 
+  gilt, dass
+  \[
+    \left| \frac{\partial g}{\partial x}(\overline x, y)
+    - \frac{\partial g}{\partial x}(x, y) \right| \leq \varepsilon.
+  \]
+  Für $h \in \mathbb{R}$ mit $|h| \leq \delta$ 
+  gilt also (da $\overline x \in [x, x + h])$, dass
+  \begin{align*}
+    \left| \int_{0}^{1} \frac{1}{h}
+    g(x + h, y) - g(x, y)\, dy
+    - \int_{0}^{1} \frac{\partial}{\partial x}g(x, y) \, dy \right|
+    &= \left| 
+    \int_{0}^{1} 
+    \frac{\partial}{\partial x} g(\overline x, y)
+    - \frac{\partial}{\partial x}g(x, y)\, dy \right| 
+    \leq \varepsilon.
+  \end{align*}
+  Daraus folgt, dass wir den Grenzwert mit dem Integral
+  vertauschen können.
+\end{proof}
+
+
 
 
 
