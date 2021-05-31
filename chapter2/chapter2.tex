@@ -11,7 +11,7 @@ Die erste Schwierigkeit daran ist, dass der Ausdruck
 \[
   \lim_{h \to 0} \frac{f(p + h) - f(p)}{h}
 \]
-für $m \geq 2$ keinen Sinn macht: Vektoren kann man nicht
+für $m \geq 2$ keinen Sinn macht: Das Quotient von zwei Vektoren kann man nicht
 definieren.
 
 \section{Differenzierbarkeit}
@@ -28,7 +28,7 @@ definieren.
     \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
       ein \emph{Restterm} ${(Rf)}_p(h) \in \mathbb{R}^n$,
       der relativ klein in $\Vert h \Vert_2$ ist,
-      so dass für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
+      so dass %für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ % (h war schon definiert)
       gilt, dass
       \[
         f(p+h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h).
@@ -216,7 +216,7 @@ Wir werden sie später in diesem Kapitel beweisen.
 \end{definition}
 
 \begin{lemma*}
-  Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar,
+  Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar bei $p \in \mathbb{R}^m$,
   genau dann wenn alle Komponentenfunktionen 
   $f_k \colon \mathbb{R}^m \to \mathbb{R}$ bei $p$ differenzierbar sind.
 \end{lemma*}
@@ -280,7 +280,7 @@ Wir werden sie später in diesem Kapitel beweisen.
         {(Df)}_p \colon \mathbb{R}^m & \to \mathbb{R}^n \\
         h & \mapsto \sum_{k=1}^{n} {(Df_k)}_p(h) \cdot e_k
       \end{align*}
-      linear da Summen linearer Abbildungen linear sind, und
+      linear, da Summen linearer Abbildungen linear sind, und
     \item ${(Rf)}_p(h)$ ist relativ klein in $\Vert h \Vert_2$,
       da
       \[
@@ -527,11 +527,11 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
   Für $t \leq \delta / \Vert v \Vert_2$ gilt dann,
   dass $\Vert tv \Vert_2 \leq \delta$,
   also gilt auch, dass
-  $\Vert {(Rf)}_p (tv) \leq \varepsilon 
+  $\Vert {(Rf)}_p (tv) \Vert_2 \leq \varepsilon 
   \cdot \Vert t v \Vert_2 /\Vert v \Vert_2$.
   Wir schliessen, dass
   \[
-    \left\Vert \frac{{(Rf)}_p(tv)}{t} \right\Vert
+    \left\Vert \frac{{(Rf)}_p(tv)}{t} \right\Vert_2
     \leq \frac{\varepsilon \cdot \Vert v \Vert_2}{\Vert v \Vert_2} 
     = \varepsilon.
   \]
