@@ -11,7 +11,8 @@ Die erste Schwierigkeit daran ist, dass der Ausdruck
 \[
   \lim_{h \to 0} \frac{f(p + h) - f(p)}{h}
 \]
-für $m \geq 2$ keinen Sinn macht: Das Quotient von zwei Vektoren kann man nicht
+für $m \geq 2$ keinen Sinn macht: Den 
+Quotienten von zwei Vektoren kann man nicht
 definieren.
 
 \section{Differenzierbarkeit}
@@ -28,8 +29,7 @@ definieren.
     \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
       ein \emph{Restterm} ${(Rf)}_p(h) \in \mathbb{R}^n$,
       der relativ klein in $\Vert h \Vert_2$ ist,
-      so dass %für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ % (h war schon definiert)
-      gilt, dass
+      so dass
       \[
         f(p+h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h).
       \]
@@ -641,7 +641,8 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
       Sei $\varepsilon > 0$ vorgegeben. Wähle ein
       $\delta > 0$ so, dass
       für $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$ gilt,
-      dass $\Vert R_1(h)\Vert_2 \leq (\varepsilon / a_2) \Vert h \Vert_2$ folgt.
+      dass $\Vert R_1(h)\Vert_2 \leq \varepsilon / a_2
+      \cdot \Vert h \Vert_2$ folgt.
       Dann gilt
       \[
         \Vert A_2(R_1(h)) \Vert_2 \leq a_2 \cdot \Vert R_1(h) \Vert_2
