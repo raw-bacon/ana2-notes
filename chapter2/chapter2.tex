@@ -11,7 +11,7 @@ Die erste Schwierigkeit daran ist, dass der Ausdruck
 \[
   \lim_{h \to 0} \frac{f(p + h) - f(p)}{h}
 \]
-für $m \geq 2$ keinen Sinn macht: Vektoren kann man nicht
+für $m \geq 2$ keinen Sinn macht: Das Quotient von zwei Vektoren kann man nicht
 definieren.
 
 \section{Differenzierbarkeit}
@@ -28,7 +28,7 @@ definieren.
     \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
       ein \emph{Restterm} ${(Rf)}_p(h) \in \mathbb{R}^n$,
       der relativ klein in $\Vert h \Vert_2$ ist,
-      so dass für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
+      so dass %für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ % (h war schon definiert)
       gilt, dass
       \[
         f(p+h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h).
@@ -216,7 +216,7 @@ Wir werden sie später in diesem Kapitel beweisen.
 \end{definition}
 
 \begin{lemma*}
-  Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar,
+  Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar bei $p \in \mathbb{R}^m$,
   genau dann wenn alle Komponentenfunktionen 
   $f_k \colon \mathbb{R}^m \to \mathbb{R}$ bei $p$ differenzierbar sind.
 \end{lemma*}
@@ -280,7 +280,7 @@ Wir werden sie später in diesem Kapitel beweisen.
         {(Df)}_p \colon \mathbb{R}^m & \to \mathbb{R}^n \\
         h & \mapsto \sum_{k=1}^{n} {(Df_k)}_p(h) \cdot e_k
       \end{align*}
-      linear da Summen linearer Abbildungen linear sind, und
+      linear, da Summen linearer Abbildungen linear sind, und
     \item ${(Rf)}_p(h)$ ist relativ klein in $\Vert h \Vert_2$,
       da
       \[
@@ -527,11 +527,11 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
   Für $t \leq \delta / \Vert v \Vert_2$ gilt dann,
   dass $\Vert tv \Vert_2 \leq \delta$,
   also gilt auch, dass
-  $\Vert {(Rf)}_p (tv) \leq \varepsilon 
+  $\Vert {(Rf)}_p (tv) \Vert_2 \leq \varepsilon 
   \cdot \Vert t v \Vert_2 /\Vert v \Vert_2$.
   Wir schliessen, dass
   \[
-    \left\Vert \frac{{(Rf)}_p(tv)}{t} \right\Vert
+    \left\Vert \frac{{(Rf)}_p(tv)}{t} \right\Vert_2
     \leq \frac{\varepsilon \cdot \Vert v \Vert_2}{\Vert v \Vert_2} 
     = \varepsilon.
   \]
@@ -611,14 +611,14 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
 
 \begin{lemma*}
   Seien $A_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
-  und $A_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ linear,
-  so wie $R_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
-  und $\mathbb{R}_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ 
+  und $A_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ linear
+  sowie $R_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
+  und $R_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ 
   relativ klein in $\Vert h \Vert_2$.
   Dann sind die Ausdrücke
   \begin{enumerate}[\normalfont(i)]
     \item $A_2(R_1(h))$ 
-    \item $R_2(A_1(h)) + R_1(h)$
+    \item $R_2(A_1(h) + R_1(h))$
   \end{enumerate}
   relativ klein in $\Vert h \Vert_2$.
 \end{lemma*}
@@ -641,21 +641,21 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
       Sei $\varepsilon > 0$ vorgegeben. Wähle ein
       $\delta > 0$ so, dass
       für $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$ gilt,
-      dass $\varepsilon / a_2 \Vert h \Vert_2$ folgt.
+      dass $\Vert R_1(h)\Vert_2 \leq (\varepsilon / a_2) \Vert h \Vert_2$ folgt.
       Dann gilt
       \[
         \Vert A_2(R_1(h)) \Vert_2 \leq a_2 \cdot \Vert R_1(h) \Vert_2
         \leq \varepsilon \cdot \Vert h \Vert_2.
       \]
     \item 
-      Sei $\varepsilon > 0$ vorgegeben.
+      Setze $\varepsilon = 1$.%Sei $\varepsilon > 0$ vorgegeben.
       Wähle $\delta_1 > 0$ so, dass für alle
       $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta_1$ 
       gilt, dass $\Vert R_1(h) \Vert_2 \leq \Vert h \Vert_2$.
       Dann folgt, dass
       \begin{align*}
-        \Vert A_1(h) + R_1(h) \Vert_2 \leq 
-        &= \Vert A_1(h) \Vert_2 + \Vert R_1(h) \Vert_2  \\
+        \Vert A_1(h) + R_1(h) \Vert_2 
+        &\leq \Vert A_1(h) \Vert_2 + \Vert R_1(h) \Vert_2  \\
         &\leq a_1 \Vert h \Vert_2 + \Vert h \Vert_2 \\
         &= (a_1 + 1) \Vert h \Vert_2.
       \end{align*}
@@ -675,7 +675,7 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
       Setze nun $v = A_1(h) + R_1(h)$.
       Wir folgern wegen $\Vert v \Vert_2 \leq \delta_2$, dass
       \begin{align*}
-        \Vert R_2(A_1(h) + R_1(h)) \Vert 
+        \Vert R_2(A_1(h) + R_1(h)) \Vert_2 
         & = \Vert R_2(v) \Vert_2  \\
         &\leq \varepsilon / (a_1 + 1) \cdot \Vert v \Vert_2 \\
         &\leq \varepsilon \cdot \Vert h \Vert_2.
@@ -743,7 +743,7 @@ und
 Daraus folgt, dass
 \begin{align*}
   {(D(fg))}_p(v) 
-  &= {(D(m+h))}_p(v) \\
+  &= {(D(m \circ h))}_p(v) \\
   &= {(Dm)}_{h(p)}({(Dh)}_p(v))\\
   &= {(Dm)}_{(f(p), g(p))} ({(Df)}_p(v), {(Dg)}_p(v)) \\
   &= g(p) \cdot {(Df)}_p(v) + f(p) \cdot {(Dg)}_p(v).
@@ -780,7 +780,7 @@ Sei $U \subset \mathbb{R}^n$ offen und
 $f \colon U \to \mathbb{R}$ eine Abbildung.
 Dann hat $f$ an der Stelle $p \in U$ 
 ein \emph{lokales Minimum} (beziehungsweise
-ein \emph{lokales Maximum})
+ein \emph{lokales Maximum}),
 falls ein $r > 0$ existiert mit
 \begin{enumerate}[(i)]
   \item $B_p(r) = \left\{q \in \mathbb{R}^n \mid 
@@ -870,7 +870,7 @@ differenzierbar. Es gilt für alle $t \in \mathbb{R}$, dass
 \begin{proof}
   Die Funktion $h$ ist konstant, genau dann,
   wenn $h'(t) = 0$ für alle $t \in \mathbb{R}$ gilt.
-  Dies wieerum ist äquivalent dazu zu fordern, dass
+  Dies wiederum ist äquivalent dazu zu fordern, dass
   \[
     \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle = 0.
     \qedhere
@@ -938,14 +938,14 @@ zwischen $a$ und $b$ liegen.
     \item Sei $f \colon \mathbb{R} \to \mathbb{R}$ (das heisst $n = 1$).
       Seien $a, b \in \mathbb{R}$ mit $a < b$.
       Dann existiert $x \in I_{a, b} \setminus \{a, b\} = (a, b)$ 
-      mit ${(Df)}_{x(b-a) = f(b) - f(a)}$.
+      mit ${(Df)}_{x}(b-a) = f(b) - f(a)$.
       Es gilt also
       \[
         f'(x) = \frac{f(b) - f(a)}{b-a}.
       \]
       Wir haben also die eindimensionale Version des Mittelwertsatzes
       erfolgreich aus der momentanen Version extrahiert.
-    \item Nehme an, dass  $f(b) = f(a)$ gilt.
+    \item Nimm an, dass  $f(b) = f(a)$ gilt.
       Dann existiert $p \in I_{a, b} \setminus \{a, b\}$ 
       mit
       \[
@@ -1007,7 +1007,7 @@ mit Umkehrabbildung $g$ erhalten wir dann
   {(Dg)}_{f(p)} \circ {(Df)}_p 
   = {(D \text{Id}_{\mathbb{R}^n})}_p = \text{Id}_{\mathbb{R}^n}.
 \]
-Ähnlich gilt auch ${(Df)}_p \circ {(Dg)}_{f(p)} = \text{Id}_{\mathbb{R}^n}$ 
+Ähnlich gilt auch ${(Df)}_p \circ {(Dg)}_{f(p)} = \text{Id}_{\mathbb{R}^n}$. 
 Folglich sind die linearen Abbildungen
 ${(Df)}_p$ und ${(Dg)}_{f(p)}$ zueinander
 inverse Vektorraumisomorphismen von $\mathbb{R}^n$.
