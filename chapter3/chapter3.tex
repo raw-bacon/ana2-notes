@@ -386,9 +386,9 @@ zu charakterisieren.
   \begin{align*}
     \frac{\partial}{\partial x_k}
     \sum_{i=1}^{n} a_i(tq) \cdot x_i
-    &= \sum_{i=1}^{n} \frac{\partial x_i}{\partial x_k}
+    &= \sum_{i=1}^{n} \frac{\partial a_i}{\partial x_k}
     (tx_1, \dots, tx_n) \cdot t \cdot x_i
-    + \sum_{i=1}^{n} a_i(tq) \cdot \frac{\partial x_i}{\partial x_k}\\
+    + \sum_{i=1}^{n} a_i(tq) \cdot \frac{\partial a_i}{\partial x_k}\\
     &= \sum_{i=1}^{n} \left( \frac{\partial a_i}{\partial x_k}
     (tx_1, \dots, tx_n) \cdot t \cdot x_i \right)
     + a_k(tq) \\
@@ -533,7 +533,7 @@ zu charakterisieren.
       auf $U_R$ gilt, folgt für alle $q \in U_R$, dass
       $f_N(q) = f_S(q)$.
       Dies liegt daran, dass $U_R$ wegzusammenhängend ist,
-      und dass eine Stammfunktion einer differenzierbararen
+      und dass eine Stammfunktion einer differenzierbaren Funktion
       aus einem Funktionswert (in unserem Fall $e_1$)
       und dem Wegintegral rekonstruiert werden kann.
 
