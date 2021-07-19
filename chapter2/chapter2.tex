@@ -1182,7 +1182,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 
 \begin{proposition}[Lokale Injektivität]\label{prop:local-injectivity}
   Sei $U \subset \mathbb{R}^n$ offen,
-  $f \colon U \to \mathbb{R}$ stetig differenzierbar,
+  $f \colon U \to \mathbb{R}^n$ stetig differenzierbar,
   und $p \in U$ so dass
   ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
   ein Isomorphismus ist.
@@ -1361,7 +1361,7 @@ treffen wir folgende Vorbereitungen.
     und 
     \begin{align*}
       \widetilde f \colon \widetilde U & \to \mathbb{R}^n \\
-      q & \mapsto f(p + q) - f(p).
+      q & \mapsto \overline f(p + q) - \overline f(p).
     \end{align*}
     Dann gilt $\widetilde f ( 0 ) = \overline f(p) - \overline f (p) = 0$.
     Weiterhin gilt ${(D\widetilde f )}_0 = \text{Id}_{\mathbb{R}^n}$.
@@ -1497,7 +1497,7 @@ $g \colon W \to V$.
   Für alle $q, \widetilde q \in B_0(\varepsilon)$ gilt
   \(
     1/2 \cdot 
-    \Vert \widetilde q - q \Vert_2 \leq f(\widetilde q) - f(q) \Vert_2.
+    \Vert \widetilde q - q \Vert_2 \leq \Vert f(\widetilde q) - f(q) \Vert_2.
   \)
   Seien nun $\widetilde y, y \in W$. Setze
   $\widetilde q = g(\widetilde y)$ 
@@ -1925,7 +1925,7 @@ Also gilt $\dim K = n-m$.
       wenn $h \in S$ gilt. Da $K \cap S = \{0\}$ ist, folgt $h = 0$.
     \item ${(DF)}_p$ ist surjektiv.
       Aus der Dimensionsformel fogt, dass $\dim K = n - m$ gilt.
-      Also ist $\dim (\mathbb{R}^n \times K) = n$.
+      Also ist $\dim (\mathbb{R}^m \times K) = n$.
       Die Dimensionsformel für 
       ${(DF)}_p \colon \mathbb{R}^n \to \mathbb{R}^m \times K$ 
       liefert, dass $n = \dim \im {(DF)}_p$ gilt, also muss
@@ -2239,7 +2239,7 @@ von $f$ an der Stelle $p$.
     & = \int_{0}^{1} \langle {(\nabla f)}_{p + th}, h \rangle \, dt\\
     &= \int_{0}^{1} \langle {(\nabla f)}_p , h \rangle \, dt
     + \int_{0}^{1} \langle {(D \nabla f)}_p (th), h \rangle \, dt
-    + \int_{0}^{1} \langle {(R \nabla )}_p (th), h \rangle \, dt.
+    + \int_{0}^{1} \langle {(R \nabla f)}_p (th), h \rangle \, dt.
   \end{align*}
   Berechne, dass
   \[
@@ -2346,7 +2346,7 @@ diagonalisierbar ist.
 Konkreter existieren sogar
 $\lambda_1, \dots \lambda_n \in \mathbb{R}$ und
 eine orthogonale Matrix $P \in \mathbb{R}^{n \times n}$ 
-(das heisst $P = P^{-1}$), so dass
+(das heisst $P^T = P^{-1}$), so dass
 $P^{-1} {(J \nabla f)}_p P = \text{diag}(\lambda_1, \dots, \lambda_n)$ 
 gilt. Siehe dazu den Satz von Sylvester.
 Bezüglich einer geeigneten orthogonalen Basis
@@ -2354,7 +2354,7 @@ $\{f_1, \dots, f_n \}$ von $\mathbb{R}^n$
 gilt also folgendes. Für alle
 Vektoren
 $v = y_1 f_1 + \cdots + y_n f_n$ gilt
-${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + y_n y_n^2$.
+${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$.
 
 Wir machen nun die Zusatzannahme, dass ${(Hf)}_p$ nicht-singulär ist,
 das heisst alle $\lambda_k$ sind ungleich null.
@@ -2391,7 +2391,7 @@ Vorzeichen haben.
     \frac{\partial^2 f}{\partial y \partial x}(0, 0)
     =
     \lim_{x \to 0} \lim_{y \to 0} \frac{1}{xy}
-    f(x, y) - f(x, 0) - f(0, y) + f(0, 0)
+    \left( f(x, y) - f(x, 0) - f(0, y) + f(0, 0) \right)
   \]
   gilt. Aus Symmetriegründen (vertausche die Rollen von $x$ und $y$)
   folgt dann, dass $\partial^2 f/ \partial y \partial x (0, 0)
