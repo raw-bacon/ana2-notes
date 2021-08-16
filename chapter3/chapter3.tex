@@ -386,9 +386,9 @@ zu charakterisieren.
   \begin{align*}
     \frac{\partial}{\partial x_k}
     \sum_{i=1}^{n} a_i(tq) \cdot x_i
-    &= \sum_{i=1}^{n} \frac{\partial x_i}{\partial x_k}
+    &= \sum_{i=1}^{n} \frac{\partial a_i}{\partial x_k}
     (tx_1, \dots, tx_n) \cdot t \cdot x_i
-    + \sum_{i=1}^{n} a_i(tq) \cdot \frac{\partial x_i}{\partial x_k}\\
+    + \sum_{i=1}^{n} a_i(tq) \cdot \frac{\partial a_i}{\partial x_k}\\
     &= \sum_{i=1}^{n} \left( \frac{\partial a_i}{\partial x_k}
     (tx_1, \dots, tx_n) \cdot t \cdot x_i \right)
     + a_k(tq) \\
@@ -396,7 +396,7 @@ zu charakterisieren.
   \end{align*}
   Tatsächlich ist nämlich
   \begin{align*}
-    \frac{d}{dt}(t \cdot a_k(tx_1, \dots, tx_n)
+    \frac{d}{dt}(t \cdot a_k(tx_1, \dots, tx_n))
     & = a_k(tq) + \sum_{i=1}^{n} t \cdot \frac{\partial a_k}{\partial x_i}
     (tx_1, \dots, tx_n) \cdot x_i,
   \end{align*}
@@ -412,7 +412,7 @@ zu charakterisieren.
 \end{proof}
 
 \begin{lemma*}
-  Sei $g \colon [0, 1]^2 \to \mathbb{R}$ stetig differenzierbar.
+  Sei $g \colon {[0, 1]}^2 \to \mathbb{R}$ stetig differenzierbar.
   Dann gilt für alle $x \in (0, 1)$, dass
   \[
     \frac{\partial}{\partial x} \int_{0}^{1} g(x, y) \, dy
@@ -435,10 +435,10 @@ zu charakterisieren.
     g(\overline x, y).
   \]
   Sei nun $\varepsilon > 0$.
-  Da $\partial g / \partial x \colon [0, 1]^2 \to \mathbb{R}$ 
-  stetig ist, und weiterhin $[0, 1]^2$ kompakt,
+  Da $\partial g / \partial x \colon {[0, 1]}^2 \to \mathbb{R}$ 
+  stetig ist, und weiterhin ${[0, 1]}^2$ kompakt,
   ist $\partial g/\partial x$ sogar gleichmässig stetig
-  auf  $[0, 1]^2$.
+  auf  ${[0, 1]}^2$.
   Also existiert $\delta > 0$ so, dass für alle
   $x, \overline x, y \in [0,1]$ mit $|x - \overline x| \leq \delta$ 
   gilt, dass
@@ -462,11 +462,324 @@ zu charakterisieren.
   vertauschen können.
 \end{proof}
 
+\begin{remark}
+  Die Annahme, dass $U$ sternförmig ist, wird im Beweis
+  verwendet um ``kanonische'' Wege zu wählen.
+  Lässt man die Bedingung der Sternförmigkeit weg,
+  lässt sich $f$ nicht eindeutig definieren.
 
+  Tatsächlich geht das bei Gebieten mit ``Löchern''
+  schief. Betrachte zum
+  Beispiel das Vektorfeld
+  \begin{align*}
+    X \colon \mathbb{R}^2 \setminus \{0\} & \to \mathbb{R}^2\\
+    (x, y) & \mapsto (-y/(x^2 + y^2), x/(x^2 + y^2)),
+  \end{align*}
+  welches die Poincaré-Bedingungen erfüllt, aber dennoch
+  kein Gradientenfeld ist (da das Wegintegral um den Einheitskreis
+  nicht verschwindet).
+\end{remark}
 
+\begin{proposition}\label{prop:low-dimensions}
+  \leavevmode
+  \begin{enumerate}[\normalfont(i)]
+    \item Sei $X = (a, b) \colon \mathbb{R}^2 \setminus \{0\} \to \mathbb{R}^2$ 
+      differenzierbar. Dann ist $X$ ein Gradientenfeld, genau dann wenn
+      die Poincaré-Bedingung
+      $\partial b / \partial x = \partial a / \partial y$ 
+      erfüllt ist, und gleichzeitig
+      \[
+        \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt = 0
+      \]
+      für den Weg $\gamma(t) = (\cos(2\pi t), \sin(2 \pi t))$ gilt.
+    \item Sei 
+      $X \colon \mathbb{R}^3 \setminus \{0\} \to \mathbb{R}$ 
+      differenzierbar.
+      Dann ist $X$ ein Gradientenfeld, genau dann, wenn $\textup{rot}(X) = 0$
+      gilt (und keine Zusatzbedingung).
+  \end{enumerate}
+\end{proposition}
 
+\begin{proof}
+  Die beiden Hinrichtungen ($\Rightarrow$) haben wir bereits behandelt.
+  Die Rückrichtungen ($\Leftarrow$) beweisen wir einzeln.
+  \begin{enumerate}[(i)]
+    \item Sei $X = (a, b) \colon \mathbb{R}^2 \setminus \{0\} \to \mathbb{R}^2$ 
+      ein differenzierbares Vektorfeld mit $\partial b / \partial x =
+      \partial a / \partial y$.
+      Schreibe $U = \mathbb{R}^2 \setminus \{0\} = U_N \cup U_S$, wobei
+      \begin{align*}
+        U_N & = \mathbb{R}^2 \setminus \left\{(0, y) \mid y \leq 0\right\}, \\
+        U_S & = \mathbb{R}^2  \setminus \left\{(0, y) \mid y \geq 0 \right\}.
+      \end{align*}
+      Die beiden Mengen $U_N$ und $U_S$ sind offen und sternförmig.
+      Nach dem Poincaré Lemma existieren 
+      differenzierbare Funktionen $f_N \colon U_N \to \mathbb{R}$ 
+      sowie $f_S \colon U_S \to \mathbb{R}$ mit
+      $\nabla f_N = X|_{U_N}$ und $\nabla f_S = X|_{U_S}$.
+      Wir können
+      durch Addition einer Konstante 
+      $f_N$ und $f_S$ so wählen, dass
+      $f_N(e_1) = f_S(e_1)$.
 
+      Wir zeigen nun, dass für alle $q \in U_S \cap U_N$ gilt,
+      dass $f_N(q) = f_S(q)$.
+      Schreibe dazu $U_S \cap U_N = U_L \cup U_R$ mit
+      \begin{align*}
+        U_L & = \left\{(x, y) \in \mathbb{R}^2 \mid x < 0 \right\}, \\
+        U_R &= \left\{(x, y) \in \mathbb{R}^2 \mid x > 0\right\}.
+      \end{align*}
+      Da $f_N(e_1) = f_S(e_1)$ und $\nabla f_N = X = \nabla f_S$ 
+      auf $U_R$ gilt, folgt für alle $q \in U_R$, dass
+      $f_N(q) = f_S(q)$.
+      Dies liegt daran, dass $U_R$ wegzusammenhängend ist,
+      und dass eine Stammfunktion einer differenzierbaren Funktion
+      aus einem Funktionswert (in unserem Fall $e_1$)
+      und dem Wegintegral rekonstruiert werden kann.
 
+      Zu zeigen bleibt, dass $f_N = f_S$ auf $U_L$ gilt.
+      Mit demselben Argument wie oben reicht es zu zeigen,
+      dass $f_N(-e_1) = f_S(-e_1)$ gilt.
+      % Dazu bemerken wir, dass
+      % \[
+      %   \int_{0}^{1/2} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+      %   +
+      %   \int_{1/2}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+      %   = 0.
+      % \]
+      Schreibe dazu
+      \[
+        A = 
+        \int_{0}^{1/2} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
+      \]
+      und
+      \[
+        B = 
+        \int_{1/2}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt.
+      \]
+      Berechne, dass
+      \(
+        A = f_N(-e_1) - f_N(e_1)
+      \)
+      (da auf $U_N$ gilt,
+      dass $X = \nabla f_N$),
+      und $B = f_S(e_1) - f_S(-e_1)$
+      (da auf $U_S$ gilt, dass $X = 
+      \nabla f_S$),
+      siehe Abbildung~\ref{fig:e1tominuse1}.
+      Übrig bleibt, dass
+      $f_N(-e_1) = f_S(-e_1)$ gilt.
+
+      \begin{figure}[htb] 
+        \centering
+        \begin{minipage}{0.30\textwidth}
+          \centering
+          \includegraphics{figures/e1tominuse1}
+        \end{minipage}%
+        \begin{minipage}{0.30\textwidth}
+          \centering
+          \includegraphics{figures/minuse1toe1}
+        \end{minipage}%
+        \caption{Der Grund, dass $f_N(-e_1) = 
+        f_S(-e_1)$ gilt}%
+        \label{fig:e1tominuse1}
+      \end{figure}
+
+      Definiere nun
+      \begin{align*}
+        f \colon \mathbb{R}^2 \setminus \{0\} & \to \mathbb{R} \\
+        q & \mapsto 
+        \begin{cases}
+          f_N(q) & q \in U_N, \\
+          f_S(q) & q \in U_S.
+        \end{cases}
+      \end{align*}
+      Dank der oberen Betrachtungen
+      ist $f$ wohldefiniert.
+      Weiter gilt für alle
+      $q \in \mathbb{R}^2$, dass
+      $\nabla f = X$.
+
+    \item Sei
+      $X \colon \mathbb{R}^3 \setminus \{0\}
+      \to \mathbb{R}^3$ 
+      differenzierbar mit $\text{rot}(X) = 0$.
+      Schreibe
+      $\mathbb{R}^3 \setminus \{0\}
+      = U_N \cup U_S$ 
+      mit
+      \begin{align*}
+        U_N & = \mathbb{R}^3 \setminus
+        \left\{(0, 0, z) \mid z \leq 0\right\},\\
+        U_S & = \mathbb{R}^3 \setminus
+        \left\{(0, 0, z) \mid z \leq 0\right\}.
+      \end{align*}
+      Nach dem Poincaré Lemma existieren differenzierbare Funktionen
+      $f_N \colon U_N \to \mathbb{R}$ 
+      und $f_S \colon U_S \to \mathbb{R}$ mit
+      $\nabla f_N = X|_{U_N}$ und $\nabla f_S = X|_{U_S}$.
+      Wiederum können wir
+      $f_N(e_1) = f_S(e_1)$ einrichten.
+      Dann gilt für alle
+      $q \in U_N \cap U_S$, dass
+      $f_N = f_S(q)$.
+      Tatsächlich ist $U_N \cap U_S = \mathbb{R}^3
+      \setminus \left\{(0, 0, z) \mid z \in \mathbb{R}\right\}$ 
+      wegzusammenhängend.
+      Via Wegintegral folgt also $f_N = f_S$ auf ganz $U_N \cap U_S$.
+      Definiere dann $f$ wie oben. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{exercise}
+  Zeige die Konklusion von Punkt (ii) in Proposition~\ref{prop:low-dimensions}
+  für $\mathbb{R}^3 \setminus F$, wobei $F \subset \mathbb{R}^3$ 
+  eine endliche Menge ist.
+\end{exercise}
+
+\section{Differentialformen}
+Sei $U \subset \mathbb{R}^n$ offen.
+Eine \emph{$1$-Form} auf $U$ ist eine stetige Abbildung
+$\omega \colon U \to {(\mathbb{R}^n)}^*$.
+Hier ist ${(\mathbb{R}^n)}^*$ der \emph{Dualraum} von $\mathbb{R}^n$.
+Er besteht aus allen linearen Abbildungen 
+$L \colon \mathbb{R}^n \to \mathbb{R}$.
+Die Elemente $e_k^* \colon \mathbb{R}^n \to \mathbb{R}$ 
+welche durch die Forderung
+\[
+  e_k^*(e_i) =
+  \begin{cases}
+    1 & i = k, \\
+    0 & i \neq k
+  \end{cases}
+\]
+eindeutig definiert sind, bilden eine Basis von
+${(\mathbb{R}^n)}^*$.
+Deren Elemente werden häufig mit $x_k = e_k^*$ 
+bezeichnet und heissen \emph{Koordinatenabbildungen}.
+
+Sei nun $f \colon U \to \mathbb{R}$
+stetig differenzierbar.
+Für alle $p \in U$ erhalten wir dann das Differential
+${(Df)}_p \in {(\mathbb{R}^n)}^*$.
+Die \emph{totale Ableitung} von $f$ ist die $1$-Form
+\begin{align*}
+  df \colon U & \to {(\mathbb{R}^n)}^* \\
+  p & \mapsto {(Df)}_p.
+\end{align*}
+Für alle $i \in \{1, \dots, n\}$ gilt
+${(Df)}_p(e_i) = \partial f / \partial x_i (p)$.
+Die Abbildungsmatrix von ${(Df)}_p$ ist somit ein Zeilenvektor mit
+Einträgen $\partial f/ \partial x_i (p)$.
+Somit können wir schreiben, dass
+\[
+  {(Df)}_p =
+  \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(p) \cdot e_i^*.
+\]
+
+Sei $k \in \{1, \dots, n\}$.
+Für $x_k \colon \mathbb{R}^n \to \mathbb{R}$ gilt
+für alle $p \in \mathbb{R}^n$, dass
+${(Dx_k)}_p = x_k$, da $x_k$ linear ist.
+Also ist $dx_k \colon \mathbb{R}^n \to \mathbb{R}$ 
+gegeben durch $dx_k(p) = x_k$, da $x_k$ linear ist.
+Somit ist $dx_k$ eine konstante $1$-Form,
+beziehungsweise ein konstantes Feld von linearen Abbildungen.
+Für allgemeinere $f \colon U \to \mathbb{R}$
+erhalten wir
+\[
+  df = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i} dx_i.
+\]
+
+Sei $\omega \colon U \to {(\mathbb{R}^n)}^*$ eine beliebige $1$-Form,
+welche einen Punkt $p$ auf eine lineare Funktion $\omega_p
+\in {(\mathbb{R}^n)}^*$ sendet.
+Für $k \in \{1, \dots, n\}$ definiere
+\begin{align*}
+  a_k \colon U & \to \mathbb{R} \\
+  p & \mapsto \omega_p(e_k)
+\end{align*}
+Wir erhalten somit
+\[
+  \omega = \sum_{i=1}^{n} a_i dx_i.
+\]
+Die Abbildung $\omega_p$ ist die lineare Abbildung
+mit Abbildungsmatrix $(a_1(p), \dots, a_n(p))$.
+Wir nennen  $\omega \colon U \to {(\mathbb{R}^n)}^*$ 
+\emph{differenzierbar}, falls alle
+$a_k \colon U \to \mathbb{R}$ differenzierbar sind.
+
+\begin{question}
+  Sei $\omega \colon U \to {(\mathbb{R}^n)}^*$ eine
+  differenzierbare $1$-Form.
+  Existiert dann $f \colon U \to \mathbb{R}$ mit
+  $df = \omega$?
+\end{question}
+
+In Komponenten ist das äquivalent zu der Forderung,
+dass
+$\partial f / \partial x_i = a_i$
+gilt.
+Dieses Problem haben wir für sternförmige
+$U \subset \mathbb{R}^n$ bereits gelöst:
+eine positive Antwort zur Frage ist äquivalent zu
+den Poincaré-Bedingungen.
+
+\begin{definition}
+  Sei $\gamma \colon [0, 1] \to U$ stetig differenzierbar.
+  Das \emph{Wegintegral} von $\omega$ entlang $\gamma$ ist
+  \[
+    \int_\gamma \omega = \int_{0}^{1} \omega_{\gamma(t)}(\dot \gamma(t)) \, dt.
+  \]
+\end{definition}
+
+\begin{remark}
+  Im Spezialfall $\omega = df$ gilt
+  \[
+    \int_\gamma df = \int_{0}^{1} df_{\gamma(t)}(\dot \gamma(t)) \, dt
+    = \int_{0}^{1} {(Df)}_{\gamma(t)}(\dot \gamma(t)) \, dt
+    = f(\gamma(1)) - f(\gamma(0)).
+  \]
+  Falls $\gamma$ geschlossen ist, dann gilt
+  $\int_\gamma df = 0$.
+\end{remark}
+
+\begin{definition}
+  Sei $\omega \colon U \to {(\mathbb{R}^n)}^*$ differenzierbar.
+  seien weiterhin $p \in U$ und $v, w \in \mathbb{R}^n$.
+  Die \emph{äussere Ableitung} von $\omega$ ist
+  \[
+    {(d\omega)}_p(v, w)
+    = \lim_{s \to 0} \frac{1}{s^2} \int_{\gamma_s} \omega,
+  \]
+  wobei $\gamma_s$ der stückweise affine 
+  geschlossene Weg zwischen den
+  Punkten $p, p+s, p+ s(v + w), p+sw$ ist.
+  Diese Punkte sind die Eckpunkte eines Parallelogramms.
+\end{definition}
+
+Die Abbildung ${(d \omega)}_p$ ist ein Spezialfall einer sogenannten
+2-Form. Im Falle von $\omega = df$ wissen wir,
+da Wegintegrale auf geschlossenen Kurven verschwinden,
+dass das Resultat relativ unspektakulär ist.
+
+\begin{theorem*}
+  Sei $f \colon U \to \mathbb{R}$ zwei Mal
+  differenzierbar.
+  Dann gilt $ddf = 0$.
+\end{theorem*}
+
+Differentialformen sind sowohl in der Physik (häufig als Tensoren)
+und in der Homologietheorie anzutreffen.
+In der Homologietheorie (konkreter, der De Rham Kohomologietheorie)
+ist deren Nutzen, dass sie in höherdimensionalen Räumen
+Löcher erkennen können. Hier sind nämlich Vektorfelder gescheitert:
+In $\mathbb{R}^3 \setminus \{0\}$ existiert kein Vektorfeld,
+welches die Poincaré-Bedingungen erfüllt, aber 
+nicht ein Gradientenfeld ist.
+Es existiert aber sehr wohl eine $2$-Form auf
+$\mathbb{R}^3 \setminus \{0\}$, welche nicht von der Form
+$d \omega$ für eine $1$-Form $\omega$ ist.
 
 \end{document}
 

@@ -11,7 +11,8 @@ Die erste Schwierigkeit daran ist, dass der Ausdruck
 \[
   \lim_{h \to 0} \frac{f(p + h) - f(p)}{h}
 \]
-für $m \geq 2$ keinen Sinn macht: Das Quotient von zwei Vektoren kann man nicht
+für $m \geq 2$ keinen Sinn macht: Den 
+Quotienten von zwei Vektoren kann man nicht
 definieren.
 
 \section{Differenzierbarkeit}
@@ -28,8 +29,7 @@ definieren.
     \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
       ein \emph{Restterm} ${(Rf)}_p(h) \in \mathbb{R}^n$,
       der relativ klein in $\Vert h \Vert_2$ ist,
-      so dass %für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ % (h war schon definiert)
-      gilt, dass
+      so dass
       \[
         f(p+h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h).
       \]
@@ -641,7 +641,8 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
       Sei $\varepsilon > 0$ vorgegeben. Wähle ein
       $\delta > 0$ so, dass
       für $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$ gilt,
-      dass $\Vert R_1(h)\Vert_2 \leq (\varepsilon / a_2) \Vert h \Vert_2$ folgt.
+      dass $\Vert R_1(h)\Vert_2 \leq \varepsilon / a_2
+      \cdot \Vert h \Vert_2$ folgt.
       Dann gilt
       \[
         \Vert A_2(R_1(h)) \Vert_2 \leq a_2 \cdot \Vert R_1(h) \Vert_2
@@ -1364,7 +1365,7 @@ treffen wir folgende Vorbereitungen.
     \end{align*}
     Dann gilt $\widetilde f ( 0 ) = \overline f(p) - \overline f (p) = 0$.
     Weiterhin gilt ${(D\widetilde f )}_0 = \text{Id}_{\mathbb{R}^n}$.
-    Dies fällt aus der Dreigliedentwicklung
+    Dies folgt aus der Dreigliedentwicklung
     \[
       \widetilde f ( 0 + h ) = \widetilde f (h)
       = \overline f ( p + h ) - \overline f ( p )
@@ -1430,7 +1431,7 @@ Rekursiv setzen wir
   \]
   und
   \[
-    \Vert g_1(y) - g_0(y) = \Vert y - f ( g_0(y)) \Vert_2
+    \Vert g_1(y) - g_0(y) \Vert_2 = \Vert y - f ( g_0(y)) \Vert_2
     = \Vert y - f(y) \Vert_2 \leq \Vert R \Vert_2
     \leq \Vert y \Vert_2 / 2 < \varepsilon / 4,
   \]
@@ -1448,7 +1449,7 @@ Rekursiv setzen wir
     &= \Vert g_{n+1}(y) - f(g_{n+1}(y)) - g_n(y) + f(g_n(y)) \Vert_2  \\
     &= \Vert g_{n+1}(y) - g_n(y) - (f(g_{n+1}(y)) - f(g_n(y))) \Vert_2 \\
     &\leq 1/2 \Vert g_{n+1}(y) - g_n(y) \Vert_2 \\
-    &< 1/2 \cdot \varepsilon \cdot 1/2^{n+2} = 1/2^{n+3}.
+    &< 1/2 \cdot \varepsilon \cdot 1/2^{n+2} = \varepsilon/2^{n+3}.
   \end{align*}
   Hier haben wir die Abschätzung aus der Vorbereitung (i)
   sowie die Induktionsannahme verwendet.
@@ -1548,7 +1549,7 @@ beziehungsweise
 $\Vert {(Df)}_{g(y)}^{-1}(w) \Vert_2 \leq 2 \cdot \Vert w \Vert_2$.
 Folglich gilt $\Vert {(Df)}^{-1}_{g(y)} \Vert_{\text{op}} \leq 2$.
 Wende nun auf unseren Ansatz die Abbildung $f$ auf beide Seiten an.
-Die Linke seite wird dann zu $f(g(y + k)) = y + k$,
+Die linke Seite wird dann zu $f(g(y + k)) = y + k$,
 und die rechte Seite zu $f(g(y) + h)$,
 wobei $h = {(Df)}^{-1}_{g(y)}(k) + {(Rg)}_y(k)$.
 Es gilt
@@ -1659,7 +1660,7 @@ Aus der Beobachtung, dass
 $\dim \im {(Df)}_p \leq m < n$ folgt, dass
 $\dim \ker {(Df)}_p \geq 1$.
 Insbesondere kann ${(Df)}_p$ kein Vektorraumisomorphismus sein.
-Wohlaber kann ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+Wohl aber kann ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$ 
 surjektiv sein.
 
 Im Spezialfall $m = 1$, das heisst $f \colon \mathbb{R}^n \to \mathbb{R}$ 
@@ -2061,7 +2062,7 @@ benötigen wir ein Analogon zu $f''$.
     \item für alle $v \in \mathbb{R}^n$ 
       und alle $\lambda \in \mathbb{R}$ gilt $q(tv) = t^2 \cdot q(v)$,
     \item die Abbildung 
-      $B \colon \mathbb{R}^n \to \mathbb{R}^n \to \mathbb{R}$ 
+      $B \colon \mathbb{R}^n \to \mathbb{R}$ 
       definiert durch $B(v, w) = q(v + w) - q(v) - q(w)$ 
       ist bilinear.
   \end{enumerate}
@@ -2073,7 +2074,7 @@ benötigen wir ein Analogon zu $f''$.
   Dann ist $q(v) = v^T A v$ eine quadratische Form.
 \end{example}
 
-Sei $f \colon \mathbb{R}^n \to \mathbb{R}$, das heisst
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal differenzierbar, das heisst
 $f$ ist differenzierbar, und die Abbildung
 \begin{align*}
   \nabla f \colon \mathbb{R}^n & \to \mathbb{R}^n \\
@@ -2083,10 +2084,10 @@ ist differenzierbar.
 Die Komponentenfunktionen von $\nabla f$ sind die
 partiellen Ableitungen $\partial f / \partial x_1, \dots,
 \partial f / \partial x_n$.
-Wir erinnern uns, dass differenzierbare Abbildungen
+Differenzierbare Abbildungen
 $g \colon \mathbb{R}^n \to \mathbb{R}^n$ mit
 Komponentenfunktionen $g_1, \dots, g_n \colon \mathbb{R}^n \to \mathbb{R}$ 
-gilt, dass das Differential ${(Dg)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+erfüllen, dass das Differential ${(Dg)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
 in einem Punkte $p \in \mathbb{R}^n$ durch die
 Jacobimatrix 
 \[
@@ -2217,7 +2218,7 @@ von $f$ an der Stelle $p$.
    &= \int_{0}^{1} \frac{d}{dt} f(\gamma(t)) \, dt \\
    &= \int_{0}^{1} {(Df)}_{\gamma(t)}( \dot \gamma(t)) \, dt \\
    &= \int_{0}^{1} {(Df)}_{p + th}(h) \, dt \\
-   &= \int_{0}^{1} \langle \nabla f(p + th), h \rangle \, dt.
+   &= \int_{0}^{1} \langle {(\nabla f)}_{p + th}, h \rangle \, dt.
   \end{align*}
   Nach der Dreigliedentwicklung von $\nabla f$ an der Stelle $p$ gilt
   \[
@@ -2279,7 +2280,7 @@ $f(q) \geq f(p)$ (beziehungsweise $f(q) \leq f(p)$).
   einer differenzierbaren Funktion $f \colon \mathbb{R}^n \to \mathbb{R}$, 
   falls
   ${(Df)}_p$ nicht surjektiv ist, das heisst
-  $\nabla f(p) = 0$ gilt.
+  ${(\nabla f)}_p = 0$ gilt.
 \end{definition}
 
 \begin{remark}

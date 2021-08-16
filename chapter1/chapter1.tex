@@ -108,7 +108,7 @@ auf $\mathbb{R}$.
           und auch $\Vert v \Vert_{\infty}$ genau dann,
           wenn alle $v_i$ null sind.
         \item Es gilt $\Vert \lambda v \Vert_{\infty}
-          = \max \left\{\lambda v_1, \dots, \lambda v_n\right\} = |\lambda|
+          = \max \left\{|\lambda v_1|, \dots, |\lambda v_n|\right\} = |\lambda|
           \cdot \Vert v \Vert_\infty$.
         \item Berechne
           \begin{align*}
@@ -137,7 +137,7 @@ auf $\mathbb{R}$.
       \end{enumerate}
     \item 
       Folgendes Beispiel rechtfertigt die Notation
-      für obige Normen. Sei $p \geq 1$ für $p \geq 1$.
+      für obige Normen. Sei $p \in \mathbb{R}$ mit $p \geq 1$. 
       Die \emph{$p$-Norm} ist
        \[
          \Vert v \Vert_p = \sqrt[p]{|v_1|^p + \cdots + |v_n|^p}.
@@ -336,7 +336,7 @@ Wir zeigen nun, dass $f$ auch bezüglich der Norm $\Vert \cdot \Vert$
 im Punkt $p$ stetig ist.
 Wähle $\delta > 0$ so, dass für alle $q \in \mathbb{R}$ 
 mit $|q - p| \leq \delta/\Vert 1 \Vert$ gilt,
-dass $|f(q)  f(p) \leq \varepsilon/\Vert 1 \Vert$.
+dass $|f(q) - f(p) \leq \varepsilon/\Vert 1 \Vert$.
 Das geht, da $\Vert 1 \Vert > 0$ aus $1 \neq 0$ folgt.
 Sei nun $q \in \mathbb{R}$ mit $\Vert q - p \Vert \leq \delta$.
 Dann gilt $|q - p| \leq \delta / \Vert 1 \Vert$.
@@ -346,7 +346,7 @@ $\Vert f(q) - f(p) \Vert = |f(q) - f(p)| \cdot \Vert 1 \Vert \leq \varepsilon$.
 Insgesamt hängt also der Stetigkeitsbegriff auf $\mathbb{R}$ nicht von
 der Norm auf $\mathbb{R}$ ab.
 
-Es gibt aber auch einen ungünstigen Fall.
+Diese Aussage ist jedoch in allgemeinen Vektorräumen falsch.
 Sei $\mathbb{R}^{\infty}$ der Raum aller Folgen
 $(x_{1}, x_{2}, \dots) \in \mathbb{R}^{\mathbb{N}}$ 
 für welche $N > 0$ existiert, so dass für alle $n \geq N$ 
@@ -1139,7 +1139,7 @@ $\gamma_i$ stetig in $t$ sind.
       \end{align*}
       ist stetig und somit die Parametrisierung einer Kurve,
       dargestellt in Abbildung~\ref{fig:parametrisations}.
-      Diese Kurve einen ``singulären Punkt'',
+      Diese Kurve hat einen ``singulären Punkt'',
       herbeigeführt durch die Eigenschaft,
       dass $\gamma(1) = \gamma(-1) = 1$ gilt.
   \end{enumerate}
@@ -1622,7 +1622,7 @@ Für eine Funktion $\alpha \in C([a, b], \mathbb{R}^n)$ definieren wir
     \langle \alpha_m, e_i \rangle \cdot e_i 
   \]
   in $C([a, b], \mathbb{R}^n)$ existiert.
-  Also ist $C([a, b], \mathbb{R})$ mit der Norm $\Vert \cdot \Vert_\infty$ vollständig.
+  Also ist $C([a, b], \mathbb{R}^n)$ mit der Norm $\Vert \cdot \Vert_\infty$ vollständig.
 \end{proof}
 
 % Die Beweisidee vom Theorem ist nun folgendermassen.
@@ -2552,7 +2552,7 @@ zu sein, um eine endliche ``Länge'' zu haben.
 \begin{example}[Schwarzscher Stiefel]
   Wir versuchen, den Inhalt einer Fläche durch eine
   ``feine'' Triangulierung zu approximieren.
-  Leider geht der naiv Ansatz schief!
+  Leider geht der naive Ansatz schief!
   Dazu untersuchen wir 
   einen Zylinder der Höhe $h$ mit Radius $1$.
   Wähle $N \in \mathbb{N}$ gross,
