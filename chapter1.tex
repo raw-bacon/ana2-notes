@@ -2508,8 +2508,7 @@ zu sein, um eine endliche ``Länge'' zu haben.
        \int_{t_{k-1}}^{t_k} \Vert \dot \gamma (s) \Vert_2 \, ds 
        &\leq
     \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(t_{k-1}) \Vert_2 \, ds
-    + \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(s) - \dot \gamma
-    (t_{k-1}) \Vert_2 \, ds \\
+    + \int_{t_{k-1}}^{t_k} \varepsilon \, ds \\ % denke ich?
        &\leq 1/N \cdot \Vert \dot \gamma(t_{k-1}) \Vert_2 + \varepsilon/N.
   \end{align*}
   Berechne weiterhin, dass
