@@ -1182,7 +1182,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 
 \begin{proposition}[Lokale Injektivität]\label{prop:local-injectivity}
   Sei $U \subset \mathbb{R}^n$ offen,
-  $f \colon U \to \mathbb{R}$ stetig differenzierbar,
+  $f \colon U \to \mathbb{R}^n$ stetig differenzierbar,
   und $p \in U$ so dass
   ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
   ein Isomorphismus ist.
@@ -1599,7 +1599,7 @@ ${(Dg)}_y = {(Df)}_{g(y)}^{-1}$.
 Wir werden darauf verzichten, 
 die Transformationen, welche wir zu Beginn auf $f$ angewendet haben,
 wieder rückgängig zu machen (obwohl das nicht allzu schwierig wäre).
-Somit ist der Umkehrsatz vollständig bewiesen. % QED fehlt noch
+Somit ist der Umkehrsatz vollständig bewiesen.
 
 \begin{remark}
   Die stetige Differenzierbarkeit von $f$ 
@@ -1925,7 +1925,7 @@ Also gilt $\dim K = n-m$.
       wenn $h \in S$ gilt. Da $K \cap S = \{0\}$ ist, folgt $h = 0$.
     \item ${(DF)}_p$ ist surjektiv.
       Aus der Dimensionsformel folgt, dass $\dim K = n - m$ gilt.
-      Also ist $\dim (\mathbb{R}^n \times K) = n$.
+      Also ist $\dim (\mathbb{R}^m \times K) = n$.
       Die Dimensionsformel für 
       ${(DF)}_p \colon \mathbb{R}^n \to \mathbb{R}^m \times K$ 
       liefert, dass $n = \dim \im {(DF)}_p$ gilt, also muss
@@ -2239,7 +2239,7 @@ von $f$ an der Stelle $p$.
     & = \int_{0}^{1} \langle {(\nabla f)}_{p + th}, h \rangle \, dt\\
     &= \int_{0}^{1} \langle {(\nabla f)}_p , h \rangle \, dt
     + \int_{0}^{1} \langle {(D \nabla f)}_p (th), h \rangle \, dt
-    + \int_{0}^{1} \langle {(R \nabla )}_p (th), h \rangle \, dt.
+    + \int_{0}^{1} \langle {(R \nabla f)}_p (th), h \rangle \, dt.
   \end{align*}
   Berechne, dass
   \[
@@ -2354,7 +2354,7 @@ $\{f_1, \dots, f_n \}$ von $\mathbb{R}^n$
 gilt also folgendes. Für alle
 Vektoren
 $v = y_1 f_1 + \cdots + y_n f_n$ gilt
-${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + y_n y_n^2$.
+${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$.
 
 Wir machen nun die Zusatzannahme, dass ${(Hf)}_p$ nicht-singulär ist,
 das heisst alle $\lambda_k$ sind ungleich null.
