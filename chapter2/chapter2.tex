@@ -1072,7 +1072,7 @@ Die Antwort dazu ist nein, wie folgendes Beispiel zeigt.
     \end{pmatrix}
     =
     \begin{pmatrix}
-      e^y \cos y & - e^x \sin y \\
+      e^x \cos y & - e^x \sin y \\
       e^x \sin y & e^x \cos y
     \end{pmatrix}.
   \]
@@ -1120,7 +1120,7 @@ In anderen Worten ist für alle $i \leq m$ und $j \leq n$
 die partielle Ableitungsfunktion
 \begin{align*}
   \frac{\partial f_i}{\partial x_j} \colon U & \to \mathbb{R} \\
-  p & \mapsto \frac{\partial f_1}{\partial x_j}(p)
+  p & \mapsto \frac{\partial f_i}{\partial x_j}(p)
   = \lim_{t \to 0} \frac{f_i(p + te_j) - f_i(p)}{t}
 \end{align*}
 stetig.
@@ -1182,7 +1182,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 
 \begin{proposition}[Lokale Injektivität]\label{prop:local-injectivity}
   Sei $U \subset \mathbb{R}^n$ offen,
-  $f \colon U \to \mathbb{R}^n$ stetig differenzierbar,
+  $f \colon U \to \mathbb{R}$ stetig differenzierbar,
   und $p \in U$ so dass
   ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
   ein Isomorphismus ist.
@@ -1196,7 +1196,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 
 \begin{proof}
   Nach Annahme ist $A = {(Df)}_p$ ein Isomorphismus.
-  Betrachte $f$ die Komposition
+  Betrachte die Komposition
   $\overline f = A^{-1} \circ f \colon U \to \mathbb{R}^n$.
   Für alle $q \in U$ 
   gilt nach der Kettenregel, dass
@@ -1346,7 +1346,7 @@ treffen wir folgende Vorbereitungen.
     \).
     Für alle $q, \widetilde q \in B_p(\varepsilon)$ gilt dann, dass
     \[
-      \overline f ( \widetilde q ) - f(q) = \widetilde q - q + R
+      \overline f ( \widetilde q ) - \overline f (q) = \widetilde q - q + R
     \]
     mit $\Vert R \Vert_2 \leq 1/2 \cdot \Vert \widetilde q - q \Vert_2$,
     wie im Beweis von Proposition~\ref{prop:local-injectivity}.
@@ -1497,7 +1497,7 @@ $g \colon W \to V$.
   Für alle $q, \widetilde q \in B_0(\varepsilon)$ gilt
   \(
     1/2 \cdot 
-    \Vert \widetilde q - q \Vert_2 \leq \Vert f(\widetilde q) - f(q) \Vert_2.
+    \Vert \widetilde q - q \Vert_2 \leq f(\widetilde q) - f(q) \Vert_2.
   \)
   Seien nun $\widetilde y, y \in W$. Setze
   $\widetilde q = g(\widetilde y)$ 
@@ -1599,7 +1599,7 @@ ${(Dg)}_y = {(Df)}_{g(y)}^{-1}$.
 Wir werden darauf verzichten, 
 die Transformationen, welche wir zu Beginn auf $f$ angewendet haben,
 wieder rückgängig zu machen (obwohl das nicht allzu schwierig wäre).
-Somit ist der Umkehrsatz vollständig bewiesen.
+Somit ist der Umkehrsatz vollständig bewiesen. % QED fehlt noch
 
 \begin{remark}
   Die stetige Differenzierbarkeit von $f$ 
@@ -1668,7 +1668,7 @@ ist die Bedingung, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$
 nicht die Nullabbildung ist, oder äquivalent, dass
 ${(\nabla f)}_p$ nicht der Nullvektor ist.
 Noch konkreter ist $({Df})_p \colon \mathbb{R}^n \to \mathbb{R}$
-surjektiv, genau dann wenn eine partielle Ableitung $\partial f \partial x_k$
+surjektiv, genau dann wenn eine partielle Ableitung $\partial f / \partial x_k$
 in $p$ nicht null ist.
 
 \begin{question}
@@ -1760,7 +1760,7 @@ in $p$ nicht null ist.
   stetig differenzierbar und $p \in \mathbb{R}^n$ 
   so, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$ surjektiv ist,
   das heisst, dass ${(\nabla f)}_p \neq 0$ ist.
-  Nehme zusätzlich an, dass $p = 0$, $f(0) = 0$,
+  Nimm zusätzlich an, dass $p = 0$, $f(0) = 0$,
   und $\partial f/ \partial x_n (0) \neq 0$.
   Dann existieren $\varepsilon > 0$, $\delta > 0$,
   und eine differenzierbare Abbildung
@@ -1924,8 +1924,8 @@ Also gilt $\dim K = n-m$.
       wenn $h \in K$ gilt, und $\pi_K^S(h) = 0$ genau dann,
       wenn $h \in S$ gilt. Da $K \cap S = \{0\}$ ist, folgt $h = 0$.
     \item ${(DF)}_p$ ist surjektiv.
-      Aus der Dimensionsformel fogt, dass $\dim K = n - m$ gilt.
-      Also ist $\dim (\mathbb{R}^m \times K) = n$.
+      Aus der Dimensionsformel folgt, dass $\dim K = n - m$ gilt.
+      Also ist $\dim (\mathbb{R}^n \times K) = n$.
       Die Dimensionsformel für 
       ${(DF)}_p \colon \mathbb{R}^n \to \mathbb{R}^m \times K$ 
       liefert, dass $n = \dim \im {(DF)}_p$ gilt, also muss
@@ -1998,7 +1998,7 @@ Also gilt $\dim K = n-m$.
 \begin{proof}[Beweis von Theorem~\ref{thm:implicit-special}]
   Wir schreiben $\widetilde g$ für die Funktion aus 
   Theorem~\ref{thm:implicit-special}
-  und zeigen deren Existenz indem wir sie mit Hilfe der Funktion
+  und zeigen deren Existenz, indem wir sie mit Hilfe der Funktion
   $g$ aus Theorem~\ref{thm:implicit} konstruieren.
   Aus ${(Df)}_0(e_n) = \partial f / \partial x_n ( 0 ) \neq 0$
   folgt, dass  $e_n$ nicht in $K = \ker {(Df)}_p$ liegt.
@@ -2074,7 +2074,7 @@ benötigen wir ein Analogon zu $f''$.
   Dann ist $q(v) = v^T A v$ eine quadratische Form.
 \end{example}
 
-Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal differenzierbar, das heisst
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal differenzierbar, das heisst,
 $f$ ist differenzierbar, und die Abbildung
 \begin{align*}
   \nabla f \colon \mathbb{R}^n & \to \mathbb{R}^n \\
@@ -2239,7 +2239,7 @@ von $f$ an der Stelle $p$.
     & = \int_{0}^{1} \langle {(\nabla f)}_{p + th}, h \rangle \, dt\\
     &= \int_{0}^{1} \langle {(\nabla f)}_p , h \rangle \, dt
     + \int_{0}^{1} \langle {(D \nabla f)}_p (th), h \rangle \, dt
-    + \int_{0}^{1} \langle {(R \nabla f)}_p (th), h \rangle \, dt.
+    + \int_{0}^{1} \langle {(R \nabla )}_p (th), h \rangle \, dt.
   \end{align*}
   Berechne, dass
   \[
@@ -2319,7 +2319,7 @@ Form beschrieben, denn dort gilt
       \]
       gilt.
     \item
-      Die Bediungung, dass $f \colon \mathbb{R}^n \to \mathbb{R}$
+      Die Bedingung, dass $f \colon \mathbb{R}^n \to \mathbb{R}$
       zweimal (nicht unbedingt stetig) differenzierbar ist,
       reicht, um diese Gleichheit zu zeigen, jedoch nicht
       die Existenz der zweiten partiellen Ableitungen.
@@ -2354,7 +2354,7 @@ $\{f_1, \dots, f_n \}$ von $\mathbb{R}^n$
 gilt also folgendes. Für alle
 Vektoren
 $v = y_1 f_1 + \cdots + y_n f_n$ gilt
-${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$.
+${(Hf)}_p(v) = \lambda_1 y_1^2 + \cdots + y_n y_n^2$.
 
 Wir machen nun die Zusatzannahme, dass ${(Hf)}_p$ nicht-singulär ist,
 das heisst alle $\lambda_k$ sind ungleich null.
@@ -2391,7 +2391,7 @@ Vorzeichen haben.
     \frac{\partial^2 f}{\partial y \partial x}(0, 0)
     =
     \lim_{x \to 0} \lim_{y \to 0} \frac{1}{xy}
-    \left( f(x, y) - f(x, 0) - f(0, y) + f(0, 0) \right)
+    f(x, y) - f(x, 0) - f(0, y) + f(0, 0)
   \]
   gilt. Aus Symmetriegründen (vertausche die Rollen von $x$ und $y$)
   folgt dann, dass $\partial^2 f/ \partial y \partial x (0, 0)

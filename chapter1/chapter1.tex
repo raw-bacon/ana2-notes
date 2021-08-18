@@ -336,7 +336,7 @@ Wir zeigen nun, dass $f$ auch bezüglich der Norm $\Vert \cdot \Vert$
 im Punkt $p$ stetig ist.
 Wähle $\delta > 0$ so, dass für alle $q \in \mathbb{R}$ 
 mit $|q - p| \leq \delta/\Vert 1 \Vert$ gilt,
-dass $|f(q) - f(p) \leq \varepsilon/\Vert 1 \Vert$.
+dass $|f(q) - f(p)| \leq \varepsilon/\Vert 1 \Vert$.
 Das geht, da $\Vert 1 \Vert > 0$ aus $1 \neq 0$ folgt.
 Sei nun $q \in \mathbb{R}$ mit $\Vert q - p \Vert \leq \delta$.
 Dann gilt $|q - p| \leq \delta / \Vert 1 \Vert$.
@@ -1564,8 +1564,8 @@ Dazu werden wir zunächst Kurven genauer betrachten.
 \end{definition}
 
 \begin{proposition}
-  Seien $\alpha \colon [a, b] \to \mathbb{R}^n$ stetig
-  und $\gamma \colon (a, b) \to \mathbb{R}^n$ 
+  Seien $\alpha \colon [a, b] \to \mathbb{R}$ stetig
+  und $\gamma \colon (a, b) \to \mathbb{R}$ 
   stetig differenzierbar.
   Dann gilt:
   \begin{enumerate}[\normalfont(i)]
@@ -2508,8 +2508,7 @@ zu sein, um eine endliche ``Länge'' zu haben.
        \int_{t_{k-1}}^{t_k} \Vert \dot \gamma (s) \Vert_2 \, ds 
        &\leq
     \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(t_{k-1}) \Vert_2 \, ds
-    + \int_{t_{k-1}}^{t_k} \Vert \dot \gamma(s) - \dot \gamma
-    (t_{k-1}) \Vert_2 \, ds \\
+    + \int_{t_{k-1}}^{t_k} \varepsilon \, ds \\ % denke ich?
        &\leq 1/N \cdot \Vert \dot \gamma(t_{k-1}) \Vert_2 + \varepsilon/N.
   \end{align*}
   Berechne weiterhin, dass
