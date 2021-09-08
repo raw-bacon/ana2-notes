@@ -554,7 +554,11 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
   Die Funktion
   \begin{align*}
     f \colon \mathbb{R}^2 & \to \mathbb{R} \\
-    (x, y) & \mapsto \frac{xy(x-y)}{x^2 + y^2}
+    (x, y) & \mapsto 
+    \begin{cases}
+      0 & (x,y) = (0,0), \\
+      \frac{xy(x-y)}{x^2 + y^2} & (x,y) \neq (0,0).
+    \end{cases}\frac{xy(x-y)}{x^2 + y^2}
   \end{align*}
   ist nicht differenzierbar bei $p = 0$,
   obwohl die Funktion auf allen eindimensionalen Untervektorräumen
@@ -1076,7 +1080,7 @@ Die Antwort dazu ist nein, wie folgendes Beispiel zeigt.
       e^x \sin y & e^x \cos y
     \end{pmatrix}.
   \]
-  Aus $\cos^2 + \sin^2 = 1$ folgt, dass $\det({(Jf)}_p) = e^x > 0$ 
+  Aus $\cos^2 + \sin^2 = 1$ folgt, dass $\det({(Jf)}_p) = e^{2x} > 0$ 
   für alle $p = (x, y)$.
   Aber $f$ ist nicht injektiv, da $f(x, y) = f(x, y + 2 \pi)$ gilt.
 \end{example}
@@ -2060,7 +2064,7 @@ benötigen wir ein Analogon zu $f''$.
   mit folgenden Eigenschaften:
   \begin{enumerate}[(i)]
     \item für alle $v \in \mathbb{R}^n$ 
-      und alle $\lambda \in \mathbb{R}$ gilt $q(tv) = t^2 \cdot q(v)$,
+      und alle $t \in \mathbb{R}$ gilt $q(tv) = t^2 \cdot q(v)$,
     \item die Abbildung 
       $B \colon \mathbb{R}^n \to \mathbb{R}$ 
       definiert durch $B(v, w) = q(v + w) - q(v) - q(w)$ 
@@ -2407,7 +2411,7 @@ Vorzeichen haben.
   Dann gilt $\overline f ( 0) = f(p)$.
   Weiterhin ist $\partial^2 \overline f / \partial x_j \partial x_i (0)
   = \partial^2 f / \partial x_j \partial x_i (p)$.
-  Deshalb reicht es, den Punkte $p = 0$ zu betrachten.
+  Deshalb reicht es, den Punkt $p = 0$ zu betrachten.
   Um die Notation weiter zu vereinfachen, nenn wir die Koordinaten
   $x_i, x_j$ neu $x, y$ und beschränken uns auf Abbildungen
   $f \colon \mathbb{R}^2 \to \mathbb{R}$.
@@ -2426,7 +2430,7 @@ Vorzeichen haben.
     (\partial f/ \partial x ( a, y) - \partial f/ \partial x (a, 0))
     = x \cdot \partial h_y / \partial x (a).
   \]
-  Nach dem Mittelwertsatz angwendet auf die Funktion
+  Nach dem Mittelwertsatz angewendet auf die Funktion
   $y \mapsto \partial f / \partial x (a, y)$
   existiert ein $b \in (0, y)$ mit 
   $\partial f / \partial x (a, y) - \partial f/ \partial x (a, 0) =
