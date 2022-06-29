@@ -3,9 +3,10 @@
 
 \begin{document}
 \begin{tikzpicture}
+  \clip (-2, -2) rectangle (2, 2);
   \draw[gray] (0, -2) -- (0, 2);
   \draw[gray] (-2, 0) -- (2, 0);
-  \foreach \r in {0.1, 0.3, ..., 1.9} {
+  \foreach \r in {0.1, 0.3, ..., 2.9} {
     \draw (0, 0) circle (\r);
   }
 \end{tikzpicture}
