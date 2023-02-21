@@ -14,14 +14,15 @@ vom Absolutbetrag Gebrauch.
 \begin{examples}
   \leavevmode
   \begin{enumerate}[(1)]
-    \item Konvergenz einer Folge $a \colon \mathbb{N} \to \mathbb{R}$,
+    \item Konvergenz einer Folge ${(a_{n})}_{n \in \mathbb{N}}$
+      von reellen Zahlen,
       in Symbolen
       \[
-        \lim_{n \to \infty} a(n) = \alpha \in \mathbb{R}
+        \lim_{n \to \infty} a_n = \alpha \in \mathbb{R}
       \]
       heisst Folgendes. Für alle $\varepsilon > 0$ existiert
       $N \in \mathbb{N}$, sodass für alle $n \geq N$
-      gilt, dass $|a(n) - \alpha| \leq \varepsilon$.
+      gilt, dass $|a_n - \alpha| \leq \varepsilon$.
     \item Stetigkeit einer Funktion $f \colon \mathbb{R} \to \mathbb{R}$
       im Punkt $p\in \mathbb{R}$ heisst, dass für alle $\varepsilon > 0$
       ein $\delta > 0$ existiert, so dass
@@ -107,7 +108,7 @@ auf $\mathbb{R}$.
       Wir prüfen wieder die Normaxiome.
       \begin{enumerate}[(i)]
         \item Wir haben $\Vert v \Vert_{\infty} \geq 0$
-          und auch $\Vert v \Vert_{\infty}$ genau dann,
+          und auch $\Vert v \Vert_{\infty} = 0$ genau dann,
           wenn alle $v_i$ null sind.
         \item Es gilt $\Vert \lambda v \Vert_{\infty}
           = \max \left\{|\lambda v_1|, \dots, |\lambda v_n|\right\} = |\lambda|
