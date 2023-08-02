@@ -31,8 +31,8 @@ $k \leq n$ und alle $p \in U$.
   Wir betrachten den Spezialfall $n = 1$.
   Sei $X \colon \mathbb{R} \to \mathbb{R}$ stetig.
   Definiere die Funktion
-  $f \colon \mathbb{R} \to \mathbb{R}$ 
-  durch 
+  $f \colon \mathbb{R} \to \mathbb{R}$
+  durch
   \[
     f(p) = \int_{0}^{p} X(t) \, dt.
   \]
@@ -62,7 +62,7 @@ Also hängt $a(x, y) = \partial f / \partial x(x, y) = g'(x)$
 nicht von $y$ ab.
 
 \begin{example}
-  Das Vektorfeld $X \colon \mathbb{R}^2 \to \mathbb{R}^2$ 
+  Das Vektorfeld $X \colon \mathbb{R}^2 \to \mathbb{R}^2$
   mit $X(x, y) = (y, 0)$ ist kein Gradientenfeld,
   da $a(x, y) = y$ von $y$ abhängt.
 \end{example}
@@ -85,13 +85,13 @@ aber nicht weiter eingehen.
   Dann existiert eine differenzierbare Funktion
   $f \colon U \to \mathbb{R}$ mit $\nabla f = X$,
   genau dann, wenn für alle stetig differenzierbaren
-  Wege $\gamma, \overline \gamma \colon [0, 1] \to U$ 
+  Wege $\gamma, \overline \gamma \colon [0, 1] \to U$
   mit $\gamma(0) = \overline \gamma ( 0) $ und
   $\gamma(1) = \overline\gamma(1)$ gilt, dass
   \[
     \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
     =
-    \int_{0}^{1} \langle X(\overline\gamma(t)), 
+    \int_{0}^{1} \langle X(\overline\gamma(t)),
     \dot{\overline\gamma}(t) \rangle \, dt.
   \]
 \end{proposition}
@@ -100,24 +100,24 @@ In Worten hängt das Wegintegral von $X$ nur von den Endpunkten
 der betrachteten Kurve ab. Äquivalenterweise ist das Integral
 von $X$ über alle geschlossenen Wege null.
 Geschlossen heisst hier $\gamma(0) = \gamma(1)$.
-In diesem Fall gilt für $\overline \gamma(t) = \gamma(0)$ 
+In diesem Fall gilt für $\overline \gamma(t) = \gamma(0)$
 dann, dass
 \[
   \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
   =
-  \int_{0}^{1} \langle X(\overline\gamma(t)), 
+  \int_{0}^{1} \langle X(\overline\gamma(t)),
   \dot{\overline\gamma}(t) \rangle \, dt = 0.
 \]
-Umgekehrt seien $\gamma, \overline \gamma \colon [0, 1] \to U$ 
+Umgekehrt seien $\gamma, \overline \gamma \colon [0, 1] \to U$
 mit $\gamma(0) = \overline \gamma(0)$.
-Dann bastle aus $\gamma$ und $\overline \gamma$ 
+Dann bastle aus $\gamma$ und $\overline \gamma$
 einen geschlossenen Weg, der zuerst
 $\gamma$ durchläuft, und darauf $\overline \gamma$ in umgekehrter
 Richtung durchläuft.
 Präziser betrachten wir den Weg
 \begin{align*}
   \gamma \cup - \overline \gamma \colon [0, 1] & \to U \\
-  t & \mapsto 
+  t & \mapsto
   \begin{cases}
     \gamma(2t) & t \leq 1/2,\\
     \overline \gamma (2 - 2t) & t \geq 1/2.
@@ -129,7 +129,7 @@ Präziser betrachten wir den Weg
   Sei $f \colon U \to \mathbb{R}$ differenzierbar
   mit $\nabla f = X$.
   Sei weiterhin $\gamma \colon [0, 1] \to U$ stetig differenzierbar.
-  Für die Komposition $f \circ \gamma \colon [0, 1] \to \mathbb{R}$ 
+  Für die Komposition $f \circ \gamma \colon [0, 1] \to \mathbb{R}$
   gilt dann für alle $t \in (0, 1)$, dass
   \[
     \frac{d}{dt}(f \circ \gamma) (t)
@@ -140,7 +140,7 @@ Präziser betrachten wir den Weg
   von $\gamma$, dass
   \begin{align*}
     \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
-    &= \int_{0}^{1} \langle {(\nabla f)}_{\gamma(t)}, 
+    &= \int_{0}^{1} \langle {(\nabla f)}_{\gamma(t)},
     \dot \gamma(t) \rangle \, dt \\
     &= \int_{0}^{1} \frac{d}{dt} (f \circ \gamma)(t) \, dt  \\
     &= f(\gamma(1)) - f(\gamma(0)).
@@ -172,7 +172,7 @@ Präziser betrachten wir den Weg
     \langle {(\nabla f)}_q, h \rangle
     = {(Df)}_q(h) = \lim_{t \to 0} \frac{f(q + th) - f(q)}{t}.
   \]
-  Betrachte den Weg  
+  Betrachte den Weg
   \begin{align*}
     \delta \colon [0, t] & \to U \\
     s & \mapsto q + sh.
@@ -180,7 +180,7 @@ Präziser betrachten wir den Weg
   Es existiert $t > 0$ so, dass $\delta([0, t]) \subset U$.
   Nach Konstruktion gilt
   \begin{align*}
-     f(q + th) - f(q) 
+     f(q + th) - f(q)
      &=\int_{0}^{t} \langle X(\delta(s)), \dot \delta(s) \rangle \, ds  \\
      &= \int_{0}^{t} \langle X(q + sh), h \rangle \, ds \\
      &= \int_{0}^{t} \langle X(q), h \rangle \, ds
@@ -235,10 +235,10 @@ Präziser betrachten wir den Weg
 Leider ist die Bedingung, dass alle geschlossenen Wegintegrale
 null sind, impraktikabel.
 Die Bedingung kann nämlich nur schwer dazu verwendet werden,
-zu verifizieren, dass eine gegebenes Vektorfeld $X$ 
+zu verifizieren, dass eine gegebenes Vektorfeld $X$
 ein Gradientenfeld ist.
 Das Lemma von Poincaré unten liefert ein leichter überprüfbares
-Kriterium
+Kriterium.
 
 Sei $U \subset \mathbb{R}^n$ offen
 und $X \colon U \to \mathbb{R}^n$ differenzierbar.
@@ -263,7 +263,7 @@ Aus $\nabla f = X$ folgen nun die ``Poincaré-Bedingungen''
 \]
 
 Wir betrachten nun den Spezialfall $n = 3$.
-Sei $X \colon \mathbb{R}^3 \to \mathbb{R}^3$ 
+Sei $X \colon \mathbb{R}^3 \to \mathbb{R}^3$
 differenzierbar mit Komponenten $a, b, c \colon \mathbb{R}^3 \to \mathbb{R}$.
 Dann sind die Poincaré-Bedingungen äquivalent zu den Gleichungen
 \begin{align*}
@@ -295,7 +295,7 @@ zu charakterisieren.
 
 \begin{example}
   Sei $U = \mathbb{R}^2 \setminus \{0\}$.
-  Sei  
+  Sei
   \begin{align*}
     X \colon \mathbb{R}^2 \setminus \{0\} & \to \mathbb{R}^2 \\
     (x, y) & \mapsto (-y/(x^2 + y^2), x/(x^2 + y^2)).
@@ -303,8 +303,8 @@ zu charakterisieren.
   Es gilt für alle $x, y \neq (0, 0)$, dass
   $\partial a / \partial y (x, y) = \partial b/ \partial x(x, y)$,
   vergleiche Serie 10.
-  Wir bemerken aber, dass die Einschränkung von $X$ 
-  auf $S^1 = \left\{(x, y) \in \mathbb{R}^2 \mid x^2 + y^2 = 1\right\}$ 
+  Wir bemerken aber, dass die Einschränkung von $X$
+  auf $S^1 = \left\{(x, y) \in \mathbb{R}^2 \mid x^2 + y^2 = 1\right\}$
   mit dem Vektorfeld $\overline X(x, y) = (-y, x)$ übereinstimmt.
   Vom Vektorfeld $\overline X$ wissen wir aus einem Beispiel
   oben aber bereits, dass es ein geschlossenes nicht-verschwindendes
@@ -319,11 +319,11 @@ zu charakterisieren.
 \end{example}
 
 \begin{definition}
-  Eine Teilmenge $U \subset \mathbb{R}^n$ 
+  Eine Teilmenge $U \subset \mathbb{R}^n$
   heisst \emph{sternförmig} bezüglich eines Punktes $p \in U$,
-  falls für alle $q \in U$ und alle $t \in [0, 1]$ 
+  falls für alle $q \in U$ und alle $t \in [0, 1]$
   gilt, dass $p + t(q - p) \in U$.
-  In anderen Worten liegt der Geradenabschnitt zwischen $p$ und $q$ 
+  In anderen Worten liegt der Geradenabschnitt zwischen $p$ und $q$
   noch vollständig in $U$.
 \end{definition}
 
@@ -332,12 +332,12 @@ zu charakterisieren.
   \begin{enumerate}[(1)]
     \item Die Menge $U = \mathbb{R}^2 \setminus \{0 \}$ ist bezüglich
       keinem Punkt sternförmig.
-      Tatsächlich geht die Strecke zwischen 
+      Tatsächlich geht die Strecke zwischen
       $p \in \mathbb{R}^2 \setminus \{0\}$
       und $-p$ durch den Nullpunkt, welcher nicht in $U$ liegt.
     \item Die Menge $\mathbb{R}^2 \setminus (\mathbb{R}_{\leq 0}
-      \times \{0\})$ (die Ebene ohne die negative $x$-Achse) 
-      ist sternförmig bezüglich dem Punkt 
+      \times \{0\})$ (die Ebene ohne die negative $x$-Achse)
+      ist sternförmig bezüglich dem Punkt
       $p = (1, 0)$.
     \item Alle konvexen Teilmengen von $\mathbb{R}^n$ sind sternförmig.
   \end{enumerate}
@@ -345,7 +345,7 @@ zu charakterisieren.
 
 \begin{theorem}[Poincaré Lemma, ca. 1900]
   Sei $U \subset \mathbb{R}^n$ offen und sternförmig bezüglich
-  $p \in U$. Sei weiterhin $X \colon U \to \mathbb{R}^n$ 
+  $p \in U$. Sei weiterhin $X \colon U \to \mathbb{R}^n$
   differenzierbar, so dass die Poincaré-Bedingungen
   auf $U$ erfüllt sind.
   Dann existiert eine differenzierbare Funktion
@@ -377,7 +377,7 @@ zu charakterisieren.
   \begin{align*}
     \frac{\partial f}{\partial x_k}(q)
     & = \frac{\partial f}{\partial x_k } (x_1, \dots, x_n)\\
-    &= \frac{\partial}{\partial x_k} \int_{0}^{1} 
+    &= \frac{\partial}{\partial x_k} \int_{0}^{1}
     \sum_{i=1}^{n} a_i (tq) \cdot x_i \, dt \\
     &= \int_{0}^{1} \frac{\partial}{\partial x_k}
     \sum_{i=1}^{n} a_i(tq) \cdot x_i \, dt.
@@ -435,27 +435,27 @@ zu charakterisieren.
     g(\overline x, y).
   \]
   Sei nun $\varepsilon > 0$.
-  Da $\partial g / \partial x \colon {[0, 1]}^2 \to \mathbb{R}$ 
+  Da $\partial g / \partial x \colon {[0, 1]}^2 \to \mathbb{R}$
   stetig ist, und weiterhin ${[0, 1]}^2$ kompakt,
   ist $\partial g/\partial x$ sogar gleichmässig stetig
   auf  ${[0, 1]}^2$.
   Also existiert $\delta > 0$ so, dass für alle
-  $x, \overline x, y \in [0,1]$ mit $|x - \overline x| \leq \delta$ 
+  $x, \overline x, y \in [0,1]$ mit $|x - \overline x| \leq \delta$
   gilt, dass
   \[
     \left| \frac{\partial g}{\partial x}(\overline x, y)
     - \frac{\partial g}{\partial x}(x, y) \right| \leq \varepsilon.
   \]
-  Für $h \in \mathbb{R}$ mit $|h| \leq \delta$ 
+  Für $h \in \mathbb{R}$ mit $|h| \leq \delta$
   gilt also (da $\overline x \in [x, x + h])$, dass
   \begin{align*}
     \left| \int_{0}^{1} \frac{1}{h}
     g(x + h, y) - g(x, y)\, dy
     - \int_{0}^{1} \frac{\partial}{\partial x}g(x, y) \, dy \right|
-    &= \left| 
-    \int_{0}^{1} 
+    &= \left|
+    \int_{0}^{1}
     \frac{\partial}{\partial x} g(\overline x, y)
-    - \frac{\partial}{\partial x}g(x, y)\, dy \right| 
+    - \frac{\partial}{\partial x}g(x, y)\, dy \right|
     \leq \varepsilon.
   \end{align*}
   Daraus folgt, dass wir den Grenzwert mit dem Integral
@@ -483,17 +483,17 @@ zu charakterisieren.
 \begin{proposition}\label{prop:low-dimensions}
   \leavevmode
   \begin{enumerate}[\normalfont(i)]
-    \item Sei $X = (a, b) \colon \mathbb{R}^2 \setminus \{0\} \to \mathbb{R}^2$ 
+    \item Sei $X = (a, b) \colon \mathbb{R}^2 \setminus \{0\} \to \mathbb{R}^2$
       differenzierbar. Dann ist $X$ ein Gradientenfeld, genau dann wenn
       die Poincaré-Bedingung
-      $\partial b / \partial x = \partial a / \partial y$ 
+      $\partial b / \partial x = \partial a / \partial y$
       erfüllt ist, und gleichzeitig
       \[
         \int_{0}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt = 0
       \]
       für den Weg $\gamma(t) = (\cos(2\pi t), \sin(2 \pi t))$ gilt.
-    \item Sei 
-      $X \colon \mathbb{R}^3 \setminus \{0\} \to \mathbb{R}^3$ 
+    \item Sei
+      $X \colon \mathbb{R}^3 \setminus \{0\} \to \mathbb{R}^3$
       differenzierbar.
       Dann ist $X$ ein Gradientenfeld, genau dann, wenn $\textup{rot}(X) = 0$
       gilt (und keine Zusatzbedingung).
@@ -504,7 +504,7 @@ zu charakterisieren.
   Die beiden Hinrichtungen ($\Rightarrow$) haben wir bereits behandelt.
   Die Rückrichtungen ($\Leftarrow$) beweisen wir einzeln.
   \begin{enumerate}[(i)]
-    \item Sei $X = (a, b) \colon \mathbb{R}^2 \setminus \{0\} \to \mathbb{R}^2$ 
+    \item Sei $X = (a, b) \colon \mathbb{R}^2 \setminus \{0\} \to \mathbb{R}^2$
       ein differenzierbares Vektorfeld mit $\partial b / \partial x =
       \partial a / \partial y$.
       Schreibe $U = \mathbb{R}^2 \setminus \{0\} = U_N \cup U_S$, wobei
@@ -513,12 +513,12 @@ zu charakterisieren.
         U_S & = \mathbb{R}^2  \setminus \left\{(0, y) \mid y \geq 0 \right\}.
       \end{align*}
       Die beiden Mengen $U_N$ und $U_S$ sind offen und sternförmig.
-      Nach dem Poincaré Lemma existieren 
-      differenzierbare Funktionen $f_N \colon U_N \to \mathbb{R}$ 
+      Nach dem Poincaré Lemma existieren
+      differenzierbare Funktionen $f_N \colon U_N \to \mathbb{R}$
       sowie $f_S \colon U_S \to \mathbb{R}$ mit
       $\nabla f_N = X|_{U_N}$ und $\nabla f_S = X|_{U_S}$.
       Wir können
-      durch Addition einer Konstante 
+      durch Addition einer Konstante
       $f_N$ und $f_S$ so wählen, dass
       $f_N(e_1) = f_S(e_1)$.
 
@@ -529,7 +529,7 @@ zu charakterisieren.
         U_L & = \left\{(x, y) \in \mathbb{R}^2 \mid x < 0 \right\}, \\
         U_R &= \left\{(x, y) \in \mathbb{R}^2 \mid x > 0\right\}.
       \end{align*}
-      Da $f_N(e_1) = f_S(e_1)$ und $\nabla f_N = X = \nabla f_S$ 
+      Da $f_N(e_1) = f_S(e_1)$ und $\nabla f_N = X = \nabla f_S$
       auf $U_R$ gilt, folgt für alle $q \in U_R$, dass
       $f_N(q) = f_S(q)$.
       Dies liegt daran, dass $U_R$ wegzusammenhängend ist,
@@ -549,12 +549,12 @@ zu charakterisieren.
       % \]
       Schreibe dazu
       \[
-        A = 
+        A =
         \int_{0}^{1/2} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt
       \]
       und
       \[
-        B = 
+        B =
         \int_{1/2}^{1} \langle X(\gamma(t)), \dot \gamma(t) \rangle \, dt.
       \]
       Berechne, dass
@@ -564,13 +564,13 @@ zu charakterisieren.
       (da auf $U_N$ gilt,
       dass $X = \nabla f_N$),
       und $B = f_S(e_1) - f_S(-e_1)$
-      (da auf $U_S$ gilt, dass $X = 
+      (da auf $U_S$ gilt, dass $X =
       \nabla f_S$),
       siehe Abbildung~\ref{fig:e1tominuse1}.
       Übrig bleibt, dass
       $f_N(-e_1) = f_S(-e_1)$ gilt.
 
-      \begin{figure}[htb] 
+      \begin{figure}[htb]
         \centering
         \begin{minipage}{0.30\textwidth}
           \centering
@@ -580,7 +580,7 @@ zu charakterisieren.
           \centering
           \includegraphics{figures/minuse1toe1}
         \end{minipage}%
-        \caption{Der Grund, dass $f_N(-e_1) = 
+        \caption{Der Grund, dass $f_N(-e_1) =
         f_S(-e_1)$ gilt}%
         \label{fig:e1tominuse1}
       \end{figure}
@@ -588,7 +588,7 @@ zu charakterisieren.
       Definiere nun
       \begin{align*}
         f \colon \mathbb{R}^2 \setminus \{0\} & \to \mathbb{R} \\
-        q & \mapsto 
+        q & \mapsto
         \begin{cases}
           f_N(q) & q \in U_N, \\
           f_S(q) & q \in U_S.
@@ -602,11 +602,11 @@ zu charakterisieren.
 
     \item Sei
       $X \colon \mathbb{R}^3 \setminus \{0\}
-      \to \mathbb{R}^3$ 
+      \to \mathbb{R}^3$
       differenzierbar mit $\text{rot}(X) = 0$.
       Schreibe
       $\mathbb{R}^3 \setminus \{0\}
-      = U_N \cup U_S$ 
+      = U_N \cup U_S$
       mit
       \begin{align*}
         U_N & = \mathbb{R}^3 \setminus
@@ -615,7 +615,7 @@ zu charakterisieren.
         \left\{(0, 0, z) \mid z \leq 0\right\}.
       \end{align*}
       Nach dem Poincaré Lemma existieren differenzierbare Funktionen
-      $f_N \colon U_N \to \mathbb{R}$ 
+      $f_N \colon U_N \to \mathbb{R}$
       und $f_S \colon U_S \to \mathbb{R}$ mit
       $\nabla f_N = X|_{U_N}$ und $\nabla f_S = X|_{U_S}$.
       Wiederum können wir
@@ -624,7 +624,7 @@ zu charakterisieren.
       $q \in U_N \cap U_S$, dass
       $f_N = f_S(q)$.
       Tatsächlich ist $U_N \cap U_S = \mathbb{R}^3
-      \setminus \left\{(0, 0, z) \mid z \in \mathbb{R}\right\}$ 
+      \setminus \left\{(0, 0, z) \mid z \in \mathbb{R}\right\}$
       wegzusammenhängend.
       Via Wegintegral folgt also $f_N = f_S$ auf ganz $U_N \cap U_S$.
       Definiere dann $f$ wie oben. \qedhere
@@ -633,7 +633,7 @@ zu charakterisieren.
 
 \begin{exercise}
   Zeige die Konklusion von Punkt (ii) in Proposition~\ref{prop:low-dimensions}
-  für $\mathbb{R}^3 \setminus F$, wobei $F \subset \mathbb{R}^3$ 
+  für $\mathbb{R}^3 \setminus F$, wobei $F \subset \mathbb{R}^3$
   eine endliche Menge ist.
 \end{exercise}
 
@@ -642,9 +642,9 @@ Sei $U \subset \mathbb{R}^n$ offen.
 Eine \emph{$1$-Form} auf $U$ ist eine stetige Abbildung
 $\omega \colon U \to {(\mathbb{R}^n)}^*$.
 Hier ist ${(\mathbb{R}^n)}^*$ der \emph{Dualraum} von $\mathbb{R}^n$.
-Er besteht aus allen linearen Abbildungen 
+Er besteht aus allen linearen Abbildungen
 $L \colon \mathbb{R}^n \to \mathbb{R}$.
-Die Elemente $e_k^* \colon \mathbb{R}^n \to \mathbb{R}$ 
+Die Elemente $e_k^* \colon \mathbb{R}^n \to \mathbb{R}$
 welche durch die Forderung
 \[
   e_k^*(e_i) =
@@ -655,7 +655,7 @@ welche durch die Forderung
 \]
 eindeutig definiert sind, bilden eine Basis von
 ${(\mathbb{R}^n)}^*$.
-Deren Elemente werden häufig mit $x_k = e_k^*$ 
+Deren Elemente werden häufig mit $x_k = e_k^*$
 bezeichnet und heissen \emph{Koordinatenabbildungen}.
 
 Sei nun $f \colon U \to \mathbb{R}$
@@ -681,7 +681,7 @@ Sei $k \in \{1, \dots, n\}$.
 Für $x_k \colon \mathbb{R}^n \to \mathbb{R}$ gilt
 für alle $p \in \mathbb{R}^n$, dass
 ${(Dx_k)}_p = x_k$, da $x_k$ linear ist.
-Also ist $dx_k \colon \mathbb{R}^n \to \mathbb{R}$ 
+Also ist $dx_k \colon \mathbb{R}^n \to \mathbb{R}$
 gegeben durch $dx_k(p) = x_k$, da $x_k$ linear ist.
 Somit ist $dx_k$ eine konstante $1$-Form,
 beziehungsweise ein konstantes Feld von linearen Abbildungen.
@@ -705,7 +705,7 @@ Wir erhalten somit
 \]
 Die Abbildung $\omega_p$ ist die lineare Abbildung
 mit Abbildungsmatrix $(a_1(p), \dots, a_n(p))$.
-Wir nennen  $\omega \colon U \to {(\mathbb{R}^n)}^*$ 
+Wir nennen  $\omega \colon U \to {(\mathbb{R}^n)}^*$
 \emph{differenzierbar}, falls alle
 $a_k \colon U \to \mathbb{R}$ differenzierbar sind.
 
@@ -752,7 +752,7 @@ den Poincaré-Bedingungen.
     {(d\omega)}_p(v, w)
     = \lim_{s \to 0} \frac{1}{s^2} \int_{\gamma_s} \omega,
   \]
-  wobei $\gamma_s$ der stückweise affine 
+  wobei $\gamma_s$ der stückweise affine
   geschlossene Weg zwischen den
   Punkten $p, p+s, p+ s(v + w), p+sw$ ist.
   Diese Punkte sind die Eckpunkte eines Parallelogramms.
@@ -775,11 +775,10 @@ In der Homologietheorie (konkreter, der De Rham Kohomologietheorie)
 ist deren Nutzen, dass sie in höherdimensionalen Räumen
 Löcher erkennen können. Hier sind nämlich Vektorfelder gescheitert:
 In $\mathbb{R}^3 \setminus \{0\}$ existiert kein Vektorfeld,
-welches die Poincaré-Bedingungen erfüllt, aber 
+welches die Poincaré-Bedingungen erfüllt, aber
 nicht ein Gradientenfeld ist.
 Es existiert aber sehr wohl eine $2$-Form auf
 $\mathbb{R}^3 \setminus \{0\}$, welche nicht von der Form
 $d \omega$ für eine $1$-Form $\omega$ ist.
 
 \end{document}
-
