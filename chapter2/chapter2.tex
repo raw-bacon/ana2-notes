@@ -5,13 +5,13 @@
 Dieses Kapitel stellt den Hauptteil dieser Vorlesung dar.
 Auch in~\cite{heuser} ist das korrespondierende
 Kapitel XX bei weitem das grösste. Der Inhalt ist das
-Studium differenzierbarer Abbildungen 
+Studium differenzierbarer Abbildungen
 $f \colon \mathbb{R}^m \to \mathbb{R}^n$.
 Die erste Schwierigkeit daran ist, dass der Ausdruck
 \[
   \lim_{h \to 0} \frac{f(p + h) - f(p)}{h}
 \]
-für $m \geq 2$ keinen Sinn macht: Den 
+für $m \geq 2$ keinen Sinn macht: Den
 Quotienten von zwei Vektoren kann man nicht
 definieren.
 
@@ -22,11 +22,11 @@ definieren.
   \emph{differenzierbar} im Punkt $p \in U$, falls
   folgendes existiert:
   \begin{enumerate}[(i)]
-    \item eine lineare Abbildung 
+    \item eine lineare Abbildung
       ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$,
       genannt \emph{Differential} von $f$ an
       der Stelle $p$,
-    \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$ 
+    \item für alle $h \in \mathbb{R}^m$ mit $p + h \in U$
       ein \emph{Restterm} ${(Rf)}_p(h) \in \mathbb{R}^n$,
       der relativ klein in $\Vert h \Vert_2$ ist,
       so dass
@@ -36,7 +36,7 @@ definieren.
   \end{enumerate}
   Der Unterteilung von $f$ in diese drei Summanden sagt man
   \emph{Dreigliedentwicklung}. Die Forderung,
-  dass ${(Rf)}_p(h)$ \emph{relativ klein} in $\Vert h \Vert_2$ 
+  dass ${(Rf)}_p(h)$ \emph{relativ klein} in $\Vert h \Vert_2$
   ist, bedeutet, dass
   \[
     \lim_{h \to 0} \frac{\Vert {(Rf)}_p(h)\Vert_2}{\Vert h \Vert_2}
@@ -50,7 +50,7 @@ definieren.
 
 \begin{remark}
   Das Differential ist a priori nur für diejenigen
-  $h$ definiert, für die $p + h$ noch in $U$ 
+  $h$ definiert, für die $p + h$ noch in $U$
   liegt. Da $U$ aber offen ist, existiert aber
   eine Basis von $\mathbb{R}^m$ aus Vektoren
   $h_i$ für die $p + h_i$ noch in $U$ liegt.
@@ -67,11 +67,11 @@ definieren.
   \[
     L(p + h) = L(p) + L(h).
   \]
-  Dies ist eine Dreigliedentwicklung für $L$ 
+  Dies ist eine Dreigliedentwicklung für $L$
   an der Stelle $p$ mit Restterm ${(RL)}_p(h) = 0$.
   Tatsächlich ist die Abbildung ${(DL)}_p = L$ linear.
   Die informale Erklärung dafür ist,
-  dass~$L$ die ``beste lineare Approximation'' von $L$ 
+  dass~$L$ die ``beste lineare Approximation'' von $L$
   ist, und das an jeder Stelle.
 \end{example}
 
@@ -101,7 +101,7 @@ definieren.
       ist relativ klein in $\Vert h \Vert_2$.
       Zum Beweis dafür sei $\varepsilon > 0$ und setze
       $\delta = \varepsilon$.
-      Für alle $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$ 
+      Für alle $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta$
       gilt dann, dass
       \(
         |{(Rf)}_p(h)| = \Vert h \Vert_2^2 \leq \varepsilon \cdot \Vert h \Vert_2
@@ -131,7 +131,7 @@ definieren.
         \end{pmatrix}
       \]
       gilt, ist ${(Dm)}_p$ linear.
-      Weiter ist der Restterm 
+      Weiter ist der Restterm
       relativ klein in $\Vert h \Vert_2$, da
       \[
         |{(Rm)}_p(h)| = |h_1| \cdot |h_2| \leq \Vert h \Vert_2 \cdot
@@ -147,12 +147,12 @@ für viele Beispiele an.
 Wir werden sie später in diesem Kapitel beweisen.
 
 \begin{theorem*}[Kettenregel]
-  Seien $U \subset \mathbb{R}^m$ und $V \subset \mathbb{R}^k$ 
+  Seien $U \subset \mathbb{R}^m$ und $V \subset \mathbb{R}^k$
   offen, und sei $f \colon U \to \mathbb{R}^k$ differenzierbar
   bei $p \in U$ mit $f(U) \subset V$,
-  sowie $g \colon V \to \mathbb{R}^n$ bei $f(p) \in V$ 
+  sowie $g \colon V \to \mathbb{R}^n$ bei $f(p) \in V$
   differenzierbar.
-  Dann ist die Komposition $g \circ f \colon U \to \mathbb{R}^n$ 
+  Dann ist die Komposition $g \circ f \colon U \to \mathbb{R}^n$
   differenzierbar bei $p$, und es gilt
   \[
     {(D(g \circ f))}_p = {(Dg)}_{f(p)} \circ {(Df)}_p.
@@ -169,7 +169,7 @@ Wir werden sie später in diesem Kapitel beweisen.
    \[
      \ell(x_1, \dots, x_m) = \sqrt{x_1^2 + \cdots + x_m^2}.
   \]
-  Sei $U = \mathbb{R}^m \setminus \{0\} \subset \mathbb{R}^m$ 
+  Sei $U = \mathbb{R}^m \setminus \{0\} \subset \mathbb{R}^m$
   und $V = \mathbb{R}_{>0}$.
   Beide dieser Mengen sind offen. Setze weiterhin
   \begin{align*}
@@ -183,7 +183,7 @@ Wir werden sie später in diesem Kapitel beweisen.
   \end{align*}
   Für alle $p \in U$ gilt $\ell(p) = g(f(p))$.
   Die Funktion $f$ ist differenzierbar in allen
-  Punkten $p \in U$ 
+  Punkten $p \in U$
   (eigentlich sogar in allen $p \in \mathbb{R}^n$).
   Ausserdem ist $g$ differenzierbar an allen Stellen
   $t > 0$.
@@ -207,7 +207,7 @@ Wir werden sie später in diesem Kapitel beweisen.
 \begin{definition}
   Sei $f \colon \mathbb{R}^m \to \mathbb{R}^n$ eine Abbildung.
   Dann existieren eindeutige \emph{Komponentenfunktionen}
-  $f_k \colon R^m \to \mathbb{R}$ 
+  $f_k \colon R^m \to \mathbb{R}$
   für $1 \leq k \leq n$ mit folgender Eigenschaft:
   für alle $p \in \mathbb{R}^m$ gilt, dass
   \[
@@ -217,7 +217,7 @@ Wir werden sie später in diesem Kapitel beweisen.
 
 \begin{lemma*}
   Eine Abbildung $f \colon \mathbb{R}^m \to \mathbb{R}^n$ ist differenzierbar bei $p \in \mathbb{R}^m$,
-  genau dann wenn alle Komponentenfunktionen 
+  genau dann wenn alle Komponentenfunktionen
   $f_k \colon \mathbb{R}^m \to \mathbb{R}$ bei $p$ differenzierbar sind.
 \end{lemma*}
 
@@ -229,8 +229,8 @@ Wir werden sie später in diesem Kapitel beweisen.
     f(p + h) = f(p) + {(Df)}_p(h) + {(Rf)}_p(h)
   \]
   eine Dreigliedentwicklung von $f$.
-  Für $1 \leq k \leq n$ 
-  setze ${(Df_k)}_p(h) = \langle {(Df)}_p(h), e_k \rangle$ 
+  Für $1 \leq k \leq n$
+  setze ${(Df_k)}_p(h) = \langle {(Df)}_p(h), e_k \rangle$
   und ${(Rf_k)}_p(h) = \langle {(Rf)}_p(h), e_k \rangle$.
   Dann gilt für alle $k \leq n$, dass
   \[
@@ -246,7 +246,7 @@ Wir werden sie später in diesem Kapitel beweisen.
       als Verknüpfung einer linearen Funktion mit einer Projektion
       linear,
     \item der Restterm ${(Rf_k)}_p(h)$ relativ klein
-      in $\Vert h \Vert_2$, da 
+      in $\Vert h \Vert_2$, da
       \(
         |{(Rf_k)}_p(h)| \leq \Vert {(Rf)}_p(h) \Vert_2
       \)
@@ -255,7 +255,7 @@ Wir werden sie später in diesem Kapitel beweisen.
 
   Umgekehrt nehmen wir an, dass die Komponentenfunktionen
   $f_k \colon \mathbb{R}^m \to \mathbb{R}$
-  einer Funktion $f \colon \mathbb{R}^m \to \mathbb{R}^n$ 
+  einer Funktion $f \colon \mathbb{R}^m \to \mathbb{R}^n$
   differenzierbar sind.
   Für alle $k$ gibt es dann eine Dreigliedentwicklung
   \(
@@ -298,10 +298,10 @@ Wir werden sie später in diesem Kapitel beweisen.
 
 \begin{question}
   Können wir die Differenzierbarkeit von Abbildungen
-  $f \colon \mathbb{R}^m \to \mathbb{R}$ weiter 
+  $f \colon \mathbb{R}^m \to \mathbb{R}$ weiter
   auf die Differenzierbarkeit von Funktionen
   $g \colon \mathbb{R} \to \mathbb{R}$ zurückführen?
-  Konkreter: Ist $f \colon \mathbb{R}^m \to \mathbb{R}$ 
+  Konkreter: Ist $f \colon \mathbb{R}^m \to \mathbb{R}$
   bei $p = 0$ differenzierbar, falls die Einschränkung
   von $f$ auf allen Koordinatenachsen differenzierbar ist?
 \end{question}
@@ -313,7 +313,7 @@ Beispiel zu erkennen ist.
   Betrachte die Funktion
   \begin{align*}
     f \colon \mathbb{R}^2 & \to \mathbb{R} \\
-    (x, y) & \mapsto 
+    (x, y) & \mapsto
     \begin{cases}
       \frac{xy}{x^2 + y^2} & (x, y) \neq (0, 0) \\
       0 & (x, y) = (0, 0).
@@ -332,8 +332,8 @@ Beispiel zu erkennen ist.
   Falls $f$ an der Stelle $p \in U$ eine
   Dreigliedentwicklung besitzt,
   dann ist diese eindeutig.
-  Insbesondere ist das Differential 
-  ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$ 
+  Insbesondere ist das Differential
+  ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$
   wohldefiniert.
   Der Grund für die Eindeutigkeit des Differentials
   liegt darin, dass nur die Nullfunktion
@@ -345,7 +345,7 @@ Beispiel zu erkennen ist.
 \end{remark}
 
 \begin{definition}
-  Das Differential ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$ 
+  Das Differential ${(Df)}_p \colon \mathbb{R}^m \to \mathbb{R}^n$
   einer differenzierbaren Funktion $f$
   ist linear,
   hat also bezüglich der Standardbasen auf
@@ -363,9 +363,9 @@ Schreibe wie üblich
 \]
 Die Koeffizienten von ${(Jf)}_p$ sind dann
 \begin{align*}
-  {({(Jf)}_p)}_{ij} 
+  {({(Jf)}_p)}_{ij}
   &= \langle {(Df)}_p(e_j), e_i \rangle  \\
-  &= \left\langle 
+  &= \left\langle
     \sum_{k=1}^{n} {(Df_k)}_p(e_j) e_k,
     e_i
   \right\rangle \\
@@ -404,7 +404,7 @@ Gemäss dieser Definition ist dann
   \end{pmatrix}.
 \]
 Im Spezialfall $n = 1$, das heisst,
-dass $f \colon \mathbb{R}^m \to \mathbb{R}$ 
+dass $f \colon \mathbb{R}^m \to \mathbb{R}$
 skalare Werte annimmt, erhalten wir
 einen Zeilenvektor ${(Jf)}_p$.
 Der transponierte Vektor
@@ -461,7 +461,7 @@ Es gilt
       \]
       In Koordinaten liest sich das als
       \[
-        {(\nabla f)}_{(x_1, \dots, x_m)} 
+        {(\nabla f)}_{(x_1, \dots, x_m)}
         = \frac{1}{\sqrt{x_1^2 + \cdots + x_m^2}}
         \begin{pmatrix}
           x_1 \\
@@ -489,7 +489,7 @@ Es gilt
   \end{enumerate}
 \end{examples}
 
-Mithilfe folgender Proposition können wir ${(Df)}_p(v)$ 
+Mithilfe folgender Proposition können wir ${(Df)}_p(v)$
 für beliebige $v \in \mathbb{R}^n$ ausrechnen.
 Insbesondere liefert sie Möglichkeiten für die
 Berechnung der Partiellen Ableitungen
@@ -520,19 +520,19 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
   \[
     {(Df)}_p(v) = \frac{f(p + tv) - f(p)}{t} - \frac{{(Rf)}_p(tv)}{t}.
   \]
-  Sei $\varepsilon > 0$ vorgegeben. Wähle $\delta > 0$ 
-  so, dass für alle $h$ mit $\Vert h \Vert_2 \leq \delta$ 
+  Sei $\varepsilon > 0$ vorgegeben. Wähle $\delta > 0$
+  so, dass für alle $h$ mit $\Vert h \Vert_2 \leq \delta$
   gilt, dass $\Vert {(Rf)}_p(h) \Vert_2 \leq \varepsilon \cdot
   \Vert h \Vert_2 / \Vert v \Vert_2$.
   Für $t \leq \delta / \Vert v \Vert_2$ gilt dann,
   dass $\Vert tv \Vert_2 \leq \delta$,
   also gilt auch, dass
-  $\Vert {(Rf)}_p (tv) \Vert_2 \leq \varepsilon 
+  $\Vert {(Rf)}_p (tv) \Vert_2 \leq \varepsilon
   \cdot \Vert t v \Vert_2 /\Vert v \Vert_2$.
   Wir schliessen, dass
   \[
     \left\Vert \frac{{(Rf)}_p(tv)}{t} \right\Vert_2
-    \leq \frac{\varepsilon \cdot \Vert v \Vert_2}{\Vert v \Vert_2} 
+    \leq \frac{\varepsilon \cdot \Vert v \Vert_2}{\Vert v \Vert_2}
     = \varepsilon.
   \]
   In anderen Worten ist
@@ -554,7 +554,7 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
   Die Funktion
   \begin{align*}
     f \colon \mathbb{R}^2 & \to \mathbb{R} \\
-    (x, y) & \mapsto 
+    (x, y) & \mapsto
     \begin{cases}
       0 & (x,y) = (0,0), \\
       \frac{xy(x-y)}{x^2 + y^2} & (x,y) \neq (0,0).
@@ -568,12 +568,12 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
 
 \section{Die Kettenregel}
 \begin{theorem*}[Kettenregel]
-  Seien $U \subset \mathbb{R}^m$ und $V \subset \mathbb{R}^k$ 
+  Seien $U \subset \mathbb{R}^m$ und $V \subset \mathbb{R}^k$
   offen, und sei $f \colon U \to \mathbb{R}^k$ differenzierbar
   bei $p \in U$ mit $f(U) \subset V$,
-  sowie $g \colon V \to \mathbb{R}^n$ bei $f(p) \in V$ 
+  sowie $g \colon V \to \mathbb{R}^n$ bei $f(p) \in V$
   differenzierbar.
-  Dann ist die Komposition $g \circ f \colon U \to \mathbb{R}^n$ 
+  Dann ist die Komposition $g \circ f \colon U \to \mathbb{R}^n$
   differenzierbar bei $p$, und es gilt
   \[
     {(D(g \circ f))}_p = {(Dg)}_{f(p)} \circ {(Df)}_p.
@@ -614,14 +614,14 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
 \end{proof}
 
 \begin{lemma*}
-  Seien $A_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
+  Seien $A_1 \colon \mathbb{R}^m \to \mathbb{R}^k$
   und $A_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ linear
-  sowie $R_1 \colon \mathbb{R}^m \to \mathbb{R}^k$ 
-  und $R_2 \colon \mathbb{R}^k \to \mathbb{R}^n$ 
+  sowie $R_1 \colon \mathbb{R}^m \to \mathbb{R}^k$
+  und $R_2 \colon \mathbb{R}^k \to \mathbb{R}^n$
   relativ klein in $\Vert h \Vert_2$.
   Dann sind die Ausdrücke
   \begin{enumerate}[\normalfont(i)]
-    \item $A_2(R_1(h))$ 
+    \item $A_2(R_1(h))$
     \item $R_2(A_1(h) + R_1(h))$
   \end{enumerate}
   relativ klein in $\Vert h \Vert_2$.
@@ -635,12 +635,12 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
     \mid v \in \mathbb{R}^m \setminus \{0\} \right\}
   \]
   einer linearen Abbildung $A \colon \mathbb{R}^m \to \mathbb{R}^n$.
-  Setze $a_1 = \Vert A_1 \Vert_{\text{op}}$ und 
+  Setze $a_1 = \Vert A_1 \Vert_{\text{op}}$ und
   $a_2 = \Vert A_2 \Vert_{\text{op}}$.
   Falls $A_2 = 0$, dann ist $A_2(R_1(h)) = 0$, was
   relativ klein in $\Vert h \Vert_2$ ist.
   \begin{enumerate}[(i)]
-    \item 
+    \item
       Falls $A_2 \neq 0$ gilt, dann gilt $a_2 > 0$.
       Sei $\varepsilon > 0$ vorgegeben. Wähle ein
       $\delta > 0$ so, dass
@@ -652,20 +652,20 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
         \Vert A_2(R_1(h)) \Vert_2 \leq a_2 \cdot \Vert R_1(h) \Vert_2
         \leq \varepsilon \cdot \Vert h \Vert_2.
       \]
-    \item 
+    \item
       Setze $\varepsilon = 1$.%Sei $\varepsilon > 0$ vorgegeben.
       Wähle $\delta_1 > 0$ so, dass für alle
-      $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta_1$ 
+      $h \in \mathbb{R}^m$ mit $\Vert h \Vert_2 \leq \delta_1$
       gilt, dass $\Vert R_1(h) \Vert_2 \leq \Vert h \Vert_2$.
       Dann folgt, dass
       \begin{align*}
-        \Vert A_1(h) + R_1(h) \Vert_2 
+        \Vert A_1(h) + R_1(h) \Vert_2
         &\leq \Vert A_1(h) \Vert_2 + \Vert R_1(h) \Vert_2  \\
         &\leq a_1 \Vert h \Vert_2 + \Vert h \Vert_2 \\
         &= (a_1 + 1) \Vert h \Vert_2.
       \end{align*}
       Wähle $\delta_2 > 0$ so dass für
-      $v \in \mathbb{R}^k$ 
+      $v \in \mathbb{R}^k$
       und $\Vert v \Vert_2 \leq \delta_2$ gilt,
       dass
       $\Vert R_2(v) \Vert_2 \leq \varepsilon/(a_1 + 1) \cdot \Vert v \Vert_2$.
@@ -680,7 +680,7 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
       Setze nun $v = A_1(h) + R_1(h)$.
       Wir folgern wegen $\Vert v \Vert_2 \leq \delta_2$, dass
       \begin{align*}
-        \Vert R_2(A_1(h) + R_1(h)) \Vert_2 
+        \Vert R_2(A_1(h) + R_1(h)) \Vert_2
         & = \Vert R_2(v) \Vert_2  \\
         &\leq \varepsilon / (a_1 + 1) \cdot \Vert v \Vert_2 \\
         &\leq \varepsilon \cdot \Vert h \Vert_2.
@@ -692,7 +692,7 @@ $\partial f / \partial x_i (p) = {(Df)}_p(e_i)$.
 
 \subsection*{Anwendungen der Kettenregel}
 \subsubsection*{Dimension eins}
-Sei $f \colon \mathbb{R} \to \mathbb{R}$ 
+Sei $f \colon \mathbb{R} \to \mathbb{R}$
 an der Stelle $x \in \mathbb{R}$ differenzierbar.
 Dann gilt für alle $h \in \mathbb{R}$,
 dass
@@ -706,10 +706,10 @@ Seien nun $f \colon \mathbb{R} \to \mathbb{R}$ und
 $g \colon \mathbb{R} \to \mathbb{R}$ an den Stellen
 $x \in \mathbb{R}$ beziehungsweise
 $f(x) \in \mathbb{R}$ differenzierbar.
-Dann ist $g \circ f \colon \mathbb{R} \to \mathbb{R}$ 
+Dann ist $g \circ f \colon \mathbb{R} \to \mathbb{R}$
 an der Stelle $x$ differenzierbar und es gilt
 \begin{align*}
-   {(g \circ f)}'(x)  
+   {(g \circ f)}'(x)
    & = {(D(g \circ f ))}_x(1) \\
    &={(Dg)}_{f(x)} ({(Df)}_x(1)) \\
    &  = {(Dg)}_{f(x)}(f'(x)) \\
@@ -725,7 +725,7 @@ Version hergeleitet.
 \subsubsection*{Die Produktregel}
 Seien $f, g \colon \mathbb{R}^n \to \mathbb{R}$ an der
 Stelle $p \in \mathbb{R}^n$ differenzierbar.
-Das Produkt $f g \colon \mathbb{R}^n \to \mathbb{R}$ 
+Das Produkt $f g \colon \mathbb{R}^n \to \mathbb{R}$
 lässt sich als Komposition
 $m \circ h$ darstellen, wobei
 \begin{align*}
@@ -747,7 +747,7 @@ und
 \]
 Daraus folgt, dass
 \begin{align*}
-  {(D(fg))}_p(v) 
+  {(D(fg))}_p(v)
   &= {(D(m \circ h))}_p(v) \\
   &= {(Dm)}_{h(p)}({(Dh)}_p(v))\\
   &= {(Dm)}_{(f(p), g(p))} ({(Df)}_p(v), {(Dg)}_p(v)) \\
@@ -759,8 +759,8 @@ Kurz erhalten wir die \emph{Produktregel}
 \]
 
 \begin{remark}
-  Die Summe $f + g \colon \mathbb{R}^n \to \mathbb{R}$ 
-  ist ebenso differenzierbar bei $p \in \mathbb{R}^n$ 
+  Die Summe $f + g \colon \mathbb{R}^n \to \mathbb{R}$
+  ist ebenso differenzierbar bei $p \in \mathbb{R}^n$
   und es gilt
   \[
     {(D(f+g))}_p = {(Df)}_p + {(Dg)}_p.
@@ -772,8 +772,8 @@ Kurz erhalten wir die \emph{Produktregel}
   Benutzung der Produkt- und Additionsregeln
   gezeigt werden.
   Die Verankerung ist lediglich, dass
-  konstante und lineare Abbildungen 
-  $\mathbb{R}^n \to \mathbb{R}$ auf $\mathbb{R}^n$ 
+  konstante und lineare Abbildungen
+  $\mathbb{R}^n \to \mathbb{R}$ auf $\mathbb{R}^n$
   differenzierbar sind.
   Insbesondere sind dies alle Koordinatenfunktionen
   $x_i \colon \mathbb{R}^n \to \mathbb{R}$.
@@ -783,12 +783,12 @@ Kurz erhalten wir die \emph{Produktregel}
 \begin{definition}
 Sei $U \subset \mathbb{R}^n$ offen und
 $f \colon U \to \mathbb{R}$ eine Abbildung.
-Dann hat $f$ an der Stelle $p \in U$ 
+Dann hat $f$ an der Stelle $p \in U$
 ein \emph{lokales Minimum} (beziehungsweise
 ein \emph{lokales Maximum}),
 falls ein $r > 0$ existiert mit
 \begin{enumerate}[(i)]
-  \item $B_p(r) = \left\{q \in \mathbb{R}^n \mid 
+  \item $B_p(r) = \left\{q \in \mathbb{R}^n \mid
     \Vert q - p \Vert_2 < r\right\} \subset U$,
   \item für alle $q \in B_p(r)$ gilt
     $f(q) \geq f(p)$ (beziehungsweise $f(q) \leq f(p)$).
@@ -810,9 +810,9 @@ falls ein $r > 0$ existiert mit
 
 \begin{proof}
   Sei $v \in \mathbb{R}^n$ beliebig.
-  Wähle $\delta > 0$ so, dass $B_p(\delta \cdot \Vert v \Vert_2) \subset U$ 
+  Wähle $\delta > 0$ so, dass $B_p(\delta \cdot \Vert v \Vert_2) \subset U$
   gilt.
-  Definiere eine Kurve  
+  Definiere eine Kurve
   \begin{align*}
     \gamma \colon (-\delta, \delta) & \to \mathbb{R}^n \\
     t & \mapsto p + tv.
@@ -824,7 +824,7 @@ falls ein $r > 0$ existiert mit
     h \colon (-\delta, \delta) & \to \mathbb{R} \\
     t & \mapsto f(\gamma(t)).
   \end{align*}
-  Nach Annahme hat die Funktion $h$ an der Stelle $t = 0$ 
+  Nach Annahme hat die Funktion $h$ an der Stelle $t = 0$
   ein lokales Minimum (beziehungsweise Maximum).
   Wir bemerken mit der Kettenregel,
   dass $h$ an der Stelle $t = 0$
@@ -850,24 +850,24 @@ falls ein $r > 0$ existiert mit
 \end{example}
 
 \subsubsection*{Gradient und Niveaulinien}
-Seien $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+Seien $\gamma \colon \mathbb{R} \to \mathbb{R}^n$
 und $f \colon \mathbb{R}^n \to \mathbb{R}$ differenzierbar.
-Dann ist die Komposition $h = f \circ \gamma \colon \mathbb{R} \to \mathbb{R}$ 
+Dann ist die Komposition $h = f \circ \gamma \colon \mathbb{R} \to \mathbb{R}$
 differenzierbar. Es gilt für alle $t \in \mathbb{R}$, dass
 \begin{align*}
-   h'(t)   
+   h'(t)
    &= {(Dh)}_t(1) = {(Df)}_{\gamma(t)}({(D\gamma)}_t(1))  \\
    &= {(Df)}_{\gamma(t)}(\dot \gamma(t)) \\
    &= \langle {(\nabla f)}_{\gamma(t)}, \dot \gamma(t) \rangle.
 \end{align*}
 
 \begin{proposition*}
-  Sei $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
-  eine differenzierbare Kurve und 
+  Sei $\gamma \colon \mathbb{R} \to \mathbb{R}^n$
+  eine differenzierbare Kurve und
   $f \colon \mathbb{R}^n \to \mathbb{R}$ eine
   differenzierbare Funktion.
   Dann ist $h = f \circ \gamma$ konstant, genau dann,
-  wenn für all $t \in \mathbb{R}$ 
+  wenn für all $t \in \mathbb{R}$
   der Gradient ${(\nabla f)}_{\gamma(t)}$ senkrecht auf
   $\dot \gamma(t)$ steht.
 \end{proposition*}
@@ -883,7 +883,7 @@ differenzierbar. Es gilt für alle $t \in \mathbb{R}$, dass
 \end{proof}
 
 \begin{definition}
-  Das Bild einer Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^n$ 
+  Das Bild einer Kurve $\gamma \colon \mathbb{R} \to \mathbb{R}^n$
   heisst \emph{Niveaulinie} von $f$,
   falls $f \circ \gamma(t)$ konstant ist.
 \end{definition}
@@ -942,7 +942,7 @@ zwischen $a$ und $b$ liegen.
   \begin{enumerate}[(i)]
     \item Sei $f \colon \mathbb{R} \to \mathbb{R}$ (das heisst $n = 1$).
       Seien $a, b \in \mathbb{R}$ mit $a < b$.
-      Dann existiert $x \in I_{a, b} \setminus \{a, b\} = (a, b)$ 
+      Dann existiert $x \in I_{a, b} \setminus \{a, b\} = (a, b)$
       mit ${(Df)}_{x}(b-a) = f(b) - f(a)$.
       Es gilt also
       \[
@@ -951,7 +951,7 @@ zwischen $a$ und $b$ liegen.
       Wir haben also die eindimensionale Version des Mittelwertsatzes
       erfolgreich aus der momentanen Version extrahiert.
     \item Nimm an, dass  $f(b) = f(a)$ gilt.
-      Dann existiert $p \in I_{a, b} \setminus \{a, b\}$ 
+      Dann existiert $p \in I_{a, b} \setminus \{a, b\}$
       mit
       \[
         \langle {(\nabla f)}_{p}, b-a \rangle
@@ -986,7 +986,7 @@ zwischen $a$ und $b$ liegen.
     h'(t) = {(Df)}_{a + t(b-a)}(b-a) - (f(b) - f(a)),
   \]
   da ${(Df)}_{\gamma(t)}(\dot \gamma(t)) = {(Df)}_{a + t(b-a)}(b-a)$.
-  Nach dem Satz von Rolle existiert $t_0 \in (0, 1)$ 
+  Nach dem Satz von Rolle existiert $t_0 \in (0, 1)$
   mit $h'(t_0) = 0$.
   Setze $p = a + t_0(b-a) \in I_{a, b} \setminus \{a, b\}$.
   Dann gilt
@@ -999,20 +999,20 @@ zwischen $a$ und $b$ liegen.
 \subsubsection*{Diffeomorphismen}
 \begin{definition}
   Eine differenzierbare bijektive Abbildung
-  $f \colon \mathbb{R}^n \to \mathbb{R}^n$ 
-  heisst \emph{Diffeomorphismus}, falls $f$ 
-  eine differenzierbare Umkehrabbildung $g \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  $f \colon \mathbb{R}^n \to \mathbb{R}^n$
+  heisst \emph{Diffeomorphismus}, falls $f$
+  eine differenzierbare Umkehrabbildung $g \colon \mathbb{R}^n \to \mathbb{R}^n$
   hat.
   Das heisst, dass $g \circ f = f \circ g = \text{Id}_{\mathbb{R}^n}$.
 \end{definition}
 
-Für einen Diffeomorphismus $f \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+Für einen Diffeomorphismus $f \colon \mathbb{R}^n \to \mathbb{R}^n$
 mit Umkehrabbildung $g$ erhalten wir dann
 \[
-  {(Dg)}_{f(p)} \circ {(Df)}_p 
+  {(Dg)}_{f(p)} \circ {(Df)}_p
   = {(D \text{Id}_{\mathbb{R}^n})}_p = \text{Id}_{\mathbb{R}^n}.
 \]
-Ähnlich gilt auch ${(Df)}_p \circ {(Dg)}_{f(p)} = \text{Id}_{\mathbb{R}^n}$. 
+Ähnlich gilt auch ${(Df)}_p \circ {(Dg)}_{f(p)} = \text{Id}_{\mathbb{R}^n}$.
 Folglich sind die linearen Abbildungen
 ${(Df)}_p$ und ${(Dg)}_{f(p)}$ zueinander
 inverse Vektorraumisomorphismen von $\mathbb{R}^n$.
@@ -1035,7 +1035,7 @@ untersuchen.
 
 Wir erinnern uns nun an ein eindimensionales Phänomen,
 welches wir bereits in der Analysis I untersucht haben.
-Sei $f \colon \mathbb{R} \to \mathbb{R}$ 
+Sei $f \colon \mathbb{R} \to \mathbb{R}$
 differenzierbar mit $f'(x) > 0$ für alle $x \in \mathbb{R}$.
 Dann ist $f$ injektiv.
 Tatsächlich gilt für alle $a, b \in \mathbb{R}$ mit $a < b$,
@@ -1064,7 +1064,7 @@ Die Antwort dazu ist nein, wie folgendes Beispiel zeigt.
     (x, y) & \mapsto (e^{x} \cos y, e^x \sin y).
   \end{align*}
   Dann ist $f$ stetig differenzierbar, da die Komponentenfunktionen
-  $f_1(x, y) = e^{x} \cos y$ und $f_2(x, y) = e^x \sin y$ 
+  $f_1(x, y) = e^{x} \cos y$ und $f_2(x, y) = e^x \sin y$
   differenzierbar sind. Das folgt aus Betrachtungen in
   der Analysis I und der Produktregel.
   Berechne für $p = (x, y)$ die Jakobimatrix
@@ -1080,7 +1080,7 @@ Die Antwort dazu ist nein, wie folgendes Beispiel zeigt.
       e^x \sin y & e^x \cos y
     \end{pmatrix}.
   \]
-  Aus $\cos^2 + \sin^2 = 1$ folgt, dass $\det({(Jf)}_p) = e^{2x} > 0$ 
+  Aus $\cos^2 + \sin^2 = 1$ folgt, dass $\det({(Jf)}_p) = e^{2x} > 0$
   für alle $p = (x, y)$.
   Aber $f$ ist nicht injektiv, da $f(x, y) = f(x, y + 2 \pi)$ gilt.
 \end{example}
@@ -1105,13 +1105,13 @@ eine Norm, nämlich die Operatornorm $\Vert \cdot \Vert_{\text{op}}$.
     df \colon U & \to \text{Hom}(\mathbb{R}^n, \mathbb{R}^m) \\
     p & \mapsto {(Df)}_p
   \end{align*}
-  bezüglich der Operatornorm auf $\text{Hom}(\mathbb{R}^n, \mathbb{R}^m)$ 
+  bezüglich der Operatornorm auf $\text{Hom}(\mathbb{R}^n, \mathbb{R}^m)$
   stetig ist.
-  Ausgepackt heisst das, dass für alle $p \in U$ 
-  und alle $\varepsilon > 0$ ein $\delta > 0$ 
+  Ausgepackt heisst das, dass für alle $p \in U$
+  und alle $\varepsilon > 0$ ein $\delta > 0$
   existiert, so dass
   \begin{enumerate}[(i)]
-    \item $B_p(\delta) \subset U$, 
+    \item $B_p(\delta) \subset U$,
     \item für alle $q \in B_p(\delta)$ gilt, dass
       $\Vert {(Df)}_q - {(Df)}_p \Vert_{\text{op}} \leq \varepsilon$.
   \end{enumerate}
@@ -1120,7 +1120,7 @@ eine Norm, nämlich die Operatornorm $\Vert \cdot \Vert_{\text{op}}$.
 In Koordinaten heisst das, dass die Einträge der
 Jakobimatrix ${(Jf)}_p \in \mathbb{R}^{m \times n}$ stetig
 von $p$ abhangen.
-In anderen Worten ist für alle $i \leq m$ und $j \leq n$ 
+In anderen Worten ist für alle $i \leq m$ und $j \leq n$
 die partielle Ableitungsfunktion
 \begin{align*}
   \frac{\partial f_i}{\partial x_j} \colon U & \to \mathbb{R} \\
@@ -1137,7 +1137,7 @@ stetig.
       Das Beispiel dazu war die Funktion
       \begin{align*}
         f \colon \mathbb{R}^2 & \to \mathbb{R} \\
-        (x, y) & \mapsto 
+        (x, y) & \mapsto
         \begin{cases}
           0 & (x, y) = (0, 0),\\
           \frac{xy}{x^2 + y^2} & (x, y) \neq (0, 0).
@@ -1153,8 +1153,8 @@ stetig.
 \begin{proposition}\label{prop:continuous-partial-derivatives}
   Sei $U \subset \mathbb{R}^n$ offen und
   $f \colon U \to \mathbb{R}$ eine Abbildung,
-  so dass für alle $j \leq n$ und alle $p \in U$ 
-  die partielle Ableitung $\partial f/ \partial x_j (p) \in \mathbb{R}$ 
+  so dass für alle $j \leq n$ und alle $p \in U$
+  die partielle Ableitung $\partial f/ \partial x_j (p) \in \mathbb{R}$
   existiert, und die Funktion
   \begin{align*}
     \frac{\partial f}{\partial x_j} \colon U & \to \mathbb{R} \\
@@ -1171,7 +1171,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 \begin{examples}
   \leavevmode
   \begin{enumerate}[(1)]
-    \item Alle polynomialen Abbildungen $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+    \item Alle polynomialen Abbildungen $f \colon \mathbb{R}^n \to \mathbb{R}$
       haben stetige partielle Ableitungen, sind also
       stetig differenzierbar.
     \item Die Funktion
@@ -1188,7 +1188,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   Sei $U \subset \mathbb{R}^n$ offen,
   $f \colon U \to \mathbb{R}^n$ stetig differenzierbar,
   und $p \in U$ so dass
-  ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+  ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$
   ein Isomorphismus ist.
   Dann existiert $\varepsilon > 0$ mit
   \begin{enumerate}[\normalfont(i)]
@@ -1202,7 +1202,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   Nach Annahme ist $A = {(Df)}_p$ ein Isomorphismus.
   Betrachte die Komposition
   $\overline f = A^{-1} \circ f \colon U \to \mathbb{R}^n$.
-  Für alle $q \in U$ 
+  Für alle $q \in U$
   gilt nach der Kettenregel, dass
   \[
     {(D \overline f)}_q = {(DA^{-1})}_{f(q)} \circ {(Df)}_q
@@ -1224,14 +1224,14 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
       \).
   \end{enumerate}
   Wir behaupten nun, dass die Einschränkung
-  $ \overline f |_{B_p(\varepsilon)} \colon B_p(\varepsilon) \to \mathbb{R}^n$ 
+  $ \overline f |_{B_p(\varepsilon)} \colon B_p(\varepsilon) \to \mathbb{R}^n$
   injektiv ist.
   Daraus wird folgen, dass $f |_{B_p(\varepsilon)} = A \circ
   \overline f |_{B_p(\varepsilon)}$ auch injektiv ist, da $A$ selbst
   bijektiv ist.
   Es bleibt also lediglich die Behauptung zu zeigen.
 
-  Dazu seien $q, \widetilde q \in B_{p}(\varepsilon)$ 
+  Dazu seien $q, \widetilde q \in B_{p}(\varepsilon)$
   mit $q \neq \widetilde q$.
   Wir wollen zeigen, dass $ \overline f(\widetilde q) \neq  \overline f(q)$.
   Dazu betrachte die Kurve
@@ -1252,8 +1252,8 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   Berechne nun mithilfe dem Integralsatz
   für Kurven, dass
   \[
-      \overline f(\widetilde q) -  \overline f(q) 
-     = h(1) - h(0) 
+      \overline f(\widetilde q) -  \overline f(q)
+     = h(1) - h(0)
      =\int_{0}^{1} h'(t) \, dt
     = \int_{0}^{1} {(D \overline f)}_{q + t(\widetilde q - q)}(\widetilde q - q) \, dt.
   \]
@@ -1285,7 +1285,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
   Es folgt, dass
   \(
     \Vert {(D \overline f)}_{\gamma(t)}
-    (\widetilde q - q) - {(D \overline f)}_p (\widetilde q - q)\Vert_2 
+    (\widetilde q - q) - {(D \overline f)}_p (\widetilde q - q)\Vert_2
     \leq 1/2 \cdot \Vert \widetilde q - q \Vert_2,
   \)
   also auch
@@ -1294,7 +1294,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
     \Vert \widetilde q - q \Vert_2 \, dt
     \leq \frac{1}{2} \cdot \Vert \widetilde q - q \Vert_2.
   \]
-  Aus $\overline f (\widetilde q ) - \overline f(q) = \widetilde q - q + R$ 
+  Aus $\overline f (\widetilde q ) - \overline f(q) = \widetilde q - q + R$
   mit $\Vert R \Vert_2 \leq 1/2 \cdot \Vert \widetilde q - q \Vert_2$
   folgt, dass
    \[
@@ -1305,11 +1305,11 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 \end{proof}
 
 \begin{theorem}[Umkehrsatz]
-  Sei $U \subset \mathbb{R}^n$ offen, $f \colon U \to \mathbb{R}^n$ 
+  Sei $U \subset \mathbb{R}^n$ offen, $f \colon U \to \mathbb{R}^n$
   stetig differenzierbar, und $p \in U$ ein Punkt mit
   $\det( {(Df)}_p ) \neq 0$.
   Dann existieren offene Mengen $V, W \subset \mathbb{R}^n$
-  mit 
+  mit
   $p \in V \subset U$ und
   $f(p) \in W$,
   sowie eine differenzierbare Abbildung $g \colon W \to V$ mit
@@ -1326,7 +1326,7 @@ in~\cite{heuser} bei 163.1 nachgeschlagen werden.
 
 Die einzelnen Schritte des Beweises sind folgende.
 \begin{enumerate}[(1)]
-  \item Lokale Injektivität (siehe 
+  \item Lokale Injektivität (siehe
     Proposition~\ref{prop:local-injectivity} oben),
   \item Lokale Surjektivität,
   \item Differenzierbarkeit der lokalen Umkehrfunktion $g \colon W \to V$.
@@ -1340,7 +1340,7 @@ treffen wir folgende Vorbereitungen.
       \overline f \colon U & \to \mathbb{R}^n \\
       q & \mapsto ({(Df)}_p^{-1} \circ f)(q).
     \end{align*}
-    Dann gilt ${(D \overline f)}_p = {(Df)}_p^{-1} \circ {(Df)}_p 
+    Dann gilt ${(D \overline f)}_p = {(Df)}_p^{-1} \circ {(Df)}_p
     = \text{Id}_{\mathbb{R}^n}$.
     Wähle $\varepsilon > 0$ so, dass $B_p(\varepsilon) \subset U$,
     und so dass für alle $q \in B_p(\varepsilon)$ gilt, dass
@@ -1362,7 +1362,7 @@ treffen wir folgende Vorbereitungen.
     \]
   \item Definiere $\widetilde U = U - p
     = \left\{q \in \mathbb{R}^n \mid q + p \in U\right\}$
-    und 
+    und
     \begin{align*}
       \widetilde f \colon \widetilde U & \to \mathbb{R}^n \\
       q & \mapsto \overline f(p + q) - \overline f(p).
@@ -1391,11 +1391,11 @@ $f |_{B_0(\varepsilon)}$ injektiv ist.
 In einem nächsten Schritt werden wir zeigen,
 dass für das selbe $\varepsilon > 0$ auch gilt,
 dass $B_0(\varepsilon/2) \subset f(B_0(\varepsilon))$,
-das heisst, für alle $y \in \mathbb{R}^n$ 
+das heisst, für alle $y \in \mathbb{R}^n$
 mit $\Vert y \Vert_2 < \varepsilon/2$ existiert
-ein $q \in \mathbb{R}^n$ mit $\Vert q \Vert_2 < \varepsilon$ 
+ein $q \in \mathbb{R}^n$ mit $\Vert q \Vert_2 < \varepsilon$
 und $f(q) = y$.
-Nach dem ersten Schritt ist dieses $q \in B_0(\varepsilon)$ 
+Nach dem ersten Schritt ist dieses $q \in B_0(\varepsilon)$
 dann eindeutig. Wir werden es mit $g(y)$ bezeichnen.
 
 Es stellt sich heraus, dass wir $g$ rekursiv definieren können.
@@ -1409,7 +1409,7 @@ Rekursiv setzen wir
 \]
 
 \begin{remark}
-  Falls per Zufall $f(g_n(y)) = y$ für ein $n \in \mathbb{N}$ 
+  Falls per Zufall $f(g_n(y)) = y$ für ein $n \in \mathbb{N}$
   gilt, dann folgt auch, dass
   \(
     g_{n+1}(y) = g_n(y)
@@ -1418,14 +1418,14 @@ Rekursiv setzen wir
 \end{remark}
 
 \begin{claim}[Lokale Surjektivität]
-  Der Grenzwert $g(y) = \lim_{n \to \infty} g_n(y) \in B_{0}(\varepsilon)$ 
+  Der Grenzwert $g(y) = \lim_{n \to \infty} g_n(y) \in B_{0}(\varepsilon)$
   existiert, und $f(g(y)) = y$.
 \end{claim}
 
 \begin{proof}
   Durch vollständige Induktion zeigen wir
   \begin{enumerate}[(i)]
-    \item $\Vert g_n(y) \Vert_2 < (1 - 1/2^{n+1}) \cdot \varepsilon$ 
+    \item $\Vert g_n(y) \Vert_2 < (1 - 1/2^{n+1}) \cdot \varepsilon$
     \item $\Vert g_{n+1}(y) - g_n(y) \Vert_2 < \varepsilon / 2^{n+2}$.
   \end{enumerate}
   Für $n = 0$ stimmt diese Behauptung, da
@@ -1442,14 +1442,14 @@ Rekursiv setzen wir
   wobei $R$ in der Vorbereitung (i) untersucht wurde.
   Für den Induktionsschritt, berechne
   \begin{align*}
-    \Vert g_{n+1}(y) \Vert_2 
+    \Vert g_{n+1}(y) \Vert_2
     &\leq  \Vert g_n(y) \Vert_2 + \Vert g_{n+1}(y) - g_n(y) \Vert_2 \\
     &\leq (1 - 1/2^{n+1}) \cdot \varepsilon
     + \varepsilon / 2^{n+2} = (1 - 1/2^{n+2}) \varepsilon.
   \end{align*}
   Ähnlich berechne
   \begin{align*}
-    \Vert g_{n+2}(y) - g_{n+1}(y) \Vert_2 
+    \Vert g_{n+2}(y) - g_{n+1}(y) \Vert_2
     &= \Vert g_{n+1}(y) - f(g_{n+1}(y)) - g_n(y) + f(g_n(y)) \Vert_2  \\
     &= \Vert g_{n+1}(y) - g_n(y) - (f(g_{n+1}(y)) - f(g_n(y))) \Vert_2 \\
     &\leq 1/2 \Vert g_{n+1}(y) - g_n(y) \Vert_2 \\
@@ -1478,7 +1478,7 @@ Rekursiv setzen wir
   \end{align*}
   Aus $g_{n+1}(y) = g_n(y) + y - f(g_n(y))$ folgt, dass
   \begin{align*}
-    f(g(y)) 
+    f(g(y))
     &= \lim_{n \to \infty} y + g_n(y) - g_{n+1}(y)  \\
     &= y + g(y) - g(y) = y. \qedhere
   \end{align*}
@@ -1486,7 +1486,7 @@ Rekursiv setzen wir
 
 Im letzten Schritt des Beweis vom Umkehrsatz zeigen wir,
 dass die oben konstruierte Umkehrfunktion $g$ differenzierbar ist.
-Betrachte dazu die beiden Mengen $W = B_0(\varepsilon / 2)$ und 
+Betrachte dazu die beiden Mengen $W = B_0(\varepsilon / 2)$ und
 $V = f^{-1}(W) \cap B_0(\varepsilon) \subset U$.
 Aus der lokalen Bijektivität folgt, dass die Einschränkung
 $f|_{V} \colon V \to W$ bijektiv ist, mit Umkehrabbildung
@@ -1500,11 +1500,11 @@ $g \colon W \to V$.
 \begin{proof}
   Für alle $q, \widetilde q \in B_0(\varepsilon)$ gilt
   \(
-    1/2 \cdot 
+    1/2 \cdot
     \Vert \widetilde q - q \Vert_2 \leq f(\widetilde q) - f(q) \Vert_2.
   \)
   Seien nun $\widetilde y, y \in W$. Setze
-  $\widetilde q = g(\widetilde y)$ 
+  $\widetilde q = g(\widetilde y)$
   und $q = g(y) \in V$.
   Es folgt, dass
   \[
@@ -1549,7 +1549,7 @@ wir, dass
   1/2 \cdot \Vert {(Df)}^{-1}_{g(y)}(w) \Vert_2
   \leq \Vert {(Df)}_{g(y)}({(Df)}_{g(y)}^{-1}(w)) \Vert_2 = \Vert w \Vert_2,
 \]
-beziehungsweise 
+beziehungsweise
 $\Vert {(Df)}_{g(y)}^{-1}(w) \Vert_2 \leq 2 \cdot \Vert w \Vert_2$.
 Folglich gilt $\Vert {(Df)}^{-1}_{g(y)} \Vert_{\text{op}} \leq 2$.
 Wende nun auf unseren Ansatz die Abbildung $f$ auf beide Seiten an.
@@ -1563,9 +1563,9 @@ Es gilt
 \]
 Die Dreigliedentwicklung von $f$ bei $g(y)$ liefert, dass
 \begin{align*}
-   f(g(y) + h) 
+   f(g(y) + h)
    & = f(g(y)) + {(Df)}_{g(y)}(h) + {(Rf)}_{g(y)}(h) \\
-   &= y + {(Df)}_{g(y)}({(Df)}_{g(y)}^{-1}(k) + {(Rg)}_y(k))  
+   &= y + {(Df)}_{g(y)}({(Df)}_{g(y)}^{-1}(k) + {(Rg)}_y(k))
    + {(Rf)}_{g(y)}(h)\\
    &= y + k + {(Df)}_{g(y)}({(Rg)}_y(k)) + {(Rf)}_{g(y)}(h).
 \end{align*}
@@ -1579,7 +1579,7 @@ also gilt
 \[
   {(Rg)}_y(k) = - {(Df)}_{g(y)}^{-1}({(Rf)}_{g(y)}(h)).
 \]
-Aus $\Vert {(Df)}^{-1}_{g(y)} \Vert_{\text{op}} \leq 2$ 
+Aus $\Vert {(Df)}^{-1}_{g(y)} \Vert_{\text{op}} \leq 2$
 folgt, dass $\Vert {(Rg)}_y(k) \Vert_2
 \leq 2 \cdot \Vert {(Rf)}_{g(y)}(h) \Vert_2$ gilt.
 Wir schliessen, dass
@@ -1592,7 +1592,7 @@ Wir schliessen, dass
   4 \cdot \frac{\Vert {(Rf)}_{g(y)}(h) \Vert_2}{\Vert h \Vert_2}  = 0,
 \end{align*}
 da ${(Rf)}_{g(y)}(h)$ relativ klein in $\Vert h \Vert_2$ ist.
-Wir haben hier verwendet, dass $\Vert h \Vert_2 \leq 2 \cdot \Vert k \Vert_2$ 
+Wir haben hier verwendet, dass $\Vert h \Vert_2 \leq 2 \cdot \Vert k \Vert_2$
 gilt, um $\Vert k \Vert_2 \to 0$ durch $\Vert h \Vert_2 \to 0$ zu ersetzen.
 Wir folgern, dass obiger Ansatz tatsächlich
 eine Dreigliedentwicklung von $g$ an der Stelle $y \in W$ ist.
@@ -1600,13 +1600,13 @@ Somit ist $g$ differenzierbar, und für alle
 $y \in W$ gilt, dass
 ${(Dg)}_y = {(Df)}_{g(y)}^{-1}$.
 
-Wir werden darauf verzichten, 
+Wir werden darauf verzichten,
 die Transformationen, welche wir zu Beginn auf $f$ angewendet haben,
 wieder rückgängig zu machen (obwohl das nicht allzu schwierig wäre).
 Somit ist der Umkehrsatz vollständig bewiesen.
 
 \begin{remark}
-  Die stetige Differenzierbarkeit von $f$ 
+  Die stetige Differenzierbarkeit von $f$
   ist eine essentielle Hypothese im Umkehrsatz,
   bereits in einer Variable.
 \end{remark}
@@ -1615,7 +1615,7 @@ Somit ist der Umkehrsatz vollständig bewiesen.
   Betrachte die Funktion
   \begin{align*}
     f \colon \mathbb{R} & \to \mathbb{R} \\
-    x & \mapsto 
+    x & \mapsto
     \begin{cases}
       0 & x = 0, \\
       x + 2x^2 \cdot \sin(1/x) & x \neq 0.
@@ -1637,20 +1637,20 @@ Somit ist der Umkehrsatz vollständig bewiesen.
   \]
   Also ist $f'$ an der Stelle $x = 0$ nicht stetig, und
   ausserdem ist $f$ in keiner noch so kleinen offenen Umgebung
-  von $x = 0$ monoton wachsend. 
+  von $x = 0$ monoton wachsend.
   Insbesondere hat $f$ keine lokale Umkehrfunktion.
 \end{example}
 
 \section{Der Satz über implizite Funktionen}
-In~\cite{heuser} wird der Satz über implizite Funktionen 
+In~\cite{heuser} wird der Satz über implizite Funktionen
 in den Abschnitten~169 und 170 diskutiert.
 Der Beweis des Satzes empfiehlt sich nicht, dort nachzulesen.
 Der Grund dazu ist, dass dort (und auch in den meisten
-anderen Lehrbüchern) der 
+anderen Lehrbüchern) der
 Umkehrsatz aus dem Satz über implizite Funktionen
-hergeleitet wird. Wir machen das in dieser Vorlesung umgekehrt. 
+hergeleitet wird. Wir machen das in dieser Vorlesung umgekehrt.
 
-Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$
 stetig differenzierbar mit $m < n$.
 Für alle $p \in \mathbb{R}^n$ erhalten wir eine
 lineare Abbildung ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$.
@@ -1664,10 +1664,10 @@ Aus der Beobachtung, dass
 $\dim \im {(Df)}_p \leq m < n$ folgt, dass
 $\dim \ker {(Df)}_p \geq 1$.
 Insbesondere kann ${(Df)}_p$ kein Vektorraumisomorphismus sein.
-Wohl aber kann ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+Wohl aber kann ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$
 surjektiv sein.
 
-Im Spezialfall $m = 1$, das heisst $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+Im Spezialfall $m = 1$, das heisst $f \colon \mathbb{R}^n \to \mathbb{R}$
 ist die Bedingung, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$
 nicht die Nullabbildung ist, oder äquivalent, dass
 ${(\nabla f)}_p$ nicht der Nullvektor ist.
@@ -1676,15 +1676,15 @@ surjektiv, genau dann wenn eine partielle Ableitung $\partial f / \partial x_k$
 in $p$ nicht null ist.
 
 \begin{question}
-  Wie verhält sich $f \colon \mathbb{R}^n \to \mathbb{R}$ 
+  Wie verhält sich $f \colon \mathbb{R}^n \to \mathbb{R}$
   in der Nähe eines Punkts $p \in \mathbb{R}^n$ mit
-  ${(\nabla f)}_p \neq 0$? Genauer: Wie sehen die 
+  ${(\nabla f)}_p \neq 0$? Genauer: Wie sehen die
   \emph{Niveaumengen}
   \[
     f^{-1}(w) = \left\{q \in \mathbb{R}^n \mid f(q) = w\right\}
     \subset \mathbb{R}^n
   \]
-  in der Nähe eines Punkts $p \in \mathbb{R}^n$ 
+  in der Nähe eines Punkts $p \in \mathbb{R}^n$
   mit ${(\nabla f)}_p \neq 0$ aus?
 \end{question}
 
@@ -1713,9 +1713,9 @@ in $p$ nicht null ist.
       ${(\nabla f)}_p = 2p$.
       Also ist ${(\nabla f)}_p \neq 0$ für alle $p \neq 0$.
       Die Niveaumengen $f^{-1}(w)$ sind leer für negative $w$,
-      der Nullpunkt für $w = 0$, und Kreise mit Radius $\sqrt w$ 
+      der Nullpunkt für $w = 0$, und Kreise mit Radius $\sqrt w$
       für $w > 0$.
-      Es fällt auf, dass die Niveaulinie Nullpunkt $w = 0$ 
+      Es fällt auf, dass die Niveaulinie Nullpunkt $w = 0$
       einer anderen Qualität ist, als die restlichen Niveaulinien.
       Es ist kein Zufall, dass genau in diesem Punkt der
       Gradient verschwindet.
@@ -1726,7 +1726,7 @@ in $p$ nicht null ist.
         (x, y) & \mapsto y^2 - x^2 = (y - x)(y + x).
       \end{align*}
       Für alle $p = (x, y) \in \mathbb{R}^2$ ist
-      ${(\nabla f)}_p = (-2x, 2y)$ null, genau dann wenn $p$ 
+      ${(\nabla f)}_p = (-2x, 2y)$ null, genau dann wenn $p$
       auch null ist.
       Für alle Werte $w \neq 0$ sind die
       Niveaulinien $f^{-1}(w)$ Hyperbeln.
@@ -1734,13 +1734,13 @@ in $p$ nicht null ist.
       differenzierbare Kurven aus.
       Aber bei $w = 0$ geschieht wieder
       etwas besonderes, nämlich ist
-      die Niveaumenge $f^{-1}(0)$ 
+      die Niveaumenge $f^{-1}(0)$
       ein Kreuz, und nicht das
       Bild einer differenzierbaren Kurve.
   \end{enumerate}
 \end{examples}
 
-\begin{figure}[htb] 
+\begin{figure}[htb]
   \centering
   \begin{minipage}{0.33\textwidth}
     \centering
@@ -1760,8 +1760,8 @@ in $p$ nicht null ist.
 
 \begin{theorem}[Satz über implizite Funktionen, Spezialfall]%
   \label{thm:implicit-special}
-  Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ 
-  stetig differenzierbar und $p \in \mathbb{R}^n$ 
+  Sei $f \colon \mathbb{R}^n \to \mathbb{R}$
+  stetig differenzierbar und $p \in \mathbb{R}^n$
   so, dass ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}$ surjektiv ist,
   das heisst, dass ${(\nabla f)}_p \neq 0$ ist.
   Nimm zusätzlich an, dass $p = 0$, $f(0) = 0$,
@@ -1772,8 +1772,8 @@ in $p$ nicht null ist.
   g \colon B_0^{\mathbb{R}^{n-1}}(\varepsilon) \times (-\delta, \delta)
   \to \mathbb{R},
   \]
-  so dass für alle 
-  $q = (x_1, \dots, x_{n-1}) \in B_0^{\mathbb{R}^{n-1}}(\varepsilon)$ 
+  so dass für alle
+  $q = (x_1, \dots, x_{n-1}) \in B_0^{\mathbb{R}^{n-1}}(\varepsilon)$
   und alle $w \in (-\delta, \delta)$ gilt, dass
   \[
   f(x_1, \dots, x_{n-1}, g(x_1, \dots, x_{n-1}, w)) = w.
@@ -1783,14 +1783,14 @@ in $p$ nicht null ist.
 \end{theorem}
 
 \begin{geometric}
-  Bei festem $q = (x_1, \dots, x_{n-1}) \in B_0^{\mathbb{R}^{n-1}}$ 
+  Bei festem $q = (x_1, \dots, x_{n-1}) \in B_0^{\mathbb{R}^{n-1}}$
   und festem $w \in (-\delta, \delta)$ hat die Gleichung
   $f(x_1, \dots, x_{n-1}, z) = w$ eine Lösung
   \[
   z = g(x_1, \dots, x_{n-1}, w) \in \mathbb{R}.
   \]
   Die Niveaumengen $f^{-1}(w)$ lassen sich in einer
-  Umgebung des Punkts $p \in \mathbb{R}^n$ 
+  Umgebung des Punkts $p \in \mathbb{R}^n$
   als Graphen von Funktionen betrachten.
   Die Einschränkung von $g$ auf $B_0^{\mathbb{R}^{n-1}} \times \{w\}$
   liefert eine Abbildung
@@ -1807,7 +1807,7 @@ in $p$ nicht null ist.
   Sei $g \colon \mathbb{R}^{n-1} \to \mathbb{R}$ eine Funktion.
   Die Teilmenge
   \[
-    \Gamma(g) = \left\{(x_1, \dots, x_{n-1}, g(x_1, \dots, x_{n-1})) \mid 
+    \Gamma(g) = \left\{(x_1, \dots, x_{n-1}, g(x_1, \dots, x_{n-1})) \mid
     x_i \in \mathbb{R} \right\} \subset \mathbb{R}^n
   \]
   heisst \emph{Funktionsgraph} von $g$.
@@ -1828,14 +1828,14 @@ in $p$ nicht null ist.
       Gesucht ist eine Lösung der impliziten Gleichung
       $f(x, z) = w$.
       Wir bemerken, dass $z = g(x, w) = w$
-      für alle $x \in \mathbb{R}$ und alle $w \in \mathbb{R}$ 
+      für alle $x \in \mathbb{R}$ und alle $w \in \mathbb{R}$
       eine Lösung ist.
     \item Betrachte die Funktion $f(x, y) = x^2 + y^2$.
       Gesucht ist eine Lösung der impliziten Gleichung
       $f(x, z) = w$, das heisst $x^2 + z^2 = w$.
       Wir bemerken, dass \[z = g(x, w) = \sqrt{w - x^2}\] eine Lösung ist,
       sofern $w > 0$ und $x^2 < w$ gilt.
-      Insbesondere ist $g(x, w)$ für alle $w \in (1, 2)$ 
+      Insbesondere ist $g(x, w)$ für alle $w \in (1, 2)$
       und alle $x \in (-1, 1)$ definiert.
       Über dem Intervall $(-1, 1)$ ist also
       $f^{-1}(1)$ als Graph der Funktion
@@ -1843,7 +1843,7 @@ in $p$ nicht null ist.
   \end{enumerate}
 \end{examples}
 
-Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$
 stetig differenzierbar, so dass das Differential
 ${(Df)}_p \colon \mathbb{R}^n \to \mathbb{R}^m$
 im Punkt $p \in \mathbb{R}^n$ surjektiv ist.
@@ -1866,8 +1866,8 @@ Also gilt $\dim K = n-m$.
   Untervektorraum $S \subset \mathbb{R}^n$.
   Da heisst, dass $\mathbb{R}^n = K + S$ und
   $K \cap S = \{0\}$ gilt.
-  In anderen Worten kann jeder Vektor $v \in \mathbb{R}^n$ 
-  eindeutig als Summe $v = k + s$ mit $k \in K$ 
+  In anderen Worten kann jeder Vektor $v \in \mathbb{R}^n$
+  eindeutig als Summe $v = k + s$ mit $k \in K$
   und $s \in S$ geschrieben werden.
   Betrachte die Projektion
   \begin{align*}
@@ -1878,20 +1878,20 @@ Also gilt $\dim K = n-m$.
   $\delta > 0$,
   und eine differenzierbare Abbildung
   \[
-    g \colon B_0^K (\varepsilon) \times B_0^{\mathbb{R}^m}
+    g \colon B_0^K (\varepsilon) \times B_0^{\mathbb{R}^m} (\delta)
     \to~\mathbb{R}^n,
   \]
-  so dass für alle $k \in B_0^K(\varepsilon)$ 
+  so dass für alle $k \in B_0^K(\varepsilon)$
   und alle $w \in B_0^{\mathbb{R}^m}(\delta)$
-  gilt, dass $f(g(k, w)) = w$ 
+  gilt, dass $f(g(k, w)) = w$
   und $\pi_K^S(g(k, w)) = k$.
 \end{theorem}
 
 \begin{geometric}
-  Bei fest vorgegebenem Wert $w \in \mathbb{R}^m$ 
-  mit $\Vert w \Vert_2 < \delta$ 
-  existiert über jedem Punkt $k \in K$ 
-  mit $\Vert k \Vert_2 < \varepsilon$ 
+  Bei fest vorgegebenem Wert $w \in \mathbb{R}^m$
+  mit $\Vert w \Vert_2 < \delta$
+  existiert über jedem Punkt $k \in K$
+  mit $\Vert k \Vert_2 < \varepsilon$
   in Richtung $S$ gesehen ein
   Punkt $g(k, w) \in \mathbb{R}^n$,
   welcher zur Menge $f^{-1}(w)$ gehört.
@@ -1900,12 +1900,12 @@ Also gilt $\dim K = n-m$.
 \begin{proof}[Beweis von Theorem~\ref{thm:implicit}]
   Wir beweisen das Theorem via Umkehrsatz.
   Dazu widmen wir uns erst einer Promotion
-  von $f \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+  von $f \colon \mathbb{R}^n \to \mathbb{R}^m$
   zu einer Abbildung
   $F \colon \mathbb{R}^n \to \mathbb{R}^m \times K$.
   Definiere dazu $F(q) = (f(q), \pi_K^S(q))$.
   Wir zeigen nun, dass ${(DF)}_p \colon \mathbb{R}^n \to
-  \mathbb{R}^m \times K$ 
+  \mathbb{R}^m \times K$
   ein Isomorphismus ist.
   \begin{itemize}
     \item Die Abbildung ${(DF)}_p$
@@ -1930,60 +1930,60 @@ Also gilt $\dim K = n-m$.
     \item ${(DF)}_p$ ist surjektiv.
       Aus der Dimensionsformel folgt, dass $\dim K = n - m$ gilt.
       Also ist $\dim (\mathbb{R}^m \times K) = n$.
-      Die Dimensionsformel für 
-      ${(DF)}_p \colon \mathbb{R}^n \to \mathbb{R}^m \times K$ 
+      Die Dimensionsformel für
+      ${(DF)}_p \colon \mathbb{R}^n \to \mathbb{R}^m \times K$
       liefert, dass $n = \dim \im {(DF)}_p$ gilt, also muss
       $\im {(DF)}_p = \mathbb{R}^m \times K$ gelten.
   \end{itemize}
   Da $F$ zudem stetig differenzierbar ist,
   können wir im Punkt $p = 0 \in \mathbb{R}^n$ den Umkehrsatz anwenden.
   Dieser liefert offene Teilmengen
-  $V \subset \mathbb{R}^n$ und $W \subset \mathbb{R}^m \times K$ 
+  $V \subset \mathbb{R}^n$ und $W \subset \mathbb{R}^m \times K$
   mit $0 \in V, 0 \in W$,
   sowie eine differenzierbare Abbildung $g \colon W \to V$,
   so dass gilt, dass $F \circ g = \text{Id}_W$.
   Dies heisst für alle $(w, k) \in W \subset \mathbb{R}^n \times K$,
   dass $F(g(w, k)) = (w, k)$, also
-  $f(g(w, k)) = w$ 
+  $f(g(w, k)) = w$
   und $\pi_K^S(g(w, k)) = k$.
 
   Der einzige Unterschied zur Formulierung von Theorem~\ref{thm:implicit}
-  ist, dass $g$ auf $W$ statt auf 
-  $B_0^K(\varepsilon) \times B_0^{\mathbb{R}^m}(\delta)$ 
+  ist, dass $g$ auf $W$ statt auf
+  $B_0^K(\varepsilon) \times B_0^{\mathbb{R}^m}(\delta)$
   definiert ist.
   Um diesen Unterschied zu beheben, benötigen wir eine Norm
   auf $\mathbb{R}^m \times K$ (auch schon nur um über Offenheit von $W$
-  zu sprechen, was wir aufgrund der Normäquivalenz auf $\mathbb{R}^n$ 
-  häufig unter den Teppich kehren). 
+  zu sprechen, was wir aufgrund der Normäquivalenz auf $\mathbb{R}^n$
+  häufig unter den Teppich kehren).
   Wir arbeiten mit der Norm $\Vert (w, k) \Vert =
   \sqrt{\Vert w \Vert_2^2 + \Vert k \Vert_2^2}$.
   Diese Wahl liefert auf dem Produkt
   $\mathbb{R}^m \times \mathbb{R}^n$ die euklidische Norm.
-  Da $0 \in W$ und $W \subset \mathbb{R}^m \times K$ 
-  offen ist, existiert $\widetilde \varepsilon > 0$ 
+  Da $0 \in W$ und $W \subset \mathbb{R}^m \times K$
+  offen ist, existiert $\widetilde \varepsilon > 0$
   mit $B_0^{\mathbb{R}^m \times K}(\widetilde \varepsilon) \subset W$.
   Setze nun $\varepsilon = \delta = \widetilde \varepsilon / \sqrt 2 > 0$.
-  Aus $\varepsilon^2 + \delta^2 = \widetilde \varepsilon^2$ 
+  Aus $\varepsilon^2 + \delta^2 = \widetilde \varepsilon^2$
   folgt, dass
   \[
     B_0^{\mathbb{R}^m}(\delta) \times B_0^{K}(\varepsilon) \subset W
   \]
   gilt.
-  Die Einschränkung der obigen Funktion $g \colon W \to V$ 
+  Die Einschränkung der obigen Funktion $g \colon W \to V$
   auf dieses Produkt von Bällen liefert die gewünschte implizite
   Funktion aus Theorem~\ref{thm:implicit}.
 \end{proof}
 
 \begin{definition}[Ausblick Differentialgeometrie]
   Sei $f \colon \mathbb{R}^n \to \mathbb{R}^m$ stetig differenzierbar
-  und $w \in \mathbb{R}^m$ 
-  so, dass für alle $q \in f^{-1}(w)$ 
-  gilt, dass ${(Df)}_q \colon \mathbb{R}^n \to \mathbb{R}^m$ 
+  und $w \in \mathbb{R}^m$
+  so, dass für alle $q \in f^{-1}(w)$
+  gilt, dass ${(Df)}_q \colon \mathbb{R}^n \to \mathbb{R}^m$
   surjektiv.
-  Falls $f^{-1}(w)$ nicht leer ist, 
-  dann heisst $f^{-1}(w) \subset \mathbb{R}^n$ 
+  Falls $f^{-1}(w)$ nicht leer ist,
+  dann heisst $f^{-1}(w) \subset \mathbb{R}^n$
   \emph{Untermannigfaltigkeit} der Dimension $n - m$.
-  Im Spezialfall $f \colon \mathbb{R}^3 \to \mathbb{R}$ 
+  Im Spezialfall $f \colon \mathbb{R}^3 \to \mathbb{R}$
   heisst eine solche Untermannigfaltigkeit \emph{Fläche}.
 \end{definition}
 
@@ -2000,7 +2000,7 @@ Also gilt $\dim K = n-m$.
 \end{example}
 
 \begin{proof}[Beweis von Theorem~\ref{thm:implicit-special}]
-  Wir schreiben $\widetilde g$ für die Funktion aus 
+  Wir schreiben $\widetilde g$ für die Funktion aus
   Theorem~\ref{thm:implicit-special}
   und zeigen deren Existenz, indem wir sie mit Hilfe der Funktion
   $g$ aus Theorem~\ref{thm:implicit} konstruieren.
@@ -2012,7 +2012,7 @@ Also gilt $\dim K = n-m$.
 
   Sei $g \colon B_0^K(\varepsilon) \times (-\delta, \delta) \to
   \mathbb{R}^n$ die Abbildung aus  Theorem~\ref{thm:implicit}.
-  Sei 
+  Sei
   weiterhin $\widetilde \varepsilon > 0$ so gewählt, dass
   $B_0^{\mathbb{R}^{n-1}}(\widetilde \varepsilon)
   \subset \pi_{\mathbb{R}^{n-1}}^S(B_0^K(\varepsilon))$.
@@ -2023,7 +2023,7 @@ Also gilt $\dim K = n-m$.
   da $\mathbb{R}^{n} = K \oplus S$.
   Setze $C = g(B, w) \in \mathbb{R}^n$.
   Dann gilt $g(B, w) \in f^{-1}(w)$.
-  Definiere schliesslich 
+  Definiere schliesslich
   \[\widetilde g (A, w) = \langle g(B, w), e_n \rangle,\]
   die letzte Koordinate von $C = g(B, w)$.
   Der Punkt $C$ liegt in $e_n$-Richtung über dem Punkt $A
@@ -2032,8 +2032,8 @@ Also gilt $\dim K = n-m$.
   \[
   C = (x_1, \dots, x_{n-1}, \widetilde g(x_1, \dots, x_{n-1}, w))
   \in f^{-1}(w),
-  \] 
-  das heisst 
+  \]
+  das heisst
   $f(x_1, \dots, x_{n-1}, \widetilde g(x_1, \dots, x_{n-1}, w)) = w$.
 \end{proof}
 
@@ -2043,13 +2043,13 @@ zu finden.
 Wir studieren das Verhalten differenzierbarer Funktionen
 $f \colon\mathbb{R}^n \to \mathbb{R}$
 in der Nähe von \emph{kritischen Punkten},
-das heisst Punkten $p \in \mathbb{R}^n$ 
+das heisst Punkten $p \in \mathbb{R}^n$
 mit ${(Df)}_p = 0$, das heisst  ${(\nabla f)}_p = 0$.
 
 Im Spezialfall
-$n = 1$ 
-gilt folgendes. Sei $f \colon \mathbb{R} \to \mathbb{R}$ 
-zweimal differenzierbar und $x \in \mathbb{R}$ 
+$n = 1$
+gilt folgendes. Sei $f \colon \mathbb{R} \to \mathbb{R}$
+zweimal differenzierbar und $x \in \mathbb{R}$
 mit $f'(x) = 0$ und $f''(x) > 0$ (respektive $f''(x) < 0$).
 Dann hat $f$ an der Stelle $x$ ein lokales Minimum
 (respektive ein lokales Maximum).
@@ -2059,21 +2059,21 @@ Ersatz für die Bedingung $f''(x) > 0$, beziehungsweise
 benötigen wir ein Analogon zu $f''$.
 
 \begin{definition}
-  Eine \emph{quadratische Form} auf $\mathbb{R}^n$ 
-  ist eine Abbildung $g \colon \mathbb{R}^n \to \mathbb{R}$ 
+  Eine \emph{quadratische Form} auf $\mathbb{R}^n$
+  ist eine Abbildung $g \colon \mathbb{R}^n \to \mathbb{R}$
   mit folgenden Eigenschaften:
   \begin{enumerate}[(i)]
-    \item für alle $v \in \mathbb{R}^n$ 
+    \item für alle $v \in \mathbb{R}^n$
       und alle $t \in \mathbb{R}$ gilt $q(tv) = t^2 \cdot q(v)$,
-    \item die Abbildung 
-      $B \colon \mathbb{R}^n \to \mathbb{R}$ 
-      definiert durch $B(v, w) = q(v + w) - q(v) - q(w)$ 
+    \item die Abbildung
+      $B \colon \mathbb{R}^n \to \mathbb{R}$
+      definiert durch $B(v, w) = q(v + w) - q(v) - q(w)$
       ist bilinear.
   \end{enumerate}
 \end{definition}
 
 \begin{example}
-  Sei $M \in \mathbb{R}^{n \times n}$ eine beliebige 
+  Sei $M \in \mathbb{R}^{n \times n}$ eine beliebige
   symmetrische Matrix.
   Dann ist $q(v) = v^T M v$ eine quadratische Form.
 \end{example}
@@ -2090,10 +2090,10 @@ partiellen Ableitungen $\partial f / \partial x_1, \dots,
 \partial f / \partial x_n$.
 Differenzierbare Abbildungen
 $g \colon \mathbb{R}^n \to \mathbb{R}^n$ mit
-Komponentenfunktionen $g_1, \dots, g_n \colon \mathbb{R}^n \to \mathbb{R}$ 
-erfüllen, dass das Differential ${(Dg)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+Komponentenfunktionen $g_1, \dots, g_n \colon \mathbb{R}^n \to \mathbb{R}$
+erfüllen, dass das Differential ${(Dg)}_p \colon \mathbb{R}^n \to \mathbb{R}^n$
 in einem Punkte $p \in \mathbb{R}^n$ durch die
-Jacobimatrix 
+Jacobimatrix
 \[
 {(Jg)}_p =
 \begin{pmatrix}
@@ -2107,8 +2107,8 @@ Für $g = \nabla f$ erhalten wir
 \[
   {(J \nabla f )}_p =
   \begin{pmatrix}
-    \partial^2 f / \partial x_1^2 (p) 
-    & \cdots 
+    \partial^2 f / \partial x_1^2 (p)
+    & \cdots
     & \partial^2 f / \partial x_n \partial x_1 (p) \\
     \vdots & \ddots & \vdots \\
     \partial^2 f / \partial x_1 \partial x_n (p)
@@ -2149,8 +2149,8 @@ von $f$ an der Stelle $p$.
     \item Sei $L \colon \mathbb{R}^n \to \mathbb{R}$ linear.
       Dann gilt für alle $p \in \mathbb{R}^n$, dass
       ${(DL)}_p = L$ ist.
-      Insbesondere ist die Abbildung 
-      $\nabla L \colon \mathbb{R}^n \to \mathbb{R}^n$ 
+      Insbesondere ist die Abbildung
+      $\nabla L \colon \mathbb{R}^n \to \mathbb{R}^n$
       konstant.
       Somit ist ${(D \nabla L )}_p = 0$ und somit auch
       ${(J \nabla L )}_p = 0$ und ${(HL)}_p = 0$.
@@ -2208,7 +2208,7 @@ von $f$ an der Stelle $p$.
   Seien $p, h \in \mathbb{R}^n$.
   Zur Auswertung der Differenz
   $f(p + h) - f(p)$ betrachten wir den
-  Weg 
+  Weg
   \begin{align*}
     \gamma \colon [0, 1] & \to \mathbb{R}^n \\
     t & \mapsto p + th.
@@ -2217,7 +2217,7 @@ von $f$ an der Stelle $p$.
   Für alle $t \in [0, 1]$ gilt weiterhin $\dot \gamma(t) = h$.
   Berechne
   \begin{align*}
-   f(p + h) - f(p)    
+   f(p + h) - f(p)
    &= f( \gamma(1))  -f(\gamma(0))  \\
    &= \int_{0}^{1} \frac{d}{dt} f(\gamma(t)) \, dt \\
    &= \int_{0}^{1} {(Df)}_{\gamma(t)}( \dot \gamma(t)) \, dt \\
@@ -2231,10 +2231,10 @@ von $f$ an der Stelle $p$.
   \]
   Sei nun $\varepsilon > 0$ vorgegeben.
   Dann existiert $\delta > 0$,
-  so dass für alle $k \in \mathbb{R}^n$ mit $\Vert k \Vert_2 \leq \delta$ 
+  so dass für alle $k \in \mathbb{R}^n$ mit $\Vert k \Vert_2 \leq \delta$
   gilt, dass $\Vert {(R \nabla f)}_p(k) \Vert_2 \leq \varepsilon \cdot
   \Vert k \Vert_2$.
-  Für alle $h \in \mathbb{R}^n$ mit $\Vert h \Vert_2 \leq \delta$ 
+  Für alle $h \in \mathbb{R}^n$ mit $\Vert h \Vert_2 \leq \delta$
   und alle $t \in [0, 1]$ gilt also, dass
   $\Vert {(R \nabla f)}_p (th) \Vert \leq \varepsilon \cdot \Vert h \Vert_2$.
   Wir folgern für $k = th$, dass
@@ -2273,7 +2273,7 @@ von $f$ an der Stelle $p$.
 \end{proof}
 
 Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal differenzierbar.
-Dann hat $f$ an der Stelle $p \in \mathbb{R}^n$ 
+Dann hat $f$ an der Stelle $p \in \mathbb{R}^n$
 ein \emph{lokales Minimum} (beziehungsweise ein lokales Maximum),
 falls $\varepsilon > 0$ existiert, so dass für
 alle $q \in B_p( \varepsilon)$ gilt, dass
@@ -2281,7 +2281,7 @@ $f(q) \geq f(p)$ (beziehungsweise $f(q) \leq f(p)$).
 
 \begin{definition}
   Ein Punkt $p \in \mathbb{R}^n$ heisst \emph{kritischer Punkt}
-  einer differenzierbaren Funktion $f \colon \mathbb{R}^n \to \mathbb{R}$, 
+  einer differenzierbaren Funktion $f \colon \mathbb{R}^n \to \mathbb{R}$,
   falls
   ${(Df)}_p$ nicht surjektiv ist, das heisst
   ${(\nabla f)}_p = 0$ gilt.
@@ -2289,7 +2289,7 @@ $f(q) \geq f(p)$ (beziehungsweise $f(q) \leq f(p)$).
 
 \begin{remark}
   Wir erinnern uns, dass lokale Minima (beziehungsweise Maxima)
-  kritische Punkte von $f$ sind. Die Umkehrung gilt im 
+  kritische Punkte von $f$ sind. Die Umkehrung gilt im
   allgemeinen nicht, wie das Beispiel
   $f(x) = x^3$ in $\mathbb{R}$ zeigt.
 \end{remark}
@@ -2303,7 +2303,7 @@ Form beschrieben, denn dort gilt
 
 \begin{proposition}[Satz von Schwarz]\label{prop:schwarz-theorem}
   Sei $f \colon \mathbb{R}^n \to \mathbb{R}$ zweimal stetig differenzierbar.
-  Dann gilt für alle $p \in \mathbb{R}^n$ 
+  Dann gilt für alle $p \in \mathbb{R}^n$
   und alle $i, j \in \left\{1, \dots, n \right\}$, dass
   \[
     \frac{\partial^2 f}{\partial x_i \partial x_j}
@@ -2316,7 +2316,7 @@ Form beschrieben, denn dort gilt
   \leavevmode
   \begin{enumerate}[(1)]
     \item Für Polynome $f(x, y)$ ist diese Gleichheit offensichtlich,
-      da 
+      da
       \[
       \partial^2 / \partial x \partial y (x^a y^b) = ab x^{a-1} y^{b-1}
       = \partial^2 / \partial y \partial x
@@ -2340,21 +2340,21 @@ Form beschrieben, denn dort gilt
       Mechanics} von Arnold,
       sowie das Buch \emph{Formes Différentielles} von Cartan.
   \end{enumerate}
-  
+
 \end{remark}
 
 Wir werden Proposition~\ref{prop:schwarz-theorem} später zeigen.
 Aus der Linearen Algebra folgt, dass
-die symmetrische Matrix ${(J \nabla f)}_p$ über $\mathbb{R}$ 
+die symmetrische Matrix ${(J \nabla f)}_p$ über $\mathbb{R}$
 diagonalisierbar ist.
 Konkreter existieren sogar
 $\lambda_1, \dots \lambda_n \in \mathbb{R}$ und
-eine orthogonale Matrix $P \in \mathbb{R}^{n \times n}$ 
+eine orthogonale Matrix $P \in \mathbb{R}^{n \times n}$
 (das heisst $P^T = P^{-1}$), so dass
-$P^{-1} {(J \nabla f)}_p P = \text{diag}(\lambda_1, \dots, \lambda_n)$ 
+$P^{-1} {(J \nabla f)}_p P = \text{diag}(\lambda_1, \dots, \lambda_n)$
 gilt. Siehe dazu den Satz von Sylvester.
 Bezüglich einer geeigneten orthogonalen Basis
-$\{f_1, \dots, f_n \}$ von $\mathbb{R}^n$ 
+$\{f_1, \dots, f_n \}$ von $\mathbb{R}^n$
 gilt also folgendes. Für alle
 Vektoren
 $v = y_1 f_1 + \cdots + y_n f_n$ gilt
@@ -2403,7 +2403,7 @@ Vorzeichen haben.
 
   Wir zeigen zuerst, dass wir uns auf den Fall $n = 2$
   und $p = 0$
-  beschränken können. Sei $\overline f \colon \mathbb{R}^n \to \mathbb{R}$ 
+  beschränken können. Sei $\overline f \colon \mathbb{R}^n \to \mathbb{R}$
   zweimal stetig differenzierbar und sei $p \in \mathbb{R}^n$ fest.
   Betrachte statt $f$ die Abbildung
   $\overline f \colon \mathbb{R}^n \to \mathbb{R}$,
@@ -2432,7 +2432,7 @@ Vorzeichen haben.
   \]
   Nach dem Mittelwertsatz angewendet auf die Funktion
   $y \mapsto \partial f / \partial x (a, y)$
-  existiert ein $b \in (0, y)$ mit 
+  existiert ein $b \in (0, y)$ mit
   $\partial f / \partial x (a, y) - \partial f/ \partial x (a, 0) =
   y \cdot
   \partial^2 f/ \partial y \partial x (a, b)$.
